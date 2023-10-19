@@ -24,6 +24,13 @@
           inherit inputs nixpkgs home-manager;   # Inherit inputs
       }
     );
+
+    homeConfigurations = (
+      import ./home-manager {
+          inherit (nixpkgs) lib;
+          inherit inputs nixpkgs home-manager;
+        }
+    );
      #  benlaptop = nixpkgs.lib.nixosSystem {
      #    inherit system;
      #    specialArgs = { inherit inputs; };

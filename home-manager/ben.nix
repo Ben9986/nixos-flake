@@ -1,9 +1,8 @@
-{ config, pkgs, lib, ... }:
-#with import <nixpkgs> {};
+{ inputs, config, pkgs, lib, ... }:
 {
   home.username = "ben";
   home.homeDirectory = "/home/ben";
-
+  home = {
   xdg = {
     userDirs = {
       enable = true;
@@ -200,4 +199,5 @@
         ${pkgs.hyprland}/bin/hyprctl reload > /dev/null;
         echo "Hyprland reloaded successfully";
       '';};
+};
 }
