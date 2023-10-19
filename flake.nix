@@ -31,22 +31,6 @@
           inherit inputs nixpkgs home-manager;
         }
     );
-     #  benlaptop = nixpkgs.lib.nixosSystem {
-     #    inherit system;
-     #    specialArgs = { inherit inputs; };
-     #    modules = [
-     #      ./nixos/configuration.nix
-     #      home-manager.nixosModules.home-manager
-     #      {
-     #        home-manager = {
-     #          useUserPackages = true;
-     #          useGlobalPkgs = true;
-     #          users.ben = ./home-manager/home.nix;
-     #        };
-     #      }
-     #    ];
-     #  };
-    # };
-  
+    };
   };
 }
