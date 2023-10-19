@@ -20,7 +20,7 @@
     "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
   ];
 
-  systemd.user.services.polkit-gnome-authentication-agent = {
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
   Unit = {
     Description = "Gnome Polkit authentication agent";
     Documentation = "https://gitlab.freedesktop.org/polkit/polkit/";
