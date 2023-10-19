@@ -1,6 +1,9 @@
 {
   description = "System Configuration Flake";
 
+  nixConfig.extra-substituters = ["https://hyprland.cachix.org"];
+  nixConfig.extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+
   inputs = {
     hyprland.url = "github:hyprwm/Hyprland"; 
     nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -15,24 +18,28 @@
   let
        system = "x86_64-linux";
   in {
-    nixosConfigurations = {
-      benlaptop = nixpkgs.lib.nixosSystem {
-        inherit system;
-	specialArgs = { inherit inputs; };
-        modules = [
-          ./nixos/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              users.ben = ./home-manager/home.nix;
-            };
-          }
-        ];
-      };
-    };
+    nixosConfigurations = (
+      import ./hosts {
+          inherit (nixpkgs) lib;
+          inherit inputs nixpkgs home-manager;   # Inherit inputs
+      }
+    );
+     #  benlaptop = nixpkgs.lib.nixosSystem {
+     #    inherit system;
+     #    specialArgs = { inherit inputs; };
+     #    modules = [
+     #      ./nixos/configuration.nix
+     #      home-manager.nixosModules.home-manager
+     #      {
+     #        home-manager = {
+     #          useUserPackages = true;
+     #          useGlobalPkgs = true;
+     #          users.ben = ./home-manager/home.nix;
+     #        };
+     #      }
+     #    ];
+     #  };
+    # };
   
   };
-}
 }
