@@ -1,2 +1,2 @@
 #!/bin/sh
-/run/current-system/sw/bin/hyprctl dispatch exit
+/run/current-system/sw/bin/loginctl terminate-session ""
