@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/swaylock -f -C /var/home/ben/.config/swaylock/config

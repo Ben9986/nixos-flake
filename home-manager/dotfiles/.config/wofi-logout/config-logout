@@ -1,0 +1,15 @@
+mode=run
+// normal_window=true
+prompt='Power Options'
+term=kitty
+ // change this with the terminal you're using
+allow_images=false
+allow_markup=false
+columns=2
+height=13%
+// lines=2
+width=33%
+yoffset=320
+xoffset=490
+cache_file=/dev/null
+hide_search=false

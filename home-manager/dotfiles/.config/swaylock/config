@@ -1,0 +1,11 @@
+#scaling=center
+color=303336
+ignore-empty-password
+indicator-caps-lock
+screenshots
+effect-blur=6x3
+effect-greyscale
+clock
+timestr=%H:%M
+datestr=
+
