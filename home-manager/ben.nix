@@ -2,7 +2,7 @@
 {
   home.username = "ben";
   home.homeDirectory = "/home/ben";
-  home = {
+  
   xdg = {
     userDirs = {
       enable = true;
@@ -199,5 +199,4 @@
         ${pkgs.hyprland}/bin/hyprctl reload > /dev/null;
         echo "Hyprland reloaded successfully";
       '';};
-};
 }
