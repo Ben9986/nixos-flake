@@ -19,6 +19,24 @@
     "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
     "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
   ];
+
+  systemd.user.services.polkit-gnome-authentication-agent = {
+  Unit = {
+    Description = "Gnome Polkit authentication agent";
+    Documentation = "https://gitlab.freedesktop.org/polkit/polkit/";
+    After = [ "graphical-session-pre.target" ];
+    PartOf = [ "graphical-session.target" ];
+  };
+
+  Service = {
+    ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+    Restart = "always";
+    BusName = "org.freedesktop.PolicyKit1.Authority";
+  };
+
+  Install.WantedBy = [ "graphical-session.target" ];
+};
+
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
