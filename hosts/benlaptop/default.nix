@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, config }:
+{ pkgs, lib, config, ...}:
 let 
   zenbook-acpi = pkgs.stdenv.mkDerivation rec {
     pname = "asus-zenbook-ux3402za-acpi-tables";
