@@ -161,7 +161,6 @@
      libsForQt5.qt5.qtwayland
      glib # gsettings for nwg-look
      gsettings-desktop-schemas
-     less # pager
      firefox
      gparted
      gnome-multi-writer
