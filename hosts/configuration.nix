@@ -133,6 +133,7 @@
      gh
      git
      eza
+     btop
      acpica-tools
      p7zip
      # Hyprland stuff
