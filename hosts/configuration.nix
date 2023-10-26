@@ -147,7 +147,7 @@
      blueman
      brightnessctl
      font-awesome
-     udiskie
+     # udiskie removed until https://nixpk.gs/pr-tracker.html?pr=263500 reaches nixpkgs-unstable
      distrobox
      copyq
      nwg-look
