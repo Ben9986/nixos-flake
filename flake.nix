@@ -5,8 +5,8 @@
   nixConfig.extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
 
   inputs = {
-    hyprland.url = "github:hyprwm/Hyprland"; 
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    hyprland.url = "github:hyprwm/Hyprland";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
