@@ -74,6 +74,7 @@ in
       extraConfig = "acpi ($root)/ssdt-csc3551.aml";
     };
     kernelParams = ["quiet"];
+    kernelPackages = pkgs.linuxPackages_zen;
     plymouth = {
       enable = true;
       theme = "catppuccin-mocha";
