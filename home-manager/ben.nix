@@ -37,9 +37,6 @@
   Install.WantedBy = [ "graphical-session.target" ];
 };
 
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
   
   dconf = {
@@ -77,20 +74,10 @@
     platformTheme = "gnome";
   };
 
-#  home.pointerCursor = {
-#      name = "Phinger Cursors";
-#      package = pkgs.phinger-cursors;
-#      size = 24;
-#      x11 = {
-#        enable = true;
-#        defaultCursor = "Phinger Cursors";
-#      };
-#    };
 
   home.packages = with pkgs; [
      (nerdfonts.override { fonts = [ "RobotoMono" ]; })
      roboto
-    # only in unstable at: mpkgs.eza
      git-crypt
 
     # # You can also create simple shell scripts directly inside your
@@ -142,7 +129,6 @@
     PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
     RANGER_LOAD_DEFAULT_RC="false";
     HMDOTS = "$HOME/.config/home-manager/dotfiles";
-    # XDG_DATA_DIRS="$XDG_DATA_DIRS;${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}";
   };
   
   # Let Home Manager install and manage itself.
