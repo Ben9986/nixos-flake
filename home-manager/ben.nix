@@ -175,7 +175,7 @@
         ll="eza --icons --group-directories-first --width=80 --no-filesize -alo";
         };
       
-      initExtraBeforeCompInit = "zstyle :compinstall filename '/var/home/ben/.zshrc' ";
+      initExtraBeforeCompInit = "zstyle :compinstall filename '/home/ben/.zshrc' ";
 
       initExtra = ''
       zstyle ':completion:*' menu select=4
