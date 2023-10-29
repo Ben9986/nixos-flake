@@ -164,12 +164,12 @@
       };
       localVariables = {
           PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
-        };
+	};
 
       shellAliases = {
-        hconf="nvim $HMDOTS/.config/hypr/hyprland.conf";
-        hmconf="nvim ~/.config/home-manager/home.nix";
-        hmdir="cd ~/.config/home-manager/";
+        hconf="nvim /etc/nixos/home-manager/dotfiles/.config/hypr/hyprland.conf";
+        hmconf="nvim /etc/nixos/home-manager/$USER.nix";
+        hmdir="cd /etc/nixos/home-manager/";
         tbxe="toolbox enter";
         ls="eza --icons --group-directories-first --width=80 -a";
         ll="eza --icons --group-directories-first --width=80 --no-filesize -alo";
