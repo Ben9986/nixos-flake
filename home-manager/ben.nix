@@ -213,7 +213,6 @@
       # Reload hyprland after home-manager files have been written 
       reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
         echo "Reloading Hyprland...";
-        # change to $\{pkgs.hyprland}/bin/hyprctl ? for nixos 
         ${pkgs.hyprland}/bin/hyprctl reload > /dev/null;
         echo "Hyprland reloaded successfully";
       '';};
