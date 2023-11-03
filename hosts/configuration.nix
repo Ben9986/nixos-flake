@@ -165,7 +165,12 @@
      gparted
      gnome-multi-writer
      ntfs3g
-     (wlogout.override {withGtkLayerShell = true;})
+     # needed for hyprshot
+     jq
+     grim
+     slurp
+     wl-clipboard
+     libnotify
    ];
 
   programs = {
