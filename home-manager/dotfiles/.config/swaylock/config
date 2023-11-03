@@ -8,4 +8,8 @@ effect-greyscale
 clock
 timestr=%H:%M
 datestr=
-
+indicator-thickness=5
+ring-color=bb00cc
+key-hl-color=ffffffff 
+inside-wrong-color=00000088
+text-wrong-color=ff0055ff
