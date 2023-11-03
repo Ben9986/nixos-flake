@@ -88,6 +88,11 @@
     # '')
   ];
 
+   home.activation.linkDotfiles = config.lib.dag.entryAfter [ "writeBoundary" ]
+    ''
+      ln -sfn /etc/nixos/home-manager/dotfiles/.config/ranger/rc.conf         $HOME/.config/ranger/
+    '';
+
   home.file = {
     ".config/waybar".source = dotfiles/.config/waybar;
     ".config/wofi".source = dotfiles/.config/wofi;
