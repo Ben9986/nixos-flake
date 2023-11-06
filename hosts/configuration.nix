@@ -86,9 +86,12 @@
         tweaks = [ "rimless" ];
         variant = "mocha";
       };
-      greeters.slick.cursorTheme.name = "Phinger Cursors";
+      greeters.slick.cursorTheme.name = "Phinger Cursors"; 
+      greeters.slick.cursorTheme.package = pkgs.phinger-cursors;
+      greeters.slick.cursorTheme.size = 24;
       greeters.slick.extraConfig = ''
-         enable-hidpi=on
+      enable-hidpi=on
+      background=/etc/lightdm/stag.jpg
       '';
       extraConfig = ''
          minimum-vt=1
