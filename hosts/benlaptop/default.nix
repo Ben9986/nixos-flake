@@ -64,9 +64,9 @@ in
         echo $var
         sed -i "1c\$var" install.sh
         chmod +x ./install.sh
-        ./install.sh -t vimix -s 2k -g $out
-        mv $out/vimix/* $out
-        rm -r $out/vimix
+        ./install.sh -t tela -s 2k -g $out
+        mv $out/tela/* $out
+        rm -r $out/tela
         '';
 };
       backgroundColor = "#000000";
@@ -116,4 +116,10 @@ in
      };
 
   networking.hostName = "benlaptop";
+  
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  services.blueman.enable = true;
+
 }
