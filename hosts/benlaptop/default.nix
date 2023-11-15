@@ -92,4 +92,28 @@ in
 
   };
 
+     displayManager.lightdm = {
+       enable = true;
+       greeters.slick.enable = true;
+       greeters.slick.theme.name = "Catppuccin-Mocha-Standard-Blue-Dark";
+       greeters.slick.theme.package = pkgs.catppuccin-gtk.override {
+         accents = [ "blue" ];
+         #size = "compact";
+         tweaks = [ "rimless" ];
+         variant = "mocha";
+       };
+       greeters.slick.cursorTheme.name = "Phinger Cursors"; 
+       greeters.slick.cursorTheme.package = pkgs.phinger-cursors;
+       greeters.slick.cursorTheme.size = 24;
+       greeters.slick.extraConfig = ''
+       enable-hidpi=on
+       background=/etc/lightdm/stag.jpg
+       '';
+       extraConfig = ''
+          minimum-vt=1
+          #logind-check-graphical=true
+       '';
+     };
+
+  networking.hostName = "benlaptop";
 }

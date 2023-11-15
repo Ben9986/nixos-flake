@@ -29,4 +29,23 @@ in
       }
     ];
   };
+  bendesktop = lib.nixosSystem {                                # Laptop Profile
+    inherit system;
+    specialArgs = {
+      inherit inputs; # needed for hyprland and probs other stuff
+      host = {
+        hostName = "bendesktop";
+        #mainMonitor = "eDP-1";
+      };
+    };
+    modules = [
+      ./bendesktop
+      ./configuration.nix
+
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+    ];
+  };
 }

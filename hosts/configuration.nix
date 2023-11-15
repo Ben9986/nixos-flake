@@ -39,7 +39,6 @@
   };
   
 
-  networking.hostName = "benlaptop";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/London";
@@ -76,29 +75,6 @@
     layout = "gb";
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
-    displayManager.lightdm = {
-      enable = true;
-      greeters.slick.enable = true;
-      greeters.slick.theme.name = "Catppuccin-Mocha-Standard-Blue-Dark";
-      greeters.slick.theme.package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
-        #size = "compact";
-        tweaks = [ "rimless" ];
-        variant = "mocha";
-      };
-      greeters.slick.cursorTheme.name = "Phinger Cursors"; 
-      greeters.slick.cursorTheme.package = pkgs.phinger-cursors;
-      greeters.slick.cursorTheme.size = 24;
-      greeters.slick.extraConfig = ''
-      enable-hidpi=on
-      background=/etc/lightdm/stag.jpg
-      '';
-      extraConfig = ''
-         minimum-vt=1
-	 #logind-check-graphical=true
-      '';
-    };
-
   };
   
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -158,6 +134,7 @@
      gnome.gnome-software
      cinnamon.nemo
      catppuccin-gtk
+     sddm-chili-theme
      phinger-cursors
      gtk3
      qt6.qtwayland # cursors?
@@ -183,6 +160,7 @@
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
     zsh.enable = true;
+    steam.enable = true;
 };
 
   # Some programs need SUID wrappers, can be configured further or are
