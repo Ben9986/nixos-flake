@@ -69,9 +69,12 @@ in
         rm -r $out/tela
         '';
 };
-      backgroundColor = "#000000";
+      # backgroundColor = "#000000";
       extraFiles."ssdt-csc3551.aml" = "${zenbook-acpi}/boot/ssdt-csc3551.aml";
-      extraConfig = "acpi ($root)/ssdt-csc3551.aml";
+      extraConfig = ''
+      acpi ($root)/ssdt-csc3551.aml
+	background_image
+      '';
     };
     kernelParams = ["quiet"];
     kernelPackages = pkgs.linuxPackages_zen;
@@ -92,7 +95,8 @@ in
 
   };
 
-     displayManager.lightdm = {
+
+    services.xserver.displayManager.lightdm = {
        enable = true;
        greeters.slick.enable = true;
        greeters.slick.theme.name = "Catppuccin-Mocha-Standard-Blue-Dark";
