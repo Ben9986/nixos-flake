@@ -20,6 +20,18 @@
     "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
   ];
 
+  xdg.desktopEntries = {
+    obsidianWayland = {
+      categories = [ "Office" ];
+      comment = "Knowledge base";
+      exec="obsidian %u --enable-features=ozone --ozone-platform=wayland";
+      icon = "obsidian";
+      mimeType = [ "x-scheme-handler/obsidian" ];
+      name = "Obsidian - Wayland + Native Pkg";
+      type = "Application";
+    };
+  };
+
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
   Unit = {
     Description = "Gnome Polkit authentication agent";
