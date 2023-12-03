@@ -1,6 +1,6 @@
 {
     "layer": "top", // Waybar on top layer
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 36, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
 
 //--- Module Order ---
@@ -31,8 +31,8 @@
     "idle_inhibitor": {
       "format": "{icon}",
       "format-icons": {
-          "activated": "",
-          "deactivated": ""
+          "activated": " ",
+          "deactivated": " "
       }
     },
     "tray": {
@@ -40,7 +40,7 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%H:%M}",
+        "format": "{:%H:%M  %A, %d-%m-%Y}",
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
@@ -71,13 +71,13 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}% {icon} ",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -111,7 +111,8 @@
       "format": "{volume}% {icon}",
       "format-muted": "",
       "on-click": "helvum",
-      "format-icons": ["", "", ""]
+      "format-icons": ["", "", ""],
+      "scroll-step": 1
     },
     "custom/media": {
     "format": "{icon} {}",
