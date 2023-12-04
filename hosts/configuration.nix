@@ -141,7 +141,7 @@
      swaylock-effects
      swayidle
      networkmanagerapplet
-     blueman
+     blueberry
      brightnessctl
      font-awesome
      udiskie
@@ -157,6 +157,8 @@
      gtk3
      qt6.qtwayland # cursors?
      libsForQt5.qt5.qtwayland
+     libsForQt5.qt5ct
+     qt6Packages.qt6ct
      glib # gsettings for nwg-look
      gsettings-desktop-schemas
      firefox
@@ -177,6 +179,7 @@
       enable = true;
       # package = hyprland-flake.packages.${pkgs.system}.hyprland;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      portalPackage = inputs.xdg-desktop-portal-hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     };
     zsh.enable = true;
     steam.enable = true;

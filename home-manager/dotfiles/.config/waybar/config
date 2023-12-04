@@ -6,7 +6,7 @@
 //--- Module Order ---
     "modules-left": ["hyprland/workspaces", "custom/media"],
     "modules-center": ["clock#time", "clock#date"],
-    "modules-right": ["idle_inhibitor", "wireplumber", "backlight", "battery", "tray"],
+    "modules-right": ["idle_inhibitor", "wireplumber", "backlight", "battery", "bluetooth", "tray"],
     
 // -------- Modules configuration ---------
   
@@ -54,6 +54,18 @@
       "tooltip-format-activated": "Activated",
       "tooltip-format-deactivated": "Deactivated"
     },
+
+    "bluetooth": {
+        "on-click": "GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark blueberry",
+	"on-click-right": "flatpak run io.github.kaii_lb.Overskride",
+	"format-on": "󰂯",
+	"format-off": "󰂲",
+	"format-disabled": "󰂲", // an empty format will hide the module
+	"format-connected": " {num_connections} connected",
+	"tooltip-format": "",
+	"tooltip-format-connected": "",
+	"tooltip-format-enumerate-connected": ""
+  },
     "tray": {
         "icon-size": 18,
         "spacing": 10
@@ -86,13 +98,14 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{icon} {percent}%",
-        "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+        // "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+        "format-icons": ["󰃞 ","󰃞 ","󰃞 ", "󰃝 ", "󰃟 ", "󰃟 ","󰃟 ","󰃟 ","󰃟 ","󰃠 "]
     },
     "battery": {
         "states": {
             "good": 100,
-	    "medium": 60,
-            "warning": 30,
+	    "medium": 50,
+            "warning": 25,
             "critical": 15
         },
         "format": "{capacity}% {icon} ",
@@ -133,9 +146,9 @@
     },
     "wireplumber": {
       "format": "{icon} {volume}%",
-      "format-muted": " Mute",
+      "format-muted": "󰝟  Mute",
       "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-      "format-icons": ["", "", " "],
+      "format-icons": ["", "", "", "", "󰕾 ", "󰕾 ", "󰕾 ", "󰕾 ", " ", " "],
       "scroll-step": 1
     },
     "custom/media": {

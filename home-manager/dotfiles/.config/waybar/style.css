@@ -60,6 +60,8 @@ button:hover {
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    text-shadow: inherit;
 }
 
 #workspaces button.focused {
@@ -79,6 +81,7 @@ button:hover {
 #clock,
 clock.date,
 #battery,
+#bluetooth,
 #cpu,
 #memory,
 #disk,
@@ -156,6 +159,11 @@ clock.date,
 #battery.medium {
     background-color: rgb(212, 114, 34);
     color: rgb(0,0,0);
+}
+
+#battery.warning {
+  background-color: #f53c3c;
+  color: rgb(10,10,10);
 }
 
 #battery.charging, #battery.plugged {
