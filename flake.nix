@@ -6,6 +6,7 @@
 
   inputs = {
     hyprland.url = "github:hyprwm/Hyprland";
+    xdg-desktop-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
 
     home-manager = {
