@@ -1,19 +1,20 @@
 {
     "layer": "top", // Waybar on top layer
-    "height": 36, // Waybar height (to be removed for auto height)
+    "height": 32, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
 
 //--- Module Order ---
-    "modules-left": ["custom/media", "wlr/taskbar"],
-    "modules-center": ["clock"],
+    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-center": ["clock#time", "clock#date"],
     "modules-right": ["idle_inhibitor", "wireplumber", "backlight", "battery", "tray"],
     
 // -------- Modules configuration ---------
-    "wlr/taskbar": {
+  
+  "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 14,
     "icon-theme": "Numix-Circle",
-    "tooltip-format": "{name:.15}...",
+    "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
     "ignore-list": [
@@ -21,29 +22,51 @@
     ],
     "app_ids-mapping": {
       "firefoxdeveloperedition": "firefox-developer-edition"
-    }
-},
-
-    "hyprland/window": {
-      "format": "{}",
-      "separate-outputs": true
     },
+    "rewrite": {
+        "Firefox Web Browser": "Firefox",
+        "Foot Server": "Terminal"
+    }
+}, 
+
+  "hyprland/workspaces": {
+      "format": "{name}",
+      "on-click": "activate",
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "sort-by-number": true
+    },
+
     "idle_inhibitor": {
       "format": "{icon}",
       "format-icons": {
           "activated": " ",
           "deactivated": " "
-      }
+      },
+      "tooltip-format-activated": "Activated",
+      "tooltip-format-deactivated": "Deactivated"
     },
     "tray": {
         "icon-size": 18,
         "spacing": 10
     },
-    "clock": {
-        "format": "{:%H:%M  %A, %d-%m-%Y}",
+    "clock#time": {
+        "format": "{:%H:%M}",
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+                "format-alt": "{:%Y-%m-%d}"
+    },
+    "clock#date": {
+       "format": "{:%A, %d/%m/%Y}",
+       "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+
     },
     "cpu": {
         "format": "{usage}% ",
@@ -62,12 +85,13 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format": "{icon} {percent}%",
+        "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     },
     "battery": {
         "states": {
-            "good": 95,
+            "good": 100,
+	    "medium": 60,
             "warning": 30,
             "critical": 15
         },
@@ -108,10 +132,10 @@
         "on-click": "pavucontrol"
     },
     "wireplumber": {
-      "format": "{volume}% {icon}",
-      "format-muted": "",
-      "on-click": "helvum",
-      "format-icons": ["", "", ""],
+      "format": "{icon} {volume}%",
+      "format-muted": " Mute",
+      "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+      "format-icons": ["", "", " "],
       "scroll-step": 1
     },
     "custom/media": {
