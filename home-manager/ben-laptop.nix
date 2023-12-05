@@ -102,18 +102,15 @@
 
    home.activation.linkDotfiles = config.lib.dag.entryAfter [ "writeBoundary" ]
     ''
-      ln -sfn /etc/nixos/home-manager/dotfiles/ranger/rc.conf         $HOME/.config/ranger/
+      ln -sfn /etc/nixos/home-manager/dotfiles/.config/ranger/rc.conf         $HOME/.config/ranger/
     '';
 
-
-  home.file = 
-  {
-    ".config/waybar".source = dotfiles/waybar;
-    ".config/wofi".source = dotfiles/wofi;
-    ".config/wofi-logout".source = dotfiles/wofi-logout;
-    ".config/kitty".source = dotfiles/kitty;
-    ".config/hypr/hyprland.conf".source = dotfiles/hypr/hyprland.conf;
-    ".config/hypr/hyprpaper.conf".source = dotfiles/hypr/hyprpaper.conf;
+  home.file = {
+    ".config/waybar".source = dotfiles/.config/waybar;
+    ".config/wofi".source = dotfiles/.config/wofi;
+    ".config/wofi-logout".source = dotfiles/.config/wofi-logout;
+    ".config/kitty".source = dotfiles/.config/kitty;
+    ".config/hypr".source = dotfiles/.config/hypr;
 #    ".config/nvim".source = fetchgit {
 #	url = "https://github.com/NvChad/NvChad.git";
 #	deepClone = true;
@@ -123,11 +120,11 @@
 #    };
     
     # dir must be writable for ranger to run
-    # ".config/ranger".source = dotfiles/ranger;
-   # ".config/rclone".source = dotfiles/rclone;
-    ".config/swayidle".source = dotfiles/swayidle;
-    ".config/swaylock".source = dotfiles/swaylock;
-    ".config/swaync".source = dotfiles/swaync;
+    # ".config/ranger".source = dotfiles/.config/ranger;
+   # ".config/rclone".source = dotfiles/.config/rclone;
+    ".config/swayidle".source = dotfiles/.config/swayidle;
+    ".config/swaylock".source = dotfiles/.config/swaylock;
+    ".config/swaync".source = dotfiles/.config/swaync;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -176,7 +173,7 @@
 	};
 
       shellAliases = {
-        hconf="nvim /etc/nixos/home-manager/dotfiles/hypr/hyprland.conf";
+        hconf="nvim /etc/nixos/home-manager/dotfiles/.config/hypr/hyprland.conf";
         hmconf="nvim /etc/nixos/home-manager/$USER.nix";
         hmdir="cd /etc/nixos/home-manager/";
         tbxe="toolbox enter";
