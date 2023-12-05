@@ -132,6 +132,7 @@
      eza
      btop
      p7zip
+     peazip
      # Hyprland stuff
      waybar
      wofi
@@ -154,6 +155,7 @@
      sddm-chili-theme
      phinger-cursors
      gtk3
+     # qt5&6 wayland needed for xdph
      qt6.qtwayland # cursors?
      libsForQt5.qt5.qtwayland
      libsForQt5.qt5ct
