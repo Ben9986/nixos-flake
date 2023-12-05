@@ -96,7 +96,6 @@
     ".config/wofi-logout".source = dotfiles/wofi-logout;
     ".config/kitty".source = dotfiles/kitty;
     ".config/hypr/hyprland.conf".source = dotfiles/hypr/hyprland.conf;
-    ".config/hypr/hyprpaper.conf".source = dotfiles/hypr/hyprpaper.conf;
 #    ".config/nvim".source = fetchgit {
 #	url = "https://github.com/NvChad/NvChad.git";
 #	deepClone = true;
