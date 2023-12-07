@@ -13,6 +13,7 @@
     };
     mimeApps.defaultApplications = {
      "text/html" = "firefox.desktop"; 
+      "application/pdf" = "firefox.desktop";
     };
   };
   xdg.systemDirs.data = [
