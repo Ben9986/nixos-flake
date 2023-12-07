@@ -97,34 +97,14 @@
     ".config/wofi-logout".source = dotfiles/wofi-logout;
     ".config/kitty".source = dotfiles/kitty;
     ".config/hypr/hyprland.conf".source = dotfiles/hypr/hyprland.conf;
-#    ".config/nvim".source = fetchgit {
-#	url = "https://github.com/NvChad/NvChad.git";
-#	deepClone = true;
-#	fetchSubmodules = true;
-#	rev = "v2.0";
-#	sha256 = "67c520c402af0b6e44593fba53713c46340814dada0ea9470937228edff6d7dd";
-#    };
-    
     # dir must be writable for ranger to run
     # ".config/ranger".source = dotfiles/ranger;
    # ".config/rclone".source = dotfiles/rclone;
     ".config/swayidle".source = dotfiles/swayidle;
     ".config/swaylock".source = dotfiles/swaylock;
     ".config/swaync".source = dotfiles/swaync;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
-  # You can also manage environment variables but you will have to manually
-  # source
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  # or
-  #  /etc/profiles/per-user/ben/etc/profile.d/hm-session-vars.sh
-  # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     EDITOR = "nvim";
     VISIAL = "nvim";
@@ -161,7 +141,9 @@
       shellAliases = {
         hconf="nvim /etc/nixos/home-manager/dotfiles/hypr/hyprland.conf";
         hmconf="nvim /etc/nixos/home-manager/$USER.nix";
+	nixdir="cd /etc/nixos";
         hmdir="cd /etc/nixos/home-manager/";
+	nconf="sudo nvim /etc/nixos/hosts/configuration.nix";
         tbxe="toolbox enter";
         ls="eza --icons --group-directories-first --width=80 -a";
         ll="eza --icons --group-directories-first --width=80 --no-filesize -alo";
