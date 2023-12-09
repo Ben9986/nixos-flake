@@ -56,7 +56,7 @@
     },
 
     "bluetooth": {
-        "on-click": "GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark blueberry",
+        "on-click": "pkill blueberry || blueberry",
 	"on-click-right": "flatpak run io.github.kaii_lb.Overskride",
 	"format-on": "󰂯",
 	"format-off": "󰂲",
