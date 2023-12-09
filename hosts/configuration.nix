@@ -110,7 +110,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.ben = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "input" "networkmanager" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "input" "networkmanager" "video" ]; # Enable ‘sudo’ for the user.
      description = "Ben Carmichael";
      initialPassword = "password";
      shell = pkgs.zsh;
