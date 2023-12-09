@@ -50,6 +50,11 @@
    };
 
 
+  services.udev.extraRules = ''
+  SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"
+  '';
+
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
