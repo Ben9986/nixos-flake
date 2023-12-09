@@ -96,7 +96,6 @@
     ".config/wofi".source = dotfiles/wofi;
     ".config/wofi-logout".source = dotfiles/wofi-logout;
     ".config/kitty".source = dotfiles/kitty;
-    ".config/hypr/hyprland.conf".source = dotfiles/hypr/hyprland.conf;
     # dir must be writable for ranger to run
     # ".config/ranger".source = dotfiles/ranger;
    # ".config/rclone".source = dotfiles/rclone;

@@ -5,11 +5,22 @@ let
   pkgs = nixpkgs.legacyPackages.${system};
 in
 {
-  ben = home-manager.lib.homeManagerConfiguration {
+  "ben@benlaptop" = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
     extraSpecialArgs = { inherit inputs; };
     modules = [
       ./ben.nix
+      ./hyprland.nix
+      ../hosts/benlaptop/hyprland.nix
+    ];
+  };
+"ben@bendesktop" = home-manager.lib.homeManagerConfiguration {
+    inherit pkgs;
+    extraSpecialArgs = { inherit inputs; };
+    modules = [
+      ./ben.nix
+      ./hyprland.nix
+      ../hosts/bendesktop/hyprland.nix
     ];
   };
 }
