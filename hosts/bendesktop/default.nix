@@ -101,8 +101,5 @@
   };
 
   networking.hostName = "bendesktop";
-  programs.hyprland.enableNvidiaPatches = true;
-
-
 
 }
