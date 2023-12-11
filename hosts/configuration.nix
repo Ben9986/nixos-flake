@@ -177,7 +177,6 @@
      slurp
      wl-clipboard
      libnotify
-     obsidian
    ];
 
   programs = {
