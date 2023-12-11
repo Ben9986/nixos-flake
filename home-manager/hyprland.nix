@@ -152,7 +152,6 @@ bind = [
 # App Launch Shortcuts
 "$mainMod, Q, exec, kitty"
 "$mainMod, F, exec, firefox"
-" SUPER, SUPER_L , exec, pkill wofi || GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark wofi"
 "SUPER, V, exec, copyq toggle"
 "$mainMod, N, exec, swaync-client -t -sw"
 "$mainMod, O, exec, flatpak run --user md.obsidian.Obsidian"
@@ -222,7 +221,9 @@ bind = [
 "ALT SHIFT, 4, movetoworkspace, special:4"
 "ALT SHIFT, 5, movetoworkspace, special:5"
 ];
-
+bindr = [
+"SUPER, SUPER_L , exec, pkill wofi || GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark wofi"
+];
 bindm = [
 # Move/resize windows with mainMod + LMB/RMB and dragging
 "$mainMod, mouse:272, movewindow" # LMB
