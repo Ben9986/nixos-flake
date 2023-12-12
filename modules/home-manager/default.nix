@@ -11,7 +11,7 @@ in
     modules = [
       ./ben.nix
       ./hyprland.nix
-      ../hosts/benlaptop/hyprland.nix
+      ./hyprland-laptop.nix
     ];
   };
 "ben@bendesktop" = home-manager.lib.homeManagerConfiguration {
@@ -20,7 +20,7 @@ in
     modules = [
       ./ben.nix
       ./hyprland.nix
-      ../hosts/bendesktop/hyprland.nix
+      ./hyprland-desktop.nix
     ];
   };
 }
