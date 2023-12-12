@@ -110,7 +110,6 @@
     PAGER = "less";
     PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
     RANGER_LOAD_DEFAULT_RC="false";
-    HMDOTS = "$HOME/.config/home-manager/dotfiles";
   };
   
   # Let Home Manager install and manage itself.
@@ -138,10 +137,10 @@
 	};
 
       shellAliases = {
-        hconf="nvim /etc/nixos/home-manager/hyprland.nix";
-        hmconf="nvim /etc/nixos/home-manager/$USER.nix";
+        hconf="nvim /etc/nixos/modules/home-manager/hyprland.nix";
+        hmconf="nvim /etc/nixos/modules/home-manager/$USER.nix";
 	nixdir="cd /etc/nixos";
-        hmdir="cd /etc/nixos/home-manager/";
+        hmdir="cd /etc/nixos/modules/home-manager/";
 	nconf="sudo nvim /etc/nixos/hosts/configuration.nix";
         tbxe="toolbox enter";
         ls="eza --icons --group-directories-first --width=80 -a";
