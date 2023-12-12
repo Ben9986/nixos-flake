@@ -91,6 +91,7 @@ dwindle = {
     preserve_split = true;
     force_split = 2;
     no_gaps_when_only = true;
+    special_scale_factor = 0.95;
 };
 
 master."new_is_master" = true;
