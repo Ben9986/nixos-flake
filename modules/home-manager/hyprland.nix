@@ -17,6 +17,8 @@ env = [
   "WLR_NO_HARDWARE_CURSORS,1"
   "XCURSOR_THEME,phinger-cursors"
   "XDG_SESSION_TYPE,wayland"
+  "VISUAL,nvim"
+  "EDITOR,nvim"
 ];
 
 exec = [
