@@ -23,6 +23,7 @@ env = [
 
 exec = [
   "hyprpaper"
+  #"pkill eww; eww daemon; eww open main"
   "pkill waybar; waybar"
   "pkill swayidle; swayidle -w"
 ];

@@ -117,7 +117,15 @@
   
   programs.neovim = {
       defaultEditor = true;
+      plugins = [
+        pkgs.vimPlugins.yuck-vim
+      ];
     };
+  programs.eww ={
+    enable = true;
+    configDir = ./dotfiles/eww;
+    package = pkgs.eww-wayland;
+  };
 
   programs.zsh = {
       enable = true;
