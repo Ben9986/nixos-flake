@@ -106,7 +106,8 @@ in
 
   environment.systemPackages = with pkgs; [
     (callPackage ../../pkgs/sddm-sugar-dark.nix {})
-  ];
+    swww
+    ];
 
   networking.hostName = "benlaptop";
   
