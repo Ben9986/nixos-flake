@@ -96,28 +96,17 @@ in
   };
 
 
-    services.xserver.displayManager.lightdm = {
-       enable = true;
-       greeters.slick.enable = true;
-       greeters.slick.theme.name = "Catppuccin-Mocha-Standard-Blue-Dark";
-       greeters.slick.theme.package = pkgs.catppuccin-gtk.override {
-         accents = [ "blue" ];
-         #size = "compact";
-         tweaks = [ "rimless" ];
-         variant = "mocha";
-       };
-       greeters.slick.cursorTheme.name = "Phinger Cursors"; 
-       greeters.slick.cursorTheme.package = pkgs.phinger-cursors;
-       greeters.slick.cursorTheme.size = 24;
-       greeters.slick.extraConfig = ''
-       enable-hidpi=on
-       background=/etc/lightdm/stag.jpg
-       '';
-       extraConfig = ''
-          minimum-vt=1
-          #logind-check-graphical=true
-       '';
-     };
+  services.xserver.displayManager.defaultSession = "hyprland";
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "sddm-sugar-dark";
+
+  };
+
+  environment.systemPackages = with pkgs; [
+    (callPackage ../../pkgs/sddm-sugar-dark.nix {})
+  ];
 
   networking.hostName = "benlaptop";
   
