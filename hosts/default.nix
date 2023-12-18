@@ -41,6 +41,7 @@ in
     modules = [
       ./bendesktop
       ./configuration.nix
+      ../modules/nixos/nvidia.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
