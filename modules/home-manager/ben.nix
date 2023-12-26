@@ -25,10 +25,10 @@
     obsidianWayland = {
       categories = [ "Office" ];
       comment = "Knowledge base";
-      exec="obsidian %u --enable-features=ozone --ozone-platform=wayland";
+      exec="flatpak --user run md.obsidian.Obsidian --enable-features=ozone --ozone-platform=wayland %u";
       icon = "obsidian";
       mimeType = [ "x-scheme-handler/obsidian" ];
-      name = "Obsidian - Wayland + Native Pkg";
+      name = "Obsidian - Flatpak Wayland";
       type = "Application";
     };
   };
