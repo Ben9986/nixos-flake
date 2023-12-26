@@ -139,6 +139,7 @@ windowrule = [
 "tile, ^(ONLYOFFICE Desktop Editors)"
 "float, ^(xdg-desktop-portal-gtk)"
 "size 50% 60%, ^(xdg-desktop-portal-gtk)"
+"idleinhibit focus, ^(steam_app*)"
 ];
 
 "$mainMod" = "SUPER";
