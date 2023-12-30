@@ -58,7 +58,10 @@
     wayland.enable = true;
     theme = "chili";
   };
- 
+
+  # Disable suspend as it crashes hyprland on nvidia
+  systemd.services.systemd-suspend.enable = true;
+  
   networking.hostName = "bendesktop";
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
