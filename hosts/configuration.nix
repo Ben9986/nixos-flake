@@ -127,7 +127,6 @@
      at-spi2-core
      neovim 
      wget
-     kitty
      rclone
      ranger
      pistol # file previewer for ranger

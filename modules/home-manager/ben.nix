@@ -98,7 +98,7 @@
     ".config/waybar".source = dotfiles/waybar;
     ".config/wofi".source = dotfiles/wofi;
     ".config/wofi-logout".source = dotfiles/wofi-logout;
-    ".config/kitty".source = dotfiles/kitty;
+    # ".config/kitty".source = dotfiles/kitty;
     # dir must be writable for ranger to run
     # ".config/ranger".source = dotfiles/ranger;
    # ".config/rclone".source = dotfiles/rclone;
@@ -128,6 +128,17 @@
     enable = true;
     configDir = ./dotfiles/eww;
     package = pkgs.eww-wayland;
+  };
+
+  programs.kitty = {
+    enable = true;
+    theme = "Sundried";
+    settings = {
+      enable_audio_bell = false;
+      editor = "nvim";
+      confirm_os_window_close = -1;
+      shell_integration = true;
+    };
   };
 
   programs.zsh = {
