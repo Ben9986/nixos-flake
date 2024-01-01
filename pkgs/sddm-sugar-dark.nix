@@ -20,7 +20,7 @@
       
       ## [Design Customizations]
       
-      MainColor="#518ff5"
+      MainColor="#dcdcdc"
       ## Used for all elements when not focused/hovered etc. Usually the best effect is achieved by having this either white or a very light color
       
       AccentColor="white"
