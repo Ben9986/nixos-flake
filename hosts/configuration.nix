@@ -177,6 +177,7 @@
      slurp
      wl-clipboard
      libnotify
+     planify
    ];
 
   programs = {
