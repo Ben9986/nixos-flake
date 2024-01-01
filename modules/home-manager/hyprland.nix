@@ -131,6 +131,8 @@ windowrule = [
 "noblur, ^(nemo)$"
 "noblur, ^(com.obsproject.Studio)$"
 "opaque, ^(com.obsproject.Studio)$"
+"opaque, ^(io.github.alainm23.planify)$"
+"noblur, ^(io.github.alainm23.planify)$"
 
 "noborder, ^(wofi)$"
 "opacity 0.8 override 0.8 override, ^(kitty)$"
@@ -167,6 +169,7 @@ bind = [
 "SUPER, V, exec, copyq toggle"
 "$mainMod, N, exec, swaync-client -t -sw"
 "$mainMod, O, exec, flatpak run --user md.obsidian.Obsidian"
+"$mainMod, T, exec, io.github.alainm23.planify.quick-add"
 
 #F-keys shortcuts
 ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
