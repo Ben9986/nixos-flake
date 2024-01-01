@@ -95,7 +95,7 @@
 
   home.file = 
   {
-    ".config/waybar".source = dotfiles/waybar;
+    ".config/waybar/style.css".source = dotfiles/waybar/style.css;
     ".config/wofi".source = dotfiles/wofi;
     ".config/wofi-logout".source = dotfiles/wofi-logout;
     # ".config/kitty".source = dotfiles/kitty;
@@ -132,7 +132,7 @@
 
   programs.kitty = {
     enable = true;
-    theme = "Sundried";
+    theme = "Cherry Midnight";
     settings = {
       enable_audio_bell = false;
       editor = "nvim";
@@ -159,10 +159,10 @@
 	};
 
       shellAliases = {
-        hconf="nvim /etc/nixos/modules/home-manager/hyprland.nix";
-        hmconf="nvim /etc/nixos/modules/home-manager/$USER.nix";
+        hconf="nvim /etc/nixos/modules/dots/hyprland.nix";
+        hmconf="nvim /etc/nixos/home-manager/$USER.nix";
 	nixdir="cd /etc/nixos";
-        hmdir="cd /etc/nixos/modules/home-manager/";
+        hmdir="cd /etc/nixos/home-manager/";
 	nconf="sudo nvim /etc/nixos/hosts/configuration.nix";
         tbxe="toolbox enter";
         ls="eza --icons --group-directories-first --width=80 -a";

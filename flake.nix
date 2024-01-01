@@ -27,7 +27,7 @@
     );
 
     homeConfigurations = (
-      import ./modules/home-manager/default.nix {
+      import ./home-manager/default.nix {
           inherit (nixpkgs) lib;
           inherit inputs nixpkgs home-manager;
         }
