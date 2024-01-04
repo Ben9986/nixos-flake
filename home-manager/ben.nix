@@ -63,6 +63,10 @@
      size = 24;
      package = pkgs.phinger-cursors;
     };
+    iconTheme = {
+      name = "adwaita-icon-theme";
+      package = pkgs.gnome.adwaita-icon-theme;
+      };
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme=true;
       };
