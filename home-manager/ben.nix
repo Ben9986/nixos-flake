@@ -132,7 +132,6 @@
 
   home.file = 
   {
-    ".config/waybar/style.css".source = dotfiles/waybar/style.css;
     ".config/wofi".source = dotfiles/wofi;
     ".config/wofi-logout".source = dotfiles/wofi-logout;
     # ".config/kitty".source = dotfiles/kitty;
