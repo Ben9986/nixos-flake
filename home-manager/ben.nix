@@ -22,16 +22,21 @@
   ];
 
   xdg.desktopEntries = {
-    obsidianWayland = {
-      categories = [ "Office" ];
-      comment = "Knowledge base";
-      exec="flatpak --user run md.obsidian.Obsidian --enable-features=ozone --ozone-platform=wayland %u";
-      icon = "obsidian";
-      mimeType = [ "x-scheme-handler/obsidian" ];
-      name = "Obsidian - Flatpak Wayland";
-      type = "Application";
+    spotify = {
+      type="Application";
+      name="Spotify";
+      genericName="Online music streaming service";
+      comment="Access all of your favorite music";
+      icon="spotify-client";
+      exec="spotify --enable-features=ozone --ozone-platform=wayland";
+      terminal=false;
+      mimeType=[ "x-scheme-handler/spotify" ];
+      categories= [ "Audio" "Music" "AudioVideo" ];
+      settings = {
+        X-GNOME-UsesNotifications="true";
+      };
     };
-  };
+};
 
   home.stateVersion = "23.05"; # Please read the comment before changing.
   

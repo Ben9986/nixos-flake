@@ -185,6 +185,7 @@
      wl-clipboard
      libnotify
      planify
+     spotify
    ];
 
   programs = {
