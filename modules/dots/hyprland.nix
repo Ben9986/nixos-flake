@@ -124,7 +124,6 @@ windowrule = [
 "size 350 265, ^(blueberry.py)$"
 "move onscreen cursor 70% 5%, ^(blueberry.py)$"
 "noanim, ^(blueberry.py)$"
-"stayfocused, ^(blueberry.py)$"
 
 "float, ^(peazip)$"
 
