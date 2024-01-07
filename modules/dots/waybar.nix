@@ -1,7 +1,9 @@
 {inputs, config, ...}:
 {
-
+programs.waybar.enable = true;
 programs.waybar.settings = {
+    mainbar= {
+    output = [      "eDP-1"      "HDMI-A-1"    ];
     "layer" = "top"; # Waybar on top layer
     "height" = 32; # Waybar height (to be removed for auto height)
     "spacing" = 4; # Gaps between modules (4px)
@@ -162,6 +164,7 @@ programs.waybar.settings = {
     "on-scroll-up" = "playerctl next";
     "on-scroll-down" = "playerctl previous";
     "exec" = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; # Script in resources/custom_modules folder
+};
 };
 };
 
