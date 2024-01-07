@@ -138,7 +138,6 @@
     # dir must be writable for ranger to run
     # ".config/ranger".source = dotfiles/ranger;
    # ".config/rclone".source = dotfiles/rclone;
-    ".config/swayidle".source = dotfiles/swayidle;
     ".config/swaylock".source = dotfiles/swaylock;
     ".config/swaync".source = dotfiles/swaync;
   };
