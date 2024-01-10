@@ -150,8 +150,6 @@
      wofi
      hyprpaper
      # hyprshot
-     swaylock-effects
-     swayidle
      networkmanagerapplet
      blueberry
      brightnessctl
