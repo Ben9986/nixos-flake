@@ -10,8 +10,8 @@ in
     extraSpecialArgs = { inherit inputs; };
     modules = [
       ./ben.nix
-      ../modules/dots
-      ../modules/hyprland-laptop.nix
+      ./modules
+      ./modules/hyprland-laptop.nix
     ];
   };
 "ben@bendesktop" = home-manager.lib.homeManagerConfiguration {
@@ -19,8 +19,8 @@ in
     extraSpecialArgs = { inherit inputs; };
     modules = [
       ./ben.nix
-      ../modules/dots
-      ../modules/hyprland-desktop.nix
+      ./modules
+      ./modules/hyprland-desktop.nix
     ];
   };
 }
