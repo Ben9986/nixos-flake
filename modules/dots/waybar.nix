@@ -76,12 +76,12 @@ programs.waybar.settings = {
         "spacing" = 10;
     };
     "clock#time" = {
-        "format" = "{ :%H :%M}";
+        "format" = "{:%H:%M}";
         # "timezone" = "America/New_York";
                 "format-alt" = "{:%Y-%m-%d}";
     };
     "clock#date" = {
-       "format" = "{:%A; %d/%m/%Y}";
+       "format" = "{:%A, %d/%m/%Y}";
        "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
     };
     "cpu" = {

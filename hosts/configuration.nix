@@ -146,7 +146,6 @@
      p7zip
      peazip
      # Hyprland stuff
-     waybar
      hyprpaper
      # hyprshot
      networkmanagerapplet
