@@ -147,7 +147,6 @@
      peazip
      # Hyprland stuff
      waybar
-     wofi
      hyprpaper
      # hyprshot
      networkmanagerapplet

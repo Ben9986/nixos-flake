@@ -132,7 +132,6 @@
 
   home.file = 
   {
-    ".config/wofi".source = dotfiles/wofi;
     ".config/wofi-logout".source = dotfiles/wofi-logout;
     # ".config/kitty".source = dotfiles/kitty;
     # dir must be writable for ranger to run

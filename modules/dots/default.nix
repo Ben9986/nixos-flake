@@ -4,5 +4,6 @@ imports = [
   ./swayidle.nix
   ./swaylock.nix
   ./waybar.nix
+  ./wofi.nix
 ];
 }
