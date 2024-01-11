@@ -159,7 +159,7 @@ bind = [
 "$mainMod, M, changegroupactive"
 
 # Session Control
-"$mainMod ALT, P, exec, PATH=~/.config/wofi-logout GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark /run/current-system/sw/bin/wofi -c ~/.config/wofi-logout/config-logout"
+"$mainMod ALT, P, exec, PATH=~/.config/wofi-logout GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark ${pkgs.wofi}/bin/wofi -c ~/.config/wofi-logout/config-logout"
 "$mainMod, L, exec, swaylock -f -C ~/.config/swaylock/config"
 
 # App Launch Shortcuts
