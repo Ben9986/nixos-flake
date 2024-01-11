@@ -18,7 +18,7 @@
         };
 
       shellAliases = {
-        hconf="nvim /etc/nixos/modules/dots/hyprland.nix";
+        hconf="nvim /etc/nixos/home-manager/modules/hyprland.nix";
         hmconf="nvim /etc/nixos/home-manager/$USER.nix";
         nixdir="cd /etc/nixos";
         hmdir="cd /etc/nixos/home-manager/";
