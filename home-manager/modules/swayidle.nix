@@ -1,11 +1,11 @@
-{inputs, pkgs, home-manager, ...}:
+{inputs, pkgs, config, ...}:
 {
 services.swayidle = {
   enable = true;
   events = [
     {
       event = "before-sleep";
-      command = "${pkgs.swaylock}/bin/swaylock -f";
+      command = "${config.programs.swaylock.package}/bin/swaylock -f";
     }
     {
       event = "after-resume";
@@ -13,14 +13,14 @@ services.swayidle = {
     }
     {
       event = "lock";
-      command = "${pkgs.swaylock}/bin/swaylock -f";
+      command = "${config.programs.swaylock.package}/bin/swaylock -f";
     }
   ];
   timeouts = [
     {
       timeout = 150;
       command = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10% & echo 1 | ${pkgs.coreutils}/bin/tee  /sys/class/leds/asus::kbd_backlight/brightness";
-      resumeCommand = "brightnessctl -r & echo 1 | ${pkgs.coreutils}/bin/tee /sys/class/leds/asus::kbd_backlight/brightness";
+      resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r & echo 2 | ${pkgs.coreutils}/bin/tee /sys/class/leds/asus::kbd_backlight/brightness";
     }
     {
       timeout = 165;
