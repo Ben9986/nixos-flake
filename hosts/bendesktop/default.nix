@@ -60,7 +60,8 @@
   };
 
   # Disable suspend as it crashes hyprland on nvidia
-  systemd.services.systemd-suspend.enable = true;
+  systemd.services.systemd-suspend.enable = false;
+  systemd.targets.suspend.enable = false;
   
   networking.hostName = "bendesktop";
 
