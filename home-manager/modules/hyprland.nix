@@ -12,6 +12,7 @@ wayland.windowManager.hyprland.settings = {
 env = [
   "XCURSOR_SIZE,24"
   "GTK_THEME,Catppuccin-Mocha-Standard-Blue-Dark"
+  "GDK_SCALE,2"
   "COLOR_SCHEME,prefer-dark"
   "QT_QPA_PLATFORMTHEME,qt5ct"
   "WLR_NO_HARDWARE_CURSORS,1"
@@ -117,6 +118,10 @@ misc = {
     "focus_on_activate" = true;
     "disable_hyprland_logo" = true;
     "force_default_wallpaper" = false;
+};
+
+xwayland = {
+  force_zero_scaling = true;
 };
 
 windowrule = [
