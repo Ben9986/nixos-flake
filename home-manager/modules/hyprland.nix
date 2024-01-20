@@ -14,7 +14,7 @@ env = [
   "GTK_THEME,Catppuccin-Mocha-Standard-Blue-Dark"
   "GDK_SCALE,2"
   "COLOR_SCHEME,prefer-dark"
-  "QT_QPA_PLATFORMTHEME,qt5ct"
+  #"QT_QPA_PLATFORMTHEME,qt5ct"
   "WLR_NO_HARDWARE_CURSORS,1"
   "XCURSOR_THEME,phinger-cursors"
   "XDG_SESSION_TYPE,wayland"
@@ -139,6 +139,7 @@ windowrule = [
 "noblur, ^(io.github.alainm23.planify)$"
 
 "noborder, ^(wofi)$"
+"animation popin, ^(wlogout)$"
 "opacity 0.8 override 0.8 override, ^(kitty)$"
 "float, ^(com.github.hluk.copyq)"
 "size 40% 60%, ^(com.github.hluk.copyq)"
