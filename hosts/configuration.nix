@@ -168,6 +168,7 @@
      libsForQt5.qt5.qtwayland
      libsForQt5.qt5ct
      qt6Packages.qt6ct
+     libsForQt5.discover
      glib # gsettings for nwg-look
      gsettings-desktop-schemas
      firefox
