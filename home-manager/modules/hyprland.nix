@@ -13,7 +13,11 @@ env = [
   "XCURSOR_SIZE,24"
   "GTK_THEME,Catppuccin-Mocha-Standard-Blue-Dark"
   "GDK_SCALE,2"
+  "GDK_BACKEND,wayland,x11"
+  "QT_QPA_PLATFORM,wayland,xcb"
   "COLOR_SCHEME,prefer-dark"
+  "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+  "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
   #"QT_QPA_PLATFORMTHEME,qt5ct"
   "WLR_NO_HARDWARE_CURSORS,1"
   "XCURSOR_THEME,phinger-cursors"
@@ -44,6 +48,7 @@ exec-once = [
 
 input = {
     kb_layout = "gb";
+    numlock_by_default = true;
     follow_mouse = 1;
     
     touchpad = {
@@ -82,7 +87,7 @@ animations = {
     ];
     animation = [ 
       "windows, 1, 7, myBezier"
-      "windowsOut, 1, 7, default, popin 80%"
+      "windowsOut, 1, 7, default, popin 40%"
       "border, 1, 10, default"
       "borderangle, 1, 8, default"
       "fade, 1, 7, default"
@@ -139,7 +144,9 @@ windowrule = [
 "noblur, ^(io.github.alainm23.planify)$"
 
 "noborder, ^(wofi)$"
-"animation popin, ^(wlogout)$"
+"noanim, ^(wlogout)$"
+"float, ^(wlogout)$"
+"fullscreen, ^(wlogout)$"
 "opacity 0.8 override 0.8 override, ^(kitty)$"
 "float, ^(com.github.hluk.copyq)"
 "size 40% 60%, ^(com.github.hluk.copyq)"
@@ -165,7 +172,8 @@ bind = [
 "$mainMod, M, changegroupactive"
 
 # Session Control
-"$mainMod ALT, P, exec, PATH=~/.config/wofi-logout GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark ${pkgs.wofi}/bin/wofi -c ~/.config/wofi-logout/config-logout"
+# "$mainMod ALT, P, exec, PATH=~/.config/wofi-logout GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark ${pkgs.wofi}/bin/wofi -c ~/.config/wofi-logout/config-logout"
+"$mainMod ALT, P, exec, ${pkgs.wlogout}/bin/wlogout -p layer-shell"
 "$mainMod, L, exec, swaylock -f -C ~/.config/swaylock/config"
 
 # App Launch Shortcuts
