@@ -57,6 +57,11 @@
     };
   };
 
+  programs.wlogout = {
+    enable = true;
+
+  };
+
   home.activation = {
     # Reload hyprland after home-manager files have been written 
     reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
