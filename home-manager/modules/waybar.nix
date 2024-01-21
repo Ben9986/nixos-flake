@@ -10,7 +10,7 @@ programs.waybar.settings = {
 
 #--- Module Order ---
     "modules-left" = ["hyprland/workspaces" "custom/media"];
-    "modules-center" = ["clock#time" "clock#date"];
+    "modules-center" = ["clock"];
     "modules-right" = ["idle_inhibitor" "wireplumber"  "backlight"  "battery"  "bluetooth"  "tray"];
     
 # -------- Modules configuration ---------
@@ -35,20 +35,25 @@ programs.waybar.settings = {
 }; 
 
   "hyprland/workspaces" = {
-      "format" = "{name}";
+      "format" = "{name}{icon}";
       "on-click" = "activate";
       "format-icons" = {
-        "1" = "";
-        "2" = "";
-        "3" = "";
-        "4" = "";
-        "5" = "";
-      "urgent" = "";
-      "active" = "";
-      "default" = "";
-    };
+        "urgent" = " ";
+        # "active" = "";
+         "default" = "";
+      };
     "sort-by-number" = true;
     };
+
+   # "hyprland/workspaces#special" = {
+   #   "format" = "{name}";
+   #   "on-click" = "activate";
+   #   "show-special" = true;
+   #   "active-only" = false;
+   #   "ignore-workspaces" = [ 
+   #     "(?=[0-9]).+"
+   #     ];
+   # };
 
     "idle_inhibitor" = {
       "format" = "{icon}";
@@ -75,15 +80,14 @@ programs.waybar.settings = {
         "icon-size" = 18;
         "spacing" = 10;
     };
-    "clock#time" = {
-        "format" = "{:%H:%M}";
-        # "timezone" = "America/New_York";
+    "clock" = {
+        "format" = "{:%H:%M     %A,  %d/%m/%Y}";
                 "format-alt" = "{:%Y-%m-%d}";
     };
-    "clock#date" = {
-       "format" = "{:%A, %d/%m/%Y}";
-       "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-    };
+   # "clock#date" = {
+   #    "format" = "{:%A, %d/%m/%Y}";
+   #    "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+   # };
     "cpu" = {
         "format" = "{usage}% ";
         "tooltip" = false;
@@ -179,35 +183,11 @@ programs.waybar.style = ''
 
 window#waybar {
     /*background-color: rgba(43, 48, 59, 0.5); */
-    background-color: transparent;
+    background: #1c1f26;
     /*border-bottom: 2px solid rgba(89, 89, 89, 0.5);*/
     border: none;
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
+    color: #eeeeef;
+  }
 
 button {
     /* Use box-shadow instead of border so the text isn't offset */
@@ -223,20 +203,59 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+#battery,
+#bluetooth,
+#temperature,
+#backlight,
+#network,
+#wireplumber,
+#tray,
+#idle_inhibitor {
+    padding: 0 8px;
+    color: #ffffff;
+    font-size:11pt;
+    color: rgba(200,200,200,1);
+    background-color: rgb(45,45,45);
+    border-radius: 15px;
+    /*
+    border-color: rgba(55,55,55,1);
+    border-style: solid;
+    border-width: 2px; 
+    */
+}
+
+#workspaces {
+    padding: 0 4px 0px 4px;
+    background-color: #292e38; 
+    border-radius: 10px;
+    /*
+    border-color: rgba(55,55,55,1);
+    border-style: solid;
+    border-width: 2px; */
+
+}
+
+
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
+    padding: 0 4px;
+    border-radius: 15px;
+    background-color: rgb(45,45,45);
     color: #ffffff;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(250, 90, 164, 0.4);
     box-shadow: inherit;
     text-shadow: inherit;
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
+    background-color: rgb(250, 90, 164);
     box-shadow: inset 0 -3px #ffffff;
 }
 
@@ -244,56 +263,34 @@ button:hover {
     background-color: #eb4d4b;
 }
 
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
-#clock,
-clock.date,
-#battery,
-#bluetooth,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
-    font-size:11pt;
-    color: rgba(220,220,220,1);
-    background-color: rgba(45, 45, 45, 1);
-    border-radius: 15px;
-    border-color: rgba(55,55,55,1);
-    border-style: solid;
-    border-width: 2px; 
-}
-
-#window,
-#workspaces {
-    margin: 0 4px;
-    background-color: rgba(45, 45, 45, 1);
-    border-radius: 15px;
-    border-color: rgba(55,55,55,1);
-    border-style: solid;
-    border-width: 2px; 
-
-}
-
 #workspaces button.active {
-  background-color: rgb(100,100,100);
+  background-color: #fa5aa4;
   border-radius: 15px;
 
 }
+
+#workspaces.special button {
+  background-color: rgb(45,45,45);
+}
+
+#workspaces.special button:hover {
+    background: rgba(34, 92, 133, 0.4);
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#workspaces.special button.active {
+  background-color: rgb(34, 92, 133);
+  border-radius: 15px;
+
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
@@ -306,16 +303,11 @@ clock.date,
 }
 
 #clock {
-    padding: 2px 20px 0px;
-    font-size:11pt;
-    color: rgba(220,220,220,1);
-}
-
-#clock.time {
-}
-
-#clock.date {
-}
+    color: rgba(200,200,200,1);
+    padding: 2px 12px 0px;
+    font-size:12pt;
+    margin-left: 7.5em;
+    }
 
 #battery {
     /*alignment messed up without this padding*/
