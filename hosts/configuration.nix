@@ -130,6 +130,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    environment.systemPackages = with pkgs; [
+     appimage-run
      polkit_gnome
      xorg.xhost # for polkit apps
      at-spi2-core
