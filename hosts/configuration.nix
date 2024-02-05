@@ -184,6 +184,7 @@
      libnotify
      planify
      spotify
+     podman
    ];
 
   programs = {
