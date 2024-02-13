@@ -38,7 +38,7 @@ exec-once = [
   "swaync" 
   "nm-applet --indicator"
   "blueberry-tray"
-  "hyprctl dispatch exec [ workspace special:fm silent ] kitty ranger"
+  "hyprctl dispatch exec [ workspace special:fm silent ] kitty yazi"
   "udiskie &"
   "copyq"
   "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XCURSOR_SIZE XCURSOR_THEME GTK_THEME COLOR_SCHEME"

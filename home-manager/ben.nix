@@ -60,7 +60,18 @@
 
   programs.wlogout = {
     enable = true;
+  };
 
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      manager = {
+	ratio = [1 4 2];
+	show_hidden = true;
+	show_simlink = true;
+      };
+    };
   };
 
   home.activation = {
