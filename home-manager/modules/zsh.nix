@@ -10,7 +10,7 @@
         size = 500;
         ignoreDups = true;
       };
-      localVariables = {
+      sessionVariables = {
           PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
           GTK_THEME = "Catppuccin-Mocha-Standard-Blue-Dark";
           COLOR_SCHEME = "prefer-dark";
