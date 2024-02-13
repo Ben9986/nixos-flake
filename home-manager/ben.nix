@@ -7,6 +7,7 @@
      (nerdfonts.override { fonts = [ "RobotoMono" ]; })
      roboto
      git-crypt
+     yazi
 
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
