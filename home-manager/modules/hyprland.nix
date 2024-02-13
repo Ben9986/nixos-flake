@@ -12,11 +12,10 @@ wayland.windowManager.hyprland.settings = {
 env = [
   "XCURSOR_SIZE,24"
   "GTK_THEME,Catppuccin-Mocha-Standard-Blue-Dark"
-  "GDK_SCALE,2"
+  # "GDK_SCALE,2"
   "GDK_BACKEND,wayland,x11"
-  "QT_QPA_PLATFORM,wayland,xcb"
+  "QT_QPA_PLATFORM,wayland"
   "COLOR_SCHEME,prefer-dark"
-  "QT_AUTO_SCREEN_SCALE_FACTOR,1"
   "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
   #"QT_QPA_PLATFORMTHEME,qt5ct"
   "WLR_NO_HARDWARE_CURSORS,1"
