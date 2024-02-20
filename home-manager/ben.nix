@@ -8,7 +8,7 @@
      roboto
      git-crypt
      yazi
-
+     fzf # for zoxide
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
@@ -72,6 +72,11 @@
 	show_simlink = true;
       };
     };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   home.activation = {
