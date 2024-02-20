@@ -36,17 +36,17 @@
       fsType = "vfat";
     };
   
-  fileSystems."/dataDrive" =
+  fileSystems."/mnt/dataDrive" =
     { device = "/dev/disk/by-uuid/9A6E84906E84673B";
       fsType = "ntfs";
     };
   
-  fileSystems."/gameDrive" = 
+  fileSystems."/mnt/gameDrive" = 
     { device = "/dev/disk/by-uuid/998b06a3-860d-4408-adb9-efbe73b53682";
       fsType = "btrfs";
     };
   
-  fileSystems."/backupDrive" = 
+  fileSystems."/mnt/backupDrive" = 
     { device = "/dev/disk/by-uuid/6bcfe991-cdc4-41fa-8075-c99a5dcce4eb";
       fsType = "ext4";
     };
