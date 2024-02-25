@@ -28,14 +28,15 @@ env = [
 
 exec = [
   "hyprpaper"
-  #"pkill eww; eww daemon; eww open main"
-  "pkill waybar; waybar"
+  "pkill ags; ags"
+  #"pkill waybar; waybar"
   "pkill swayidle; swayidle -w"
 ];
 
 exec-once = [
   "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
   "swaync" 
+  "eww daemon; eww open bar"
   "nm-applet --indicator"
   "blueberry-tray"
   "hyprctl dispatch exec [ workspace special:fm silent ] kitty ranger"
@@ -170,6 +171,8 @@ bind = [
 
 "$mainMod, K, togglegroup"
 "$mainMod, M, changegroupactive"
+
+"$mainMod, B, exec, pypr expose"
 
 # Session Control
 # "$mainMod ALT, P, exec, PATH=~/.config/wofi-logout GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark ${pkgs.wofi}/bin/wofi -c ~/.config/wofi-logout/config-logout"

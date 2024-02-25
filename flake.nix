@@ -13,6 +13,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = { nixpkgs, home-manager, ...}@inputs:

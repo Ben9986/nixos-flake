@@ -1,18 +1,32 @@
 { inputs, config, pkgs, lib, ... }:
 {
+
+  imports = [ inputs.ags.homeManagerModules.default ];
+
   home.username = "ben";
   home.homeDirectory = "/home/ben";
   home.stateVersion = "23.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
-     (nerdfonts.override { fonts = [ "RobotoMono" ]; })
+     (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" ]; })
      roboto
+     obsidian
      git-crypt
-
+     pyprland
+     socat
+    # end-4 ags config
+     adw-gtk3
+     sassc
+     qt5ct
+     gradience
+     lexend
+     material-symbols
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
   programs.home-manager.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
 
   home.activation.linkDotfiles = config.lib.dag.entryAfter [ "writeBoundary" ]
     ''
@@ -20,6 +34,7 @@
     '';
   home.file = {
     ".config/wofi-logout".source = dotfiles/wofi-logout;
+    #".config/ags".source = dotfiles/ags;
     # dir must be writable for ranger to run
     # ".config/ranger".source = dotfiles/ranger;
    # ".config/rclone".source = dotfiles/rclone;
@@ -33,18 +48,23 @@
     PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
     RANGER_LOAD_DEFAULT_RC="false";
   };
-  
+ 
+  programs.ags = {
+    enable = true;
+    #configDir = ./dotfiles/ags;
+    # additional packages to add to gjs's runtime
+    extraPackages = with pkgs; [
+      gtksourceview
+      webkitgtk
+      accountsservice
+    ];
+  };
   programs.neovim = {
       defaultEditor = true;
       plugins = [
         pkgs.vimPlugins.yuck-vim
       ];
     };
-  programs.eww ={
-    enable = true;
-    configDir = ./dotfiles/eww;
-    package = pkgs.eww-wayland;
-  };
 
   programs.kitty = {
     enable = true;
@@ -68,5 +88,11 @@
       echo "Reloading Hyprland...";
       ${pkgs.hyprland}/bin/hyprctl reload > /dev/null;
       echo "Hyprland reloaded successfully";
-    '';};
+    '';
+    reloadEww = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      echo "Reloading Eww...";
+      ${pkgs.hyprland}/bin/hyprctl dispatch exec ${pkgs.eww-wayland}/bin/eww reload;
+      echo "Eww reloaded successfully";
+    '';
+    };
 }
