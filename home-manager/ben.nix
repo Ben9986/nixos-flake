@@ -20,6 +20,8 @@
      gradience
      lexend
      material-symbols
+     yazi
+     fzf # for zoxide
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
@@ -79,7 +81,23 @@
 
   programs.wlogout = {
     enable = true;
+  };
 
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      manager = {
+	ratio = [1 4 2];
+	show_hidden = true;
+	show_simlink = true;
+      };
+    };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   home.activation = {

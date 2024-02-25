@@ -9,7 +9,7 @@ programs.waybar.settings = {
     "spacing" = 4; # Gaps between modules (4px)
 
 #--- Module Order ---
-    "modules-left" = ["hyprland/workspaces" "custom/media"];
+    "modules-left" = ["hyprland/workspaces"  "custom/media"];
     "modules-center" = ["clock"];
     "modules-right" = ["idle_inhibitor" "wireplumber"  "backlight"  "battery"  "bluetooth"  "tray"];
     
@@ -35,25 +35,26 @@ programs.waybar.settings = {
 }; 
 
   "hyprland/workspaces" = {
-      "format" = "{name}{icon}";
+      "format" = "{icon}{name}";
       "on-click" = "activate";
+      "show-special" = true;
       "format-icons" = {
-        "urgent" = " ";
-        # "active" = "";
          "default" = "";
+	 "special" = "󰙏 ";
+	 "fm" = " ";
       };
-    "sort-by-number" = true;
+      "sort-by-number" = true;
     };
 
-   # "hyprland/workspaces#special" = {
-   #   "format" = "{name}";
-   #   "on-click" = "activate";
-   #   "show-special" = true;
-   #   "active-only" = false;
-   #   "ignore-workspaces" = [ 
-   #     "(?=[0-9]).+"
-   #     ];
-   # };
+   #  "hyprland/workspaces#special" = {
+   #    "format" = "{name}";
+   #    "on-click" = "activate";
+   #    "show-special" = true;
+   #    "active-only" = false;
+   #    "ignore-workspaces" = [ 
+   #      "/^([0-9]*$)./g*"
+   #      ];
+   #  };
 
     "idle_inhibitor" = {
       "format" = "{icon}";

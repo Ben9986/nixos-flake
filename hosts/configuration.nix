@@ -138,7 +138,6 @@
      neovim 
      wget
      rclone
-     ranger
      pistol # file previewer for ranger
      python311Packages.pillow # ranger image preview
      gh

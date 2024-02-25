@@ -72,6 +72,9 @@
 
   environment.systemPackages = with pkgs; [
     mangohud
+    gamemode
+    gamescope
+    r2modman
   ];
 
 }
