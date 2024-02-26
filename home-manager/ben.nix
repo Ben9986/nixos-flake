@@ -15,6 +15,7 @@
      socat
     # end-4 ags config
      adw-gtk3
+     ydotool
      sassc
      qt5ct
      gradience
