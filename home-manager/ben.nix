@@ -54,7 +54,7 @@
  
   programs.ags = {
     enable = true;
-    #configDir = ./dotfiles/ags;
+    configDir = ./dotfiles/ags;
     # additional packages to add to gjs's runtime
     extraPackages = with pkgs; [
       gtksourceview

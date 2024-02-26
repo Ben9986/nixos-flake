@@ -73,12 +73,12 @@ const Utilities = () => Box({
     hpack: 'center',
     className: 'spacing-h-5 txt-onSurfaceVariant',
     children: [
-        UtilButton({
-            name: 'Screen snip', icon: 'screenshot_region', onClicked: () => {
-                Utils.execAsync(['bash', '-c', `grim -g "$(slurp -d -c e2e2e2BB -b 31313122 -s 00000000)" - | wl-copy &`])
-                    .catch(print)
-            }
-        }),
+       // UtilButton({
+       //     name: 'Screen snip', icon: 'screenshot_region', onClicked: () => {
+       //         Utils.execAsync(['bash', '-c', `grim -g "$(slurp -d -c e2e2e2BB -b 31313122 -s 00000000)" - | wl-copy &`])
+       //             .catch(print)
+       //     }
+       // }),
         UtilButton({
             name: 'Color picker', icon: 'colorize', onClicked: () => {
                 Utils.execAsync(['hyprpicker', '-a']).catch(print)
@@ -116,7 +116,7 @@ const BarBattery = () => Box({
                 className: 'bar-batt',
                 homogeneous: true,
                 children: [
-                    MaterialIcon('settings_heart', 'small'),
+                    MaterialIcon('battery_horiz_050', 'small'),
                 ],
                 setup: (self) => self.hook(Battery, box => {
                     box.toggleClassName('bar-batt-low', Battery.percent <= BATTERY_LOW);
