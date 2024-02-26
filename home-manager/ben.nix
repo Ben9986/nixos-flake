@@ -89,9 +89,11 @@
     enableZshIntegration = true;
     settings = {
       manager = {
-	ratio = [1 4 2];
+	ratio = [1 3 3];
 	show_hidden = true;
 	show_simlink = true;
+	sort_by = "natural";
+	sort_dir_first = true;
       };
     };
   };
