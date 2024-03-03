@@ -51,8 +51,8 @@ const Windows = () => [
     // forMonitors(BarCornerTopright),
     forMonitors((id) => Corner(id, 'top left')),
     forMonitors((id) => Corner(id, 'top right')),
-    forMonitors((id) => Corner(id, 'bottom left')),
-    forMonitors((id) => Corner(id, 'bottom right')),
+    // forMonitors((id) => Corner(id, 'bottom left')),
+    // forMonitors((id) => Corner(id, 'bottom right')),
 ];
 const CLOSE_ANIM_TIME = 210; // Longer than actual anim time to make sure widgets animate fully
 export default {
@@ -71,5 +71,5 @@ export default {
 // BarCornerTopleft().catch(print); // Use this to debug the bar. Single monitor only.
 // BarCornerTopright().catch(print); // Use this to debug the bar. Single monitor only.
 forMonitors(Bar);
-forMonitors(BarCornerTopleft);
-forMonitors(BarCornerTopright);
+// forMonitors(BarCornerTopleft);
+// forMonitors(BarCornerTopright);
