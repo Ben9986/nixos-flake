@@ -56,7 +56,7 @@
     services.xserver.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "chili";
+    theme = "sddm-sugar-dark";
   };
 
   # Disable suspend as it crashes hyprland on nvidia
@@ -71,6 +71,7 @@
   services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
+    (callPackage ../../nix-modules/sddm-sugar-dark.nix {})
     mangohud
     gamemode
     gamescope
