@@ -155,6 +155,8 @@ windowrule = [
 "float, ^(xdg-desktop-portal-gtk)"
 "size 50% 60%, ^(xdg-desktop-portal-gtk)"
 "idleinhibit focus, ^(steam_app*)"
+
+"size 600 600, title:(.*)(Bitwarden)$"
 ];
 
 "$mainMod" = "SUPER";
@@ -174,8 +176,7 @@ bind = [
 "$mainMod, B, exec, pypr expose"
 
 # Session Control
-# "$mainMod ALT, P, exec, PATH=~/.config/wofi-logout GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark ${pkgs.wofi}/bin/wofi -c ~/.config/wofi-logout/config-logout"
-"$mainMod ALT, P, exec, ${pkgs.wlogout}/bin/wlogout -p layer-shell"
+"$mainMod ALT, P, exec, ${inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ags -t session"
 "$mainMod, L, exec, swaylock -f -C ~/.config/swaylock/config"
 
 # App Launch Shortcuts
