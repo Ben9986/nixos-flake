@@ -69,9 +69,9 @@
 
   services.hypridle = {
     enable = true;
-    lockCmd = "swaylock -f -C $HOME/.config/swaylock/config";
+    lockCmd = "${inputs.hyprlock.packages.${pkgs.stdenv.hostPlatform.system}.hyprlock}/bin/hyprlock";
     unlockCmd = "";
-    beforeSleepCmd =  "swaylock -f -C $HOME/.config/swaylock/config";
+    beforeSleepCmd =  "${inputs.hyprlock.packages.${pkgs.stdenv.hostPlatform.system}.hyprlock}/bin/hyprlock";
     afterSleepCmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on; ${pkgs.brightnessctl}/bin/brightnessctl -r; echo 2 | ${pkgs.coreutils}/bin/tee  /sys/class/leds/asus::kbd_backlight/brightness";
     listeners = [
       {
@@ -92,7 +92,42 @@
   programs.hyprlock = {
     enable = true;
     backgrounds = [
-      { path = "screenshot"; }
+      { 
+      path = "screenshot";
+      blur_size = 6;
+      blur_passes = 2;
+      }
+    ];
+    labels = [
+      {
+       text = "<b>Please enter your password</b>";
+       font_size = 28;
+       font_family = "SpaceMono";
+       position.y = 80;
+       halign = "center";
+      }
+    ];
+    input-fields = [
+      {
+       size = {
+         width = 450;
+	 height = 60;
+	 };
+       outline_thickness = 3;
+       dots_size = 0.30000;
+       dots_spacing = 0.150000;
+       dots_center = true;
+       outer_color = "rgb(151515)";
+       inner_color = "rgb(166, 18, 72)";
+       font_color = "rgb(10, 10, 10)";
+       fade_on_empty = true;
+       placeholder_text = "<i>Input Password...</i>";
+       hide_input = false;
+
+       position.y = -20;
+       halign = "center";
+       valign = "center";
+      }
     ];
   };
 

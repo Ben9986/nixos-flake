@@ -21,6 +21,12 @@ in
       ./ben.nix
       ./modules
       ./modules/hyprland-desktop.nix
+      {
+      services.hypridle = {
+        lockCmd = "swaylock -f -C $HOME/.config/swaylock/config";
+        beforeSleepCmd = "swaylock -f -C $HOME/.config/swaylock/config";
+      };
+    }
     ];
   };
 }
