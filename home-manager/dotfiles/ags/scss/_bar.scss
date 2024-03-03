@@ -17,6 +17,8 @@ $bar_subgroup_bg: $surfaceVariant;
 .bar-bg {
     background-color: $t_background;
     min-height: 2.727rem;
+    border-radius: 1.363rem;
+    margin: 0.1rem 0.4rem
 }
 
 .bar-sidespace {
@@ -79,6 +81,7 @@ $bar_subgroup_bg: $surfaceVariant;
 
 .bar-ws-width {
     min-width: 18.341rem;
+    margin-left: 0.5rem;
 }
 
 .bar-ws {
@@ -226,7 +229,7 @@ $bar_subgroup_bg: $surfaceVariant;
 }
 
 .bar-corner-spacing {
-    min-width: $rounding_large;
+    min-width: $rounding_small;
     min-height: $rounding_large;
 }
 

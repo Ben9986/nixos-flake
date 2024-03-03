@@ -49,8 +49,8 @@ const Windows = () => [
     // forMonitors(Bar),
     // forMonitors(BarCornerTopleft),
     // forMonitors(BarCornerTopright),
-    forMonitors((id) => Corner(id, 'top left')),
-    forMonitors((id) => Corner(id, 'top right')),
+    // forMonitors((id) => Corner(id, 'top left')),
+    // forMonitors((id) => Corner(id, 'top right')),
     // forMonitors((id) => Corner(id, 'bottom left')),
     // forMonitors((id) => Corner(id, 'bottom right')),
 ];
