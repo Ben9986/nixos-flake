@@ -115,6 +115,7 @@
   security = {
     polkit.enable = true;
     pam.services.swaylock = {};
+    pam.services.hyprlock = {};
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

@@ -1,7 +1,11 @@
 { inputs, config, pkgs, lib, ... }:
 {
 
-  imports = [ inputs.ags.homeManagerModules.default ];
+  imports = [ 
+    inputs.ags.homeManagerModules.default
+    inputs.hypridle.homeManagerModules.default
+    inputs.hyprlock.homeManagerModules.default
+    ];
 
   home.username = "ben";
   home.homeDirectory = "/home/ben";
@@ -62,6 +66,36 @@
       accountsservice
     ];
   };
+
+  services.hypridle = {
+    enable = true;
+    lockCmd = "swaylock -f -C $HOME/.config/swaylock/config";
+    unlockCmd = "";
+    beforeSleepCmd =  "swaylock -f -C $HOME/.config/swaylock/config";
+    afterSleepCmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on; ${pkgs.brightnessctl}/bin/brightnessctl -r; echo 2 | ${pkgs.coreutils}/bin/tee  /sys/class/leds/asus::kbd_backlight/brightness";
+    listeners = [
+      {
+        timeout = 150;
+	onTimeout = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10% & echo 1 | ${pkgs.coreutils}/bin/tee  /sys/class/leds/asus::kbd_backlight/brightness";
+	onResume = "${pkgs.brightnessctl}/bin/brightnessctl -r & echo 2 | ${pkgs.coreutils}/bin/tee /sys/class/leds/asus::kbd_backlight/brightness";
+      }
+      {
+        timeout = 165;
+	onTimeout = "${pkgs.systemd}/bin/systemctl suspend";
+	onResume = "";
+      }
+    ];
+
+
+  };
+
+  programs.hyprlock = {
+    enable = true;
+    backgrounds = [
+      { path = "screenshot"; }
+    ];
+  };
+
   programs.neovim = {
       defaultEditor = true;
       plugins = [
