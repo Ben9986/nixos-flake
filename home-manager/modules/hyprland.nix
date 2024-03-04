@@ -189,12 +189,6 @@ bind = [
 
 #F-keys shortcuts
 ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%-"
-", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%+"
-", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-", XF86MonBrightnessUp, exec, ~/.local/bin/increase-brightness.sh"
-", XF86MonBrightnessUp, exec, brightnessctl --min-value=20 s 40+"
-", XF86MonBrightnessDown, exec, brightnessctl --min-value=20 s 40-"
 ", kbbrightcycle, exec, ~/.local/bin/backlightcontrol.sh"
 # kill in the bind below doesn't work :/
 "$mainMod SHIFT, S, exec, kill -9 $(pidof hyprshot) || XCURSOR_SIZE=48 HYPRSHOT_DIR=$HOME/Pictures/Screenshots ~/.local/bin/hyprshot -m region"
@@ -260,5 +254,14 @@ bindm = [
 "$mainMod, mouse:272, movewindow" # LMB
 "$mainMod, mouse:274, resizewindow" # RMB
 ];
+binde = [
+", XF86AudioLowerVolume, exec, ags -r \"indicator.popup(1)\"; wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%-"
+", XF86AudioRaiseVolume, exec, ags -r \"indicator.popup(1)\"; wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%+"
+", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+", XF86MonBrightnessUp, exec, brightnessctl --min-value=20 s 40+"
+", XF86MonBrightnessDown, exec, brightnessctl --min-value=20 s 40-"
+
+];
+
 };
 }
