@@ -28,6 +28,7 @@
      material-symbols
      yazi
      fzf # for zoxide
+     gnome.file-roller
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
@@ -180,10 +181,10 @@
       ${pkgs.hyprland}/bin/hyprctl reload > /dev/null;
       echo "Hyprland reloaded successfully";
     '';
-    reloadEww = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      echo "Reloading Eww...";
-      ${pkgs.hyprland}/bin/hyprctl dispatch exec ${pkgs.eww-wayland}/bin/eww reload;
-      echo "Eww reloaded successfully";
-    '';
+   # reloadEww = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    #  echo "Reloading Eww...";
+    #  ${pkgs.hyprland}/bin/hyprctl dispatch exec ${pkgs.eww-wayland}/bin/eww reload;
+    #  echo "Eww reloaded successfully";
+    #'';
     };
 }

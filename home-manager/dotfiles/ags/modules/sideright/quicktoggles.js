@@ -23,7 +23,7 @@ export const ToggleIconWifi = (props = {}) => Widget.Button({
     tooltipText: 'Wifi | Right-click to configure',
     onClicked: () => Network.toggleWifi(),
     onSecondaryClickRelease: () => {
-        execAsync(['bash', '-c', 'XDG_CURRENT_DESKTOP="gnome" gnome-control-center wifi', '&']);
+        execAsync(['bash', '-c', 'GTK_THEME=Adwaita:dark XDG_CURRENT_DESKTOP="gnome" gnome-control-center wifi', '&']);
         App.closeWindow('sideright');
     },
     child: NetworkIndicator(),
