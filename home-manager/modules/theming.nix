@@ -5,6 +5,7 @@
     settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
+	icon-theme = "adwaita-icon-theme";
         cursor-theme = "phinger-cursors";
       };
     };

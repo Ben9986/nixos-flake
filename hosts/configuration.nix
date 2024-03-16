@@ -148,7 +148,7 @@
      eza
      btop
      p7zip
-     peazip
+     # peazip
      # Hyprland stuff
      hyprpaper
      # hyprshot
@@ -164,6 +164,7 @@
      gnome.gnome-software
      cinnamon.nemo
      catppuccin-gtk
+     gnome.adwaita-icon-theme
      sddm-chili-theme
      phinger-cursors
      gtk3
