@@ -17,6 +17,7 @@
      git-crypt
      pyprland
      socat
+     gnome.gnome-control-center
     # end-4 ags config
      adw-gtk3
      ydotool
