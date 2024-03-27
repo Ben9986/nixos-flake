@@ -167,8 +167,9 @@ bind = [
 "$mainMod, C, killactive" 
 "$mainMod, P, togglefloating" 
 "$mainMod, J, togglesplit" # dwindle
-"$mainMod SHIFT, F, fullscreen"
-"$mainMod CTRL, F, fakefullscreen"
+"$mainMod SHIFT, F, fullscreen, 1" # maximise
+"$mainMod CTRL, F, fakefullscreen" # window thinks it's fullscreen
+"$mainMod ALT, F, fullscreen, 0" # actual fullscreen
 
 "$mainMod, K, togglegroup"
 "$mainMod, M, changegroupactive"
