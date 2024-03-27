@@ -192,7 +192,7 @@ bind = [
 ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 ", kbbrightcycle, exec, ~/.local/bin/backlightcontrol.sh"
 # kill in the bind below doesn't work :/
-"$mainMod SHIFT, S, exec, kill -9 $(pidof hyprshot) || XCURSOR_SIZE=48 HYPRSHOT_DIR=$HOME/Pictures/Screenshots ~/.local/bin/hyprshot -m region"
+"$mainMod SHIFT, S, exec, kill -9 $(pidof hyprshot) || XCURSOR_SIZE=32 HYPRSHOT_DIR=$HOME/Pictures/Screenshots ~/.local/bin/hyprshot -m region"
 #", XF86Launch1, exec, ~/.local/bin/gtk-dark-light-toggle.sh # Toggle gnome dark/light mode"
 
 # Move focus with mainMod + arrow keys
