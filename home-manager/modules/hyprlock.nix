@@ -12,31 +12,39 @@ programs.hyprlock = {
     ];
     labels = [
       {
-       text = "<b>Please enter your password</b>";
-       font_size = 28;
-       font_family = "SpaceMono";
-       position.y = 80;
+       text = "Welcome";
+       font_size = 26;
+       font_family = "SpaceMono Nerd Font";
+       position.y = 20;
+       halign = "center";
+      }
+      {
+       #text = "cmd[update:1000] date +\"%-H:%M\"";
+       text = "$TIME";
+       position.y = 280;
+       font_size = 160;
+       font_family = "SpaceMono Nerd Font Bold";
        halign = "center";
       }
     ];
     input-fields = [
       {
        size = {
-         width = 450;
-         height = 60;
+         width = 570;
+         height = 70;
          };
        outline_thickness = 3;
-       dots_size = 0.30000;
+       dots_size = 0.40000;
        dots_spacing = 0.150000;
        dots_center = true;
        outer_color = "rgb(151515)";
-       inner_color = "rgb(166, 18, 72)";
-       font_color = "rgb(10, 10, 10)";
-       fade_on_empty = true;
-       placeholder_text = "<i>Input Password...</i>";
+       inner_color = "rgb(171, 34, 114)";
+       font_color = "rgb(0, 0, 0)";
+       fade_on_empty = false;
+       placeholder_text = "<big><b><i>Input Password</i></b></big>";
        hide_input = false;
 
-       position.y = -20;
+       position.y = -70;
        halign = "center";
        valign = "center";
       }
