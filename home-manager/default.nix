@@ -24,7 +24,6 @@ in
       {
       services.hypridle = {
         lockCmd = lib.mkForce "swaylock -f -C $HOME/.config/swaylock/config";
-        beforeSleepCmd = lib.mkForce "swaylock -f -C $HOME/.config/swaylock/config";
       };
     }
     ];

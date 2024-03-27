@@ -71,9 +71,10 @@
 
   services.hypridle = {
     enable = true;
-    lockCmd = "${inputs.hyprlock.packages.${pkgs.stdenv.hostPlatform.system}.hyprlock}/bin/hyprlock";
+    package = pkgs.hypridle;
+    lockCmd = "${pkgs.hyprlock}/bin/hyprlock";
     unlockCmd = "";
-    beforeSleepCmd =  "${inputs.hyprlock.packages.${pkgs.stdenv.hostPlatform.system}.hyprlock}/bin/hyprlock";
+    beforeSleepCmd = "loginctl lock-session";
     afterSleepCmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on; ${pkgs.brightnessctl}/bin/brightnessctl -r; echo 2 | ${pkgs.coreutils}/bin/tee  /sys/class/leds/asus::kbd_backlight/brightness";
     listeners = [
       {
@@ -93,6 +94,7 @@
 
   programs.hyprlock = {
     enable = true;
+    package = pkgs.hyprlock;
     backgrounds = [
       { 
       path = "screenshot";

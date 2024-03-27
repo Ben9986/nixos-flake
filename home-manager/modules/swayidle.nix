@@ -1,7 +1,7 @@
 {inputs, pkgs, config, ...}:
 {
 services.swayidle = {
-  enable = true;
+  enable = false;
   events = [
     {
       event = "before-sleep";

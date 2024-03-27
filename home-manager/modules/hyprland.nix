@@ -29,7 +29,7 @@ exec = [
   "hyprpaper"
   "pkill ags; ags"
   #"pkill waybar; waybar"
-  "pkill swayidle; swayidle -w"
+  #"pkill swayidle; swayidle -w"
 ];
 
 exec-once = [
@@ -177,7 +177,7 @@ bind = [
 
 # Session Control
 "$mainMod ALT, P, exec, ${inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ags -t session"
-"$mainMod, L, exec, swaylock -f -C ~/.config/swaylock/config"
+"$mainMod, L, exec, loginctl lock-session"
 
 # App Launch Shortcuts
 "$mainMod, Q, exec, kitty"
