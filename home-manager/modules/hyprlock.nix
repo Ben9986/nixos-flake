@@ -2,7 +2,6 @@
 {
 programs.hyprlock = {
     enable = true;
-    package = pkgs.hyprlock;
     backgrounds = [
       { 
       path = "screenshot";
