@@ -41,6 +41,7 @@
   qt = {
     enable = true;
     style.name = "adwaita-dark";
-    platformTheme = "gnome";
+    style.package = pkgs.adwaita-qt;
+    platformTheme = "gtk";
   };
 }
