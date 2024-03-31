@@ -12,10 +12,12 @@ programs.hyprlock = {
     labels = [
       {
        text = "Welcome";
-       font_size = 26;
+       font_size = 30;
        font_family = "SpaceMono Nerd Font";
        position.y = 20;
        halign = "center";
+       shadow_passes = 2;
+       shadow_size = 2;
       }
       {
        #text = "cmd[update:1000] date +\"%-H:%M\"";
@@ -24,6 +26,7 @@ programs.hyprlock = {
        font_size = 160;
        font_family = "SpaceMono Nerd Font Bold";
        halign = "center";
+       shadow_passes = 2;
       }
     ];
     input-fields = [
@@ -42,6 +45,12 @@ programs.hyprlock = {
        fade_on_empty = false;
        placeholder_text = "<big><b><i>Input Password</i></b></big>";
        hide_input = false;
+
+       shadow_passes = 2;
+       shadow_size = 3;
+
+       fail_text = "<b>$FAIL</b>";
+       fail_color = "rgb(15,15,15)";
 
        position.y = -70;
        halign = "center";
