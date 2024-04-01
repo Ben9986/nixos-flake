@@ -11,7 +11,7 @@
   home.homeDirectory = "/home/ben";
   home.stateVersion = "23.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
-     (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" ]; })
+     (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
      roboto
      obsidian
      git-crypt
@@ -29,6 +29,11 @@
      yazi
      fzf # for zoxide
      gnome.file-roller
+     #ags bar requirements
+     bun
+     dart-sass
+     fd
+     inputs.matugen.packages.${system}.default
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')

@@ -177,7 +177,7 @@ bind = [
 "$mainMod, B, exec, pypr expose"
 
 # Session Control
-"$mainMod ALT, P, exec, ${inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ags -t session"
+"$mainMod ALT, P, exec, ${inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ags -t powermenu"
 "$mainMod, L, exec, loginctl lock-session"
 
 # App Launch Shortcuts
