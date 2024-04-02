@@ -11,13 +11,13 @@ const DELAY = 2500
 
 function OnScreenProgress(vertical: boolean) {
     const indicator = Widget.Icon({
-        size: 42,
+        size: 34,
         vpack: "start",
     })
     const progress = Progress({
         vertical,
-        width: vertical ? 42 : 300,
-        height: vertical ? 300 : 42,
+        width: vertical ? 34 : 280,
+        height: vertical ? 280 : 34,
         child: indicator,
     })
 
@@ -45,10 +45,10 @@ function OnScreenProgress(vertical: boolean) {
             brightness.screen,
             icons.brightness.screen,
         ), "notify::screen")
-        .hook(brightness, () => show(
-            brightness.kbd,
-            icons.brightness.keyboard,
-        ), "notify::kbd")
+        //.hook(brightness, () => show(
+        //    brightness.kbd,
+        //    icons.brightness.keyboard,
+        //), "notify::kbd")
         .hook(audio.speaker, () => show(
             audio.speaker.volume,
             icon(audio.speaker.icon_name || "", icons.audio.type.speaker),
