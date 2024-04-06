@@ -188,6 +188,8 @@ bind = [
 "$mainMod, N, exec, swaync-client -t -sw"
 "$mainMod, O, exec, flatpak run --user md.obsidian.Obsidian"
 "$mainMod, T, exec, io.github.alainm23.planify.quick-add"
+"$mainMod, D, exec, flatpak run dev.vencord.Vesktop"
+
 
 #F-keys shortcuts
 ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -249,7 +251,8 @@ bind = [
 "ALT SHIFT, 5, movetoworkspace, special:5"
 ];
 bindr = [
-"SUPER, SUPER_L , exec, pkill wofi || GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark wofi"
+#"SUPER, SUPER_L , exec, pkill wofi || GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark wofi"
+"SUPER, SUPER_L , exec, pkill fuzzel || fuzzel --fuzzy-min-length=4"
 ];
 bindm = [
 # Move/resize windows with mainMod + LMB/RMB and dragging

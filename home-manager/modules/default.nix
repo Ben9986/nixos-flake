@@ -2,6 +2,7 @@
 imports = [
   ./hyprland.nix
   ./hyprlock.nix
+  ./fuzzel.nix
   ./swayidle.nix
   ./swaylock.nix
   ./systemd.nix
