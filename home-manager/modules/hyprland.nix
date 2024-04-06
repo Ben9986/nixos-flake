@@ -9,6 +9,7 @@ nixpkgs.overlays = [
 wayland.windowManager.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 wayland.windowManager.hyprland.enable = true;
 wayland.windowManager.hyprland.settings = {
+source = [ "~/.config/hypr/monitors.conf" "~/.config/hypr/workspaces.conf" ];
 env = [
   "XCURSOR_SIZE,24"
   "GTK_THEME,Catppuccin-Mocha-Standard-Blue-Dark"
