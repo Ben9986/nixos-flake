@@ -14,7 +14,6 @@
      (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
      cantarell-fonts
      roboto
-     obsidian
      git-crypt
      pyprland
      socat
@@ -43,10 +42,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.activation.linkDotfiles = config.lib.dag.entryAfter [ "writeBoundary" ]
-    ''
-      ln -sfn /etc/nixos/home-manager/dotfiles/ranger/rc.conf         $HOME/.config/ranger/
-    '';
   home.file = {
     ".config/wofi-logout".source = dotfiles/wofi-logout;
     #".config/ags".source = dotfiles/ags;
@@ -84,12 +79,12 @@
     afterSleepCmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on; ${pkgs.brightnessctl}/bin/brightnessctl -r; echo 2 | ${pkgs.coreutils}/bin/tee  /sys/class/leds/asus::kbd_backlight/brightness";
     listeners = [
       {
-        timeout = 150;
+        timeout = 300;
 	onTimeout = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10% & echo 1 | ${pkgs.coreutils}/bin/tee  /sys/class/leds/asus::kbd_backlight/brightness";
 	onResume = "${pkgs.brightnessctl}/bin/brightnessctl -r & echo 2 | ${pkgs.coreutils}/bin/tee /sys/class/leds/asus::kbd_backlight/brightness";
       }
       {
-        timeout = 165;
+        timeout = 320;
 	onTimeout = "${pkgs.systemd}/bin/systemctl suspend";
 	onResume = "";
       }
@@ -146,10 +141,5 @@
       ${pkgs.hyprland}/bin/hyprctl reload > /dev/null;
       echo "Hyprland reloaded successfully";
     '';
-   # reloadEww = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    #  echo "Reloading Eww...";
-    #  ${pkgs.hyprland}/bin/hyprctl dispatch exec ${pkgs.eww-wayland}/bin/eww reload;
-    #  echo "Eww reloaded successfully";
-    #'';
     };
 }
