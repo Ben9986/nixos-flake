@@ -291,9 +291,27 @@
         "type": "github"
       }
     },
-    "matugen": {
+    "matcha": {
       "inputs": {
         "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1704517827,
+        "narHash": "sha256-WhpLwINCuXYxa9y8o4bcFsryvD/VcGi/9VimwJmbobw=",
+        "ref": "refs/heads/main",
+        "rev": "438da25cacd014b99460de76a59a9fecec04f48a",
+        "revCount": 18,
+        "type": "git",
+        "url": "https://codeberg.org/QuincePie/matcha.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/QuincePie/matcha.git"
+      }
+    },
+    "matugen": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "lastModified": 1711657889,
@@ -375,6 +393,22 @@
     },
     "nixpkgs_5": {
       "locked": {
+        "lastModified": 1689679375,
+        "narHash": "sha256-LHUC52WvyVDi9PwyL1QCpaxYWBqp4ir4iL6zgOkmcb8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "684c17c429c42515bafb3ad775d2a710947f3d67",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
         "lastModified": 1691186842,
         "narHash": "sha256-wxBVCvZUwq+XS4N4t9NqsHV4E64cPVqQ2fdDISpjcw0=",
         "owner": "nixos",
@@ -389,7 +423,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1711715736,
         "narHash": "sha256-9slQ609YqT9bT/MNX9+5k5jltL9zgpn36DpFB7TkttM=",
@@ -404,7 +438,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_8": {
       "locked": {
         "lastModified": 1708475490,
         "narHash": "sha256-g1v0TsWBQPX97ziznfJdWhgMyMGtoBFs102xSYO4syU=",
@@ -427,8 +461,9 @@
         "hypridle": "hypridle",
         "hyprland": "hyprland",
         "hyprlock": "hyprlock",
+        "matcha": "matcha",
         "matugen": "matugen",
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_7",
         "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"
       }
     },
@@ -560,7 +595,7 @@
       "inputs": {
         "hyprland-protocols": "hyprland-protocols_2",
         "hyprlang": "hyprlang_5",
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_8",
         "systems": "systems_7"
       },
       "locked": {

@@ -44,7 +44,7 @@ exec-once = [
   "copyq"
   "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XCURSOR_SIZE XCURSOR_THEME GTK_THEME COLOR_SCHEME"
   " hyprctl setcursor phinger-cursors 24"
-
+  "matcha -do"
 ];
 
 input = {
@@ -180,6 +180,7 @@ bind = [
 # Session Control
 "$mainMod ALT, P, exec, ${inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ags -t powermenu"
 "$mainMod, L, exec, loginctl lock-session"
+"$mainMod, I, exec, matcha -t && notify-send 'Toggled Idle Inhibitor'"
 
 # App Launch Shortcuts
 "$mainMod, Q, exec, kitty"

@@ -18,6 +18,7 @@
     };
     ags.url = "github:Aylur/ags";
     matugen.url = "github:/InioX/Matugen";
+    matcha.url = "git+https://codeberg.org/QuincePie/matcha.git";
   };
 
   outputs = { nixpkgs, home-manager, ...}@inputs:

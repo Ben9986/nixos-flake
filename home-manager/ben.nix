@@ -34,6 +34,7 @@
      dart-sass
      fd
      inputs.matugen.packages.${system}.default
+     inputs.matcha.packages.${system}.default
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
