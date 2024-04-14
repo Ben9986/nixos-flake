@@ -105,7 +105,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    (callPackage ../../nix-modules/sddm-sugar-dark.nix {})
+    (callPackage ../modules/sddm-sugar-dark.nix {})
     swww
     ];
 

@@ -71,7 +71,7 @@
   services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
-    (callPackage ../../nix-modules/sddm-sugar-dark.nix {})
+    (callPackage ../modules/sddm-sugar-dark.nix {})
     mangohud
     gamemode
     gamescope

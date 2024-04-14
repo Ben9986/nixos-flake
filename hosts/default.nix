@@ -16,12 +16,12 @@ in
       inherit inputs; # needed for hyprland and probs other stuff
       host = {
         hostName = "benlaptop";
-        #mainMonitor = "eDP-1";
       };
     };
     modules = [
       ./benlaptop
       ./configuration.nix
+      ./modules
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
@@ -35,13 +35,13 @@ in
       inherit inputs; # needed for hyprland and probs other stuff
       host = {
         hostName = "bendesktop";
-        #mainMonitor = "eDP-1";
       };
     };
     modules = [
       ./bendesktop
       ./configuration.nix
-      ../nix-modules/nvidia.nix
+      ./modules/nvidia.nix
+      ./modules
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;

@@ -1,26 +1,17 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running `nixos-help`).
-
 { inputs, config, lib, pkgs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      #./hardware-configuration.nix
-      ];
-  
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
     "/nix".options = [ "compress=zstd" "noatime" ];
-   #  "/swap".options = [ "noatime" ];
   };
 
-
-  nixpkgs.config.allowUnfree = true;
-  # Windows time compat
-  time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_GB.UTF-8";
+
+  console = {
+    font = "iso01-12x22";
+    useXkbConfig = true; # use xkbOptions in tty.
+   };
 
   nix = {
     gc = {
@@ -40,51 +31,18 @@
     package = pkgs.nixFlakes;
   };
   
+  nixpkgs.config.allowUnfree = true;
 
   networking.networkmanager.enable = true;
-
-  time.timeZone = "Europe/London";
-
-  console = {
-    font = "iso01-12x22";
-    # keyMap = "gb";
-    useXkbConfig = true; # use xkbOptions in tty.
-   };
-
-
-  services.udev.extraRules = ''
-  SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"
-  '';
-
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Scheduling (used by pipewire)
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+  
+  time = {
+    timeZone = "Europe/London";
+    # Needed for Windows dual boot
+    hardwareClockInLocalTime = true;
   };
 
   # Was weirdly required for pipewire to install
   hardware.pulseaudio.enable = false;
-
-  services.dbus.enable = true;
-  services.flatpak.enable = true;
-
-  services.upower.enable = true;
-
-  services.xserver = {
-    enable = true;
-    xkb.layout = "gb";
-    # Enable touchpad support (enabled default in most desktopManager).
-    libinput.enable = true;
-  };
 
   xdg.portal = {
     enable = true;
@@ -98,32 +56,17 @@
     DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
   '';
 
-#   systemd = {
-#   user.services.polkit-gnome-authentication-agent-1 = {
-#     description = "polkit-gnome-authentication-agent-1";
-#     wantedBy = [ "graphical-session.target" ];
-#     wants = [ "graphical-session.target" ];
-#     after = [ "graphical-session.target" ];
-#     serviceConfig = {
-#         Type = "simple";
-#         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-#         Restart = "on-abnormal";
-#         RestartSec = 1;
-#         TimeoutStopSec = 10;
-#       };
-#   };
-# };
- 
   security = {
     polkit.enable = true;
     pam.services.swaylock = {};
     pam.services.hyprlock = {};
+  # Scheduling (used by pipewire)
+    rtkit.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.ben = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "input" "networkmanager" "video" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "input" "networkmanager" "video" ];
      description = "Ben Carmichael";
      initialPassword = "password";
      shell = pkgs.zsh;
@@ -131,12 +74,8 @@
      ];
    };
 
-  services.accounts-daemon.enable = true;
-
   environment.variables = { NIXOS_OZONE_WL = "1"; };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
    environment.systemPackages = with pkgs; [
      appimage-run
      polkit_gnome
@@ -152,10 +91,8 @@
      eza
      btop
      p7zip
-     # peazip
      # Hyprland stuff
      hyprpaper
-     # hyprshot
      networkmanagerapplet
      blueberry
      brightnessctl
@@ -198,37 +135,12 @@
   programs = {
     hyprland = {
       enable = true;
-      # package = hyprland-flake.packages.${pkgs.system}.hyprland;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       portalPackage = inputs.xdg-desktop-portal-hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     };
     zsh.enable = true;
     steam.enable = true;
 };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
