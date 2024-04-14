@@ -20,9 +20,9 @@
       shellAliases = {
         hconf="nvim /etc/nixos/home-manager/modules/hyprland.nix";
         hmconf="nvim /etc/nixos/home-manager/$USER.nix";
-        nixdir="cd /etc/nixos";
-        hmdir="cd /etc/nixos/home-manager/";
-        nconf="sudo nvim /etc/nixos/hosts/configuration.nix";
+        cdn="cd /etc/nixos";
+        cdhm="cd /etc/nixos/home-manager/";
+        nconf= "nvim /etc/nixos/hosts/configuration.nix";
         tbxe="toolbox enter";
         ls="eza --icons --group-directories-first --width=80 -a";
         ll="eza --icons --group-directories-first --width=80 --no-filesize -alo";

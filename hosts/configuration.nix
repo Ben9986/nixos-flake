@@ -81,18 +81,9 @@
      polkit_gnome
      xorg.xhost # for polkit apps
      at-spi2-core
-     neovim 
-     wget
-     rclone
-     pistol # file previewer for ranger
-     python311Packages.pillow # ranger image preview
-     gh
      git
-     eza
-     btop
      p7zip
      # Hyprland stuff
-     hyprpaper
      networkmanagerapplet
      blueberry
      brightnessctl
@@ -101,13 +92,13 @@
      distrobox
      copyq
      nwg-look
+     glib # gsettings for nwg-look
+     gsettings-desktop-schemas
      swaynotificationcenter
      gnome.gnome-software
      cinnamon.nemo
      catppuccin-gtk
      gnome.adwaita-icon-theme
-     sddm-chili-theme
-     phinger-cursors
      gtk3
      # qt5&6 wayland needed for xdph
      qt6.qtwayland # cursors?
@@ -115,22 +106,10 @@
      libsForQt5.qt5ct
      qt6Packages.qt6ct
      libsForQt5.discover
-     glib # gsettings for nwg-look
-     gsettings-desktop-schemas
-     firefox
      gparted
      gnome-multi-writer
      ntfs3g
-     # needed for hyprshot
-     jq
-     grim
-     slurp
-     wl-clipboard
-     libnotify
-     planify
-     spotify
-     podman
-   ];
+     ];
 
   programs = {
     hyprland = {

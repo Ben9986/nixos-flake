@@ -12,13 +12,19 @@
   home.stateVersion = "23.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
      (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
+     hyprpaper
+     hyprshot
+     neovim
+     wget
+     rclone
+     #pistol # file preview for ranger
      cantarell-fonts
      roboto
      git-crypt
      pyprland
      socat
      gnome.gnome-control-center
-    # end-4 ags config
+     ### end-4 ags config ####
      adw-gtk3
      ydotool
      sassc
@@ -26,6 +32,7 @@
      gradience
      lexend
      material-symbols
+     ##########
      yazi
      fzf # for zoxide
      gnome.file-roller
