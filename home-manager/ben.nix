@@ -17,7 +17,6 @@
      neovim
      wget
      rclone
-     #pistol # file preview for ranger
      cantarell-fonts
      roboto
      git-crypt
@@ -33,14 +32,12 @@
      lexend
      material-symbols
      ##########
-     yazi
-     fzf # for zoxide
      gnome.file-roller
      #ags bar requirements
      bun
      dart-sass
-     fd
      inputs.matugen.packages.${system}.default
+     ####
      inputs.matcha.packages.${system}.default
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
