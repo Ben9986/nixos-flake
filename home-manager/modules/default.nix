@@ -3,6 +3,7 @@ imports = [
   ./hyprland.nix
   ./hyprlock.nix
   ./fuzzel.nix
+  ./programs.nix
   ./swayidle.nix
   ./swaylock.nix
   ./systemd.nix
