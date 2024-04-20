@@ -53,12 +53,6 @@
 
   };
 
-    services.xserver.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "sddm-sugar-dark";
-  };
-
   # Disable suspend as it crashes hyprland on nvidia
   systemd.services.systemd-suspend.enable = false;
   systemd.targets.suspend.enable = false;

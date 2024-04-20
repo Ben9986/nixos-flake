@@ -95,15 +95,6 @@ in
 
   };
 
-
-  services.xserver.displayManager.defaultSession = "hyprland";
-  services.xserver.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "sddm-sugar-dark";
-
-  };
-
   environment.systemPackages = with pkgs; [
     (callPackage ../modules/sddm-sugar-dark.nix {})
     swww

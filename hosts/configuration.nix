@@ -55,6 +55,14 @@
   systemd.user.extraConfig = ''
     DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
   '';
+  
+  services.displayManager.defaultSession = "hyprland";        
+  services.displayManager.sddm = {        
+    enable = true;
+    wayland.enable = true;
+    theme = "sddm-sugar-dark";
+    extraPackages = with pkgs; [libsForQt5.qt5.qtgraphicaleffects];
+  };
 
   security = {
     polkit.enable = true;
