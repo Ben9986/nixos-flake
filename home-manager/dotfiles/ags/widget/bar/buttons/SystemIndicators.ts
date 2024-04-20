@@ -36,10 +36,10 @@ const ModeIndicator = () => {
 }
 
 const MicrophoneIndicator = () => Widget.Icon()
-    .hook(audio, self => self.visible =
-        audio.recorders.length > 0
-        || audio.microphone.stream?.is_muted
-        || audio.microphone.is_muted)
+    //.hook(audio, self => self.visible =
+    //    audio.recorders.length > 0
+    //    || audio.microphone.stream?.is_muted
+    //    || audio.microphone.is_muted)
     .hook(audio.microphone, self => {
         const vol = audio.microphone.stream!.is_muted ? 0 : audio.microphone.volume
         const { muted, low, medium, high } = icons.audio.mic
@@ -88,11 +88,11 @@ export default () => PanelButton({
     on_scroll_up: () => audio.speaker.volume += 0.02,
     on_scroll_down: () => audio.speaker.volume -= 0.02,
     child: Widget.Box([
-        ProfileIndicator(),
-        ModeIndicator(),
+        //ProfileIndicator(),
+        //ModeIndicator(),
         DNDIndicator(),
-        BluetoothIndicator(),
         NetworkIndicator(),
+        BluetoothIndicator(),
         AudioIndicator(),
         MicrophoneIndicator(),
     ]),
