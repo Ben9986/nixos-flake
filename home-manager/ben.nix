@@ -14,9 +14,11 @@
      (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
      hyprpaper
      hyprshot
+     nwg-displays
      neovim
      wget
      rclone
+     libnotify
      cantarell-fonts
      roboto
      git-crypt
@@ -36,6 +38,7 @@
      #ags bar requirements
      bun
      dart-sass
+     fd
      inputs.matugen.packages.${system}.default
      ####
      inputs.matcha.packages.${system}.default
