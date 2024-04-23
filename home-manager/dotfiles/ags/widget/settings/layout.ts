@@ -2,7 +2,7 @@
 import Row from "./Row"
 import Group from "./Group"
 import Page from "./Page"
-import Wallpaper from "./Wallpaper"
+// import Wallpaper from "./Wallpaper"
 import options from "options"
 import icons from "lib/icons"
 
@@ -35,7 +35,7 @@ const {
 export default [
     Page("Theme", icons.ui.themes,
         Group("",
-            Wallpaper() as ReturnType<typeof Row>,
+            // Wallpaper() as ReturnType<typeof Row>,
             Row({ opt: at, title: "Auto Generate Color Scheme" }),
             Row({ opt: scheme, title: "Color Scheme", type: "enum", enums: ["dark", "light"] }),
         ),

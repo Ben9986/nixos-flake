@@ -1,4 +1,4 @@
-import matugen from "./matugen"
+//import matugen from "./matugen"
 import hyprland from "./hyprland"
 import tmux from "./tmux"
 import gtk from "./gtk"
@@ -9,7 +9,7 @@ export default function init() {
     try {
         gtk()
         tmux()
-        matugen()
+        // matugen()
         lowBattery()
         notifications()
         // hyprland()

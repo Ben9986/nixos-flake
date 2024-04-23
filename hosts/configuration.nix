@@ -117,6 +117,7 @@
      gparted
      gnome-multi-writer
      ntfs3g
+     power-profiles-daemon
      ];
 
   programs = {
