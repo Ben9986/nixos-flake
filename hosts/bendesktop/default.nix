@@ -53,6 +53,30 @@
 
   };
 
+#  services.pipewire.extraConfig.pipewire = {
+#    "10-mic-mon" = {
+#      "context.modules" = [
+#      {
+#        "name" = "libpipewire-module-loopback";
+#        "args" = {
+#            "audio.position" = "[ FL FR ]";
+#            "capture.props" = {
+#	        "node.name" = "mic-input";
+#                "media.class" = "Audio/Source";
+#                "node.target" = "alsa_input.pci-0000_0b_00.4.analog-stereo";
+#                "node.description" = "my-sink";
+#            };
+#            "playback.props" = {
+#                "node.name" = "mic-sink";
+#                "node.passive" = "true";
+#                "node.target" = "alsa_output.pci-0000_0b_00.4.analog-stereo";
+#            };
+#        };
+#	}
+#    ];
+#    };
+#  };
+
   # Disable suspend as it crashes hyprland on nvidia
   systemd.services.systemd-suspend.enable = false;
   systemd.targets.suspend.enable = false;
