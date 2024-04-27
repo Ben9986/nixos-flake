@@ -22,6 +22,7 @@ in
       ./benlaptop
       ./configuration.nix
       ./modules
+      ../custom-options.nix
          ];
   };
   bendesktop = lib.nixosSystem {                                # Desktop Profile
@@ -37,6 +38,7 @@ in
       ./configuration.nix
       ./modules/nvidia.nix
       ./modules
+      ../custom-modules.nix
     ];
   };
 }

@@ -3,5 +3,5 @@
 options.flakeDir = lib.mkOption {  
   type = lib.types.str;
 };
-config.flakeDir = "$HOME/flake-config";
+config.flakeDir = "/home/ben/flake-config";
 }

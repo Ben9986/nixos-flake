@@ -10,7 +10,7 @@ in
     extraSpecialArgs = { inherit inputs; };
     modules = [
       ./ben.nix
-      ./custom-options.nix
+      ../custom-options.nix
       ./modules
       ./modules/hyprland-laptop.nix
       inputs.hyprland.homeManagerModules.default
@@ -21,7 +21,7 @@ in
     extraSpecialArgs = { inherit inputs; };
     modules = [
       ./ben.nix
-      ./custom-options.nix
+      ../custom-options.nix
       ./modules
       ./modules/hyprland-desktop.nix
       inputs.hyprland.homeManagerModules.default

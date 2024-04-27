@@ -15,7 +15,7 @@
 
   nix = {
     gc = {
-      automatic = true;
+      automatic = false;
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
@@ -131,6 +131,12 @@
     };
     zsh.enable = true;
     steam.enable = true;
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = /. + config.flakeDir;
+    };
 };
 
   # This value determines the NixOS release from which the default
