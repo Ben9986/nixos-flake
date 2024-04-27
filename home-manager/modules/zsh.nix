@@ -1,6 +1,8 @@
-{config, ...}:
-{
-  programs.zsh = {
+{config, options, ...}:
+let 
+  flakeDir = options.flakeDir;
+in { 
+programs.zsh = {
       enable = true;
       autosuggestion.enable = true;
       enableCompletion = true;
@@ -18,17 +20,17 @@
         };
 
       shellAliases = {
-        hconf="nvim /etc/nixos/home-manager/modules/hyprland.nix";
-        hmconf="nvim /etc/nixos/home-manager/$USER.nix";
-        cdn="cd /etc/nixos";
-        cdhm="cd /etc/nixos/home-manager/";
-        nconf= "nvim /etc/nixos/hosts/configuration.nix";
+        hconf="nvim ${flakeDir}/home-manager/modules/hyprland.nix";
+        hmconf="nvim ${flakeDir}/home-manager/$USER.nix";
+        cdn="cd ${flakeDir}";
+        cdhm="cd ${flakeDir}/home-manager/";
+        nconf= "nvim ${flakeDir}/hosts/configuration.nix";
         tbxe="toolbox enter";
         ls="eza --icons --group-directories-first --width=80 -a";
         ll="eza --icons --group-directories-first --width=80 --no-filesize -alo";
         };
       
-      initExtraBeforeCompInit = "zstyle :compinstall filename '/home/ben/.zshrc' ";
+      initExtraBeforeCompInit = "zstyle :compinstall filename '$HOME/.zshrc' ";
 
       initExtra = ''
       zstyle ':completion:*' menu select=4
