@@ -22,14 +22,9 @@ in
       ./benlaptop
       ./configuration.nix
       ./modules
-
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-      }
-    ];
+         ];
   };
-  bendesktop = lib.nixosSystem {                                # Laptop Profile
+  bendesktop = lib.nixosSystem {                                # Desktop Profile
     inherit system;
     specialArgs = {
       inherit inputs; # needed for hyprland and probs other stuff
@@ -42,11 +37,6 @@ in
       ./configuration.nix
       ./modules/nvidia.nix
       ./modules
-
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-      }
     ];
   };
 }

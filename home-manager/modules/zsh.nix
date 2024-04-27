@@ -1,6 +1,6 @@
-{config, options, ...}:
+{config, ...}:
 let 
-  flakeDir = options.flakeDir;
+  flakeDir = config.flakeDir;
 in { 
 programs.zsh = {
       enable = true;

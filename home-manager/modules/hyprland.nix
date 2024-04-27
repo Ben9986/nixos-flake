@@ -1,11 +1,5 @@
 {inputs, config, pkgs, lib, ...}:
 {
-
-nixpkgs.overlays = [
-  (final: previous: {
-      xdg-desktop-portal-hyprland = inputs.xdg-desktop-portal-hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-    })
-];
 wayland.windowManager.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 wayland.windowManager.hyprland.enable = true;
 wayland.windowManager.hyprland.settings = {
