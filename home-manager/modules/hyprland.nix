@@ -11,7 +11,6 @@
     source = [ "~/.config/hypr/monitors.conf" "~/.config/hypr/workspaces.conf" ];
     env = [
       "XCURSOR_SIZE,24"
-      #"GTK_THEME,Catppuccin-Mocha-Standard-Blue-Dark"
       # "GDK_SCALE,2"
       "GDK_BACKEND,wayland,x11"
       "QT_QPA_PLATFORM,wayland"

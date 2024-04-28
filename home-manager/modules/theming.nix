@@ -16,13 +16,8 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Mocha-Standard-Blue-dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
-        #size = "compact";
-        tweaks = [ "rimless" ];
-        variant = "mocha";
-      };
+      name = "Adwaita-dark";
+      package = pkgs.gnome.gnome-themes-extra;
     };
     cursorTheme = {
       name = "phinger-cursors";
