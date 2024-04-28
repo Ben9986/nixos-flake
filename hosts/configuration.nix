@@ -65,7 +65,9 @@
     enable = true;
     wayland.enable = true;
     theme = "sddm-sugar-dark";
-    extraPackages = with pkgs; [libsForQt5.qt5.qtgraphicaleffects];
+    extraPackages = with pkgs; [
+      libsForQt5.qt5.qtgraphicaleffects
+    ];
   };
 
   security = {
@@ -89,6 +91,7 @@
   environment.variables = { NIXOS_OZONE_WL = "1"; };
 
    environment.systemPackages = with pkgs; [
+     (callPackage ./modules/sddm-sugar-dark.nix {})
      appimage-run
      polkit_gnome
      xorg.xhost # for polkit apps
