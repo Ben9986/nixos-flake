@@ -12,8 +12,8 @@
   home.stateVersion = "23.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
      (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
-     hyprpaper
-     hyprshot
+     #hyprpaper
+     #hyprshot
      nwg-displays
      neovim
      wget

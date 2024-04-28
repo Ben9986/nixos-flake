@@ -1,6 +1,14 @@
 {inputs, config, pkgs, lib, ...}:
-{
-  wayland.windowManager.hyprland = {
+let 
+hyprenable = config.hyprland.enable; 
+in {
+
+ home.packages = with pkgs; lib.mkIf hyprenable [ 
+  hyprpaper
+  hyprshot
+ ];
+
+  wayland.windowManager.hyprland = lib.mkIf hyprenable {
     enable = true;
     systemd = {
       enable = true;
