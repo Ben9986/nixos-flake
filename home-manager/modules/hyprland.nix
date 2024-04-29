@@ -180,8 +180,6 @@ bind = [
 "$mainMod, K, togglegroup"
 "$mainMod, M, changegroupactive"
 
-"$mainMod, B, exec, pypr expose"
-
 # Session Control
 "$mainMod ALT, P, exec, ${inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ags -t powermenu"
 "$mainMod, L, exec, loginctl lock-session"
