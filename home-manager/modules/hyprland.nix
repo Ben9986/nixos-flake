@@ -31,7 +31,6 @@ in {
       "VISUAL,nvim"
       "EDITOR,nvim"
     ];
-    
     exec = [
       "hyprpaper"
       "pkill ags; ags"
@@ -48,20 +47,20 @@ in {
       "hyprctl dispatch exec [ workspace special:fm silent ] kitty yazi"
       "udiskie &"
       "copyq"
-      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XCURSOR_SIZE XCURSOR_THEME GTK_THEME COLOR_SCHEME"
+      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XCURSOR_SIZE XCURSOR_THEME GTK_THEME COLOR_SCHEME PATH"
       " hyprctl setcursor phinger-cursors 24"
       "matcha -do"
     ];
-    
+
     input = {
-        kb_layout = "gb";
-        numlock_by_default = true;
-        follow_mouse = 1;
-        
-        touchpad = {
-            natural_scroll = 0;
-            };
-        sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+      kb_layout = "gb";
+      numlock_by_default = true;
+      follow_mouse = 1;
+  
+      touchpad = {
+        natural_scroll = 0;
+        };
+      sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
     };
     
     general = {
