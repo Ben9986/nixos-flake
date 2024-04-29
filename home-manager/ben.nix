@@ -24,6 +24,7 @@
      git-crypt
      pyprland
      socat
+     pavucontrol
      gnome.gnome-control-center
      ### end-4 ags config ####
      adw-gtk3
@@ -100,6 +101,8 @@
 
 
   };
+
+  services.easyeffects.enable = true;
 
   programs.neovim = {
       defaultEditor = true;
