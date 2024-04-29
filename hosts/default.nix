@@ -38,7 +38,7 @@ in
       ./configuration.nix
       ./modules/nvidia.nix
       ./modules
-      ../custom-modules.nix
+      ../custom-options.nix
     ];
   };
 }
