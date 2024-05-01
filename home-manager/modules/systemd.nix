@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, config, ...}:
 {
   systemd.user.timers."pull-flake" = {
     Install = {
@@ -21,7 +21,7 @@
       ExecStart = "${pkgs.writeShellScript "pull-flake" ''
       set -eu
       ${pkgs.coreutils}/bin/echo "Starting Git Pull..."
-      cd /etc/nixos/
+      cd ${config.flakeDir}
       ${pkgs.libnotify}/bin/notify-send "Checking for Config Changes..." "$(${pkgs.git}/bin/git pull)" -t 4000 -e
     ''}";
       Type = "oneshot";
