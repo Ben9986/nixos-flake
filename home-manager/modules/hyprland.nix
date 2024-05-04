@@ -16,7 +16,7 @@ in {
       };
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings = {
-    source = [ "~/.config/hypr/monitors.conf" "~/.config/hypr/workspaces.conf" ];
+    source = [ "~/.config/hypr/monitors-live.conf" "~/.config/hypr/workspaces-live.conf" ];
     env = [
       "XCURSOR_SIZE,24"
       # "GDK_SCALE,2"
@@ -179,6 +179,8 @@ bind = [
 
 "$mainMod, K, togglegroup"
 "$mainMod, M, changegroupactive"
+
+"$mainMod ALT, M, exec, ${config.flakeDir}/home-manager/dotfiles/hypr/monitor-switch.sh"
 
 # Session Control
 "$mainMod ALT, P, exec, ${inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ags -t powermenu"
