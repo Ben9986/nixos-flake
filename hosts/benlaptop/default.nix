@@ -1,29 +1,19 @@
 { pkgs, lib, config, ...}:
+with lib;
 let 
-  zenbook-acpi = pkgs.stdenv.mkDerivation rec {
-    pname = "asus-zenbook-ux3402za-acpi-tables";
-    version = "0.0.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "thor2002ro";
-      repo = "asus_zenbook_ux3402za";
-      rev = "54cc1488e8dd2ffbf3dbffd390e42d9a4657a2de";
-      sha256 = "sha256-o32kAz8z/AMsKfCmU0nHxhcerDudYqJduHhRCeZbVPQ=";
-    };
- 
-    nativeBuildInputs = with pkgs; [
-      acpica-tools
-    ];
- 
-    buildPhase = ''
-      cp -r Sound Work
-      iasl -tc Work/ssdt-csc3551.dsl
-    '';
- 
-    installPhase = ''
-      mkdir -p $out/boot $out/etc/grub.d
-      cp Work/ssdt-csc3551.aml $out/boot/ssdt-csc3551.aml
-    '';
-  };
+  inherit (pkgs) runCommand acpica-tools cpio;
+
+  ssdt-csc2551-acpi-table-patch = runCommand "ssdt-csc2551" { } ''
+    mkdir iasl
+    cp ${./ssdt-csc3551.dsl} iasl/ssdt-csc3551.dsl
+    ${getExe' acpica-tools "iasl"} -ia iasl/ssdt-csc3551.dsl
+
+    mkdir -p kernel/firmware/acpi
+    cp iasl/ssdt-csc3551.aml kernel/firmware/acpi/
+    find kernel | ${getExe cpio} -H newc --create > patched-acpi-tables.cpio
+    
+    cp patched-acpi-tables.cpio $out
+  '';
 in 
 {
 
@@ -31,59 +21,38 @@ in
     [
       ./hardware-configuration.nix
     ];
-
+  
   boot = {
-    loader.efi.canTouchEfiVariables = true;
-    loader.grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      # useOSProber = true;
-      extraEntriesBeforeNixOS = true;
-      extraEntries = ''
-         menuentry 'Windows Boot Manager (on /dev/nvme0n1p3)' --class windows --class os $menuentry_id_option 'osprober-efi-89A9-5B80' {
-           insmod part_gpt
-           insmod fat
-           search --no-floppy --fs-uuid --set=root 89A9-5B80
-           chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-         }
-      '';
-      # gfxmodeEfi = "2880x1800";
-      timeoutStyle = "hidden";
-      theme = pkgs.stdenv.mkDerivation {
-        name = "vimix-grub-theme";
-        buildInputs = [ pkgs.bash ];
-        src = pkgs.fetchFromGitHub {
-          owner = "vinceliuice";
-          repo = "grub2-themes";
-          rev = "2022-10-30";
-          hash = "sha256-LBYYlRBmsWzmFt8kgfxiKvkb5sdLJ4Y5sy4hd+lWR70=";
-        };
-        installPhase = ''
-        var="#! ${pkgs.bash}/bin/bash"
-        echo $var
-        sed -i "1c\$var" install.sh
-        chmod +x ./install.sh
-        ./install.sh -t tela -s 2k -g $out
-        mv $out/tela/* $out
-        rm -r $out/tela
-        '';
-};
-      # backgroundColor = "#000000";
-      extraFiles."ssdt-csc3551.aml" = "${zenbook-acpi}/boot/ssdt-csc3551.aml";
-      extraConfig = ''
-      acpi ($root)/ssdt-csc3551.aml
-	background_image
-      '';
-    };
-    kernelParams = ["quiet"];
+    initrd = {
+      prepend = [ (toString ssdt-csc2551-acpi-table-patch) ];
+      verbose = false;
+      };
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = true;
+	extraEntries = {
+	  "windows.conf"= ''
+title Windows_11
+efi /EFI/Microsoft/Boot/bootmgfw.efi
+sort-key a-windows
+	  '';
+	};
+        extraInstallCommands = ''
+	    echo "timeout menu-hidden
+default windows.conf
+auto-entries false
+console-mode 2" > /boot/loader/loader.conf
+	  '';
+	};
+      };
+    kernelParams = ["quiet" "splash" "udev.log_level=0" ];
     kernelPackages = pkgs.linuxPackages_zen;
     plymouth = {
       enable = true;
-      theme = "catppuccin-mocha";
-      themePackages = [(pkgs.catppuccin-plymouth.override {variant = "mocha";})];
+      theme = "bgrt";
     };
-    consoleLogLevel = 1;
+    consoleLogLevel = 0;
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
       interpreter = "${pkgs.appimage-run}/bin/appimage-run";

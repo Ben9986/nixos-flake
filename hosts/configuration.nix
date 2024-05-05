@@ -54,7 +54,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
   
-  systemd.services."display-manager".preStart = "sleep 5";
   # Fix Default Apps opening in Flatpaks
   systemd.user.extraConfig = ''
     DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
