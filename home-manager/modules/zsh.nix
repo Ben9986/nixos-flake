@@ -26,6 +26,8 @@ programs.zsh = {
         cdn="cd ${flakeDir}";
         cdhm="cd ${flakeDir}/home-manager/";
         nconf= "nvim ${flakeDir}/hosts/configuration.nix";
+	gs = "git status";
+	gd = "git diff -a";
         tbxe="toolbox enter";
         ls="eza --icons --group-directories-first --width=80 -a";
         ll="eza --icons --group-directories-first --width=80 --no-filesize -alo";
