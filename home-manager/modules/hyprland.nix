@@ -180,7 +180,7 @@ bind = [
 "$mainMod, K, togglegroup"
 "$mainMod, M, changegroupactive"
 
-"$mainMod ALT, M, exec, ${config.flakeDir}/home-manager/dotfiles/hypr/monitor-switch.sh"
+"$mainMod ALT, M, exec, ~/.config/hypr/scripts/monitor-switch.sh"
 
 # Session Control
 "$mainMod ALT, P, exec, ${inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ags -t powermenu"

@@ -1,5 +1,4 @@
 #!/bin/sh
-icon=/run/current-system/sw/share/icons/hicolor/1024x1024/apps/nix-snowflake.png
 monitors="$(hyprctl monitors)"
 if echo ${monitors} | grep Acer ; then
 	ln -sf ~/flake-config/home-manager/dotfiles/hypr/monitors-acer.conf ~/.config/hypr/monitors-live.conf
