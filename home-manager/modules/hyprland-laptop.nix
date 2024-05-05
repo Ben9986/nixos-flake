@@ -20,5 +20,6 @@ home.file."config/hypr/monitors-ultrawide.conf".text = ''
 monitor=desc:Samsung Display Corp. 0x4171,2880x1800@90.0,515x1080,1.8,bitdepth,10
 monitor=desc:LG Electronics LG ULTRAWIDE 0x000542FD,2560x1080@60.0,0x0,1.0,bitdepth,10
 '';
-home.file.".config/hypr/scripts/monitor-switch.sh".source = ../dotfiles/hypr/monitor-switch.sh;
+home.file.".config/hypr/scripts/monitor-switch.sh".source = ../dotfiles/hypr/scripts/monitor-switch.sh;
+home.file.".config/hypr/scripts/kbbrightness.sh".source = ../dotfiles/hypr/scripts/kbbrightness.sh;
 }
