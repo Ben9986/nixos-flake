@@ -1,11 +1,29 @@
 {inputs, config, pkgs, lib, ...}:
 let 
 hyprenable = config.hyprland.enable; 
+patchedhyprshot = (pkgs.hyprshot.overrideAttrs (old: rec {
+  version = "git";
+  src = pkgs.fetchFromGitHub {
+    owner = "Gustash";
+    repo = "hyprshot";
+    rev = "36dbe2e6e97fb96bf524193bf91f3d172e9011a5";
+    hash = "sha256-n1hDJ4Bi0zBI/Gp8iP9w9rt1nbGSayZ4V75CxOzSfFg=";
+  };
+  patches = [
+    (pkgs.fetchpatch {
+      url = "https://patch-diff.githubusercontent.com/raw/Gustash/Hyprshot/pull/39.patch";
+      hash = "sha256-kNo+s6NfeuoVsAtcHcecWo3LbX9ac8EOOqYdFjQNyHQ=";
+    })
+  ];
+
+  }
+)).override { hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland; };
+
 in {
 
  home.packages = with pkgs; lib.mkIf hyprenable [ 
   hyprpaper
-  hyprshot
+  patchedhyprshot
  ];
 
   wayland.windowManager.hyprland = lib.mkIf hyprenable {
@@ -201,7 +219,7 @@ bind = [
 ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 ", kbbrightcycle, exec, ~/.config/hypr/scripts/kbbacklight.sh"
 # kill in the bind below doesn't work :/
-"$mainMod SHIFT, S, exec, kill -9 $(pidof hyprshot) || XCURSOR_SIZE=32 HYPRSHOT_DIR=$HOME/Pictures/Screenshots ${pkgs.hyprshot}/bin/hyprshot -m region"
+"$mainMod SHIFT, S, exec, kill -9 $(pidof hyprshot) || XCURSOR_SIZE=32 HYPRSHOT_DIR=$HOME/Pictures/Screenshots ${patchedhyprshot}/bin/hyprshot -m region"
 #", XF86Launch1, exec, ~/.local/bin/gtk-dark-light-toggle.sh # Toggle gnome dark/light mode"
 
 # Move focus with mainMod + arrow keys
