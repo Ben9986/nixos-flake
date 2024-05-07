@@ -14,6 +14,10 @@ patchedhyprshot = (pkgs.hyprshot.overrideAttrs (old: rec {
       url = "https://patch-diff.githubusercontent.com/raw/Gustash/Hyprshot/pull/39.patch";
       hash = "sha256-kNo+s6NfeuoVsAtcHcecWo3LbX9ac8EOOqYdFjQNyHQ=";
     })
+    (pkgs.fetchpatch {
+      url = "https://patch-diff.githubusercontent.com/raw/Gustash/Hyprshot/pull/47.patch";
+      hash = "sha256-NkyAv7MPr0C+CvmBi1ECZcPkbl8qK99qKDMNOP+VZkY=";
+    })
   ];
 
   }
