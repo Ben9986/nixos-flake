@@ -1,7 +1,7 @@
 {...}:        
 { 
 wayland.windowManager.hyprland.settings = {
-  monitor = "HDMI-A-1,highres,auto,1";
+  monitor = "HDMI-A-1,2560x1080@60.0,0x0,1.0,bitdepth,10";
   env = [
     "GDK_SCALE,1"
     "WLR_DRM_NO_ATOMIC,1"

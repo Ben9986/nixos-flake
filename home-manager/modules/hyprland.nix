@@ -38,7 +38,6 @@ in {
       };
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings = {
-    source = [ "~/.config/hypr/monitors-live.conf" "~/.config/hypr/workspaces-live.conf" ];
     env = [
       "XCURSOR_SIZE,24"
       # "GDK_SCALE,2"
