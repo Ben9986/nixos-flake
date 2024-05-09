@@ -8,14 +8,15 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprlock.url = "github:hyprwm/hyprlock";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags.url = "github:Aylur/ags";
-    matugen.url = "github:/InioX/Matugen";
+    matugen.url = "github:/InioX/Matugen?ref=v2.2.0";
     matcha.url = "git+https://codeberg.org/QuincePie/matcha.git";
   };
 
