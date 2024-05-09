@@ -46,7 +46,6 @@ in {
       "COLOR_SCHEME,prefer-dark"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
       "QT_QPA_PLATFORMTHEME,qt5ct"
-      "WLR_NO_HARDWARE_CURSORS,1"
       "XCURSOR_THEME,phinger-cursors"
       "XDG_SESSION_TYPE,wayland"
       "VISUAL,nvim"
