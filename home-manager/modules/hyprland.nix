@@ -48,6 +48,7 @@ in {
       "QT_QPA_PLATFORMTHEME,qt5ct"
       "XCURSOR_THEME,phinger-cursors"
       "XDG_SESSION_TYPE,wayland"
+      "ELECTRON_OZONE_PLATFORM_HINT,auto"
       "VISUAL,nvim"
       "EDITOR,nvim"
     ];
