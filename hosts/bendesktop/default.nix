@@ -94,6 +94,7 @@
     gamemode
     gamescope
     r2modman
+    vulkan-tools
   ];
 
 }
