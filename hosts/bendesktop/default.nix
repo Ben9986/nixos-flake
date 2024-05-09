@@ -36,6 +36,7 @@
       backgroundColor = "#000000";
     };
     kernelParams = ["quiet"];
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     plymouth = {
       enable = true;
       theme = "catppuccin-mocha";
