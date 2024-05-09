@@ -37,6 +37,7 @@ in
       ./bendesktop
       ./configuration.nix
       ./modules/nvidia.nix
+      #./modules/nvidia-nouveau.nix
       ./modules
       ../custom-options.nix
     ];
