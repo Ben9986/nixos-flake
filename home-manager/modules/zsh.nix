@@ -67,4 +67,11 @@ programs.zsh = {
       export GPG_TTY=$(tty)
     '';
     };
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        directory = { read_only = " 󰌾"; };
+	     };
+    };
 }
