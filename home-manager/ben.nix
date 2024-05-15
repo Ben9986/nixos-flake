@@ -3,7 +3,6 @@
 
   imports = [ 
     inputs.ags.homeManagerModules.default
-    inputs.hyprlock.homeManagerModules.default
     ];
 
   home.username = "ben";
