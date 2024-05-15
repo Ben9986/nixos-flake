@@ -213,7 +213,8 @@ bind = [
 "$mainMod, F, exec, firefox"
 "SUPER, V, exec, copyq toggle"
 "$mainMod, N, exec, swaync-client -t -sw"
-"$mainMod, O, exec, flatpak run --user md.obsidian.Obsidian"
+"$mainMod, O, exec, flatpak run --user md.obsidian.Obsidian -- obsidian://open?vault=Uni%20Vault"
+"$mainMod SHIFT, O, exec, flatpak run --user md.obsidian.Obsidian -- obsidian://open?vault=Life%20Tings"
 "$mainMod, T, exec, io.github.alainm23.planify.quick-add"
 "$mainMod, D, exec, flatpak run dev.vencord.Vesktop"
 
