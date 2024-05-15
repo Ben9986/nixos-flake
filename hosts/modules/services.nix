@@ -28,5 +28,19 @@ services = {
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };
+  
+  auto-cpufreq = {
+    enable = true;
+    settings = {
+    charger = {
+      governer = "performance";
+      turbo = "auto";
+    };
+    battery = {
+      governer = "powersave";
+      turbo = "auto";
+    };
+    };
+  };
 };
 }
