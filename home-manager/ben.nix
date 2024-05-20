@@ -24,6 +24,7 @@
      socat
      pavucontrol
      gnome.gnome-control-center
+     vscodium-fhs
      ### end-4 ags config ####
      adw-gtk3
      ydotool
