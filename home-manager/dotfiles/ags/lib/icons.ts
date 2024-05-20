@@ -142,4 +142,8 @@ export default {
         dark: "dark-mode-symbolic",
         light: "light-mode-symbolic",
     },
+    idle: {
+        true: "local-cafe",
+        false: "local-cafe-cross",
+    },
 }
