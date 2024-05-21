@@ -88,6 +88,9 @@
    };
 
   environment.variables = { NIXOS_OZONE_WL = "1"; };
+  environment.etc = {
+    "blossom.jpg".source = ./blossom.jpg;
+  };
 
    environment.systemPackages = with pkgs; [
      (callPackage ./modules/sddm-sugar-dark.nix {})
