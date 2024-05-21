@@ -13,7 +13,7 @@ wayland.windowManager.hyprland.settings = {
     "immediate, class:^(Minecraft*)$"
     "immediate, class:^(valheim.x86_64)$"
     "idleinhibit focus, class:^(steam_app*)$"
-    "immediate, class:^(steam)$"
+    #"immediate, class:^(steam)$"
   ];
   general = {
     allow_tearing = true;

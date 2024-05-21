@@ -10,8 +10,6 @@
   home.stateVersion = "23.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
      (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
-     #hyprpaper
-     #hyprshot
      nwg-displays
      neovim
      wget
@@ -20,11 +18,11 @@
      cantarell-fonts
      roboto
      git-crypt
-     pyprland
-     socat
      pavucontrol
      gnome.gnome-control-center
+     gnome.file-roller
      vscodium-fhs
+     inputs.matcha.packages.${system}.default
      ### end-4 ags config ####
      adw-gtk3
      ydotool
@@ -34,28 +32,17 @@
      lexend
      material-symbols
      ##########
-     gnome.file-roller
      #ags bar requirements
      bun
      dart-sass
      fd
      inputs.matugen.packages.${system}.default
      ####
-     inputs.matcha.packages.${system}.default
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
-  programs.home-manager.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
   home.file = {
-    ".config/wofi-logout".source = dotfiles/wofi-logout;
-    #".config/ags".source = dotfiles/ags;
-    # dir must be writable for ranger to run
-    # ".config/ranger".source = dotfiles/ranger;
-   # ".config/rclone".source = dotfiles/rclone;
     ".config/swaync".source = dotfiles/swaync;
   };
 
@@ -67,17 +54,6 @@
     RANGER_LOAD_DEFAULT_RC="false";
   };
  
-  programs.ags = {
-    enable = true;
-    configDir = ./dotfiles/ags;
-    # additional packages to add to gjs's runtime
-    extraPackages = with pkgs; [
-      gtksourceview
-      webkitgtk
-      accountsservice
-    ];
-  };
-
   services.hypridle = {
     enable = true;
     package = pkgs.hypridle;
@@ -106,53 +82,67 @@
 
   services.easyeffects.enable = true;
 
-  programs.neovim = {
+  programs = {
+    ags = {
+      enable = true;
+      configDir = ./dotfiles/ags;
+      # additional packages to add to gjs's runtime
+      extraPackages = with pkgs; [
+        gtksourceview
+        webkitgtk
+        accountsservice
+      ];
+    };
+
+    neovim = {
       defaultEditor = true;
       plugins = [
         pkgs.vimPlugins.yuck-vim
       ];
     };
-
-  programs.kitty = {
-    enable = true;
-    theme = "Cherry Midnight";
-    settings = {
-      enable_audio_bell = false;
-      editor = "nvim";
-      confirm_os_window_close = -1;
-      shell_integration = true;
-    };
-  };
-
-  programs.wlogout = {
-    enable = true;
-  };
-
-  programs.yazi = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = {
-      manager = {
-	ratio = [1 3 3];
-	show_hidden = true;
-	show_simlink = true;
-	sort_by = "natural";
-	sort_dir_first = true;
+  
+    kitty = {
+      enable = true;
+      theme = "Cherry Midnight";
+      settings = {
+        enable_audio_bell = false;
+        editor = "nvim";
+        confirm_os_window_close = -1;
+        shell_integration = true;
       };
     };
-  };
+  
+    wlogout = {
+      enable = false;
+    };
+  
+    yazi = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        manager = {
+	        ratio = [1 3 3];
+	        show_hidden = true;
+	        show_simlink = true;
+	        sort_by = "natural";
+	        sort_dir_first = true;
+        };
+      };
+    };
+  
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
+    home-manager.enable = true;
   };
-
   home.activation = {
     # Reload hyprland after home-manager files have been written 
     reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      echo "Reloading Hyprland...";
-      ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl reload > /dev/null;
-      echo "Hyprland reloaded successfully";
-    '';
-    };
+    echo "Reloading Hyprland...";
+    ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl reload > /dev/null;
+    echo "Hyprland reloaded successfully";
+  '';
+  };
 }

@@ -55,8 +55,6 @@ in {
     exec = [
       "hyprpaper"
       "pkill ags; ags"
-      #"pkill waybar; waybar"
-      #"pkill swayidle; swayidle -w"
     ];
     
     exec-once = [
@@ -224,7 +222,6 @@ bind = [
 ", kbbrightcycle, exec, ~/.config/hypr/scripts/kbbacklight.sh"
 # kill in the bind below doesn't work :/
 "$mainMod SHIFT, S, exec, kill -9 $(pidof hyprshot) || XCURSOR_SIZE=32 HYPRSHOT_DIR=$HOME/Pictures/Screenshots ${patchedhyprshot}/bin/hyprshot -m region --move-cursor 0,0"
-#", XF86Launch1, exec, ~/.local/bin/gtk-dark-light-toggle.sh # Toggle gnome dark/light mode"
 
 # Move focus with mainMod + arrow keys
 "$mainMod, left, movefocus, l"
@@ -279,7 +276,6 @@ bind = [
 "ALT SHIFT, 5, movetoworkspace, special:5"
 ];
 bindr = [
-#"SUPER, SUPER_L , exec, pkill wofi || GTK_THEME=Catppuccin-Mocha-Standard-Blue-Dark wofi"
 "SUPER, SUPER_L , exec, pkill fuzzel || fuzzel --fuzzy-min-length=4"
 ];
 bindm = [
