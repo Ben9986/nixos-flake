@@ -10,7 +10,7 @@ let
   lib = nixpkgs.lib;
 in
 {
-  benlaptop = lib.nixosSystem {                                # Laptop Profile
+  benlaptop = lib.nixosSystem {
     inherit system;
     specialArgs = {
       inherit inputs; # needed for hyprland and probs other stuff
@@ -25,7 +25,7 @@ in
       ../custom-options.nix
          ];
   };
-  bendesktop = lib.nixosSystem {                                # Desktop Profile
+  bendesktop = lib.nixosSystem {
     inherit system;
     specialArgs = {
       inherit inputs; # needed for hyprland and probs other stuff
@@ -39,6 +39,19 @@ in
       ./modules/nvidia.nix
       #./modules/nvidia-nouveau.nix
       ./modules
+      ../custom-options.nix
+    ];
+  };
+  trinity = lib.nixosSystem {                                
+    inherit system;
+    specialArgs = {
+      inherit inputs;
+      host = {
+        hostName = "trinity";
+      };
+    };
+    modules = [
+      ./trinity
       ../custom-options.nix
     ];
   };
