@@ -4,30 +4,31 @@ programs.hyprlock = {
     enable = true;
     package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
     settings = {
-      backgrounds = [
+      background = [
         { 
         path = "screenshot";
         blur_size = 6;
         blur_passes = 2;
         }
       ];
-      labels = [
+      label = [
         {
          text = "Welcome";
          font_size = 30;
          font_family = "SpaceMono Nerd Font";
-         position.y = 20;
+         position = "0, 20";
          halign = "center";
+         valign = "center";
          shadow_passes = 2;
          shadow_size = 2;
         }
         {
-         #text = "cmd[update:1000] date +\"%-H:%M\"";
          text = "$TIME";
-         position.y = 280;
+         position = "0, 280";
          font_size = 160;
          font_family = "SpaceMono Nerd Font Bold";
          halign = "center";
+         valign = "center";
          shadow_passes = 2;
         }
       ];
@@ -54,7 +55,7 @@ programs.hyprlock = {
          fail_text = "<b>$FAIL</b>";
          fail_color = "rgb(15,15,15)";
 
-         position.y = -70;
+         position = "0, -70";
          halign = "center";
          valign = "center";
         }
