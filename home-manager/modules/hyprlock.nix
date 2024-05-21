@@ -35,8 +35,8 @@ programs.hyprlock = {
       input-field = [
         {
          size = {
-           width = 570;
-           height = 70;
+           width = 615;
+           height = 60;
            };
          outline_thickness = 3;
          dots_size = 0.40000;
