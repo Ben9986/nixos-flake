@@ -40,7 +40,6 @@ in {
     settings = {
     env = [
       "XCURSOR_SIZE,24"
-      # "GDK_SCALE,2"
       "GDK_BACKEND,wayland,x11"
       "QT_QPA_PLATFORM,wayland"
       "COLOR_SCHEME,prefer-dark"
@@ -54,21 +53,20 @@ in {
     ];
     exec = [
       "hyprpaper"
-      "pkill ags; ags"
+      "ags -q && ags"
     ];
     
     exec-once = [
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
       "swaync" 
-      "eww daemon; eww open bar"
       "nm-applet --indicator"
       "blueberry-tray"
       "hyprctl dispatch exec [ workspace special:fm silent ] kitty yazi"
       "udiskie &"
       "copyq"
-      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XCURSOR_SIZE XCURSOR_THEME GTK_THEME COLOR_SCHEME PATH"
       " hyprctl setcursor phinger-cursors 24"
       "matcha -do"
+      "ags -q && ags"
     ];
 
     input = {
