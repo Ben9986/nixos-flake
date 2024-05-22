@@ -160,6 +160,8 @@ windowrule = [
 
 "float, ^(peazip)$"
 
+"float, ^(nemo)$"
+
 "noblur, ^(nemo)$"
 "noblur, ^(com.obsproject.Studio)$"
 "opaque, ^(com.obsproject.Studio)$"
@@ -207,6 +209,7 @@ bind = [
 # App Launch Shortcuts
 "$mainMod, Q, exec, kitty"
 "$mainMod, F, exec, firefox"
+"$mainMod, E, exec, nemo"
 "SUPER, V, exec, copyq toggle"
 "$mainMod, N, exec, swaync-client -t -sw"
 "$mainMod, O, exec, flatpak run --user md.obsidian.Obsidian -- obsidian://open?vault=Uni%20Vault"
