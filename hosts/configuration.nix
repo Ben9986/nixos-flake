@@ -79,7 +79,7 @@
 
    users.users.ben = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "input" "networkmanager" "video" ];
+     extraGroups = [ "wheel" "input" "networkmanager" "video" "docker" ];
      description = "Ben Carmichael";
      initialPassword = "password";
      shell = pkgs.zsh;
@@ -142,7 +142,11 @@
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = /. + config.flakeDir;
     };
-};
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
