@@ -88,6 +88,13 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   services.blueman.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+  services.displayManager.sddm = {        
+    enable = true;
+    wayland.enable = true;
+  };
+
 
   environment.systemPackages = with pkgs; [
     mangohud

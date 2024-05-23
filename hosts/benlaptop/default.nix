@@ -75,4 +75,14 @@ console-mode 2" > /boot/loader/loader.conf
 
   services.blueman.enable = true;
 
+  services.displayManager.sddm = {        
+    enable = true;
+    wayland.enable = true;
+    theme = "sddm-sugar-dark";
+    extraPackages = with pkgs; [
+      libsForQt5.qt5.qtgraphicaleffects
+    ];
+  };
+
+
 }

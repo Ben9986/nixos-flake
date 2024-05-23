@@ -60,14 +60,6 @@
   '';
   
   services.displayManager.defaultSession = "hyprland";        
-  services.displayManager.sddm = {        
-    enable = true;
-    wayland.enable = true;
-    theme = "sddm-sugar-dark";
-    extraPackages = with pkgs; [
-      libsForQt5.qt5.qtgraphicaleffects
-    ];
-  };
 
   security = {
     polkit.enable = true;
