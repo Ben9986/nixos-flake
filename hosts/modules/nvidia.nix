@@ -6,6 +6,7 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
+      package = lib.mkForce (pkgs.mesa.overrideAttrs {version = "24.1.0";}).drivers;
     };
 
   # Load nvidia driver for Xorg and Wayland
