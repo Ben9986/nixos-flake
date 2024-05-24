@@ -88,13 +88,6 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   services.blueman.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  services.displayManager.sddm = {        
-    enable = true;
-    wayland.enable = true;
-  };
-
 
   environment.systemPackages = with pkgs; [
     mangohud
@@ -104,5 +97,20 @@
     vulkan-tools
     sddm-kcm # For Login Theme in Plasma Settings
   ];
+
+  ## Plasma 6
+  services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = [ pkgs.kdePackages.sddm ];
+
+  services.displayManager.sddm = {        
+    enable = true;
+    wayland.enable = true;
+    theme = "sddm-sugar-dark";
+    # mkForce needed for sugar dark theme when plasma 6 is enabled
+    package = lib.mkForce pkgs.libsForQt5.sddm;
+    extraPackages = lib.mkForce [
+      pkgs.libsForQt5.qt5.qtgraphicaleffects
+    ];
+  };
 
 }
