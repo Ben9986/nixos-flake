@@ -102,6 +102,7 @@
     gamescope
     r2modman
     vulkan-tools
+    sddm-kcm # For Login Theme in Plasma Settings
   ];
 
 }
