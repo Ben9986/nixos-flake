@@ -58,16 +58,18 @@
   
   users.users.trinity = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "networkmanager" ];
+    extraGroups = [ "wheel" "input" "networkmanager" "docker" ];
     description = "Trinity";
     initialPassword = "password";
     shell = pkgs.bash;
     packages = with pkgs; [
     ];
   };
+  services.getty.autologinUser = "trinity";
 
   environment.systemPackages = with pkgs; [
     udiskie
+    gh
     ];
   
   virtualisation.docker.enable = true;
@@ -79,6 +81,8 @@
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = /. + config.flakeDir;
     };
+    git.enable = true;
+    neovim.enable = true;
   };
 
   services.openssh = {
