@@ -90,6 +90,41 @@
     passwordAuthentication = true; # Disable when RSA keys are setup
   };
   
+  environment.etc = {
+    "sysconfig/valheim-server".source = ./valheim-server;
+  };
+
+  systemd.services."valheim" = {
+    unitConfig = {
+      Description="Valheim Server";
+      After="docker.service";
+      Requires="docker.service";
+      ConditionPathExists="/etc/sysconfig/valheim-server";
+    };
+    serviceConfig = {
+      TimeoutStartSec="0";
+      ExecStartPre= [ "-${pkgs.docker}/bin/docker stop %n" "-${pkgs.docker}/bin/docker rm %n" ];
+      ExecStart=''
+${pkgs.docker}/bin/docker run \
+          --name %n \
+          --pull=always \
+          --rm \
+          --cap-add=sys_nice \
+          --stop-timeout 120 \
+          -v /etc/valheim:/config:Z \
+          -v /opt/valheim:/opt/valheim:Z \
+          -p 2456-2457:2456-2457/udp \
+	  -p 9001:9001/tcp \
+          --env-file /etc/sysconfig/valheim-server \
+          ghcr.io/lloesche/valheim-server
+	  '';
+      ExecStop="${pkgs.docker}/bin/docker stop %n";
+      Restart="always";
+      RestartSec="10s";
+      };
+    
+      wantedBy= [ "multi-user.target" ];
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave

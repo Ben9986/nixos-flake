@@ -1,0 +1,7 @@
+SERVER_NAME="Yeetenheim"
+WORLD_NAME="ganggang"
+SERVER_PASS="bobcat"
+BEPINEX="false"
+SERVER_ARGS="-modifier portals casual"
+SUPERVISOR_HTTP="true" 
+SUPERVISOR_HTTP_PASS="supervisor"
