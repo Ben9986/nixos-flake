@@ -115,6 +115,8 @@ ${pkgs.docker}/bin/docker run \
           -v /opt/valheim:/opt/valheim:Z \
           -p 2456-2457:2456-2457/udp \
 	  -p 9001:9001/tcp \
+          -e SUPERVISOR_HTTP="true" \
+	  -e SUPERVISOR_HTTP_PASS="supervisor" \
           --env-file /etc/sysconfig/valheim-server \
           ghcr.io/lloesche/valheim-server
 	  '';
