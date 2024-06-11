@@ -33,5 +33,27 @@
         X-GNOME-UsesNotifications="true";
       };
     };
+    vscodium-no-gpu = {
+      type = "Application";
+      name="Vscodium - No GPU";
+      categories= [ "Utility" "TextEditor" "Development" "IDE" ];
+      comment="Code Editing. Redefined.";
+      exec="codium --disable-gpu %F";
+      genericName="Text Editor";
+      icon="vscodium";
+      mimeType= [ "text/plain" "inode/directory" ];
+      settings = {
+        Keywords="vscode";
+        StartupNotify="true";
+        StartupWMClass="vscodium";
+      };
+      actions = {
+        "new-empty-window" = {
+          exec="codium --disable-gpu --new-window %F";
+          icon="vscodium";
+          name="New Empty Window";
+        };
+      };
+    };
 };
 }
