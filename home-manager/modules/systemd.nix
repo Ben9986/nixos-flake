@@ -44,6 +44,8 @@
   ${pkgs.rclone}/bin/rclone mount --config=%h/.config/rclone/rclone.conf --vfs-cache-mode full OneDrive-Strathclyde: %h/OneDrive-Strathclyde
       '';
       ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/OneDrive-Strathclyde";
+      Restart = "on-failure";
+      RestartSec = "5s";
     };
   };
 
@@ -62,6 +64,8 @@
   ${pkgs.rclone}/bin/rclone mount --config=%h/.config/rclone/rclone.conf --vfs-cache-mode full OneDrive-Personal: %h/OneDrive-Personal
       '';
       ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/OneDrive-Personal";
+      Restart = "on-failure";
+      RestartSec = "5s";
     };
   };
 };
