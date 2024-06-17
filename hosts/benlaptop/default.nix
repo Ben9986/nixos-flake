@@ -66,6 +66,11 @@ console-mode 2" > /boot/loader/loader.conf
 
   environment.systemPackages = with pkgs; [
     swww
+    sddm-kcm
+    r2modman
+    # move to devshell later
+    nodejs_22
+    nodePackages.pnpm
     ];
 
   networking.hostName = "benlaptop";
@@ -75,12 +80,18 @@ console-mode 2" > /boot/loader/loader.conf
 
   services.blueman.enable = true;
 
+  ## Plasma 6
+  services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = [ pkgs.kdePackages.sddm ];
+
   services.displayManager.sddm = {        
     enable = true;
     wayland.enable = true;
     theme = "sddm-sugar-dark";
-    extraPackages = with pkgs; [
-      libsForQt5.qt5.qtgraphicaleffects
+    # mkForce needed for sugar dark theme when plasma 6 is enabled
+    package = lib.mkForce pkgs.libsForQt5.sddm;
+    extraPackages = lib.mkForce [
+      pkgs.libsForQt5.qt5.qtgraphicaleffects
     ];
   };
 
