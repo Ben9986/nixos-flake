@@ -61,6 +61,8 @@
   
   services.displayManager.defaultSession = "hyprland";
 
+  services.power-profiles-daemon.enable = lib.mkForce false;
+
   services.tailscale.enable = true;
 
   security = {
