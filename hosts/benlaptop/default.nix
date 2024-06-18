@@ -82,18 +82,13 @@ console-mode 2" > /boot/loader/loader.conf
 
   ## Plasma 6
   services.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = [ pkgs.kdePackages.sddm ];
+  
   
 
   services.displayManager.sddm = {        
     enable = true;
     wayland.enable = true;
-    theme = "sddm-sugar-dark";
-    # mkForce needed for sugar dark theme when plasma 6 is enabled
-    package = lib.mkForce pkgs.libsForQt5.sddm;
-    extraPackages = lib.mkForce [
-      pkgs.libsForQt5.qt5.qtgraphicaleffects
-    ];
+    theme = "breeze";
   };
 
 
