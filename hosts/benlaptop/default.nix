@@ -31,7 +31,8 @@ in
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
-	extraEntries = {
+        configurationLimit = 10;
+	      extraEntries = {
 	  "windows.conf"= ''
 title Windows_11
 efi /EFI/Microsoft/Boot/bootmgfw.efi
