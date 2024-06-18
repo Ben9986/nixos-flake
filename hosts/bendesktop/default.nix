@@ -105,11 +105,11 @@
   services.displayManager.sddm = {        
     enable = true;
     wayland.enable = true;
-    theme = "sddm-sugar-dark";
+    theme = "sddm-astronaut-theme";
     # mkForce needed for sugar dark theme when plasma 6 is enabled
-    package = lib.mkForce pkgs.libsForQt5.sddm;
+    # package = lib.mkForce pkgs.libsForQt5.sddm;
     extraPackages = lib.mkForce [
-      pkgs.libsForQt5.qt5.qtgraphicaleffects
+      pkgs.kdePackages.qt5compat pkgs.kdePackages.qtdeclarative pkgs.kdePackages.qtsvg
     ];
   };
 

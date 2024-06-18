@@ -88,6 +88,7 @@
 
    environment.systemPackages = with pkgs; [
      (callPackage ./modules/sddm-sugar-dark.nix {})
+     (callPackage ./modules/sddm-astronaut-theme.nix {})
      appimage-run
      polkit_gnome
      xorg.xhost # for polkit apps
