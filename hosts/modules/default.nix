@@ -1,6 +1,6 @@
 {
 imports = [
 ./services.nix
-./mesa.nix
+# ./mesa.nix
 ];
 }
