@@ -83,6 +83,7 @@ console-mode 2" > /boot/loader/loader.conf
   ## Plasma 6
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = [ pkgs.kdePackages.sddm ];
+  services.power-profiles-daemon.enable = mkForce false;
 
   services.displayManager.sddm = {        
     enable = true;
