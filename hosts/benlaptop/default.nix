@@ -82,8 +82,6 @@ console-mode 2" > /boot/loader/loader.conf
 
   ## Plasma 6
   services.desktopManager.plasma6.enable = true;
-  
-  
 
   services.displayManager.sddm = {        
     enable = true;
