@@ -23,7 +23,7 @@
       ## [Blur Settings]
 
       FullBlur="false"
-      PartialBlur="true"
+      PartialBlur="false"
       ## Enable or disable the blur effect; if HaveFormBackground is set to true then PartialBlur will trigger the BackgroundColor of the form element to be partially transparent and blend with the blur.
 
       BlurRadius="80"
@@ -151,6 +151,7 @@
     '';
     installPhase = ''
       mkdir -p $out/share/sddm/themes
+      mkdir -p $out/share/fonts
       cp -aR $src $out/share/sddm/themes/sddm-astronaut-theme
       cd $out/share/sddm/themes/sddm-astronaut-theme
       cp $out/share/sddm/themes/sddm-astronaut-theme/Fonts/* $out/share/fonts/
@@ -165,6 +166,6 @@
       owner = "Keyitdev";
       repo = "sddm-astronaut-theme";
       rev =  "48ea0a792711ac0c58cc74f7a03e2e7ba3dc2ac0";
-      hash = lib.fakeSha256;
+      hash = "sha256-kXovz813BS+Mtbk6+nNNdnluwp/7V2e3KJLuIfiWRD0=";
     };
   }
