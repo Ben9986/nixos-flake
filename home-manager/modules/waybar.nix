@@ -1,6 +1,6 @@
 {inputs, config, ...}:
 {
-programs.waybar.enable = true;
+programs.waybar.enable = false;
 programs.waybar.settings = {
     mainbar= {
     output = [      "eDP-1"      "HDMI-A-1"    ];
