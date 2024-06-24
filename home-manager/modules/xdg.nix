@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{config, pkgs, lib, ...}:
 {
   xdg = {
     userDirs = {
@@ -33,7 +33,7 @@
         X-GNOME-UsesNotifications="true";
       };
     };
-    vscodium-no-gpu = {
+    vscodium-no-gpu = lib.mkIf config.vscode.disableGpu {
       type = "Application";
       name="Vscodium - No GPU";
       categories= [ "Utility" "TextEditor" "Development" "IDE" ];

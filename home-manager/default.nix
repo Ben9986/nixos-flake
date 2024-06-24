@@ -25,6 +25,7 @@ in
       ./modules
       ./modules/hyprland-desktop.nix
       inputs.hyprland.homeManagerModules.default
+      {config.vscode.disableGpu = true;}
     ];
   };
 }

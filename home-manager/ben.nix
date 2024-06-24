@@ -83,7 +83,7 @@
   services.easyeffects.enable = true;
 
   programs = {
-    ags = {
+    ags = lib.mkIf config.ags.enable {
       enable = true;
       configDir = ./dotfiles/ags;
       # additional packages to add to gjs's runtime
@@ -112,7 +112,7 @@
       };
     };
   
-    wlogout = {
+    wlogout = lib.mkIf config.hyprland.enable {
       enable = false;
     };
   
