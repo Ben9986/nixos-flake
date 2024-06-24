@@ -93,10 +93,6 @@
       };
     };
   
-    wlogout = lib.mkIf config.hyprland.enable {
-      enable = false;
-    };
-  
     yazi = {
       enable = true;
       enableZshIntegration = true;
