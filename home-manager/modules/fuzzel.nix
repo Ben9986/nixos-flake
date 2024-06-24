@@ -1,6 +1,6 @@
 {...}:
 {
-programs.fuzzel ={
+programs.fuzzel = lib.mkIf config.hyprland.enable {
   enable = true;
   settings = {
     main = {
