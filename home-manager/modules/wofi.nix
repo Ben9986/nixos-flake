@@ -1,4 +1,4 @@
-{...}:
+{lib, config, ...}:
 {
   programs.wofi = lib.mkIf config.hyprland.enable {
     enable = true;
