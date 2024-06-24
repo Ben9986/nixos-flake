@@ -78,7 +78,7 @@ console-mode 2" > /boot/loader/loader.conf
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  services.blueman.enable = true;
+  services.blueman.enable = lib.mkIf config.hyprland.enable true;
 
   ## Plasma 6
   services.desktopManager.plasma6.enable = true;
