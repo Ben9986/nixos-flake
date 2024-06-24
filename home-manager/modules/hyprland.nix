@@ -28,6 +28,25 @@ in {
  home.packages = with pkgs; lib.mkIf hyprenable [ 
   hyprpaper
   patchedhyprshot
+  nwg-displays
+  gnome.gnome-control-center
+  gnome.file-roller
+  inputs.matcha.packages.${system}.default
+  ### end-4 ags config ####
+  # adw-gtk3
+  # ydotool
+  # sassc
+  # qt5ct
+  # gradience
+  # lexend
+  # material-symbols
+  #########
+  ### current ags bar ##
+  bun
+  dart-sass
+  fd
+  inputs.matugen.packages.${system}.default
+  ####
  ];
 
   wayland.windowManager.hyprland = lib.mkIf hyprenable {

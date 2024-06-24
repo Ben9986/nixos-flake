@@ -10,7 +10,6 @@
   home.stateVersion = "23.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
      (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
-     nwg-displays
      neovim
      wget
      rclone
@@ -19,25 +18,7 @@
      roboto
      git-crypt
      pavucontrol
-     gnome.gnome-control-center
-     gnome.file-roller
      vscodium-fhs
-     inputs.matcha.packages.${system}.default
-     ### end-4 ags config ####
-     adw-gtk3
-     ydotool
-     sassc
-     qt5ct
-     gradience
-     lexend
-     material-symbols
-     ##########
-     #ags bar requirements
-     bun
-     dart-sass
-     fd
-     inputs.matugen.packages.${system}.default
-     ####
   ];
 
   nixpkgs.config.allowUnfree = true;
