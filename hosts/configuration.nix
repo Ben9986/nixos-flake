@@ -51,7 +51,7 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = lib.mkIf (config.hyprland.enable == true) [ pkgs.xdg-desktop-portal-gtk ];
   };
   
   # Fix Default Apps opening in Flatpaks
