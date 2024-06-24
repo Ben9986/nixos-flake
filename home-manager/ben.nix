@@ -5,22 +5,32 @@
     inputs.ags.homeManagerModules.default
     ];
 
-  home.username = "ben";
-  home.homeDirectory = "/home/ben";
-  home.stateVersion = "23.05"; # Please read the comment before changing.
-  home.packages = with pkgs; [
-     (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
-     neovim
-     wget
-     rclone
-     libnotify
-     cantarell-fonts
-     roboto
-     git-crypt
-     pavucontrol
-     vscodium-fhs
-  ];
-
+  home = {
+    username = "ben";
+    homeDirectory = "/home/ben";
+    stateVersion = "23.05"; # Please read the comment before changing.
+    
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISIAL = "nvim";
+      PAGER = "less";
+      PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
+      RANGER_LOAD_DEFAULT_RC="false";
+    };
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
+      neovim
+      wget
+      rclone
+      libnotify
+      cantarell-fonts
+      roboto
+      git-crypt
+      pavucontrol
+      vscodium-fhs
+    ];
+    
+  };
   nixpkgs.config.allowUnfree = true;
 
   services.easyeffects.enable = true;
