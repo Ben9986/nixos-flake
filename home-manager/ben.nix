@@ -42,7 +42,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.file = {
+  home.file = lib.mkIf config.hyprland.enable {
     ".config/swaync".source = dotfiles/swaync;
   };
 
@@ -54,7 +54,7 @@
     RANGER_LOAD_DEFAULT_RC="false";
   };
  
-  services.hypridle = {
+  services.hypridle = lib.mkIf config.hyprland.enable {
     enable = true;
     package = pkgs.hypridle;
     settings = { 
@@ -137,7 +137,7 @@
 
     home-manager.enable = true;
   };
-  home.activation = {
+  home.activation = lib.mkIf config.hyprland.enable {
     # Reload hyprland after home-manager files have been written 
     reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
     echo "Reloading Hyprland...";

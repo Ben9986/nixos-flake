@@ -25,11 +25,6 @@ in
       ./modules
       ./modules/hyprland-desktop.nix
       inputs.hyprland.homeManagerModules.default
-      {
-      services.hypridle.settings.general = {
-        lock_cmd = lib.mkForce "swaylock -f -C $HOME/.config/swaylock/config";
-      };
-    }
     ];
   };
 }

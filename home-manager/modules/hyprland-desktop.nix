@@ -1,5 +1,5 @@
 {...}:        
-{ 
+lib.mkIf config.hyprland.enable { 
 wayland.windowManager.hyprland.settings = {
   monitor = "HDMI-A-1,2560x1080@60,auto,1,bitdepth,10";
   env = [
@@ -22,5 +22,12 @@ wayland.windowManager.hyprland.settings = {
     no_hardware_cursors = false;
   };
   };
+  
 home.file.".config/hypr/hyprpaper.conf".source = ../dotfiles/hypr/hyprpaper-desktop.conf;
+
+services.hypridle.settings.general = {
+        lock_cmd = lib.mkForce "swaylock -f -C $HOME/.config/swaylock/config";
+      };
 }
+
+

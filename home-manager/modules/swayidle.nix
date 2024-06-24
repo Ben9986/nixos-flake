@@ -1,6 +1,6 @@
 {inputs, pkgs, config, ...}:
 {
-services.swayidle = {
+services.swayidle = pkgs.lib.mkIf config.hyprland.enable {
   enable = false;
   events = [
     {

@@ -10,4 +10,7 @@ options = {
       default = true;
     };
   };
+  config = {
+    hyprland.enable = false;
+  };
 }

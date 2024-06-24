@@ -59,7 +59,7 @@
     DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
   '';
   
-  services.displayManager.defaultSession = "hyprland";
+  services.displayManager.defaultSession = lib.mkIf config.hyprland.enable "hyprland";
 
   services.power-profiles-daemon.enable = lib.mkForce false;
 
@@ -127,7 +127,7 @@
      ];
 
   programs = {
-    hyprland = {
+    hyprland = lib.mkIf config.hyprland.enable {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
@@ -140,10 +140,6 @@
       flake = /. + config.flakeDir;
     };
   };
-
-  virtualisation.docker = {
-    enable = true;
-    };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
