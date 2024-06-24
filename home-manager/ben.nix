@@ -35,17 +35,5 @@
 
   services.easyeffects.enable = true;
 
-  programs = {
-    ags = lib.mkIf config.ags.enable {
-      enable = true;
-      configDir = ./dotfiles/ags;
-      # additional packages to add to gjs's runtime
-      extraPackages = with pkgs; [
-        gtksourceview
-        webkitgtk
-        accountsservice
-      ];
-    };
-    home-manager.enable = true;
-  };
+  programs.home-manager.enable = true;
 }

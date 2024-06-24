@@ -61,7 +61,17 @@ in {
     '';
     };
   };
-  
+  progams.ags = lib.mkIf config.hyprland.enable {
+      enable = true;
+      configDir = ./dotfiles/ags;
+      # additional packages to add to gjs's runtime
+      extraPackages = with pkgs; [
+        gtksourceview
+        webkitgtk
+        accountsservice
+      ];
+    };
+
   wayland.windowManager.hyprland = lib.mkIf hyprenable {
     enable = true;
     systemd = {
