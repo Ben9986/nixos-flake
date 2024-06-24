@@ -92,38 +92,41 @@
      (callPackage ./modules/sddm-sugar-dark.nix {})
      (callPackage ./modules/sddm-astronaut-theme.nix {})
      appimage-run
-     polkit_gnome
-     xorg.xhost # for polkit apps
-     at-spi2-core
      git
      p7zip
-     # Hyprland stuff
-     networkmanagerapplet
-     blueberry
-     brightnessctl
-     font-awesome
-     udiskie
      distrobox
-     copyq
-     nwg-look
-     glib # gsettings for nwg-look
      gsettings-desktop-schemas
-     swaynotificationcenter
-     gnome.gnome-software
-     cinnamon.nemo
-     catppuccin-gtk
-     gnome.adwaita-icon-theme
-     gtk3
-     # qt5&6 wayland needed for xdph
-     qt6.qtwayland # cursors?
-     libsForQt5.qt5.qtwayland
-     libsForQt5.qt5ct
-     qt6Packages.qt6ct
-     libsForQt5.discover
      gparted
      gnome-multi-writer
      ntfs3g
      spotify
+     ]
+     # Hyprland stuff
+     ++ lib.optionals(config.hyprland.enable) [
+      # TODO remove commented pkgs if nothing is broken
+     #  xorg.xhost # for polkit apps
+     #  at-spi2-core
+      polkit_gnome
+      networkmanagerapplet
+      blueberry
+      brightnessctl
+      font-awesome
+      udiskie
+      copyq
+      nwg-look
+      swww
+      glib # gsettings for nwg-look
+      swaynotificationcenter
+      gnome.gnome-software
+      cinnamon.nemo
+      libsForQt5.discover
+      gtk3
+      gnome.adwaita-icon-theme
+      # qt5&6 wayland needed for xdph
+      qt6.qtwayland
+      libsForQt5.qt5.qtwayland
+      libsForQt5.qt5ct
+      qt6Packages.qt6ct
      ];
 
   programs = {
