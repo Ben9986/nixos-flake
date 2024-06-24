@@ -86,12 +86,4 @@
 
     home-manager.enable = true;
   };
-  home.activation = lib.mkIf config.hyprland.enable {
-    # Reload hyprland after home-manager files have been written 
-    reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    echo "Reloading Hyprland...";
-    ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl reload > /dev/null;
-    echo "Hyprland reloaded successfully";
-  '';
-  };
 }

@@ -25,30 +25,43 @@ patchedhyprshot = (pkgs.hyprshot.overrideAttrs (old: rec {
 
 in {
 
-  home.packages = with pkgs; lib.mkIf hyprenable [ 
-    hyprpaper
-    patchedhyprshot
-    nwg-displays
-    gnome.gnome-control-center
-    gnome.file-roller
-    inputs.matcha.packages.${system}.default
-    ### end-4 ags config ####
-    # adw-gtk3
-    # ydotool
-    # sassc
-    # qt5ct
-    # gradience
-    # lexend
-    # material-symbols
-    #########
-    ### current ags bar ##
-    bun
-    dart-sass
-    fd
-    inputs.matugen.packages.${system}.default
-    ####
-  ];
-
+  home = lib.mkIf config.hyprland.enable {
+    packages = with pkgs; [ 
+      hyprpaper
+      patchedhyprshot
+      nwg-displays
+      gnome.gnome-control-center
+      gnome.file-roller
+      inputs.matcha.packages.${system}.default
+      ### end-4 ags config ####
+      # adw-gtk3
+      # ydotool
+      # sassc
+      # qt5ct
+      # gradience
+      # lexend
+      # material-symbols
+      #########
+      ### current ags bar ##
+      bun
+      dart-sass
+      fd
+      inputs.matugen.packages.${system}.default
+      ####
+    ];
+    file =  {
+      ".config/swaync".source = dotfiles/swaync;
+    };
+    activation = {
+      # Reload hyprland after home-manager files have been written 
+      reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      echo "Reloading Hyprland...";
+      ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl reload > /dev/null;
+      echo "Hyprland reloaded successfully";
+    '';
+    };
+  };
+  
   wayland.windowManager.hyprland = lib.mkIf hyprenable {
     enable = true;
     systemd = {
