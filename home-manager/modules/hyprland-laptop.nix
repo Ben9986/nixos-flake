@@ -7,7 +7,7 @@ wayland.windowManager.hyprland.settings = {
     "QT_AUTO_SCREEN_SCALE_FACTOR,1"
   ];
   };
-home.file = lib.mkIf config.hyprland.enable {
+home.file = {
   ".config/hypr/hyprpaper.conf".source = ../dotfiles/hypr/hyprpaper-laptop.conf;
 
   ".config/hypr/workspaces-acer.conf".source = ../dotfiles/hypr/workspaces-acer.conf;
