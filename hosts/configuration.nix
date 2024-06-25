@@ -65,6 +65,11 @@
 
   services.tailscale.enable = true;
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  services.blueman.enable = lib.mkIf config.hyprland.enable true;
+
   security = {
     polkit.enable = true;
     pam.services.swaylock = {};
