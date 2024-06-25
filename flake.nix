@@ -18,9 +18,14 @@
     ags.url = "github:Aylur/ags";
     matugen.url = "github:/InioX/Matugen?ref=v2.2.0";
     matcha.url = "git+https://codeberg.org/QuincePie/matcha.git";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ...}@inputs:
+  outputs = { nixpkgs, home-manager, nixos-generators, ...}@inputs:
   let
        system = "x86_64-linux";
   in {
@@ -37,5 +42,23 @@
           inherit inputs nixpkgs home-manager;
         }
     );
+    packages.x86_64-linux = {
+      laptop = nixos-generators.nixosGenerate {
+        format = "iso";
+        inherit system;
+        specialArgs = {
+          inherit inputs; # needed for hyprland and probs other stuff
+          host = {
+            hostName = "benlaptop";
+          };
+        };
+      modules = [
+        hosts/benlaptop
+        hosts/configuration.nix
+        hosts/modules
+        ./custom-options.nix
+         ];
+      };
+    };
   };
 }
