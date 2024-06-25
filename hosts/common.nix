@@ -1,5 +1,15 @@
 { inputs, config, lib, pkgs, ... }:
-{
+let 
+  discover-wrapped = pkgs.symlinkJoin
+    {
+      name = "discover-flatpak-backend";
+      paths = [ pkgs.kdePackages.discover ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/plasma-discover --add-flags "--backends flatpak-backend"
+      '';
+    };
+in {
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
@@ -105,7 +115,7 @@
      ntfs3g
      spotify
      kdePackages.sddm-kcm # For Login Theme in Plasma Settings
-     kdePackages.discover
+     discover-wrapped
      kdePackages.baloo
      ]
      # Hyprland stuff
