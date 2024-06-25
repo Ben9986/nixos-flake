@@ -1,5 +1,14 @@
 { pkgs, lib, config, ...}:
-{
+let codium-no-gpu = pkgs.symlinkJoin
+    {
+      name = "codium-no-gpu";
+      paths = [ pkgs.vscodium-fhs ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/codium --add-flags "--disable-gpu"
+      '';
+    };
+in {
 
   imports =
     [
@@ -90,6 +99,7 @@
     gamescope
     r2modman
     vulkan-tools
+    codium-no-gpu
   ];
 
   ## Plasma 6

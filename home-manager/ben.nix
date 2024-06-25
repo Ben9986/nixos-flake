@@ -27,7 +27,6 @@
       roboto
       git-crypt
       pavucontrol
-      vscodium-fhs
     ];
     
   };
