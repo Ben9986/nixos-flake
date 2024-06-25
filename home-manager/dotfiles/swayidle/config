@@ -1,5 +1,0 @@
-before-sleep 'swaylock -f'
-after-resume 'hyprctl dispatch dpms on & echo 2 | tee /sys/class/leds/asus::kbd_backlight/brightness'
-timeout 150 'brightnessctl -s set 10% & echo 1 | tee /sys/class/leds/asus::kbd_backlight/brightness' resume 'brightnessctl -r & echo 2 | tee /sys/class/leds/asus::kbd_backlight/brightness'
-timeout 165 'systemctl suspend'
-lock 'swaylock -f'

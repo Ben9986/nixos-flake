@@ -1,8 +1,0 @@
-mode=drun
-// normal_window=true
-allow_images=true
-allow_markup=true
-prompt="Search..."
-key_expand=Tab
-no_actions=true
-insensitive=true
