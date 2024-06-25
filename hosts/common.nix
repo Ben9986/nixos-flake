@@ -106,6 +106,7 @@
      ntfs3g
      spotify
      kdePackages.sddm-kcm # For Login Theme in Plasma Settings
+     kdePackages.discover
      ]
      # Hyprland stuff
      ++ lib.optionals(config.hyprland.enable) [
