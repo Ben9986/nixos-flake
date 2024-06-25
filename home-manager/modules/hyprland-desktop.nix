@@ -1,4 +1,4 @@
-{...}:        
+{lib, config, ...}:        
 lib.mkIf config.hyprland.enable { 
 wayland.windowManager.hyprland.settings = {
   monitor = "HDMI-A-1,2560x1080@60,auto,1,bitdepth,10";
