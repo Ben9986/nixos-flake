@@ -66,7 +66,6 @@ console-mode 2" > /boot/loader/loader.conf
   };
 
   environment.systemPackages = with pkgs; [
-    sddm-kcm
     r2modman
     # move to devshell later
     nodejs_22

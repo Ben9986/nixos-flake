@@ -95,7 +95,6 @@
     gamescope
     r2modman
     vulkan-tools
-    kdePackages.sddm-kcm # For Login Theme in Plasma Settings
   ];
 
   ## Plasma 6

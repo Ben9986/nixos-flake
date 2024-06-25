@@ -100,6 +100,7 @@
      gnome-multi-writer
      ntfs3g
      spotify
+     kdePackages.sddm-kcm # For Login Theme in Plasma Settings
      ]
      # Hyprland stuff
      ++ lib.optionals(config.hyprland.enable) [
