@@ -20,7 +20,7 @@ in
     };
     modules = [
       ./benlaptop
-      ./configuration.nix
+      ./common.nix
       ./modules
       ../custom-options.nix
          ];
@@ -35,7 +35,7 @@ in
     };
     modules = [
       ./bendesktop
-      ./configuration.nix
+      ./common.nix
       ./modules/nvidia.nix
       #./modules/nvidia-nouveau.nix
       ./modules
