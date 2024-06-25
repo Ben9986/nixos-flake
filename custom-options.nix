@@ -8,8 +8,6 @@ in {
       default = "/home/ben/flake-config";
       };
       hyprland.enable = mkEnableOption "Hyprland";
-
-      ags.enable = mkEnableOption "Ags configuration";
       vscode.disableGpu = mkOption {
         type = types.bool;
         default = false; 
@@ -18,6 +16,5 @@ in {
 
     config = {
       hyprland.enable = false;
-      ags.enable = mkIf config.hyprland.enable true;
     };
 }
