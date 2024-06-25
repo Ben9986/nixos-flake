@@ -65,8 +65,8 @@
 
   services.tailscale.enable = true;
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.enable = true; 
+  hardware.bluetooth.powerOnBoot = true;
 
   services.blueman.enable = lib.mkIf config.hyprland.enable true;
 
@@ -74,8 +74,7 @@
     polkit.enable = true;
     pam.services.swaylock = {};
     pam.services.hyprlock = {};
-  # Scheduling (used by pipewire)
-    rtkit.enable = true;
+    rtkit.enable = true; # Scheduling (used by pipewire)
   };
 
    users.users.ben = {
@@ -107,12 +106,10 @@
      spotify
      kdePackages.sddm-kcm # For Login Theme in Plasma Settings
      kdePackages.discover
+     kdePackages.baloo
      ]
      # Hyprland stuff
      ++ lib.optionals(config.hyprland.enable) [
-      # TODO remove commented pkgs if nothing is broken
-     #  xorg.xhost # for polkit apps
-     #  at-spi2-core
       polkit_gnome
       networkmanagerapplet
       blueberry
@@ -126,7 +123,6 @@
       swaynotificationcenter
       gnome.gnome-software
       cinnamon.nemo
-      libsForQt5.discover
       gtk3
       gnome.adwaita-icon-theme
       # qt5&6 wayland needed for xdph
