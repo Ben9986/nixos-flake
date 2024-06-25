@@ -113,7 +113,6 @@ in {
      gparted
      gnome-multi-writer
      ntfs3g
-     spotify
      kdePackages.sddm-kcm # For Login Theme in Plasma Settings
      discover-wrapped
      kdePackages.baloo

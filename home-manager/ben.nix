@@ -27,6 +27,7 @@
       roboto
       git-crypt
       pavucontrol
+      spotify
     ];
     
   };
