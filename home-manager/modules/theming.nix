@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, config, ...}:
 {
   dconf = {
     enable = true;
@@ -31,6 +31,7 @@
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme=true;
       };
+    gtk2.configLocation = "${config.home.homeDirectory}/.config/gtk-2.0/gtkrc-2.0";
   };
 
   qt = {
