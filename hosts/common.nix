@@ -111,6 +111,7 @@ in {
      distrobox
      gsettings-desktop-schemas
      gparted
+     snapper-gui
      gnome-multi-writer
      ntfs3g
      kdePackages.sddm-kcm # For Login Theme in Plasma Settings
