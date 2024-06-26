@@ -28,6 +28,7 @@
       git-crypt
       pavucontrol
       spotify
+      floorp
     ];
     
   };
