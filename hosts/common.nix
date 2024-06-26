@@ -2,7 +2,7 @@
 let 
   discover-wrapped = pkgs.symlinkJoin
     {
-      name = "discover-flatpak-backend";
+      name = "plasma-discover";
       paths = [ pkgs.kdePackages.discover ];
       buildInputs = [ pkgs.makeWrapper ];
       postBuild = ''
