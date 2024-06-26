@@ -1,11 +1,11 @@
-{pkgs, config, ...}:
+{pkgs, config, lib, ...}:
 {
   dconf = {
     enable = true;
     settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
-	icon-theme = "adwaita-icon-theme";
+	      icon-theme = "adwaita-icon-theme";
         cursor-theme = "phinger-cursors";
       };
     };
@@ -13,7 +13,7 @@
 
   fonts.fontconfig.enable = true;
 
-  gtk = {
+  gtk = lib.mkIf config.hyprland.enable {
     enable = true;
     theme = {
       name = "Adwaita-dark";
@@ -34,7 +34,7 @@
     gtk2.configLocation = "${config.home.homeDirectory}/.config/gtk-2.0/gtkrc-2.0";
   };
 
-  qt = {
+  qt = lib.mkIf config.hyprland.enable {
     enable = true;
     style.name = "adwaita-dark";
     style.package = pkgs.adwaita-qt;
