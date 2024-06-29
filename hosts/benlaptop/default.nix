@@ -32,6 +32,7 @@ in
       systemd-boot = {
         enable = true;
         configurationLimit = 10;
+        consoleMode = "max";
 	      extraEntries = {
 	        "windows.conf"= "
             title Windows_11
