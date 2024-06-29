@@ -33,20 +33,21 @@ in
         enable = true;
         configurationLimit = 10;
 	      extraEntries = {
-	  "windows.conf"= ''
-title Windows_11
-efi /EFI/Microsoft/Boot/bootmgfw.efi
-sort-key a-windows
-	  '';
-	};
-        extraInstallCommands = ''
-	    echo "timeout menu-hidden
-default windows.conf
-auto-entries false
-console-mode 2" > /boot/loader/loader.conf
-	  '';
-	};
+	        "windows.conf"= "
+            title Windows_11
+            efi /EFI/Microsoft/Boot/bootmgfw.efi
+            sort-key a-windows
+	        ";
+	      };
+        extraFiles = {
+          "loader/loader.conf" = pkgs.writeText "loader.conf" "timeout menu-hidden\nauto-entries false";
+        };
+        extraInstallCommands = mkMerge [
+          (mkIf config.laptop.default-windows "echo \"\ndefault windows.conf\" >> /boot/loader/loader.conf")
+          (mkIf (!config.laptop.default-windows) "echo \"\ndefault nixos-generation-*.conf\" >> /boot/loader/loader.conf")
+        ];
       };
+    };
     kernelParams = ["quiet" "splash" "udev.log_level=0" ];
     kernelPackages = pkgs.linuxPackages_zen;
     plymouth = {

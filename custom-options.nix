@@ -12,9 +12,11 @@ in {
         type = types.bool;
         default = false; 
       };
+      laptop.default-windows = mkEnableOption "booting directly to windows instead of nixos";
     };
 
     config = {
       hyprland.enable = false;
+      laptop.default-windows = false;
     };
 }
