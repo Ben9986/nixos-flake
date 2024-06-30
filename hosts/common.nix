@@ -75,6 +75,15 @@ in {
 
   services.tailscale.enable = true;
 
+  services.snapper.configs = {
+    home = {
+            SUBVOLUME = "/home";
+            ALLOW_USERS = [ "ben" ];
+            TIMELINE_CREATE = true;
+            TIMELINE_CLEANUP = true;
+          };
+  };
+
   hardware.bluetooth.enable = true; 
   hardware.bluetooth.powerOnBoot = true;
 
