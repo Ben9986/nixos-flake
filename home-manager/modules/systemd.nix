@@ -29,15 +29,19 @@
       };
   };
 
-  "notify-fail@" = {
+  "rclone-reauth@" = {
      Unit = {
-      Description = "Used for notifying the user of failed services";
+      Description = "Rclone Service Failure Script";
     };
     Install = {
       WantedBy = [ "default.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.libnotify}/bin/notify-send 'Service Failure!' '%i has failed to start' -t 4000";
+      ExecStart = "${pkgs.writeShellScript "rclone-failure" ''
+      set -eu
+      ${pkgs.libnotify}/bin/notify-send "'$1 disconnected'" "'Opening browser to re-autherise'" -t 4000
+      ${pkgs.rclone}/bin/rclone config reconnect $1: --auto-confirm -n && ${pkgs.libnotify}/bin/notify-send "'$1 reconnected'" "'$1 has been reconnected successfully'"
+      ''} %i";
       Type = "oneshot";
       };
   };
