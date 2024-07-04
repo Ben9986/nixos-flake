@@ -13,8 +13,8 @@
 
   fonts.fontconfig.enable = true;
 
-  gtk = lib.mkIf config.hyprland.enable {
-    enable = true;
+  gtk = {
+    enable = config.hyprland.enable;
     theme = {
       name = "Adwaita-dark";
       package = pkgs.gnome.gnome-themes-extra;
@@ -34,8 +34,8 @@
     gtk2.configLocation = "${config.home.homeDirectory}/.config/gtk-2.0/gtkrc-2.0";
   };
 
-  qt = lib.mkIf config.hyprland.enable {
-    enable = true;
+  qt = {
+    enable = config.hyprland.enable;
     style.name = "adwaita-dark";
     style.package = pkgs.adwaita-qt;
     platformTheme.name = "adwaita";

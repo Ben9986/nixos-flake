@@ -19,6 +19,7 @@
     };
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
+      phinger-cursors
       neovim
       wget
       rclone
