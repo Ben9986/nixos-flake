@@ -6,6 +6,9 @@ services = {
   dbus.enable = true;
   
   flatpak.enable = true;
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  libinput.enable = true;
   
   pipewire = {
     enable = true;
@@ -25,8 +28,6 @@ services = {
   xserver = {
     enable = true;
     xkb.layout = "gb";
-    # Enable touchpad support (enabled default in most desktopManager).
-    libinput.enable = true;
   };
 
   power-profiles-daemon.enable = true;
