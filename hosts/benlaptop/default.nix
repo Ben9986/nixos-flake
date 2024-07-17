@@ -70,9 +70,6 @@ in
   environment.systemPackages = with pkgs; [
     r2modman
     vscodium-fhs
-    # move to devshell later
-    nodejs_22
-    nodePackages.pnpm
     ];
 
   networking.hostName = "benlaptop";
