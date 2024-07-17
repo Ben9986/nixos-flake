@@ -2,6 +2,11 @@
 {
 programs = {
   btop.enable = true;
+  direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
   eza = {
     enable = true;
     enableZshIntegration = true;
