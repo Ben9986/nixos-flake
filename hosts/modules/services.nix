@@ -28,9 +28,11 @@ services = {
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };
+
+  power-profiles-daemon.enable = true;
   
   auto-cpufreq = {
-    enable = true;
+    enable = false;
     settings = {
     charger = {
       governer = "performance";
