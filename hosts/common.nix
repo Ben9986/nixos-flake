@@ -71,8 +71,6 @@ in {
   
   services.displayManager.defaultSession = lib.mkIf config.hyprland.enable "hyprland";
 
-  services.power-profiles-daemon.enable = lib.mkForce false;
-
   services.tailscale.enable = true;
 
   services.snapper.configs = {
