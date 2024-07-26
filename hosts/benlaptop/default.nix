@@ -83,5 +83,7 @@ in
     theme = "breeze";
   };
 
+  services.desktopManager.cosmic.enable = config.cosmic.enable;
+  services.displayManager.cosmic-greeter.enable = false;
 
 }

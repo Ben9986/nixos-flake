@@ -23,6 +23,7 @@ in
       ./common.nix
       ./modules
       ../custom-options.nix
+      inputs.nixos-cosmic.nixosModules.default
          ];
   };
   bendesktop = lib.nixosSystem {
