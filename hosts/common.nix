@@ -25,9 +25,9 @@ in {
 
   nix = {
     gc = {
-      automatic = false;
+      automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 7d";
     };
     extraOptions = ''
       # free up to 1GiB from store when less that 100MiB left
@@ -160,7 +160,7 @@ in {
     steam.enable = true;
     nh = {
       enable = true;
-      clean.enable = true;
+      clean.enable = false;
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = /. + config.flakeDir;
     };
