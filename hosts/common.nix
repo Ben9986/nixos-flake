@@ -124,6 +124,7 @@ in {
      kdePackages.sddm-kcm # For Login Theme in Plasma Settings
      discover-wrapped
      kdePackages.baloo
+     pcmanfm-qt
      ]
      # Hyprland stuff
      ++ lib.optionals(config.hyprland.enable) [
