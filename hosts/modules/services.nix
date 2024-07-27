@@ -46,4 +46,24 @@ services = {
     };
   };
 };
+  systemd.services."tailscaled" = {
+    # wants = [ "network-pre.target" "network-online.target" ];
+    # after = [ "network-online.target" "NetworkManager.service" "systemd-resolved.service" ];
+    # wantedBy = ["multi-user.target" ];
+    serviceConfig = {
+      # ExecStart="${pkgs.tailscale}/bin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port=$\{PORT} $FLAGS";
+      ExecStop="${pkgs.tailscale}/bin/tailscale down";
+      # ExecStopPost="${pkgs.tailscale}/bin/tailscaled --cleanup";
+
+      # Restart="on-failure";
+
+      # RuntimeDirectory="tailscale";
+      # RuntimeDirectoryMode="0755";
+      # StateDirectory="tailscale";
+      # StateDirectoryMode="0700";
+      # CacheDirectory="tailscale";
+      # CacheDirectoryMode="0750";
+      # Type="notify";
+    };
+  };
 }

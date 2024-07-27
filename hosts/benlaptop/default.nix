@@ -78,6 +78,10 @@ in
 
   networking.hostName = "benlaptop";
 
+  services.udev.extraRules = ''
+  SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"
+  '';
+
   ## Plasma 6
   services.desktopManager.plasma6.enable = true;
 
