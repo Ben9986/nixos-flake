@@ -17,7 +17,7 @@ in {
     };
 
     config = {
-      cosmic.enable = true;
+      cosmic.enable = false;
       hyprland.enable = false;
       laptop.default-windows = false;
     };
