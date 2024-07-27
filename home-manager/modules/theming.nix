@@ -14,7 +14,7 @@
   fonts.fontconfig.enable = true;
 
   gtk = {
-    enable = config.hyprland.enable;
+    enable = config.custom.hyprland.enable;
     theme = {
       name = "Adwaita-dark";
       package = pkgs.gnome.gnome-themes-extra;
@@ -35,7 +35,7 @@
   };
 
   qt = {
-    enable = config.hyprland.enable;
+    enable = config.custom.hyprland.enable;
     style.name = "adwaita-dark";
     style.package = pkgs.adwaita-qt;
     platformTheme.name = "adwaita";

@@ -1,6 +1,6 @@
 {inputs, config, pkgs, lib, ...}:
 let 
-hyprenable = config.hyprland.enable; 
+hyprenable = config.custom.hyprland.enable; 
 patchedhyprshot = (pkgs.hyprshot.overrideAttrs (old: rec {
   version = "git";
   src = pkgs.fetchFromGitHub {
