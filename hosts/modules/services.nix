@@ -19,10 +19,6 @@ services = {
   
   printing.enable = true;
   
-  udev.extraRules = ''
-  SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"
-  '';
-  
   upower.enable = true;
 
   xserver = {
