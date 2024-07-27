@@ -9,8 +9,8 @@
       pictures = "${config.home.homeDirectory}/Pictures";
     };
     mimeApps.defaultApplications = {
-     "text/html" = "firefox.desktop"; 
-      "application/pdf" = "firefox.desktop";
+     "text/html" = "floorp.desktop"; 
+      "application/pdf" = "floorp.desktop";
     };
   };
   xdg.systemDirs.data = [

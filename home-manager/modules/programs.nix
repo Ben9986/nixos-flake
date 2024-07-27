@@ -11,7 +11,7 @@ programs = {
     enable = true;
     enableZshIntegration = true;
   };
-  firefox.enable = true;
+  firefox.enable = false;
   gh.enable = true;
   kitty = {
     enable = true;
