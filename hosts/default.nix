@@ -41,6 +41,7 @@ in
       #./modules/nvidia-nouveau.nix
       ./modules
       ../custom-options.nix
+      inputs.nixos-cosmic.nixosModules.default
     ];
   };
   trinity = lib.nixosSystem {                                

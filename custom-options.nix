@@ -3,7 +3,10 @@ let
   inherit (lib) mkIf mkOption mkEnableOption types;
 in { 
   options.custom = {
-    cosmic.enable = mkEnableOption "pre-alpha Cosmic desktop environment";
+    cosmic = {
+      enable = mkEnableOption "pre-alpha Cosmic desktop environment";
+      greeter.enable = mkEnableOption "Cosmic DE greeter";
+    };
     flakeDir = mkOption {  
       type = types.str;
       default = "/home/ben/flake-config";
@@ -17,8 +20,11 @@ in {
   };
 
   config.custom = {
-    cosmic.enable = lib.mkDefault false;
-    # hyprland.enable = false;
+    cosmic = {
+      enable = lib.mkDefault false;
+      greeter.enable = lib.mkDefault false;
+    };
+    hyprland.enable = lib.mkDefault false;
     laptop.default-windows = false;
   };
 }
