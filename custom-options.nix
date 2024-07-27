@@ -7,18 +7,18 @@ in {
     flakeDir = mkOption {  
       type = types.str;
       default = "/home/ben/flake-config";
-      };
-      hyprland.enable = mkEnableOption "Hyprland";
-      vscode.disableGpu = mkOption {
-        type = types.bool;
-        default = false; 
-      };
-      laptop.default-windows = mkEnableOption "booting directly to windows instead of nixos";
     };
+    hyprland.enable = mkEnableOption "Hyprland";
+    laptop.default-windows = mkEnableOption "booting directly to windows instead of nixos";
+    vscode.disableGpu = mkOption {
+      type = types.bool;
+      default = false; 
+    };
+  };
 
-    config = {
-      cosmic.enable = false;
-      hyprland.enable = false;
-      laptop.default-windows = false;
-    };
+  config = {
+    cosmic.enable = false;
+    hyprland.enable = false;
+    laptop.default-windows = false;
+  };
 }
