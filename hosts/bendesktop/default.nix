@@ -15,6 +15,9 @@ in {
       ./hardware-configuration.nix
     ];
 
+  config = {
+    custom.hyprland.enable = false;
+
   boot = {
     loader.efi.canTouchEfiVariables = true;
     loader.grub = {
@@ -110,5 +113,5 @@ in {
     wayland.enable = true;
     theme = "breeze";
   };
-
+  };
 }

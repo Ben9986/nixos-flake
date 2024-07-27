@@ -21,7 +21,11 @@ in
     [
       ./hardware-configuration.nix
     ];
+
+  config = {
+    custom.hyprland.enable = false;
   
+
   boot = {
     initrd = {
       prepend = [ (toString ssdt-csc2551-acpi-table-patch) ];
@@ -44,8 +48,8 @@ in
           "loader/loader.conf" = pkgs.writeText "loader.conf" "timeout menu-hidden\nauto-entries false";
         };
         extraInstallCommands = mkMerge [
-          (mkIf config.laptop.default-windows "echo \"\ndefault windows.conf\" >> /boot/loader/loader.conf")
-          (mkIf (!config.laptop.default-windows) "echo \"\ndefault nixos-generation-*.conf\" >> /boot/loader/loader.conf")
+          (mkIf config.custom.laptop.default-windows "echo \"\ndefault windows.conf\" >> /boot/loader/loader.conf")
+          (mkIf (!config.custom.laptop.default-windows) "echo \"\ndefault nixos-generation-*.conf\" >> /boot/loader/loader.conf")
         ];
       };
     };
@@ -83,7 +87,8 @@ in
     theme = "breeze";
   };
 
-  services.desktopManager.cosmic.enable = config.cosmic.enable;
+  services.desktopManager.cosmic.enable = config.custom.cosmic.enable;
   services.displayManager.cosmic-greeter.enable = false;
 
+  };
 }

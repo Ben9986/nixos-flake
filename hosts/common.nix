@@ -61,16 +61,8 @@ in {
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = lib.mkIf (config.hyprland.enable == true) [ pkgs.xdg-desktop-portal-gtk ];
   };
   
-  # Fix Default Apps opening in Flatpaks
-  systemd.user.extraConfig = ''
-    DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
-  '';
-  
-  services.displayManager.defaultSession = lib.mkIf config.hyprland.enable "hyprland";
-
   services.tailscale.enable = true;
 
   services.snapper.configs = {
@@ -125,36 +117,9 @@ in {
      discover-wrapped
      kdePackages.baloo
      pcmanfm-qt
-     ]
-     # Hyprland stuff
-     ++ lib.optionals(config.hyprland.enable) [
-      polkit_gnome
-      networkmanagerapplet
-      blueberry
-      brightnessctl
-      font-awesome
-      udiskie
-      copyq
-      nwg-look
-      swww
-      glib # gsettings for nwg-look
-      swaynotificationcenter
-      gnome.gnome-software
-      cinnamon.nemo
-      gtk3
-      gnome.adwaita-icon-theme
-      # qt5&6 wayland needed for xdph
-      qt6.qtwayland
-      libsForQt5.qt5.qtwayland
-      libsForQt5.qt5ct
-      qt6Packages.qt6ct
      ];
 
   programs = {
-    hyprland = lib.mkIf config.hyprland.enable {
-      enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    };
     zsh.enable = true;
     steam.enable = true;
     nh = {
