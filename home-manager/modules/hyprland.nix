@@ -25,7 +25,7 @@ patchedhyprshot = (pkgs.hyprshot.overrideAttrs (old: rec {
 
 in {
 
-  home = lib.mkIf config.hyprland.enable {
+  home = lib.mkIf config.custom.hyprland.enable {
     packages = with pkgs; [ 
       hyprpaper
       patchedhyprshot
@@ -61,7 +61,7 @@ in {
     '';
     };
   };
-  programs.ags = lib.mkIf config.hyprland.enable {
+  programs.ags = lib.mkIf config.custom.hyprland.enable {
       enable = true;
       configDir = ./dotfiles/ags;
       # additional packages to add to gjs's runtime

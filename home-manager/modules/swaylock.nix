@@ -1,6 +1,6 @@
 {inputs, pkgs, config, ...}:
 {
-  programs.swaylock = pkgs.lib.mkIf config.hyprland.enable {
+  programs.swaylock = pkgs.lib.mkIf config.custom.hyprland.enable {
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {

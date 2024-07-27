@@ -85,7 +85,7 @@ in {
   hardware.bluetooth.enable = true; 
   hardware.bluetooth.powerOnBoot = true;
 
-  services.blueman.enable = lib.mkIf config.hyprland.enable true;
+  services.blueman.enable = lib.mkIf config.custom.hyprland.enable true;
 
   security = {
     polkit.enable = true;
@@ -161,7 +161,7 @@ in {
       enable = true;
       clean.enable = false;
       clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = config.flakeDir;
+      flake = config.custom.flakeDir;
     };
   };
 

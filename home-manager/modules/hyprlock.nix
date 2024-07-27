@@ -1,6 +1,6 @@
 {inputs, pkgs, lib, config, ...}:
 {
-programs.hyprlock =  lib.mkIf config.hyprland.enable {
+programs.hyprlock =  lib.mkIf config.custom.hyprland.enable {
     enable = true;
     package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
     settings = {

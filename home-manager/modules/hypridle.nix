@@ -1,6 +1,6 @@
 {inputs, pkgs, lib, config, ...}:
 {
-  services.hypridle = lib.mkIf config.hyprland.enable {
+  services.hypridle = lib.mkIf config.custom.hyprland.enable {
     enable = true;
     package = pkgs.hypridle;
     settings = { 

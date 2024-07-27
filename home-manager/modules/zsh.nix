@@ -1,6 +1,6 @@
 {config, lib, ...}:
 let 
-  flakeDir = config.flakeDir;
+  flakeDir = config.custom.flakeDir;
 in { 
 programs.zsh = {
       enable = true;
@@ -19,7 +19,7 @@ programs.zsh = {
         };
 
       shellAliases = {
-        hconf= lib.mkIf config.hyprland.enable "nvim ${flakeDir}/home-manager/modules/hyprland.nix";
+        hconf= lib.mkIf config.custom.hyprland.enable "nvim ${flakeDir}/home-manager/modules/hyprland.nix";
         hmconf="nvim ${flakeDir}/home-manager/$USER.nix";
 	      hmsw = "nh home switch";
 	      nxsw = "nh os switch";

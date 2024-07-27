@@ -22,7 +22,7 @@
       ExecStart = "${pkgs.writeShellScript "pull-flake" ''
       set -eu
       ${pkgs.coreutils}/bin/echo "Starting Git Pull..."
-      cd ${config.flakeDir}
+      cd ${config.custom.flakeDir}
       ${pkgs.libnotify}/bin/notify-send "Checking for Config Changes..." "$(${pkgs.git}/bin/git pull)" -t 4000 -e
     ''}";
       Type = "oneshot";
