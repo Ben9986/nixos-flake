@@ -13,18 +13,10 @@ in {
     };
     hyprland.enable = mkEnableOption "Hyprland";
     laptop.default-windows = mkEnableOption "booting directly to windows instead of nixos";
-    vscode.disableGpu = mkOption {
-      type = types.bool;
-      default = false; 
-    };
+    vscode.disableGpu = mkEnableOption "VScode software rendering only";
   };
 
   config.custom = {
-    cosmic = {
-      enable = lib.mkDefault false;
-      greeter.enable = lib.mkDefault false;
-    };
-    hyprland.enable = lib.mkDefault false;
-    laptop.default-windows = false;
+    laptop.default-windows = lib.mkDefault false;
   };
 }
