@@ -46,11 +46,11 @@ in {
       bun
       dart-sass
       fd
-      inputs.matugen.packages.${system}.default
+      matugen
       ####
     ];
     file =  {
-      ".config/swaync".source = dotfiles/swaync;
+      ".config/swaync".source = ../dotfiles/swaync;
     };
     activation = {
       # Reload hyprland after home-manager files have been written 
@@ -63,7 +63,7 @@ in {
   };
   programs.ags = lib.mkIf config.custom.hyprland.enable {
       enable = true;
-      configDir = ./dotfiles/ags;
+      configDir = ../dotfiles/ags;
       # additional packages to add to gjs's runtime
       extraPackages = with pkgs; [
         gtksourceview

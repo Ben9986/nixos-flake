@@ -35,7 +35,7 @@ let
     fzf
     brightnessctl
     swww
-    inputs.matugen.packages.${system}.default
+    matugen
     inputs.hyprland.packages.${system}.default
     slurp
     wf-recorder

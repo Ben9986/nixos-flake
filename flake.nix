@@ -16,7 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags.url = "github:Aylur/ags";
-    matugen.url = "github:/InioX/Matugen?ref=v2.2.0";
     matcha.url = "git+https://codeberg.org/QuincePie/matcha.git";
 
     nixos-generators = {
