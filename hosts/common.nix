@@ -63,7 +63,7 @@ in {
     xdgOpenUsePortal = true;
   };
   
-  services.tailscale.enable = true;
+  services.tailscale.enable = lib.mkDefault true;
 
   services.snapper.configs = {
     home = {
@@ -116,6 +116,7 @@ in {
      kdePackages.sddm-kcm # For Login Theme in Plasma Settings
      discover-wrapped
      kdePackages.baloo
+     kdePackages.kde-gtk-config
      pcmanfm-qt
      ];
 

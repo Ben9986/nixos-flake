@@ -103,5 +103,7 @@ in
     theme = "breeze";
   };
 
+  services.tailscale.enable = false;
+
   };
 }
