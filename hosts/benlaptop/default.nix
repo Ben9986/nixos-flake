@@ -82,6 +82,18 @@ in
   SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"
   '';
 
+  systemd.services."mic-mute-led-invert" = {
+    after= [ "multi-user.target" ];
+    wantedBy = [ "graphical.target" ];
+    unitConfig = {
+      Description="Reverse microphone mute led";
+    };
+    serviceConfig = {
+      Type="oneshot";
+      ExecStart="${pkgs.bash}/bin/bash -c 'echo follow-route > /sys/devices/virtual/sound/ctl-led/mic/mode'";
+    };
+  };
+
   ## Plasma 6
   services.desktopManager.plasma6.enable = true;
 
