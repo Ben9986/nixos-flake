@@ -22,6 +22,7 @@
       packages = with pkgs; [
         (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
         phinger-cursors
+        tela-circle-icon-theme
         neovim
         wget
         rclone
