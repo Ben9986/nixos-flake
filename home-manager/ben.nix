@@ -37,8 +37,6 @@
     };
     nixpkgs.config.allowUnfree = true;
 
-    services.easyeffects.enable = true;
-
     programs.home-manager.enable = true;
   };
 }
