@@ -21,6 +21,7 @@
       };
       packages = with pkgs; [
         (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
+        (callPackage ./modules/klassy.nix {})
         phinger-cursors
         tela-circle-icon-theme
         neovim
