@@ -233,7 +233,7 @@ in {
       "$mainMod, B, pin, active"
       "$mainMod, J, togglesplit" # dwindle
       "$mainMod SHIFT, F, fullscreen, 1" # maximise
-      "$mainMod CTRL, F, fakefullscreen" # window thinks it's fullscreen
+      "$mainMod CTRL, F, fullscreenstate, 2 0" # window thinks it's fullscreen
       "$mainMod ALT, F, fullscreen, 0" # actual fullscreen
 
       "$mainMod, K, togglegroup"
