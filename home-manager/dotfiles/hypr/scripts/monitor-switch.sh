@@ -9,6 +9,8 @@ elif echo $monitors | grep LG ; then
 	ln -sf ~/flake-config/home-manager/dotfiles/hypr/workspaces-ultrawide.conf ~/.config/hypr/workspaces-live.conf
 	notify-send --transient --icon=computer-symbolic "  Monitor Configuration" "  LG Ultrawide Monitor Activated"
 else
+	ln -sf ~/flake-config/home-manager/dotfiles/hypr/monitors-blank.conf ~/.config/hypr/monitors-live.conf
+	ln -sf ~/flake-config/home-manager/dotfiles/hypr/workspaces-blank.conf ~/.config/hypr/workspaces-live.conf
 	notify-send --transient --icon=software-update-urgent-symbolic "  Monitor Configuration" "  No pre-configured monitors detected!"
 fi
 

@@ -12,6 +12,9 @@ home.file = {
 
   ".config/hypr/workspaces-acer.conf".source = ../dotfiles/hypr/workspaces-acer.conf;
   ".config/hypr/workspaces-ultrawide.conf".source = ../dotfiles/hypr/workspaces-ultrawide.conf;
+  ".config/hypr/workspaces-blank.conf".text = "";
+
+  ".config/hypr/monitors-blank.conf".text = "";
   ".config/hypr/monitors-acer.conf".text = ''
     monitor=desc:Samsung Display Corp. 0x4171,2880x1800@90.0,0x80,1.8,bitdepth,10
     monitor=desc:Acer Technologies Acer V247Y 0x1411579A,1920x1080@74.97,1600x0,1.0,bitdepth,10
