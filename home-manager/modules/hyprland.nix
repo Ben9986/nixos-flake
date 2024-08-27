@@ -31,7 +31,7 @@ in {
       patchedhyprshot
       nwg-displays
       gnome.gnome-control-center
-      gnome.file-roller
+      file-roller
       inputs.matcha.packages.${system}.default
       ### end-4 ags config ####
       # adw-gtk3

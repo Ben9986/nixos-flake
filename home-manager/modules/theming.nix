@@ -17,7 +17,7 @@
     enable = config.custom.hyprland.enable;
     theme = {
       name = "Adwaita-dark";
-      package = pkgs.gnome.gnome-themes-extra;
+      package = pkgs.gnome-themes-extra;
     };
     cursorTheme = {
       name = "phinger-cursors";
@@ -26,7 +26,7 @@
     };
     iconTheme = {
       name = "adwaita-icon-theme";
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       };
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme=true;

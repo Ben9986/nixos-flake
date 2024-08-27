@@ -19,9 +19,9 @@ lib.mkIf config.custom.hyprland.enable {
       glib # gsettings for nwg-look
       swaynotificationcenter
       gnome.gnome-software
-      cinnamon.nemo
+      nemo-with-extensions
       gtk3
-      gnome.adwaita-icon-theme
+      adwaita-icon-theme
       # qt5&6 wayland needed for xdph
       qt6.qtwayland
       libsForQt5.qt5.qtwayland
