@@ -1,6 +1,6 @@
 {lib, config, ...}:
 let 
-  inherit (lib) mkIf mkOption mkEnableOption types;
+  inherit (lib) mkOption mkEnableOption types;
 in { 
   options.custom = {
     cosmic = {
