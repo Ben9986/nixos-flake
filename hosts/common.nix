@@ -118,9 +118,11 @@ in {
      kdePackages.baloo
      kdePackages.kde-gtk-config
      pcmanfm-qt
+     pinentry
      ];
 
   programs = {
+    gnupg.agent.enable = true;
     zsh.enable = true;
     steam.enable = true;
     nh = {
