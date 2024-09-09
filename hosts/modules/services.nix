@@ -1,64 +1,64 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
-services = {
-  accounts-daemon.enable = true;
-  
-  dbus.enable = true;
-  
-  flatpak.enable = true;
+  services = {
+    accounts-daemon.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  libinput.enable = true;
-  
-  pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber = {
+    dbus.enable = true;
+
+    flatpak.enable = true;
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+
+    pipewire = {
       enable = true;
-      extraConfig = {
-        "10-disable-camera" = {
-          "wireplumber.profiles" = {
-            main."monitor.libcamera" = "disabled";
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      wireplumber = {
+        enable = true;
+        extraConfig = {
+          "10-disable-camera" = {
+            "wireplumber.profiles" = {
+              main."monitor.libcamera" = "disabled";
+            };
           };
         };
+      };
     };
-  };
-  };
-  
-  printing.enable = true;
-  
-  upower.enable = true;
 
-  xserver = {
-    enable = true;
-    xkb.layout = "gb";
-  };
+    printing.enable = true;
 
-  power-profiles-daemon.enable = true;
-  
-  auto-cpufreq = {
-    enable = false;
-    settings = {
-    charger = {
-      governer = "performance";
-      turbo = "auto";
+    upower.enable = true;
+
+    xserver = {
+      enable = true;
+      xkb.layout = "gb";
     };
-    battery = {
-      governer = "powersave";
-      turbo = "auto";
-    };
+
+    power-profiles-daemon.enable = true;
+
+    auto-cpufreq = {
+      enable = false;
+      settings = {
+        charger = {
+          governer = "performance";
+          turbo = "auto";
+        };
+        battery = {
+          governer = "powersave";
+          turbo = "auto";
+        };
+      };
     };
   };
-};
   systemd.services."tailscaled" = {
     # wants = [ "network-pre.target" "network-online.target" ];
     # after = [ "network-online.target" "NetworkManager.service" "systemd-resolved.service" ];
     # wantedBy = ["multi-user.target" ];
     serviceConfig = {
       # ExecStart="${pkgs.tailscale}/bin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port=$\{PORT} $FLAGS";
-      ExecStop="${pkgs.tailscale}/bin/tailscale down";
+      ExecStop = "${pkgs.tailscale}/bin/tailscale down";
       # ExecStopPost="${pkgs.tailscale}/bin/tailscaled --cleanup";
 
       # Restart="on-failure";

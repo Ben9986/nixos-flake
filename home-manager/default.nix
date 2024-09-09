@@ -1,4 +1,10 @@
-{lib, inputs, nixpkgs, home-manager, ... }:
+{
+  lib,
+  inputs,
+  nixpkgs,
+  home-manager,
+  ...
+}:
 
 let
   system = "x86_64-linux";
@@ -7,7 +13,9 @@ in
 {
   "ben@benlaptop" = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+    };
     modules = [
       ./ben.nix
       ../custom-options.nix
@@ -16,16 +24,18 @@ in
       inputs.hyprland.homeManagerModules.default
     ];
   };
-"ben@bendesktop" = home-manager.lib.homeManagerConfiguration {
+  "ben@bendesktop" = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+    };
     modules = [
       ./ben.nix
       ../custom-options.nix
       ./modules
       ./modules/hyprland-desktop.nix
       inputs.hyprland.homeManagerModules.default
-      {config.vscode.disableGpu = true;}
+      { config.vscode.disableGpu = true; }
     ];
   };
 }

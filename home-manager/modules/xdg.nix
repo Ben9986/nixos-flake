@@ -1,4 +1,9 @@
-{config, pkgs, lib, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   xdg = {
     userDirs = {
@@ -9,7 +14,7 @@
       pictures = "${config.home.homeDirectory}/Pictures";
     };
     mimeApps.defaultApplications = {
-     "text/html" = "floorp.desktop"; 
+      "text/html" = "floorp.desktop";
       "application/pdf" = "floorp.desktop";
     };
   };

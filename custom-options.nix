@@ -1,13 +1,14 @@
-{lib, config, ...}:
-let 
+{ lib, config, ... }:
+let
   inherit (lib) mkOption mkEnableOption types;
-in { 
+in
+{
   options.custom = {
     cosmic = {
       enable = mkEnableOption "pre-alpha Cosmic desktop environment";
       greeter.enable = mkEnableOption "Cosmic DE greeter";
     };
-    flakeDir = mkOption {  
+    flakeDir = mkOption {
       type = types.str;
       default = "/home/ben/flake-config";
     };

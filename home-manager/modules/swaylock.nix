@@ -1,10 +1,15 @@
-{inputs, pkgs, config, ...}:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
   programs.swaylock = pkgs.lib.mkIf config.custom.hyprland.enable {
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {
-      "color"="303336";
+      "color" = "303336";
       "ignore-empty-password" = true;
       "indicator-caps-lock" = true;
       "screenshots" = true;

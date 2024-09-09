@@ -1,8 +1,13 @@
-{pkgs, lib, config, ...}:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
-{ 
+{
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -25,7 +30,7 @@
     open = false;
 
     # Enable the Nvidia settings menu,
-        # accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Only sha256_64bit and settingsSha256 need to be set for most systems.
@@ -39,5 +44,5 @@
       persistencedSha256 = lib.fakeSha256;
     };
   };
- 
+
 }

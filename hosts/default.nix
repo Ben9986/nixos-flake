@@ -1,10 +1,15 @@
-{lib, inputs, nixpkgs, home-manager}:
+{
+  lib,
+  inputs,
+  nixpkgs,
+  home-manager,
+}:
 let
-  system = "x86_64-linux";                                  # System Architecture
+  system = "x86_64-linux"; # System Architecture
 
   pkgs = import nixpkgs {
     inherit system;
-    config.allowUnfree = true;                              # Allow Proprietary Software
+    config.allowUnfree = true; # Allow Proprietary Software
   };
 
   lib = nixpkgs.lib;
@@ -24,7 +29,7 @@ in
       ./modules
       ../custom-options.nix
       inputs.nixos-cosmic.nixosModules.default
-         ];
+    ];
   };
   bendesktop = lib.nixosSystem {
     inherit system;
@@ -44,7 +49,7 @@ in
       inputs.nixos-cosmic.nixosModules.default
     ];
   };
-  trinity = lib.nixosSystem {                                
+  trinity = lib.nixosSystem {
     inherit system;
     specialArgs = {
       inherit inputs;

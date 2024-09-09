@@ -1,19 +1,28 @@
-{ inputs, config, lib, pkgs, ... }:
-let 
-  discover-wrapped = pkgs.symlinkJoin
-    {
-      name = "plasma-discover";
-      paths = [ pkgs.kdePackages.discover ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/plasma-discover --add-flags "--backends flatpak-backend"
-      '';
-    };
-in {
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  discover-wrapped = pkgs.symlinkJoin {
+    name = "plasma-discover";
+    paths = [ pkgs.kdePackages.discover ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/plasma-discover --add-flags "--backends flatpak-backend"
+    '';
+  };
+in
+{
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/nix".options = [
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -21,7 +30,7 @@ in {
   console = {
     font = "iso01-12x22";
     useXkbConfig = true; # use xkbOptions in tty.
-   };
+  };
 
   nix = {
     gc = {
@@ -34,21 +43,30 @@ in {
         min-free = ${toString (100 * 1024 * 1024)}
         max-free = ${toString (1024 * 1024 * 1024)}
         experimental-features = nix-command flakes
-      '';
+    '';
     settings = {
       auto-optimise-store = true;
-      trusted-users = [ "root" "ben" ];
-      trusted-substituters = ["https://hyprland.cachix.org"];
-      substituters = ["https://hyprland.cachix.org" "https://cosmic.cachix.org/" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+      trusted-users = [
+        "root"
+        "ben"
+      ];
+      trusted-substituters = [ "https://hyprland.cachix.org" ];
+      substituters = [
+        "https://hyprland.cachix.org"
+        "https://cosmic.cachix.org/"
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      ];
     };
     package = pkgs.nixFlakes;
   };
-  
+
   nixpkgs.config.allowUnfree = true;
 
   networking.networkmanager.enable = true;
-  
+
   time = {
     timeZone = "Europe/London";
     # Needed for Windows dual boot
@@ -62,64 +80,74 @@ in {
     enable = true;
     xdgOpenUsePortal = true;
   };
-  
+
   services.tailscale.enable = lib.mkDefault true;
 
   services.snapper.configs = {
     home = {
-            SUBVOLUME = "/home";
-            ALLOW_USERS = [ "ben" ];
-            TIMELINE_CREATE = true;
-            TIMELINE_CLEANUP = true;
-          };
+      SUBVOLUME = "/home";
+      ALLOW_USERS = [ "ben" ];
+      TIMELINE_CREATE = true;
+      TIMELINE_CLEANUP = true;
+    };
   };
 
-  hardware.bluetooth.enable = true; 
+  hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
   services.blueman.enable = lib.mkIf config.custom.hyprland.enable true;
 
   security = {
     polkit.enable = true;
-    pam.services.swaylock = {};
-    pam.services.hyprlock = {};
+    pam.services.swaylock = { };
+    pam.services.hyprlock = { };
     rtkit.enable = true; # Scheduling (used by pipewire)
   };
 
-   users.users.ben = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" "input" "networkmanager" "video" "docker" ];
-     description = "Ben Carmichael";
-     initialPassword = "password";
-     shell = pkgs.zsh;
-     packages = with pkgs; [
-     ];
-   };
+  users.users.ben = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "input"
+      "networkmanager"
+      "video"
+      "docker"
+    ];
+    description = "Ben Carmichael";
+    initialPassword = "password";
+    shell = pkgs.zsh;
+    packages =
+      with pkgs;
+      [
+      ];
+  };
 
-  environment.variables = { NIXOS_OZONE_WL = "1"; };
+  environment.variables = {
+    NIXOS_OZONE_WL = "1";
+  };
   environment.etc = {
     "blossom.jpg".source = ./blossom.jpg;
   };
 
-   environment.systemPackages = with pkgs; [
-     (callPackage ./modules/sddm-sugar-dark.nix {})
-     (callPackage ./modules/sddm-astronaut-theme.nix {})
-     appimage-run
-     git
-     p7zip
-     distrobox
-     gsettings-desktop-schemas
-     gparted
-     snapper-gui
-     gnome-multi-writer
-     ntfs3g
-     kdePackages.sddm-kcm # For Login Theme in Plasma Settings
-     discover-wrapped
-     kdePackages.baloo
-     kdePackages.kde-gtk-config
-     pcmanfm-qt
-     pinentry
-     ];
+  environment.systemPackages = with pkgs; [
+    (callPackage ./modules/sddm-sugar-dark.nix { })
+    (callPackage ./modules/sddm-astronaut-theme.nix { })
+    appimage-run
+    git
+    p7zip
+    distrobox
+    gsettings-desktop-schemas
+    gparted
+    snapper-gui
+    gnome-multi-writer
+    ntfs3g
+    kdePackages.sddm-kcm # For Login Theme in Plasma Settings
+    discover-wrapped
+    kdePackages.baloo
+    kdePackages.kde-gtk-config
+    pcmanfm-qt
+    pinentry
+  ];
 
   programs = {
     gnupg.agent.enable = true;
@@ -142,4 +170,3 @@ in {
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
-

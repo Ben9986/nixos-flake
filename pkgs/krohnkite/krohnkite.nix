@@ -1,40 +1,48 @@
-{ fetchFromGitHub, pkgs }:
-  pkgs.buildNpmPackage rec {
-    pname = "krohnkite";
-    version = "0.9.7";
+{ lib, pkgs }:
+pkgs.buildNpmPackage rec {
+  pname = "krohnkite";
+  version = "0.9.7";
 
-    dontWrapQtApps=true;
-    npmDepsHash = "sha256-My1goFEoZW9kFA3zb8xKPxAPXm6bypyq+ajPM8zVOHQ=";
+  src = pkgs.fetchFromGitHub {
+    owner = "anametologin";
+    repo = "krohnkite";
+    rev = "refs/tags/${version}";
+    hash = "sha256-8A3zW5tK8jK9fSxYx28b8uXGsvxEoUYybU0GaMD2LNw=";
+  };
 
-    nativeBuildInputs =  with pkgs; [
-      kdePackages.kpackage
-      kdePackages.kwin
-      nodePackages.npm
-      p7zip
-    ];
-    # Fixed package-lock needed for reproducibility. Cannot build without.
-    postPatch = ''
-      cp ${./package-lock.json} package-lock.json
-      chmod +w package-lock.json
-    '';
+  npmDepsHash = "sha256-My1goFEoZW9kFA3zb8xKPxAPXm6bypyq+ajPM8zVOHQ=";
 
-    buildPhase = ''
-      npm run tsc --
-    '';
+  dontWrapQtApps = true;
 
-    installPhase = ''
-      runHook preInstall
+  nodejs = pkgs.nodejs_22;
 
-      make ${pname}-${version}.kwinscript
-      kpackagetool6 --type=KWin/Script --install=${pname}-${version}.kwinscript --packageroot=$out/share/kwin/scripts
+  nativeBuildInputs = [
+    pkgs.kdePackages.kpackage
+    pkgs.zip
+    pkgs.kdePackages.kwin
+  ];
 
-      runHook postInstall
-    '';
+  postPatch = ''
+    cp ${./package-lock.json} package-lock.json
+    sed -i 's/7z a -tzip/zip -r/g' Makefile
+  '';
 
-    src = fetchFromGitHub {
-      owner = "anametologin";
-      repo = "krohnkite";
-      rev =  version;
-      hash = "sha256-8A3zW5tK8jK9fSxYx28b8uXGsvxEoUYybU0GaMD2LNw=";
-    };
-  }
+  npmBuildScript = "tsc";
+
+  installPhase = ''
+    runHook preInstall
+
+    make krohnkite-${version}.kwinscript
+    kpackagetool6 --type=KWin/Script --install=krohnkite-${version}.kwinscript --packageroot=$out/share/kwin/scripts
+
+    runHook postInstall
+  '';
+
+  meta = {
+    description = "Dynamic Tiling Extension for KWin 6";
+    homepage = "https://github.com/anametologin/krohnkite";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ ben9986 ];
+    platforms = lib.platforms.all;
+  };
+}

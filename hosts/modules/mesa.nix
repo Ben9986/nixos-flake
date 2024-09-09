@@ -1,7 +1,8 @@
-{inputs, pkgs, ...}:
+{ inputs, pkgs, ... }:
 let
-pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in {
+  pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
+{
   hardware.opengl = {
     package = pkgs-unstable.mesa.drivers;
 

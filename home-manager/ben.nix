@@ -1,28 +1,41 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
 
-  imports = [ 
+  imports = [
     inputs.ags.homeManagerModules.default
-    ];
+  ];
   config = {
-      custom.hyprland.enable = false;
+    custom.hyprland.enable = false;
 
     home = {
       username = "ben";
       homeDirectory = "/home/ben";
       stateVersion = "23.05"; # Please read the comment before changing.
-      
+
       sessionVariables = {
         EDITOR = "nvim";
         VISIAL = "nvim";
         PAGER = "less";
         PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
-        RANGER_LOAD_DEFAULT_RC="false";
+        RANGER_LOAD_DEFAULT_RC = "false";
       };
       packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "RobotoMono" "JetBrainsMono" "SpaceMono" "Ubuntu"]; })
-        (callPackage ../pkgs/klassy.nix {})
-        (callPackage ../pkgs/krohnkite/krohnkite.nix {})
+        (nerdfonts.override {
+          fonts = [
+            "RobotoMono"
+            "JetBrainsMono"
+            "SpaceMono"
+            "Ubuntu"
+          ];
+        })
+        (callPackage ../pkgs/klassy.nix { })
+        (callPackage ../pkgs/krohnkite/krohnkite.nix { })
         phinger-cursors
         tela-circle-icon-theme
         neovim
@@ -37,7 +50,7 @@
         floorp
         konsave
       ];
-      
+
     };
     nixpkgs.config.allowUnfree = true;
 
