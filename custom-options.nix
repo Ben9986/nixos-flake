@@ -18,6 +18,6 @@ in
   };
 
   config.custom = {
-    laptop.default-windows = lib.mkDefault false;
+    laptop.default-windows = lib.mkDefault true;
   };
 }
