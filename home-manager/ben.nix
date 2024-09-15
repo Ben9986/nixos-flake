@@ -49,6 +49,8 @@
         spotify
         floorp
         konsave
+        (vivaldi.override { qt5 = pkgs.qt6; })
+        vivaldi-ffmpeg-codecs
       ];
 
     };
