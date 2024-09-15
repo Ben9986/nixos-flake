@@ -35,7 +35,7 @@
           ];
         })
         (callPackage ../pkgs/klassy.nix { })
-        (callPackage ../pkgs/krohnkite/krohnkite.nix { })
+        kdePackages.krohnkite
         phinger-cursors
         tela-circle-icon-theme
         neovim
