@@ -95,11 +95,11 @@ in
     #    };
     #  };
 
-    # Disable suspend as it crashes hyprland on nvidia
-    systemd.services.systemd-suspend.enable = false;
-    systemd.targets.suspend.enable = false;
-
-    networking.hostName = "bendesktop";
+  # Disable suspend as it crashes hyprland on nvidia
+ systemd.services.systemd-suspend.enable = !config.custom.hyprland.enable;
+ systemd.targets.suspend.enable = !config.custom.hyprland.enable;
+  
+  networking.hostName = "bendesktop";
 
     environment.systemPackages = with pkgs; [
       mangohud
