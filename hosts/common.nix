@@ -112,6 +112,7 @@ in
       "networkmanager"
       "video"
       "docker"
+      "ydotool"
     ];
     description = "Ben Carmichael";
     initialPassword = "password";
@@ -159,6 +160,7 @@ in
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = config.custom.flakeDir;
     };
+    ydotool.enable = true;
   };
 
   # This value determines the NixOS release from which the default

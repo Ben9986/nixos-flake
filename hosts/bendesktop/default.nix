@@ -94,6 +94,8 @@ in
     #    ];
     #    };
     #  };
+  
+  hardware.logitech.wireless.enable = true;
 
   # Disable suspend as it crashes hyprland on nvidia
  systemd.services.systemd-suspend.enable = !config.custom.hyprland.enable;
@@ -110,6 +112,7 @@ in
       r2modman
       vulkan-tools
       codium-no-gpu
+      solaar
     ];
 
     ## Plasma 6
