@@ -148,6 +148,8 @@ in
     kdePackages.kde-gtk-config
     pcmanfm-qt
     pinentry
+    localsend
+    nix-output-monitor
   ];
 
   programs = {

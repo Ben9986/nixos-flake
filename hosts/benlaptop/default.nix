@@ -83,6 +83,7 @@ in
     environment.systemPackages = with pkgs; [
       r2modman
       vscodium-fhs
+      mathematica
     ];
 
     networking.hostName = "benlaptop";
