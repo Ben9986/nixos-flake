@@ -60,7 +60,7 @@ in
         "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
       ];
     };
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
   };
 
   nixpkgs.config.allowUnfree = true;
