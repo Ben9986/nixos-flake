@@ -1,13 +1,13 @@
 { lib, pkgs }:
 pkgs.stdenv.mkDerivation rec {
   pname = "klassy";
-  version = "6.1.breeze6.0.3";
+  version = "6.2.breeze6.2.1";
 
   src = pkgs.fetchFromGitHub {
     owner = "paulmcauley";
     repo = "klassy";
     rev = "refs/tags/${version}";
-    hash = "sha256-D8vjc8LT+pn6Qzn9cSRL/TihrLZN4Y+M3YiNLPrrREc=";
+    hash = "sha256-tFqze3xN1XECY74Gj0nScis7DVNOZO4wcfeA7mNZT5M=";
   };
 
   dontWrapQtApps = true;
