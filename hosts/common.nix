@@ -160,6 +160,7 @@ in
   ];
 
   programs = {
+    fuse.userAllowOther = true;
     gnupg.agent.enable = true;
     zsh.enable = true;
     steam.enable = true;
