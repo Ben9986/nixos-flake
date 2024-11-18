@@ -77,7 +77,7 @@
     };
     kitty = {
       enable = true;
-      theme = "Cherry Midnight";
+      themeFile = "cherry-midnight";
       settings = {
         enable_audio_bell = false;
         editor = "nvim";
