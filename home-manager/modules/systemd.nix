@@ -40,7 +40,8 @@
         ExecStart = "${pkgs.writeShellScript "rclone-failure" ''
           set -eu
           ${pkgs.libnotify}/bin/notify-send "'$1 disconnected'" "'Opening browser to re-autherise'" -t 4000
-          ${pkgs.rclone}/bin/rclone config reconnect $1: --auto-confirm -n && ${pkgs.libnotify}/bin/notify-send "'$1 reconnected'" "'$1 has been reconnected successfully'"
+          ${pkgs.rclone}/bin/rclone config reconnect $1: --auto-confirm -n && ${pkgs.libnotify}/bin/notify-send "'$1 reconnected'" "'$1 has been reconnected successfully'" && exit 0
+          ${pkgs.libnotify}/bin/notify-send "'$1 Connection Failure'" "'Failed to re-athorise connection'" -t 10000 && exit 1
         ''} %i";
         Type = "oneshot";
       };
@@ -51,7 +52,7 @@
         Description = "rclone: Remote FUSE filesystem for cloud storage config %i";
         After = "network-online.target";
         Wants = "network-online.target";
-        OnFailure = "notify-fail@OneDrive-Strathclyde.service";
+        OnFailure = "rclone-reauth@OneDrive-Strathclyde.service";
       };
       Install = {
         WantedBy = [ "default.target" ];
@@ -72,7 +73,7 @@
         Description = "rclone: Remote FUSE filesystem for cloud storage config %i";
         After = "network-online.target";
         Wants = "network-online.target";
-        OnFailure = "notify-fail@OneDrive-Personal.service";
+        OnFailure = "rclone-reauth@OneDrive-Personal.service";
       };
       Install = {
         WantedBy = [ "default.target" ];
