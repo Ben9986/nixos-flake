@@ -75,7 +75,7 @@
         };
       };
     };
-    kitty = {
+    kitty = pkgs.lib.mkIf config.custom.hyprland.enable {
       enable = true;
       themeFile = "cherry-midnight";
       settings = {
@@ -91,7 +91,7 @@
         pkgs.vimPlugins.yuck-vim
       ];
     };
-    yazi = {
+    yazi = pkgs.lib.mkIf config.custom.hyprland.enable {
       enable = true;
       enableZshIntegration = true;
       settings = {

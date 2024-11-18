@@ -14,8 +14,8 @@
       pictures = "${config.home.homeDirectory}/Pictures";
     };
     mimeApps.defaultApplications = {
-      "text/html" = "floorp.desktop";
-      "application/pdf" = "floorp.desktop";
+      "text/html" = "vivaldi-stable.desktop";
+      "application/pdf" = "vivaldi-stable.desktop";
     };
   };
   xdg.systemDirs.data = [

@@ -19,8 +19,8 @@
       stateVersion = "23.05"; # Please read the comment before changing.
 
       sessionVariables = {
-        EDITOR = "nvim";
-        VISIAL = "nvim";
+        EDITOR = "hx";
+        VISIAL = "hx";
         PAGER = "less";
         PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
         RANGER_LOAD_DEFAULT_RC = "false";
