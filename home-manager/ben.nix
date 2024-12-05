@@ -25,15 +25,7 @@
         PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
         RANGER_LOAD_DEFAULT_RC = "false";
       };
-      packages = with pkgs; [
-        (nerdfonts.override {
-          fonts = [
-            "RobotoMono"
-            "JetBrainsMono"
-            "SpaceMono"
-            "Ubuntu"
-          ];
-        })
+      packages = lib.mkMerge [ (with pkgs; [
         (callPackage ../pkgs/klassy.nix { })
         kdePackages.krohnkite
         phinger-cursors
@@ -52,8 +44,14 @@
         (vivaldi.override { qt5 = pkgs.qt6; })
         vivaldi-ffmpeg-codecs
         libreoffice-qt6-fresh
+      ])
+      (with pkgs.nerd-fonts; [
+        roboto-mono
+        jetbrains-mono
+        space-mono
+        ubuntu
+      ])
       ];
-
     };
     nixpkgs.config.allowUnfree = true;
 
