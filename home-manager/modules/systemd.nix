@@ -34,9 +34,10 @@
         Description = "Rclone Service Failure Script";
       };
       Install = {
-        WantedBy = [ "default.target" ];
+        WantedBy = [ "network-online.target" ];
       };
       Service = {
+        ExecStartPre = "sleep 5";
         ExecStart = "${pkgs.writeShellScript "rclone-failure" ''
           set -eu
           ${pkgs.libnotify}/bin/notify-send "'$1 disconnected'" "'Opening browser to re-autherise'" -t 4000
@@ -55,7 +56,7 @@
         OnFailure = "rclone-reauth@OneDrive-Strathclyde.service";
       };
       Install = {
-        WantedBy = [ "default.target" ];
+        WantedBy = [ "network-online.target" ];
       };
       Service = {
         Type = "notify";
@@ -76,7 +77,7 @@
         OnFailure = "rclone-reauth@OneDrive-Personal.service";
       };
       Install = {
-        WantedBy = [ "default.target" ];
+        WantedBy = [ "network-online.target" ];
       };
       Service = {
         Type = "notify";
