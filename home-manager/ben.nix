@@ -38,12 +38,14 @@
         roboto
         git-crypt
         pavucontrol
+        onedrivegui
         spotify
         floorp
         konsave
         (vivaldi.override { qt5 = pkgs.qt6; })
         vivaldi-ffmpeg-codecs
         libreoffice-qt6-fresh
+        zotero
       ])
       (with pkgs.nerd-fonts; [
         roboto-mono
