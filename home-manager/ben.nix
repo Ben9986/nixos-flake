@@ -54,6 +54,12 @@
         ubuntu
       ])
       ];
+
+      file = {
+        ".config/onedrive-launcher".text = ''onedrive onedrive-strath'';
+        ".config/onedrive/config".text = ''sync_dir = "/home/ben/OneDrive-Personal"'';
+        ".config/onedrive-strath/config".text = ''sync_dir = "/home/ben/OneDrive-Strathclyde"'';
+      };
     };
     nixpkgs.config.allowUnfree = true;
 

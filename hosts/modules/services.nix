@@ -10,6 +10,8 @@
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
 
+    onedrive.enable = true;
+
     pipewire = {
       enable = true;
       alsa.enable = true;
