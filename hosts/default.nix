@@ -27,6 +27,7 @@ in
       ./benlaptop
       ./common.nix
       ./modules
+      ./modules/virtualisation.nix
       ../custom-options.nix
       inputs.nixos-cosmic.nixosModules.default
     ];
