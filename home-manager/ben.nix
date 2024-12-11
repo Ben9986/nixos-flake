@@ -62,15 +62,21 @@
         ''
         sync_dir = "/home/ben/OneDrive-Strathclyde"
         sync_root_files = "true"
+        sync_business_shared_items = "true"
         '';
         ".config/onedrive-strath/sync_list".text = 
         ''
         !/Pictures/
         !/Ben @ University of Strathclyde/
+        !dp0/
+        !*.mechdb
+
         /Attachments/
         /Desktop/
         /Documents/
+        /folder_BC/
         /Obsidian Vaults/
+        /Tethers_publications/
         /Y4 Project/
         '';
       };
