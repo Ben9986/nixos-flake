@@ -63,7 +63,7 @@ in
         "splash"
         "udev.log_level=0"
       ];
-      kernelPackages = pkgs.linuxPackages_zen;
+      kernelPackages = pkgs.linuxPackages_6_11;
       plymouth = {
         enable = true;
         theme = "bgrt";
