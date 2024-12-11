@@ -58,7 +58,21 @@
       file = {
         ".config/onedrive-launcher".text = ''onedrive onedrive-strath'';
         ".config/onedrive/config".text = ''sync_dir = "/home/ben/OneDrive-Personal"'';
-        ".config/onedrive-strath/config".text = ''sync_dir = "/home/ben/OneDrive-Strathclyde"'';
+        ".config/onedrive-strath/config".text = 
+        ''
+        sync_dir = "/home/ben/OneDrive-Strathclyde"
+        sync_root_files = "true"
+        '';
+        ".config/onedrive-strath/sync_list".text = 
+        ''
+        !/Pictures/
+        !/Ben @ University of Strathclyde/
+        /Attachments/
+        /Desktop/
+        /Documents/
+        /Obsidian Vaults/
+        /Y4 Project/
+        '';
       };
     };
     nixpkgs.config.allowUnfree = true;
