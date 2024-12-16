@@ -58,10 +58,12 @@ in
           ];
         };
       };
+      resumeDevice = "/dev/disk/by-uuid/6a68dc0e-442c-4165-9516-aac2766b5ff1";
       kernelParams = [
         "quiet"
         "splash"
         "udev.log_level=0"
+        "resume_offset=47355654"
       ];
       kernelPackages = pkgs.linuxPackages_6_11;
       plymouth = {
@@ -79,6 +81,13 @@ in
       };
 
     };
+
+    swapDevices = [
+    {
+      device = "/swap/swapfile";
+      options = [ "sw" ];
+    }
+  ];
 
     environment.systemPackages = with pkgs; [
       r2modman
