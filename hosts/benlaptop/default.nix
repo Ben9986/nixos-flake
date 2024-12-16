@@ -102,6 +102,11 @@ in
         ExecStart = "${pkgs.bash}/bin/bash -c 'echo follow-route > /sys/devices/virtual/sound/ctl-led/mic/mode'";
       };
     };
+    systemd.sleep.extraConfig = ''
+    AllowHibernation=yes
+    AllowHybridSleep=yes
+    AllowSuspendThenHibernate=yes
+    '';   
 
     ## Plasma 6
     services.desktopManager.plasma6.enable = true;

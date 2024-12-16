@@ -24,8 +24,8 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  boot.resumeDevice = "/dev/nvme0n1";
-  boot.kernelParams = [ "resume_offset=9475469" ];
+  boot.resumeDevice = "/dev/disk/by-uuid/6a68dc0e-442c-4165-9516-aac2766b5ff1";
+  boot.kernelParams = [ "resume_offset=47355654" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/6a68dc0e-442c-4165-9516-aac2766b5ff1";
@@ -65,14 +65,13 @@
     fsType = "btrfs";
     options = [
       "subvol=swap"
-      "noatime"
     ];
   };
 
   swapDevices = [
     {
       device = "/swap/swapfile";
-      size = 19 * 1024;
+      options = [ "sw" ];
     }
   ];
 
