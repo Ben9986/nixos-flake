@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 27cc41efc..561d27e30 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.16)
+ project(klassy)
+-set(PROJECT_VERSION "6.2.breeze6.2.1")
++set(PROJECT_VERSION "6.2.1")
+ set(PROJECT_VERSION_MAJOR 6)
+ 
+ add_definitions( -DKLASSY_VERSION="${PROJECT_VERSION}" -DKLASSY_GIT_MASTER=0)

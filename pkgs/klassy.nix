@@ -6,13 +6,17 @@ pkgs.stdenv.mkDerivation rec {
   src = pkgs.fetchFromGitHub {
     owner = "paulmcauley";
     repo = "klassy";
-    rev = "refs/tags/${version}";
+    tag = "${version}";
     hash = "sha256-tFqze3xN1XECY74Gj0nScis7DVNOZO4wcfeA7mNZT5M=";
   };
 
   dontWrapQtApps = true;
 
   cmakeFlags = [ "-DBUILD_QT5=OFF" ];
+
+  patches = [
+    ./setVersion.patch
+  ];
 
   nativeBuildInputs = with pkgs; [
     kdePackages.extra-cmake-modules
