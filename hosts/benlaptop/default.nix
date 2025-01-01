@@ -113,8 +113,8 @@ in
     };
     systemd.sleep.extraConfig = ''
     AllowHibernation=yes
-    AllowHybridSleep=yes
-    AllowSuspendThenHibernate=yes
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
     '';   
 
     ## Plasma 6
