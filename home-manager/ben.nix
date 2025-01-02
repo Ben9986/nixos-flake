@@ -37,6 +37,7 @@
         cantarell-fonts
         roboto
         git-crypt
+        ghostty
         pavucontrol
         onedrivegui
         spotify
