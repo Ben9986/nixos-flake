@@ -105,16 +105,16 @@ in
   
   networking.hostName = "bendesktop";
 
-    environment.systemPackages = with pkgs; [
-      mangohud
-      gamemode
-      gamescope
-      r2modman
-      vulkan-tools
-      codium-no-gpu
-      solaar
-    ];
-
+  environment.systemPackages = with pkgs; [
+    mangohud
+    gamemode
+    gamescope
+    r2modman
+    vulkan-tools
+    codium-no-gpu
+    solaar
+  ];
+  
     ## Plasma 6
     services.desktopManager.plasma6.enable = true;
 
@@ -123,5 +123,10 @@ in
       wayland.enable = true;
       theme = "breeze";
     };
+
+    environment.variables = {
+    # needed for smoother fonts on hidpi display
+    QT_SCALE_FACTOR_ROUNDING_POLICY="RoundPreferFloor";
+  };
   };
 }
