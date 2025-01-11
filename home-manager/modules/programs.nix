@@ -85,6 +85,10 @@
         shell_integration = true;
       };
     };
+    navi = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     neovim = {
       defaultEditor = true;
       plugins = [
