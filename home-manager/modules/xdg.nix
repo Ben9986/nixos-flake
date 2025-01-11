@@ -14,6 +14,7 @@
       pictures = "${config.home.homeDirectory}/Pictures";
     };
     mimeApps.defaultApplications = {
+      "text/plain" = "helix.desktop";
       "text/html" = "vivaldi-stable.desktop";
       "application/pdf" = "vivaldi-stable.desktop";
     };
