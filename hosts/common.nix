@@ -80,9 +80,6 @@ in
     hardwareClockInLocalTime = true;
   };
 
-  # Was weirdly required for pipewire to install
-  hardware.pulseaudio.enable = false;
-
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
