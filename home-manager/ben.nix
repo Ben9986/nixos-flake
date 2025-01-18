@@ -40,6 +40,7 @@
         ghostty
         pavucontrol
         onedrivegui
+        obsidian
         spotify
         floorp
         konsave
