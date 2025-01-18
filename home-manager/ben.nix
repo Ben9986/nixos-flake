@@ -31,8 +31,6 @@
         phinger-cursors
         tela-circle-icon-theme
         neovim
-        wget
-        rclone
         libnotify
         cantarell-fonts
         roboto
@@ -42,7 +40,6 @@
         onedrivegui
         obsidian
         spotify
-        floorp
         konsave
         (vivaldi.override { qt5 = pkgs.qt6; })
         vivaldi-ffmpeg-codecs

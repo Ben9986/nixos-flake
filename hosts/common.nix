@@ -142,8 +142,6 @@ in
     (callPackage ./modules/sddm-astronaut-theme.nix { })
     appimage-run
     git
-    p7zip
-    distrobox
     gsettings-desktop-schemas
     gparted
     snapper-gui
@@ -153,7 +151,6 @@ in
     discover-wrapped
     kdePackages.baloo
     kdePackages.kde-gtk-config
-    pcmanfm-qt
     pinentry
     localsend
     nix-output-monitor
