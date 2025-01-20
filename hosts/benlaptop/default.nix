@@ -115,6 +115,7 @@ in
     AllowHibernation=yes
     AllowHybridSleep=no
     AllowSuspendThenHibernate=no
+    HibernateMode=shutdown
     '';   
 
     ## Plasma 6
