@@ -5,7 +5,7 @@
   ];
 
   config = {
-    flakeDir = "/home/trinity/flake-config";
+    custom.flakeDir = "/home/trinity/flake-config";
 
     boot = {
       initrd.verbose = false;
@@ -44,7 +44,7 @@
           "trinity"
         ];
       };
-      package = pkgs.nixFlakes;
+      package = pkgs.nixVersions.stable;
     };
 
     nixpkgs.config.allowUnfree = true;
@@ -69,10 +69,8 @@
       description = "Trinity";
       initialPassword = "password";
       shell = pkgs.bash;
-      packages =
-        with pkgs;
-        [
-        ];
+      packages = with pkgs; [
+      ];
     };
     services.getty.autologinUser = "trinity";
 
@@ -96,7 +94,7 @@
 
     services.openssh = {
       enable = true;
-      passwordAuthentication = true; # Disable when RSA keys are setup
+      settings.PasswordAuthentication = true; # Disable when RSA keys are setup
     };
 
     environment.etc = {
