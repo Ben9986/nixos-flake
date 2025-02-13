@@ -41,7 +41,8 @@ in
           configurationLimit = 10;
           consoleMode = "max";
           extraEntries = {
-            "windows.conf" = "
+            "windows.conf" =
+              "
             title Windows_11
             efi /EFI/Microsoft/Boot/bootmgfw.efi
             sort-key a-windows
@@ -83,11 +84,11 @@ in
     };
 
     swapDevices = [
-    {
-      device = "/swap/swapfile";
-      options = [ "sw" ];
-    }
-  ];
+      {
+        device = "/swap/swapfile";
+        options = [ "sw" ];
+      }
+    ];
 
     environment.systemPackages = with pkgs; [
       r2modman
@@ -96,38 +97,35 @@ in
 
     networking.hostName = "benlaptop";
 
-    services.udev.extraRules = ''
-      SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"
-    '';
-
-    systemd.services."mic-mute-led-invert" = {
-      after = [ "multi-user.target" ];
-      wantedBy = [ "graphical.target" ];
-      unitConfig = {
-        Description = "Reverse microphone mute led";
+    services = {
+      desktopManager.plasma6.enable = true;
+      displayManager.sddm = {
+        enable = true;
+        wayland.enable = true;
+        theme = "breeze";
       };
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.bash}/bin/bash -c 'echo follow-route > /sys/devices/virtual/sound/ctl-led/mic/mode'";
-      };
-    };
-    systemd.sleep.extraConfig = ''
-    AllowHibernation=yes
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-    HibernateMode=shutdown
-    '';   
 
-    ## Plasma 6
-    services.desktopManager.plasma6.enable = true;
-
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "breeze";
+      udev.extraRules = ''SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"'';
     };
 
-    services.tailscale.enable = false;
-
+    systemd = {
+      services."mic-mute-led-invert" = {
+        after = [ "multi-user.target" ];
+        wantedBy = [ "graphical.target" ];
+        unitConfig = {
+          Description = "Reverse microphone mute led";
+        };
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "${pkgs.bash}/bin/bash -c 'echo follow-route > /sys/devices/virtual/sound/ctl-led/mic/mode'";
+        };
+      };
+      sleep.extraConfig = ''
+        AllowHibernation=yes
+        AllowHybridSleep=no
+        AllowSuspendThenHibernate=no
+        HibernateMode=shutdown
+      '';
+    };
   };
 }
