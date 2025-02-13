@@ -19,5 +19,7 @@ in
 
   config.custom = {
     laptop.default-windows = lib.mkDefault true;
+    cosmic.enable = false;
+    cosmic.greeter.enable = false;
   };
 }
