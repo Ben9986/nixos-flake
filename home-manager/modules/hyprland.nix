@@ -61,7 +61,7 @@ in
       ".config/swaync".source = ../dotfiles/swaync;
     };
     activation = {
-      # Reload hyprland after home-manager files have been written 
+      # Reload hyprland after home-manager files have been written
       reloadHyprland = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         echo "Reloading Hyprland...";
         ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl reload > /dev/null;

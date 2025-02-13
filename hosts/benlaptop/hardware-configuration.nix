@@ -24,7 +24,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/6a68dc0e-442c-4165-9516-aac2766b5ff1";
     fsType = "btrfs";

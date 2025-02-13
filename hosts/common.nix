@@ -121,10 +121,6 @@ in
     description = "Ben Carmichael";
     initialPassword = "password";
     shell = pkgs.zsh;
-    packages =
-      with pkgs;
-      [
-      ];
   };
 
   environment.variables = {

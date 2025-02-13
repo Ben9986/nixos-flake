@@ -29,23 +29,34 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
       nixos-generators,
+      systems,
+      treefmt-nix,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
+      # Small tool to iterate over each systems
+      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+
+      # Eval the treefmt modules from ./treefmt.nix
+      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     {
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager; # Inherit inputs
+          inherit inputs nixpkgs home-manager;
         }
       );
 
@@ -55,23 +66,28 @@
           inherit inputs nixpkgs home-manager;
         }
       );
-      packages.x86_64-linux = {
-        laptop = nixos-generators.nixosGenerate {
-          format = "iso";
-          inherit system;
-          specialArgs = {
-            inherit inputs; # needed for hyprland and probs other stuff
-            host = {
-              hostName = "benlaptop";
-            };
-          };
-          modules = [
-            hosts/benlaptop
-            hosts/configuration.nix
-            hosts/modules
-            ./custom-options.nix
-          ];
-        };
-      };
+      # packages.x86_64-linux = {
+      #   laptop = nixos-generators.nixosGenerate {
+      #     format = "iso";
+      #     inherit system;
+      #     specialArgs = {
+      #       inherit inputs; # needed for hyprland and probs other stuff
+      #       host = {
+      #         hostName = "benlaptop";
+      #       };
+      #     };
+      #     modules = [
+      #       hosts/benlaptop
+      #       hosts/common.nix
+      #       hosts/modules
+      #       ./custom-options.nix
+      #     ];
+      #   };
+      # };
+      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+
+      checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
     };
 }

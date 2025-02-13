@@ -94,27 +94,27 @@ in
     #    ];
     #    };
     #  };
-  
-  hardware.logitech.wireless.enable = true;
 
-  # Disable suspend as it crashes hyprland on nvidia
- systemd.services.systemd-suspend.enable = !config.custom.hyprland.enable;
- systemd.targets.suspend.enable = !config.custom.hyprland.enable;
-  
-  services.tailscale.enable = false;
-  
-  networking.hostName = "bendesktop";
+    hardware.logitech.wireless.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    mangohud
-    gamemode
-    gamescope
-    r2modman
-    vulkan-tools
-    codium-no-gpu
-    solaar
-  ];
-  
+    # Disable suspend as it crashes hyprland on nvidia
+    systemd.services.systemd-suspend.enable = !config.custom.hyprland.enable;
+    systemd.targets.suspend.enable = !config.custom.hyprland.enable;
+
+    services.tailscale.enable = false;
+
+    networking.hostName = "bendesktop";
+
+    environment.systemPackages = with pkgs; [
+      mangohud
+      gamemode
+      gamescope
+      r2modman
+      vulkan-tools
+      codium-no-gpu
+      solaar
+    ];
+
     ## Plasma 6
     services.desktopManager.plasma6.enable = true;
 
@@ -125,8 +125,8 @@ in
     };
 
     environment.variables = {
-    # needed for smoother fonts on hidpi display
-    QT_SCALE_FACTOR_ROUNDING_POLICY="RoundPreferFloor";
-  };
+      # needed for smoother fonts on hidpi display
+      QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
+    };
   };
 }
