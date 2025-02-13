@@ -66,7 +66,7 @@ in
         "udev.log_level=0"
         "resume_offset=47355654"
       ];
-      kernelPackages = pkgs.linuxPackages_6_12;
+      kernelPackages = pkgs.linuxPackages_zen;
       plymouth = {
         enable = true;
         theme = "bgrt";
