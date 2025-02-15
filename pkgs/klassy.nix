@@ -1,22 +1,23 @@
 { lib, pkgs }:
 pkgs.stdenv.mkDerivation rec {
   pname = "klassy";
-  version = "6.2.breeze6.2.1";
+  version = "6.2.breeze6.3.0";
 
   src = pkgs.fetchFromGitHub {
-    owner = "paulmcauley";
+    owner = "foxinatel";
     repo = "klassy";
-    tag = "${version}";
-    hash = "sha256-tFqze3xN1XECY74Gj0nScis7DVNOZO4wcfeA7mNZT5M=";
+    rev = "3b26f96c7ace61331506f87d71d3cd7145cdba11";
+    # tag = "${version}";
+    hash = "sha256-9IZhO8a8URTYPv6/bf7r3incfN1o2jBd2+mLVptNRYo=";
   };
 
   dontWrapQtApps = true;
 
   cmakeFlags = [ "-DBUILD_QT5=OFF" ];
 
-  patches = [
-    ./setVersion.patch
-  ];
+  # patches = [
+  #   ./setVersion.patch
+  # ];
 
   nativeBuildInputs = with pkgs; [
     kdePackages.extra-cmake-modules
