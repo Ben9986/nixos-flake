@@ -29,6 +29,7 @@
         (with pkgs; [
           (callPackage ../pkgs/klassy.nix { })
           kdePackages.krohnkite
+          kdePackages.yakuake
           phinger-cursors
           tela-circle-icon-theme
           neovim
