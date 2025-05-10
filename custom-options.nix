@@ -18,7 +18,7 @@ in
   };
 
   config.custom = {
-    laptop.default-windows = lib.mkDefault true;
+    laptop.default-windows = lib.mkDefault false;
     cosmic.enable = false;
     cosmic.greeter.enable = false;
   };
