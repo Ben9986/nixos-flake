@@ -85,8 +85,6 @@ in
     xdgOpenUsePortal = true;
   };
 
-  services.tailscale.enable = lib.mkDefault true;
-
   services.snapper.configs = {
     home = {
       SUBVOLUME = "/home";

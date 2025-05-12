@@ -73,6 +73,7 @@
       ];
     };
     services.getty.autologinUser = "trinity";
+    services.tailscale.enable = true;
 
     environment.systemPackages = with pkgs; [
       udiskie

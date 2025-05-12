@@ -101,8 +101,6 @@ in
     systemd.services.systemd-suspend.enable = !config.custom.hyprland.enable;
     systemd.targets.suspend.enable = !config.custom.hyprland.enable;
 
-    services.tailscale.enable = false;
-
     networking.hostName = "bendesktop";
 
     environment.systemPackages = with pkgs; [
