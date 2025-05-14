@@ -104,6 +104,19 @@ in
     pam.services.swaylock = { };
     pam.services.hyprlock = { };
     rtkit.enable = true; # Scheduling (used by pipewire)
+
+    sudo.enable = false;
+    doas = {
+      enable = true;
+      extraRules = [{
+        users = ["ben"];
+        groups = ["wheel"];
+        # Optional, retains environment variables while running commands 
+        # e.g. retains your NIX_PATH when applying your config
+        keepEnv = true; 
+        persist = true;  # Optional, only require password verification a single time
+      }];
+    };
   };
 
   users.users.ben = {
@@ -145,6 +158,7 @@ in
     pinentry
     localsend
     nix-output-monitor
+    doas-sudo-shim
   ];
 
   programs = {
