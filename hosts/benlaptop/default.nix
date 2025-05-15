@@ -27,7 +27,7 @@ in
   ];
 
   config = {
-    custom.hyprland.enable = false;
+    custom.plasma.enable = true;
 
     boot = {
       initrd = {
@@ -98,13 +98,11 @@ in
     networking.hostName = "benlaptop";
 
     services = {
-      desktopManager.plasma6.enable = true;
       displayManager.sddm = {
         enable = true;
         wayland.enable = true;
         theme = "breeze";
       };
-
       udev.extraRules = ''SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"'';
     };
 

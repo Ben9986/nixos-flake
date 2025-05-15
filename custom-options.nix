@@ -8,6 +8,7 @@ in
       enable = mkEnableOption "pre-alpha Cosmic desktop environment";
       greeter.enable = mkEnableOption "Cosmic DE greeter";
     };
+    plasma.enable = mkEnableOption "KDE Plasma 6";
     flakeDir = mkOption {
       type = types.str;
       default = "/home/ben/flake-config";

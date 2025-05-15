@@ -11,7 +11,7 @@
     inputs.ags.homeManagerModules.default
   ];
   config = {
-    custom.hyprland.enable = false;
+    custom.plasma.enable = true;
 
     home = {
       username = "ben";
@@ -26,10 +26,7 @@
         RANGER_LOAD_DEFAULT_RC = "false";
       };
       packages = lib.mkMerge [
-        (with pkgs; [
-          (callPackage ../pkgs/klassy.nix { })
-          kdePackages.krohnkite
-          kdePackages.yakuake
+        (with pkgs; [    
           phinger-cursors
           tela-circle-icon-theme
           neovim
@@ -54,6 +51,12 @@
           space-mono
           ubuntu
         ])
+        (lib.mkIf config.custom.plasma.enable [
+          pkgs.kdePackages.krohnkite
+          pkgs.kdePackages.yakuake
+          (pkgs.callPackage ../pkgs/klassy.nix { })
+
+      ])
       ];
 
       file = {
