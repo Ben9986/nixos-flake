@@ -36,13 +36,13 @@
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
-    gtk2.configLocation = "${config.home.homeDirectory}/.config/gtk-2.0/gtkrc-2.0";
+    # gtk2.configLocation = "${config.home.homeDirectory}/.config/gtk-2.0/gtkrc-2.0";
   };
 
-  qt = {
-    enable = config.custom.hyprland.enable;
-    style.name = "adwaita-dark";
-    style.package = pkgs.adwaita-qt;
-    platformTheme.name = "adwaita";
-  };
+  # qt = {
+  #   enable = config.custom.hyprland.enable;
+  #   style.name = "Breeze";
+  #   style.package = pkgs.kdePackages.breeze;
+  #   platformTheme.name = "Breeze";
+  # };
 }

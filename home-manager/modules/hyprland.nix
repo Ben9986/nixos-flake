@@ -30,15 +30,43 @@ let
     })).override
       { hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland; };
 
+  fakwin = pkgs.stdenv.mkDerivation rec {
+    pname = "fakwin";
+    version = "1.0.0";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "DMaroo";
+      repo = "fakwin";
+      rev = "master";
+      hash = "sha256-oEMSuy2NMbd3Q7wtGSVz9vrqNWFeZLrNDM3KAsLgUOw=";
+    };
+
+    nativeBuildInputs = [ pkgs.cmake pkgs.qt6.wrapQtAppsHook ];
+
+    buildInputs = [ pkgs.qt6.qtbase ];
+
+    installPhase = ''
+      mkdir -p $out/bin
+      cp fakwin $out/bin/
+    '';
+
+    meta = with pkgs.lib; {
+      description = "A fake KWin dbus interface for Plasma6 running without KWin";
+      license = licenses.mit;
+      maintainers = with maintainers; [ "DMaroo" ];
+      platforms = platforms.linux;
+    };
+  };
 in
 {
 
   home = lib.mkIf config.custom.hyprland.enable {
     packages = with pkgs; [
+      fakwin
       hyprpaper
       patchedhyprshot
       nwg-displays
-      gnome.gnome-control-center
+      gnome-control-center
       file-roller
       inputs.matcha.packages.${system}.default
       ### end-4 ags config ####
@@ -66,19 +94,35 @@ in
         echo "Reloading Hyprland...";
         ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl reload > /dev/null;
         echo "Hyprland reloaded successfully";
+        ${pkgs.systemd}/bin/systemctl --user enable fakwin.service
+
       '';
     };
   };
-  programs.ags = lib.mkIf config.custom.hyprland.enable {
-    enable = true;
-    configDir = ../dotfiles/ags;
-    # additional packages to add to gjs's runtime
-    extraPackages = with pkgs; [
-      gtksourceview
-      webkitgtk
-      accountsservice
-    ];
-  };
+  # programs.ags = lib.mkIf config.custom.hyprland.enable {
+  #   enable = true;
+  #   configDir = ../dotfiles/ags;
+  #   # additional packages to add to gjs's runtime
+  #   extraPackages = with pkgs; [
+  #     gtksourceview
+  #     webkitgtk
+  #     accountsservice
+  #   ];
+  # };
+  # systemd.user.services."fakwin" = {
+  #   Unit = {
+  #     Description = "Plasma Fake KWin dbus interface";
+  #     After = [ "multi-user.target" ];
+  #   };
+  #   Install = {
+  #     WantedBy = [ "default.target" ];
+  #   };
+  #   Service = {
+  #     ExecStart = "${fakwin}/bin/fakwin";
+  #     Slice = "session.slice";
+  #     Restart = "on-failure";
+  #   };
+  # };
 
   wayland.windowManager.hyprland = lib.mkIf hyprenable {
     enable = true;
@@ -93,30 +137,34 @@ in
         "GDK_BACKEND,wayland,x11"
         "QT_QPA_PLATFORM,wayland"
         "COLOR_SCHEME,prefer-dark"
-        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-        "QT_QPA_PLATFORMTHEME,qt5ct"
+        # "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+        # "QT_QPA_PLATFORMTHEME,kvantum"
+        "QT_QPA_PLATFORMTHEME,qt6ct"
         "XCURSOR_THEME,phinger-cursors"
         "XDG_SESSION_TYPE,wayland"
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
-        "VISUAL,nvim"
-        "EDITOR,nvim"
+        "VISUAL,hx"
+        "EDITOR,hx"
       ];
       exec = [
         "hyprpaper"
-        "ags -q && ags"
+        # "ags -q && ags"
       ];
 
       exec-once = [
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        "swaync"
+        "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init"
+        "systemctl --user start hyprpolkitagent"
+        "kstart plasmashell"
         "nm-applet --indicator"
+        # "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        "swaync"
         "blueberry-tray"
         "hyprctl dispatch exec [ workspace special:fm silent ] kitty yazi"
         "udiskie &"
         "copyq"
         " hyprctl setcursor phinger-cursors 24"
         "matcha -do"
-        "ags -q && ags"
+        # "ags -q && ags"
       ];
 
       input = {
@@ -148,7 +196,7 @@ in
           size = 6;
           passes = 1;
         };
-        drop_shadow = 0;
+        # drop_shadow = 0;
       };
 
       animations = {
@@ -172,7 +220,7 @@ in
         pseudotile = true;
         preserve_split = true;
         force_split = 2;
-        no_gaps_when_only = true;
+        # no_gaps_when_only = true;
         special_scale_factor = 0.95;
       };
 
@@ -200,32 +248,35 @@ in
       };
 
       windowrule = [
-        "float, ^(blueberry.py)$"
-        "size 350 265, ^(blueberry.py)$"
-        "move onscreen cursor 70% 5%, ^(blueberry.py)$"
-        "noanim, ^(blueberry.py)$"
+        "float, class:org.kde.plasmashell"
+        "move onscreen cursor 1% 1%, class:org.kde.plasmashell"
+        "noanim, class:org.kde.plasmashell"
+        "float, class:^(blueberry.py)$"
+        "size 350 265, class:^(blueberry.py)$"
+        "move onscreen cursor 70% 5%, class:^(blueberry.py)$"
+        "noanim, class:^(blueberry.py)$"
 
-        "float, ^(peazip)$"
+        "float, class:^(peazip)$"
 
-        "float, ^(nemo)$"
+        "float, class:^(nemo)$"
 
-        "noblur, ^(nemo)$"
-        "noblur, ^(com.obsproject.Studio)$"
-        "opaque, ^(com.obsproject.Studio)$"
-        "opaque, ^(io.github.alainm23.planify)$"
-        "noblur, ^(io.github.alainm23.planify)$"
+        "noblur, class:^(nemo)$"
+        "noblur, class:^(com.obsproject.Studio)$"
+        "opaque, class:^(com.obsproject.Studio)$"
+        "opaque, class:^(io.github.alainm23.planify)$"
+        "noblur, class:^(io.github.alainm23.planify)$"
 
-        "noborder, ^(wofi)$"
-        "noanim, ^(wlogout)$"
-        "float, ^(wlogout)$"
-        "fullscreen, ^(wlogout)$"
-        "opacity 0.8 override 0.8 override, ^(kitty)$"
-        "float, ^(com.github.hluk.copyq)"
-        "size 40% 60%, ^(com.github.hluk.copyq)"
-        "center, ^(com.github.hluk.copyq)"
-        "tile, ^(ONLYOFFICE Desktop Editors)"
-        "float, ^(xdg-desktop-portal-gtk)"
-        "size 50% 60%, ^(xdg-desktop-portal-gtk)"
+        "noborder, class:^(wofi)$"
+        "noanim, class:^(wlogout)$"
+        "float, class:^(wlogout)$"
+        "fullscreen, class:^(wlogout)$"
+        "opacity 0.8 override 0.8 override, class:^(kitty)$"
+        "float, class:^(com.github.hluk.copyq)"
+        "size 40% 60%, class:^(com.github.hluk.copyq)"
+        "center, class:^(com.github.hluk.copyq)"
+        "tile, class:^(ONLYOFFICE Desktop Editors)"
+        "float, class:^(xdg-desktop-portal-gtk)"
+        "size 50% 60%, class:^(xdg-desktop-portal-gtk)"
 
         "size 600 600, title:(.*)(Bitwarden)$"
       ];
@@ -257,7 +308,7 @@ in
 
         # App Launch Shortcuts
         "$mainMod, Q, exec, kitty"
-        "$mainMod, F, exec, firefox"
+        "$mainMod, F, exec, vivaldi"
         "$mainMod, E, exec, nemo"
         "SUPER, V, exec, copyq toggle"
         "$mainMod, N, exec, swaync-client -t -sw"

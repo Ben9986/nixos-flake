@@ -97,7 +97,6 @@ in
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  services.blueman.enable = lib.mkIf config.custom.hyprland.enable true;
 
   security = {
     polkit.enable = true;
@@ -142,8 +141,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    (callPackage ./modules/sddm-sugar-dark.nix { })
-    (callPackage ./modules/sddm-astronaut-theme.nix { })
     appimage-run
     git
     gsettings-desktop-schemas

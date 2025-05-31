@@ -27,6 +27,7 @@ in
   ];
 
   config = {
+    custom.hyprland.enable = true;
     custom.plasma.enable = true;
 
     boot = {
