@@ -105,6 +105,7 @@ in
 
     environment.systemPackages = with pkgs; [
       mangohud
+      goverlay
       gamemode
       gamescope
       r2modman
