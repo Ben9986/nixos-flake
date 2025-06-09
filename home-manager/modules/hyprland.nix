@@ -139,7 +139,7 @@ in
         "COLOR_SCHEME,prefer-dark"
         # "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         # "QT_QPA_PLATFORMTHEME,kvantum"
-        "QT_QPA_PLATFORMTHEME,qt6ct"
+        "QT_QPA_PLATFORMTHEME,kde"
         "XCURSOR_THEME,phinger-cursors"
         "XDG_SESSION_TYPE,wayland"
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
