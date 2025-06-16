@@ -121,7 +121,7 @@ in
       waypaper
     ];
     file = {
-      ".config/waybar".source = ./dotfiles/waybar; 
+      ".config/waybar".source = ../dotfiles/waybar; 
       ".config/swaync".source = ../dotfiles/swaync-ml4w;
     };
     activation = {
@@ -229,7 +229,7 @@ in
 
       decoration = {
         rounding = 8;
-        inactive_opacity = 0.95;
+        inactive_opacity = 0.99;
         active_opacity = 1.0;
         fullscreen_opacity = 1.0;
         blur = {

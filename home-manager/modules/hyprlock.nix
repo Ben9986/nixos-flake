@@ -13,16 +13,16 @@
       background = [
         {
           path = "screenshot";
-          blur_size = 6;
-          blur_passes = 2;
+          blur_size = 8;
+          blur_passes = 3;
         }
       ];
       label = [
         {
           text = "Welcome";
           font_size = 30;
-          font_family = "SpaceMono Nerd Font";
-          position = "0, 20";
+          font_family = "Ubuntu";
+          position = "0, 100";
           halign = "center";
           valign = "center";
           shadow_passes = 2;
@@ -32,7 +32,7 @@
           text = "$TIME";
           position = "0, 280";
           font_size = 160;
-          font_family = "SpaceMono Nerd Font Bold";
+          font_family = "Roboto-Black";
           halign = "center";
           valign = "center";
           shadow_passes = 2;
@@ -40,16 +40,14 @@
       ];
       input-field = [
         {
-          size = {
-            width = 615;
-            height = 60;
-          };
-          outline_thickness = 3;
-          dots_size = 0.4;
+          size = "400px,70px";
+          rounding = 20;
+          outline_thickness = 2;
+          dots_size = 0.3;
           dots_spacing = 0.15;
           dots_center = true;
-          outer_color = "rgb(151515)";
-          inner_color = "rgb(171, 34, 114)";
+          outer_color = "rgb(255,255,255)";
+          inner_color = "rgb(100,100,100)";
           font_color = "rgb(0, 0, 0)";
           fade_on_empty = false;
           placeholder_text = "<big><b><i>Input Password</i></b></big>";
@@ -61,7 +59,7 @@
           fail_text = "<b>$FAIL</b>";
           fail_color = "rgb(15,15,15)";
 
-          position = "0, -70";
+          position = "0, -60";
           halign = "center";
           valign = "center";
         }
