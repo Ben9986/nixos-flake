@@ -25,6 +25,7 @@
         PAGER = "less";
         PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH";
         RANGER_LOAD_DEFAULT_RC = "false";
+        NIXOS_OZONE_WL = "1";
       };
       packages = lib.mkMerge [
         (with pkgs; [    
@@ -41,7 +42,7 @@
           obsidian
           spotify
           konsave
-          (vivaldi.override { qt5 = pkgs.qt6; })
+          vivaldi
           vivaldi-ffmpeg-codecs
           libreoffice-qt6-fresh
           zotero

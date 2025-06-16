@@ -10,10 +10,10 @@
         vertical-pad = 15;
         line-height = 20;
       };
-      colors = {
-        background = "4a4c4fff";
-        text = "ddddddff";
-      };
+      # colors = {
+      #   background = "4a4c4fff";
+      #   text = "ddddddff";
+      # };
 
     };
 

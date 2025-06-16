@@ -22,6 +22,7 @@ in
       ./modules
       ./modules/hyprland-laptop.nix
       inputs.hyprland.homeManagerModules.default
+      inputs.stylix.homeModules.stylix
     ];
   };
   "ben@bendesktop" = home-manager.lib.homeManagerConfiguration {

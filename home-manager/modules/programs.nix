@@ -27,7 +27,7 @@
         markdown-oxide
       ];
       settings = {
-        theme = "jetbrains_dark";
+        # theme = "jetbrains_dark";
         keys = {
           normal = {
             "C-right" = "move_next_word_start";
@@ -77,7 +77,7 @@
     };
     kitty = pkgs.lib.mkIf config.custom.hyprland.enable {
       enable = true;
-      themeFile = "cherry-midnight";
+      # themeFile = "cherry-midnight";
       settings = {
         enable_audio_bell = false;
         editor = "nvim";
