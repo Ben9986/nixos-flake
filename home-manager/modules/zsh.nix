@@ -34,9 +34,8 @@ in
       ll = "eza --icons --group-directories-first --width=80 --no-filesize -alo";
     };
 
-    initExtraBeforeCompInit = "zstyle :compinstall filename '$HOME/.zshrc' ";
-
-    initExtra = ''
+    initContent = lib.mkMerge [ (lib.mkOrder 550 "zstyle :compinstall filename '$HOME/.zshrc' ")
+(''
         zstyle ':completion:*' menu select=4
 
         # Set prompt
@@ -66,7 +65,7 @@ in
         # End nix
 
         export GPG_TTY=$(tty)
-    '';
+    '')];
   };
   programs.starship = {
     enable = true;
