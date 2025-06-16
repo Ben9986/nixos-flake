@@ -23,7 +23,10 @@ lib.mkIf config.custom.hyprland.enable {
     };
   };
 
-  home.file.".config/hypr/hyprpaper.conf".source = ../dotfiles/hypr/hyprpaper-desktop.conf;
+  home.file.".config/hypr/hyprpaper.conf".text = ''
+    preload = /home/ben/Pictures/Wallpapers/stag-ultrawide.jpg
+    wallpaper = HDMI-A-1,/home/ben/Pictures/Wallpapers/stag-ultrawide.jpg
+  '';
 
   services.hypridle.settings.general = {
     lock_cmd = lib.mkForce "swaylock -f -C $HOME/.config/swaylock/config";

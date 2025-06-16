@@ -1,0 +1,1 @@
+vivaldi --ozone-platform=wayland --password-store=kwallet6

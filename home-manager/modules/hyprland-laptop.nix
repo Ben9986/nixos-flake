@@ -1,23 +1,30 @@
 { lib, config, ... }:
 lib.mkIf config.custom.hyprland.enable {
   wayland.windowManager.hyprland.settings = {
-    monitor = "eDP-1,highres,0x0,1.8";
-    source = [
-      "~/.config/hypr/monitors-live.conf"
-      "~/.config/hypr/workspaces-live.conf"
-    ];
+    monitor = "eDP-1,highres,0x0,1.5";
+    # source = [
+    #   "~/.config/hypr/monitors-live.conf"
+    #   "~/.config/hypr/workspaces-live.conf"
+    # ];
     env = [
-      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+      "QT_AUTO_SCREEN_SCALE_FACTOR,1.5"
     ];
   };
   home.file = {
-    ".config/hypr/hyprpaper.conf".source = ../dotfiles/hypr/hyprpaper-laptop.conf;
+    ".config/hypr/scripts/kbbrightness.sh".source = ../dotfiles/hypr/scripts/kbbrightness.sh;
+
+    ".config/hypr/hyprpaper.conf".text = ''
+      preload = /home/ben/Pictures/Wallpapers/sundown-over-water.jpg
+      wallpaper = ,/home/ben/Pictures/Wallpapers/sundown-over-water.jpg
+    '';
+
+    # ".config/hypr/hyprpaper.conf".source = ../dotfiles/hypr/hyprpaper-laptop.conf;
 
     ".config/hypr/workspaces-acer.conf".source = ../dotfiles/hypr/workspaces-acer.conf;
     ".config/hypr/workspaces-ultrawide.conf".source = ../dotfiles/hypr/workspaces-ultrawide.conf;
     ".config/hypr/workspaces-blank.conf".text = "";
 
-    ".config/hypr/monitors-blank.conf".text = "";
+    ".config/hypr/monitors-blank.conf".text = "monitor = eDP-1,highres,0x0,1.8";
     ".config/hypr/monitors-acer.conf".text = ''
       monitor=desc:Samsung Display Corp. 0x4171,2880x1800@90.0,0x80,1.8,bitdepth,10
       monitor=desc:Acer Technologies Acer V247Y 0x1411579A,1920x1080@74.97,1600x0,1.0,bitdepth,10
@@ -28,6 +35,5 @@ lib.mkIf config.custom.hyprland.enable {
       monitor=desc:LG Electronics LG ULTRAWIDE 0x000542FD,2560x1080@60.0,0x0,1.0,bitdepth,10
     '';
     ".config/hypr/scripts/monitor-switch.sh".source = ../dotfiles/hypr/scripts/monitor-switch.sh;
-    ".config/hypr/scripts/kbbrightness.sh".source = ../dotfiles/hypr/scripts/kbbrightness.sh;
   };
 }
