@@ -29,7 +29,7 @@ in
       ./modules
       ./modules/virtualisation.nix
       ../custom-options.nix
-      inputs.nixos-cosmic.nixosModules.default
+      # inputs.nixos-cosmic.nixosModules.default
     ];
   };
   bendesktop = lib.nixosSystem {
