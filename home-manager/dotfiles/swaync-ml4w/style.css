@@ -8,7 +8,7 @@
 @define-color fontcolor #FFFFFF;
 
 * {
-    font-family: "Fira Sans Semibold";
+    font-family: "JetBrainsMono NF SemiBold", "Fira Sans Semibold" ;
 }
 
 /* Control Center */
@@ -16,6 +16,7 @@
 .control-center {
     border: 3px solid @bordercolor;
     padding: 10px;
+    background-color: #242424;
 }
 
 button {
