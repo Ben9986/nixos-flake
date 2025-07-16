@@ -80,6 +80,7 @@ in
       grim
       slurp
       cliphist
+      wl-clipboard
       nwg-look
       qt6ct
       rofi-wayland
@@ -252,8 +253,8 @@ in
         "blueberry-tray"
         "hyprctl dispatch exec [ workspace special:fm silent ] kitty yazi"
         "udiskie &"
-        # "copyq"
-        "wl-paste --watch cliphist store"
+        "wl-paste --type text --watch cliphist store"
+        "wl-paste --type image --watch cliphist store"
         " hyprctl setcursor phinger-cursors 24"
         "matcha -do"
         # "ags -q && ags"
@@ -442,8 +443,7 @@ in
         "$mainMod, Q, exec, kitty"
         "$mainMod, F, exec, vivaldi --ozone-platform=wayland --password-store=kwallet6"
         "$mainMod, E, exec, dolphin"
-         "SUPER, V, exec, copyq toggle"
-          "$mainMod, V, exec, ~/.config/ml4w/scripts/cliphist.sh"
+        "$mainMod, V, exec, ~/.config/ml4w/scripts/cliphist.sh"
         "$mainMod, N, exec, swaync-client -t -sw"
         "$mainMod, O, exec, flatpak run --user md.obsidian.Obsidian -- obsidian://open?vault=Uni%20Vault"
         "$mainMod SHIFT, O, exec, flatpak run --user md.obsidian.Obsidian -- obsidian://open?vault=Life%20Tings"
