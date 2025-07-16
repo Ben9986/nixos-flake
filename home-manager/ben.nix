@@ -30,13 +30,11 @@
       packages = lib.mkMerge [
         (with pkgs; [    
           phinger-cursors
-          tela-circle-icon-theme
           neovim
           libnotify
           cantarell-fonts
           roboto
           git-crypt
-          ghostty
           pavucontrol
           onedrivegui
           obsidian
