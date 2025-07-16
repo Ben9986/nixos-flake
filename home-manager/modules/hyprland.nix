@@ -257,7 +257,7 @@ in
         "wl-paste --type image --watch cliphist store"
         " hyprctl setcursor phinger-cursors 24"
         "matcha -do"
-        # "ags -q && ags"
+        "swayosd-server"
       ];
 
       input = {
@@ -451,9 +451,10 @@ in
         "$mainMod, D, exec, flatpak run dev.vencord.Vesktop"
 
         #F-keys shortcuts
-        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", kbbrightcycle, exec, ~/.config/hypr/scripts/kbbacklight.sh"
+        # ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        # ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
+        ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
         # kill in the bind below doesn't work :/
         "$mainMod SHIFT, S, exec, kill -9 $(pidof hyprshot) || XCURSOR_SIZE=32 HYPRSHOT_DIR=$HOME/Pictures/Screenshots ${patchedhyprshot}/bin/hyprshot -m region --move-cursor 0,0"
 
@@ -518,11 +519,19 @@ in
         "$mainMod, mouse:274, resizewindow" # RMB
       ];
       binde = [
-        ", XF86AudioLowerVolume, exec, ags -r \"indicator.popup(1)\"; wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%-"
-        ", XF86AudioRaiseVolume, exec, ags -r \"indicator.popup(1)\"; wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%+"
-        ", XF86MonBrightnessUp, exec, brightnessctl --min-value=20 s 40+"
-        ", XF86MonBrightnessDown, exec, brightnessctl --min-value=20 s 40-"
+        # ", XF86AudioLowerVolume, exec, ags -r \"indicator.popup(1)\"; wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+        # ", XF86AudioRaiseVolume, exec, ags -r \"indicator.popup(1)\"; wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%+"
+        # ", XF86MonBrightnessUp, exec, brightnessctl --min-value=20 s 40+"
+        ", XF86MonBrightnessUp, exec, swayosd-client --brightness +10"
+        # ", XF86MonBrightnessDown, exec, brightnessctl --min-value=20 s 40-"
+        ", XF86MonBrightnessDown, exec, swayosd-client --brightness -10"
 
+      ];
+      bindn = [
+        ", kbbrightcycle, exec, ~/.config/hypr/scripts/kbbrightness.sh"
+        ", XF86KbdBrightcycle, exec, ~/.config/hypr/scripts/kbbrightness.sh"
       ];
     };
   };
