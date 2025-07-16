@@ -41,18 +41,7 @@ in
       file-roller
       copyq
       udiskie
-      ### end-4 ags config ####
-      # adw-gtk3
-      # ydotool
-      # sassc
-      # qt5ct
-      # gradience
-      # lexend
-      # material-symbols
-      #########
-      ### current ags bar ##
-      bun
-      dart-sass
+      blueberry
       fd
       matugen
       ####
@@ -260,8 +249,7 @@ in
         # "~/.config/nwg-dock-hyprland/launch.sh"
         # "kstart plasmashell"
         "nm-applet --indicator"
-        # "swaync"
-        # "blueberry-tray"
+        "blueberry-tray"
         "hyprctl dispatch exec [ workspace special:fm silent ] kitty yazi"
         "udiskie &"
         # "copyq"
@@ -392,9 +380,12 @@ in
         "size 400 740,class:(com.ml4w.sidebar)"
 
         "float, class:^(blueberry.py)$"
-        "size 350 265, class:^(blueberry.py)$"
-        "move onscreen cursor 70% 5%, class:^(blueberry.py)$"
+        "size 390 375, class:^(blueberry.py)$"
+        "move onscreen cursor 5% 5%, class:^(blueberry.py)$"
         "noanim, class:^(blueberry.py)$"
+        "stayfocused, class:^(blueberry.py)$"
+        "opacity 1.0, class:^(blueberry.py)$"
+        "dimaround 1, class:^(blueberry.py)$"
 
         "float, class:^(peazip)$"
 
