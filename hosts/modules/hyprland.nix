@@ -21,6 +21,7 @@ lib.mkIf config.custom.hyprland.enable {
     kvmarwaita
     lxqt.pcmanfm-qt
     hyprpolkitagent
+    swayosd
     # fakwin
     # polkit_gnome
     # networkmanagerapplet
@@ -49,9 +50,25 @@ lib.mkIf config.custom.hyprland.enable {
     DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
   '';
 
+  systemd.services.swayosd-libinput-backend = {
+    description = "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc.";
+    documentation = [ "https://github.com/ErikReider/SwayOSD" ];
+    wantedBy = [ "graphical.target" ];
+    # partOf = [ "graphical.target" ];
+    # after = [ "graphical.target" ];
+
+    serviceConfig = {
+      Type = "dbus";
+      BusName = "org.erikreider.swayosd";
+      ExecStart = "${pkgs.swayosd}/bin/swayosd-libinput-backend";
+      Restart = "on-failure";
+    };
+  };
+  
   services = {
     blueman.enable = true;
     displayManager.defaultSession = "hyprland";
+    udev.packages = [ pkgs.swayosd ];
   };
   
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
