@@ -42,6 +42,8 @@ in
       copyq
       udiskie
       blueberry
+      bc # floating point math in kbbrightnessn.sh
+      ### current waybar ##
       fd
       matugen
       ####
@@ -49,10 +51,9 @@ in
       wget
       nwg-dock-hyprland
       waybar
-      font-awesome
+      nerd-fonts.fira-mono
       noto-fonts
       noto-fonts-emoji
-      noto-fonts-cjk-sans
       noto-fonts-extra
       libnotify
       libsForQt5.qt5.qtwayland
@@ -70,7 +71,7 @@ in
       gtk4
       libadwaita
       fuse2
-      # imageMagick
+      imagemagick # needed for kitty image previews
       jq
       xclip
       rustc
@@ -88,18 +89,13 @@ in
       fzf
       pavucontrol
       papirus-icon-theme
-      # papirus-icon-theme-dark
       kdePackages.breeze
-      flatpak
       swaynotificationcenter
       gvfs
-      wlogout
-      hyprshade
       pinta
-      bibata-cursors
       fira-sans
       fira
-      nwg-dock-hyprland 
+      nwg-displays
       pywal
       wlogout
       wleave
@@ -107,7 +103,6 @@ in
       hypridle
       hyprpaper
       gum
-      ags
       figlet
       waypaper
     ];
@@ -239,16 +234,12 @@ in
       ];
       exec = [
         "hyprpaper"
-        "notify-send 'help'"
-        # "ags -q && ags"
       ];
 
       exec-once = [
         "waybar -c ~/.config/waybar/themes/ml4w-modern/config -s ~/.config/waybar/themes/ml4w-modern/white/style.css"
         "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init"
         "systemctl --user start hyprpolkitagent"
-        # "~/.config/nwg-dock-hyprland/launch.sh"
-        # "kstart plasmashell"
         "nm-applet --indicator"
         "blueberry-tray"
         "hyprctl dispatch exec [ workspace special:fm silent ] kitty yazi"
@@ -279,6 +270,7 @@ in
         "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
         resize_on_border = true;
+        hover_icon_on_border = true;
       };
 
       decoration = {
@@ -286,6 +278,7 @@ in
         inactive_opacity = 0.99;
         active_opacity = 1.0;
         fullscreen_opacity = 1.0;
+        dim_around = 0.2;
         blur = {
           enabled = true;
           size = 6;
@@ -370,6 +363,10 @@ in
         force_zero_scaling = true;
       };
 
+      layerrule = [
+        "ignorealpha 1, swaync-control-center"
+      ];
+
       windowrule = [
         # "float, class:org.kde.plasmashell"
         # "move onscreen cursor 1% 1%, class:org.kde.plasmashell"
@@ -430,6 +427,7 @@ in
         "$mainMod, M, changegroupactive"
 
         "$mainMod ALT, M, exec, ~/.config/hypr/scripts/monitor-switch.sh"
+        "$mainMod ALT, R, exec, pkill -SIGUSR2 waybar"
 
         # Session Control
         # "$mainMod ALT, P, exec, ${
