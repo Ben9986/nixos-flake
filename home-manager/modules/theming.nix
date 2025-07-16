@@ -15,6 +15,9 @@
   };
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-gray.yaml";
 
+  gtk.iconTheme.name = "Papirus";
+
+
   # dconf = {
   #   enable = true;
   #   # settings = {
