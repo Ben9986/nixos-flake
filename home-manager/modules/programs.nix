@@ -77,12 +77,15 @@
     };
     kitty = pkgs.lib.mkIf config.custom.hyprland.enable {
       enable = true;
+      shellIntegration = {
+        enableZshIntegration = true;
+        mode = "no-sudo";
+      };
       # themeFile = "cherry-midnight";
       settings = {
         enable_audio_bell = false;
-        editor = "nvim";
+        editor = "hx";
         confirm_os_window_close = -1;
-        shell_integration = true;
       };
     };
     navi = {
