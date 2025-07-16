@@ -19,7 +19,7 @@
  * ----------------------------------------------------- */
 
  * {
-    font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Fira Sans Semibold", "FiraMono Nerd Font", FontAwesome, "RobotoMono Nerd Font", Helvetica, Arial, sans-serif;
     border: none;
     border-radius: 0px;
 }
@@ -345,9 +345,9 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #power-profiles-daemon {
-    margin: 0px 13px 0px 0px;
+    margin: 0px 8px 0px 0px;
     padding:0px;
-    font-size:16px;
+    font-size:20px;
     color:@iconcolor;
 }
 
@@ -404,6 +404,7 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #network {
+    font-family: "JetBrains Mono NFP Medium";
     background-color: @backgroundlight;
     font-size: 16px;
     color: @textcolor2;

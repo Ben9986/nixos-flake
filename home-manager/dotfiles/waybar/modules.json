@@ -45,7 +45,7 @@
   "hyprland/window": {
     "max-length": 60,
     "rewrite": {
-      "(.*) - Brave": "$1",
+      "(.*) - Vivaldi": "$1",
       "(.*) - Chromium": "$1",
       "(.*) - Brave Search": "$1",
       "(.*) - Outlook": "$1",
@@ -322,7 +322,7 @@
   // Network
   "network": {
     "format": "{ifname}",
-    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-wifi": " {essid}",
     "format-ethernet": "  {ifname}",
     "format-disconnected": "Disconnected ⚠",
     "tooltip-format": " {ifname} via {gwaddri}",
@@ -341,10 +341,10 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": "  {capacity}%",
-    "format-plugged": "  {capacity}%",
-    "format-alt": "{icon}  {time}",
+    "format": "{icon}   {capacity}%",
+    "format-charging": "   {capacity}%",
+    "format-plugged": "   {capacity}%",
+    "format-alt": "{icon}   {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": [" ", " ", " ", " ", " "]
@@ -352,21 +352,21 @@
 
   // Power Profiles Daemon
   "power-profiles-daemon": {
-    "format": "{icon}",
+    "format": "{icon} ",
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "tooltip": true,
     "format-icons": {
       "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
+      "performance": "󱓟",
+      "balanced": "󰾅",
+      "power-saver": "󰌪"
     }
   },
 
   // Pulseaudio
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "{icon}  {volume}%",
+    "format": "{icon}   {volume}%",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
@@ -390,8 +390,9 @@
     "format-disabled": "",
     "format-off": "",
     "interval": 30,
-    "on-click": "blueman-manager",
-    "format-no-controller": ""
+    "on-click": "blueberry",
+    "format-no-controller": "",
+    "escape": true
   },
 
   // Other
@@ -403,23 +404,24 @@
 
   // backlight:
   "backlight": {
-    "format": "{icon} {percent}%",
+    "format": "{icon}  {percent}%",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
+      ""
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // "",
+      // ""
     ],
     "scroll-step": 1
   }

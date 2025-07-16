@@ -11,10 +11,10 @@
 {
     // General Settings
     "layer": "top",
-    "margin-top": 14,
+    "margin-top": 5,
     "margin-bottom": 0,
-    "margin-left": 14,
-    "margin-right": 14,    
+    "margin-left": 12,
+    "margin-right": 12,    
     "spacing": 0,
 
     // Load Modules
@@ -41,16 +41,16 @@
 
     // Modules Right    
     "modules-right": [
-        "custom/updates",
+        // "custom/updates",
         "pulseaudio",
-//"backlight",
+        "backlight",
         "bluetooth",
-"network",
+        // "network",
         "battery", 
         "power-profiles-daemon",
-        "group/hardware",
-        "group/tools",
-"tray",
+        // "group/hardware",
+        // "group/tools",
+        "tray",
         "custom/notification",
         "custom/exit",
         "custom/ml4w-welcome",
