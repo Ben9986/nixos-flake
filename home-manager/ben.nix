@@ -50,6 +50,7 @@
           jetbrains-mono
           space-mono
           ubuntu
+          symbols-only
         ])
         (lib.mkIf config.custom.plasma.enable [
           pkgs.kdePackages.krohnkite

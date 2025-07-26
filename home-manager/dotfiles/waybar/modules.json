@@ -319,6 +319,67 @@
     ]
   },
 
+  "group/connectivity": {
+    "orientation": "horizontal",
+    "modules": [
+      "bluetooth",
+      "tray"
+    ]
+  },
+
+  "group/power": {
+    "orientation": "horizontal",
+    "modules": [
+      "power-profiles-daemon",
+      "battery"
+    ]
+  },
+
+  "group/volume-backlight": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "backlight"
+    ]
+  },
+
+  // Power Menu Group
+  "group/group-power": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 500,
+        "children-class": "power-child",
+        "transition-left-to-right": true,
+    },
+    "modules": [
+        "custom/power", // First element is the "group leader" and won't ever be hidden
+        "custom/quit",
+        "custom/lock",
+        "custom/reboot"
+    ]
+  },
+
+  "custom/quit": {
+      "format": "󰗼 ",
+      "tooltip": false,
+      "on-click": "hyprctl dispatch exit"
+  },
+  "custom/lock": {
+      "format": "󰍁 ",
+      "tooltip": false,
+      "on-click": "hyprlock"
+  },
+  "custom/reboot": {
+      "format": "󰜉 ",
+      "tooltip": false,
+      "on-click": "systemctl reboot"
+  },
+  "custom/power": {
+      "format": " ",
+      "tooltip": false,
+      "on-click": "systemctl shutdown"
+  },
+
   // Network
   "network": {
     "format": "{ifname}",
@@ -341,13 +402,14 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}   {capacity}%",
-    "format-charging": "   {capacity}%",
-    "format-plugged": "   {capacity}%",
-    "format-alt": "{icon}   {time}",
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰂄  {capacity}%",
+    "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": [" ", " ", " ", " ", " "]
+    // "format-icons": [" ", " ", " ", " ", " "]
+    "format-icons": ["󰂎 ", "󰁺 ", "󰁻 ", "󰁼 ", "󰁽 ", "󰁾 ", "󰁿 ", "󰂀", "󰂁 ", "󰂂 ", "󰁹 "]
   },
 
   // Power Profiles Daemon
@@ -386,9 +448,10 @@
 
   // Bluetooth
   "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "",
-    "format-off": "",
+    "format": "󰂯 ",
+    "format-connected": "󰂱 ",
+    "format-disabled": "󰂲 ",
+    "format-off": "󰂲 ",
     "interval": 30,
     "on-click": "blueberry",
     "format-no-controller": "",

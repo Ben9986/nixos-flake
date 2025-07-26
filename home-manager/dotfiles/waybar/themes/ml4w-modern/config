@@ -26,6 +26,7 @@
     // Modules Left
     "modules-left": [
 // "custom/appmenu",
+        "group/group-power",
         "hyprland/workspaces",
         "group/links",
 //"wlr/taskbar",
@@ -42,15 +43,18 @@
     // Modules Right    
     "modules-right": [
         // "custom/updates",
-        "pulseaudio",
-        "backlight",
-        "bluetooth",
+        // "pulseaudio",
+        // "backlight",
+        "group/volume-backlight",
+        "group/power",
         // "network",
-        "battery", 
-        "power-profiles-daemon",
+        // "battery", 
+        // "power-profiles-daemon",
         // "group/hardware",
-        // "group/tools",
-        "tray",
+        // "group/tools", 
+        "group/connectivity",
+        // "bluetooth",
+        // "tray",
         "custom/notification",
         "custom/exit",
         "custom/ml4w-welcome",

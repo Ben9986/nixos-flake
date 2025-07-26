@@ -17,9 +17,9 @@
 /* -----------------------------------------------------
  * General
  * ----------------------------------------------------- */
-
+/*  */
  * {
-    font-family: "Fira Sans Semibold", "FiraMono Nerd Font", FontAwesome, "RobotoMono Nerd Font", Helvetica, Arial, sans-serif;
+    font-family: "Symbols Nerd Font", "Fira Sans Semibold", "FiraMono Nerd Font", FontAwesome, "RobotoMono Nerd Font", Helvetica, Arial, sans-serif;
     border: none;
     border-radius: 0px;
 }
@@ -119,7 +119,7 @@ window#waybar.empty #window {
     border-radius: 5px 5px 5px 5px;
     font-weight: normal;
     font-style: normal;
-    opacity:0.8;
+    /* opacity:0.8; */
     border: 3px solid @backgroundlight;
 }
 
@@ -148,6 +148,16 @@ window#waybar.empty #window {
     margin-right: 0;
 }
 
+.modules-right {
+    background-color: #000000;
+    opacity: 0.95;
+    border-radius: 12px 12px 12px 12px;
+    padding: 5px 12px 5px 12px;
+    /* margin-top: -2px; */
+}
+/* .module-right * {
+    opacity: 0.5;
+} */
 /* -----------------------------------------------------
  * Custom Quicklinks
  * ----------------------------------------------------- */
@@ -235,7 +245,7 @@ window#waybar.empty #window {
     background-position: center;
     background-size: contain;
     padding-right: 18px;
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 
 /* -----------------------------------------------------
@@ -246,7 +256,7 @@ window#waybar.empty #window {
     margin-right: 15px;
     font-size: 22px;
     font-weight: bold;
-    opacity: 0.8;
+    /* opacity: 0.8; */
     color: @iconcolor;
 }
 
@@ -254,7 +264,7 @@ window#waybar.empty #window {
     margin-right: 15px;
     font-size: 20px;
     font-weight: bold;
-    opacity: 0.8;
+    /* opacity: 0.8; */
     color: #dc2f2f;
 }
 
@@ -269,7 +279,7 @@ window#waybar.empty #window {
     border-radius: 5px 5px 5px 5px;
     padding: 0px 10px 0px 10px;
     margin: 2px 17px 2px 0px;
-    opacity:0.8;
+    /* opacity:0.8; */
     border:3px solid @bordercolor;
 }
 
@@ -278,11 +288,11 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
  #custom-notification {
-    margin: 0px 13px 0px 0px;
+    margin: 0px 8px 0px 5px;
     padding:0px;
     font-size:20px;
     color: @iconcolor;
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 
 /* -----------------------------------------------------
@@ -294,7 +304,7 @@ window#waybar.empty #window {
     padding:0px;
     font-size:20px;
     color: @iconcolor;
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 
 /* -----------------------------------------------------
@@ -308,7 +318,7 @@ window#waybar.empty #window {
     border-radius: 5px 5px 5px 5px;
     padding: 2px 10px 0px 10px;
     margin: 3px 15px 3px 0px;
-    opacity:0.8;
+    /* opacity:0.8; */
 }
 
 #custom-updates.green {
@@ -345,9 +355,11 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #power-profiles-daemon {
-    margin: 0px 8px 0px 0px;
-    padding:0px;
-    font-size:20px;
+    background-color: @backgrounddark;
+    border-radius: 3px 5px 3px 5px;
+    padding: 1px 10px 1px 0px;
+    /* margin: 3px 4px 3px 10px; */
+    font-size: 24px;
     color:@iconcolor;
 }
 
@@ -362,7 +374,7 @@ window#waybar.empty #window {
     border-radius: 3px 5px 3px 5px;
     padding: 1px 10px 0px 10px;
     margin: 3px 0px 3px 0px;
-    opacity:0.8;
+    /* opacity: 0.8; */
     border:3px solid @bordercolor;
 }
 
@@ -375,9 +387,9 @@ window#waybar.empty #window {
     font-size: 16px;
     color: @textcolor2;
     border-radius: 5px 5px 5px 5px;
-    padding: 2px 10px 0px 10px;
-    margin: 3px 15px 3px 0px;
-    opacity:0.8;
+    padding: 2px 0px 1px 2px;
+    /* margin: 3px 15px 3px 0px; */
+    /* opacity:0.8; */
 }
 
 /* -----------------------------------------------------
@@ -389,8 +401,8 @@ window#waybar.empty #window {
     font-size: 16px;
     color: @textcolor2;
     border-radius: 5px 5px 5px 5px;
-    padding: 2px 10px 0px 10px;
-    margin: 3px 15px 3px 0px;
+    padding: 2px 10px 1px 0px;
+    /* margin: 3px 15px 3px 0px; */
     opacity:0.8;
 }
 
@@ -411,7 +423,7 @@ window#waybar.empty #window {
     border-radius: 5px 5px 5px 5px;
     padding: 2px 10px 0px 10px;
     margin: 3px 15px 3px 0px;
-    opacity:0.8;
+    /* opacity:0.8; */
 }
 
 #network.ethernet {
@@ -430,12 +442,12 @@ window#waybar.empty #window {
 
 #bluetooth, #bluetooth.on, #bluetooth.connected {
     background-color: @backgroundlight;
-    font-size: 16px;
+    font-size: 20px;
     color: @textcolor2;
     border-radius: 5px 5px 5px 5px;
-    padding: 2px 10px 0px 10px;
-    margin: 3px 15px 3px 0px;
-    opacity:0.8;
+    padding: 1px 2px 1px 0px;
+    /* margin: 3px 2px 3px 5px; */
+    /* opacity:0.8; */
 }
 
 #bluetooth.off {
@@ -453,9 +465,9 @@ window#waybar.empty #window {
     font-size: 16px;
     color: @textcolor2;
     border-radius: 5px 5px 5px 5px;
-    padding: 2px 15px 0px 10px;
-    margin: 3px 15px 3px 0px;
-    opacity:0.8;
+    padding: 2px 0px 1px 2px;
+    /* margin: 0px 10px 0px 0px; */
+    /* opacity:0.8; */
 }
 
 #battery.charging, #battery.plugged {
@@ -468,6 +480,16 @@ window#waybar.empty #window {
         background-color: @backgroundlight;
         color: @textcolor2;
     }
+}
+
+#battery.warning:not(.charging) {
+    background-color: #F58C3C;
+    color: @textcolor3;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #battery.critical:not(.charging) {
@@ -485,7 +507,12 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #tray {
-    padding: 0px 15px 0px 0px;
+    /* font-size: 24pt; */
+    /* padding: 0px 15px 0px 0px; */
+    background-color: @backgroundlight;
+    border-radius: 0px 5px 5px 0px;
+    padding: 1px 0px 1px 2px;
+    /* margin: 0px 3px 0px 3px; */
 }
 
 #tray > .passive {
@@ -495,5 +522,33 @@ window#waybar.empty #window {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
 }
+
+
+
+/* group/power */
+#power, #connectivity, #volume-backlight {
+    background-color: @backgroundlight;
+    border-radius: 5px 5px 5px 5px;
+    margin-right: 6px;
+    margin-left: 6px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-right: 10px;
+    padding-left: 12px;
+}
+
+#group-power {
+    background-color: @backgroundlight;
+    border-radius: 5px 5px 5px 5px;
+    padding-right: 2px;
+    padding-left: 5px;
+    margin: 1px 8px 1px 4px;
+}
+
+#power-child {
+    padding: 0px 5px 0px 5px;
+    font-size: 20px;
+}
+
 
 
