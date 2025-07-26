@@ -90,6 +90,8 @@ in
       pavucontrol
       papirus-icon-theme
       kdePackages.breeze
+      rose-pine-hyprcursor
+      rose-pine-cursor
       swaynotificationcenter
       gvfs
       pinta
@@ -184,6 +186,9 @@ in
           verboseEcho "Hyprland Reload Failed"
         fi
       '';
+      reloadWaybar = lib.hm.dag.entryAfter [ "reloadHyprlandConfig" ] ''
+        ${pkgs.procps}/bin/pkill -SIGUSR2 waybar
+      '';
 
       linkML4WSettings = lib.hm.dag.entryAfter [ "writeBoundary" ]  ''
         if [ ! -h $HOME/.config/ml4w ]; then
@@ -226,7 +231,8 @@ in
         # "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         # "QT_QPA_PLATFORMTHEME,kvantum"
         "QT_QPA_PLATFORMTHEME,kde"
-        "XCURSOR_THEME,phinger-cursors"
+        "XCURSOR_THEME,rose-pine-hyprcursor"
+        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         "XDG_SESSION_TYPE,wayland"
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
         "VISUAL,hx"
@@ -237,7 +243,7 @@ in
       ];
 
       exec-once = [
-        "waybar -c ~/.config/waybar/themes/ml4w-modern/config -s ~/.config/waybar/themes/ml4w-modern/white/style.css"
+        "waybar -c ~/.config/waybar/themes/ml4w-modern/config -s ~/.config/waybar/themes/ml4w-modern/black/style.css"
         "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init"
         "systemctl --user start hyprpolkitagent"
         "nm-applet --indicator"
@@ -246,7 +252,7 @@ in
         "udiskie &"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        " hyprctl setcursor phinger-cursors 24"
+        "hyprctl setcursor rose-pine-hyprcursor 24"
         "matcha -do"
         "swayosd-server"
       ];
