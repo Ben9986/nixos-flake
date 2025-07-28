@@ -39,7 +39,7 @@ window#waybar {
 
 #workspaces {
     background: @workspacesbackground1;
-    margin: 2px 18px 3px 1px;
+    margin: 5px 18px 5px 1px;
     padding: 0px 2px;
     border-radius: 5px 5px 5px 5px;
     font-weight: bold;
@@ -49,7 +49,7 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0px 6px;
+    padding: 0px 5px;
     margin: 3px 2px;
     border-radius: 3px 3px 3px 3px;
     color: @textcolor1;
@@ -62,7 +62,7 @@ window#waybar {
     color: @textcolor1;
     background: @workspacesbackground2;
     border-radius: 3px 3px 3px 3px;
-    min-width: 30px;
+    min-width: 28px;
     transition: all 0.1s linear;
     opacity:1.0;
 }
@@ -150,10 +150,11 @@ window#waybar.empty #window {
 
 .modules-right {
     background-color: #000000;
-    opacity: 0.95;
+    opacity: 0.88;
     border-radius: 12px 12px 12px 12px;
-    padding: 5px 12px 5px 12px;
-    /* margin-top: -2px; */
+    padding: 5px 12px 5px 10px;
+    margin-top: 2px;
+    margin-bottom: 3px;
 }
 /* .module-right * {
     opacity: 0.5;
@@ -196,12 +197,23 @@ window#waybar.empty #window {
 #custom-quicklink_email,
 #custom-quicklink_thunderbird,
 #custom-quicklink_calculator,
-#custom-waybarthemes {
+#custom-waybarthemes, 
+#custom-quicklink_obsidian_uni,
+#custom-quicklink_obsidian_life_tings {
     margin-right: 16px;
     font-size: 20px;
     font-weight: bold;
     opacity: 0.8;
     color: @iconcolor;
+}
+
+#custom-quicklink_obsidian_uni,
+#custom-quicklink_obsidian_life_tings {
+    font-size: 15px;
+    background-image: url('/home/ben/.config/waybar/obsidian.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #custom-quicklink1,
@@ -357,7 +369,7 @@ window#waybar.empty #window {
 #power-profiles-daemon {
     background-color: @backgrounddark;
     border-radius: 3px 5px 3px 5px;
-    padding: 1px 10px 1px 0px;
+    padding: 1px 8px 1px 0px;
     /* margin: 3px 4px 3px 10px; */
     font-size: 24px;
     color:@iconcolor;
@@ -465,7 +477,7 @@ window#waybar.empty #window {
     font-size: 16px;
     color: @textcolor2;
     border-radius: 5px 5px 5px 5px;
-    padding: 2px 0px 1px 2px;
+    padding: 2px 8px 1px 6px;
     /* margin: 0px 10px 0px 0px; */
     /* opacity:0.8; */
 }
@@ -537,17 +549,31 @@ window#waybar.empty #window {
     padding-left: 12px;
 }
 
+#power {
+    padding-right: 2px;
+}
+
 #group-power {
     background-color: @backgroundlight;
     border-radius: 5px 5px 5px 5px;
-    padding-right: 2px;
-    padding-left: 5px;
-    margin: 1px 8px 1px 4px;
+    /* padding-right: 5px;
+    padding-left: 5px; */
+    margin: 6px 8px 6px 4px;
 }
 
-#power-child {
-    padding: 0px 5px 0px 5px;
-    font-size: 20px;
+.child-power > * {
+padding: 0px 5px 0px 5px;
+font-size: 24px;
+}
+
+#group-power .horizontal:first-child {
+padding-left: 16px;
+}
+
+
+#group-power #custom-power {
+font-size: 21px;
+padding: 0px 4px 0px 8px;
 }
 
 

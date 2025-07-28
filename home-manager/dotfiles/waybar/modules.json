@@ -348,8 +348,8 @@
     "orientation": "inherit",
     "drawer": {
         "transition-duration": 500,
-        "children-class": "power-child",
-        "transition-left-to-right": true,
+        "children-class": "child-power",
+        "transition-left-to-right": true
     },
     "modules": [
         "custom/power", // First element is the "group leader" and won't ever be hidden

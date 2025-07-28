@@ -1,0 +1,60 @@
+{
+  "custom/quicklink_obsidian_uni": {
+    "format": "      ",
+    "on-click": "obsidian '~/Documents/Obsidian Vaults/Uni Vault/'",
+    "tooltip-format": "Open Obsidian Uni Vault"
+  },
+  "custom/quicklink_obsidian_life_tings": {
+    "format": "      ",
+    "on-click": "obsidian '~/Documents/Obsidian Vaults/Life Tings/'",
+    "tooltip-format": "Open Obsidian Life Tings"
+  },
+  "custom/quicklink_email": {
+    "format": "",
+    "on-click": "~/.config/ml4w/settings/email.sh",
+    "tooltip-format": "Open Email Client"
+  },
+  "custom/quicklink_chromium": {
+    "format": "",
+    "on-click": "chromium",
+    "tooltip-format": "Open Chromium"
+  },
+  "custom/quicklink_edge": {
+    "format": "",
+    "on-click": "edge",
+    "tooltip-format": "Open Edge"
+  },
+  "custom/quicklink_firefox": {
+    "format": "",
+    "on-click": "firefox",
+    "tooltip-format": "Open Firefox"
+  },
+  "custom/quicklink_thunderbird": {
+    "format": "",
+    "on-click": "thunderbird",
+    "tooltip-format": "Open Thunderbird"
+  },
+  "custom/quicklink_calculator": {
+    "format": "",
+    "on-click": "~/.config/ml4w/settings/calculator.sh",
+    "tooltip-format": "Open calculator"
+  },
+  /*
+Don't remove the quicklinkempty
+*/
+  "custom/quicklinkempty": {},
+  /*
+Add your quicklinks in your desired order to the status bar
+*/
+  "group/quicklinks": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/quicklink_obsidian_uni",
+      "custom/quicklink_obsidian_life_tings",
+      /*
+Don't remove the quicklinkempty
+*/
+      "custom/quicklinkempty"
+    ]
+  }
+}

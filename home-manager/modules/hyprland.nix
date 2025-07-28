@@ -109,7 +109,7 @@ in
       waypaper
     ];
     file = {
-      ".config/waybar".source = ../dotfiles/waybar; 
+      ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/flake-config/home-manager/dotfiles/waybar"; 
       ".config/swaync".source = ../dotfiles/swaync-ml4w;
       ".config/wleave/style.css".text = with config.lib.stylix.colors.withHashtag; ''
         @define-color base00 ${base00}; @define-color base01 ${base01}; @define-color base02 ${base02}; @define-color base03 ${base03};
