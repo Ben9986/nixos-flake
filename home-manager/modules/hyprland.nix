@@ -449,8 +449,8 @@ in
         "$mainMod, E, exec, dolphin"
         "$mainMod, V, exec, ~/.config/ml4w/scripts/cliphist.sh"
         "$mainMod, N, exec, swaync-client -t -sw"
-        "$mainMod, O, exec, flatpak run --user md.obsidian.Obsidian -- obsidian://open?vault=Uni%20Vault"
-        "$mainMod SHIFT, O, exec, flatpak run --user md.obsidian.Obsidian -- obsidian://open?vault=Life%20Tings"
+        "$mainMod, O, exec, obsidian -- obsidian://open?vault=Uni%20Vault"
+        "$mainMod SHIFT, O, exec, obsidian -- obsidian://open?vault=Life%20Tings"
         "$mainMod, T, exec, io.github.alainm23.planify.quick-add"
         "$mainMod, D, exec, flatpak run dev.vencord.Vesktop"
 
