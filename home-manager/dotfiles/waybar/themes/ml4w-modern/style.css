@@ -149,12 +149,12 @@ window#waybar.empty #window {
 }
 
 .modules-right {
-    background-color: #000000;
-    opacity: 0.88;
+    background-color: #111111;
+    opacity: 0.9;
     border-radius: 12px 12px 12px 12px;
-    padding: 5px 12px 5px 10px;
-    margin-top: 2px;
-    margin-bottom: 3px;
+    padding: 6px 12px 6px 10px;
+    margin-top: 1px;
+    margin-bottom: 2px;
 }
 /* .module-right * {
     opacity: 0.5;
@@ -209,7 +209,7 @@ window#waybar.empty #window {
 
 #custom-quicklink_obsidian_uni,
 #custom-quicklink_obsidian_life_tings {
-    font-size: 15px;
+    font-size: 14px;
     background-image: url('/home/ben/.config/waybar/obsidian.svg');
     background-position: center;
     background-repeat: no-repeat;
@@ -558,23 +558,33 @@ window#waybar.empty #window {
     border-radius: 5px 5px 5px 5px;
     /* padding-right: 5px;
     padding-left: 5px; */
+    padding: 1px 2px 1px 2px;
     margin: 6px 8px 6px 4px;
 }
 
 .child-power > * {
 padding: 0px 5px 0px 5px;
-font-size: 24px;
+font-size: 23px;
 }
 
 #group-power .horizontal:first-child {
-padding-left: 16px;
+padding-left: 8px;
 }
 
 
 #group-power #custom-power {
 font-size: 21px;
 padding: 0px 4px 0px 8px;
+margin-top: 2px;
 }
 
+#custom-quit {
+    margin-top: 2px;
+}
+
+#custom-reboot {
+    margin-right: 4px;
+    font-size: 24px;
+}
 
 

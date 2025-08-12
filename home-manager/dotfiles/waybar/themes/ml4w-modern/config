@@ -57,7 +57,7 @@
         // "bluetooth",
         // "tray",
         "custom/notification",
-        "custom/exit",
+        // "custom/exit",
         "custom/ml4w-welcome",
         "clock"
     ]
