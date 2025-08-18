@@ -31,6 +31,10 @@ in
     custom.plasma.enable = true;
 
     boot = {
+      extraModprobeConfig = ''
+        # Toggle fnlock_default at boot (Y/N)
+        options asus_wmi fnlock_default=N
+      '';
       initrd = {
         prepend = [ (toString ssdt-csc2551-acpi-table-patch) ];
         verbose = false;
