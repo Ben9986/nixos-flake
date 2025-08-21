@@ -207,16 +207,6 @@ in
       '';
     };
   };
-  # programs.ags = lib.mkIf config.custom.hyprland.enable {
-  #   enable = true;
-  #   configDir = ../dotfiles/ags;
-  #   # additional packages to add to gjs's runtime
-  #   extraPackages = with pkgs; [
-  #     gtksourceview
-  #     webkitgtk
-  #     accountsservice
-  #   ];
-  # };
 
   wayland.windowManager.hyprland = lib.mkIf hyprenable {
     enable = true;
@@ -232,7 +222,6 @@ in
         "QT_QPA_PLATFORM,wayland"
         "COLOR_SCHEME,prefer-dark"
         # "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-        # "QT_QPA_PLATFORMTHEME,kvantum"
         "QT_QPA_PLATFORMTHEME,kde"
         "XCURSOR_THEME,rose-pine-hyprcursor"
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
@@ -320,13 +309,7 @@ in
        "borderangle, 1, 30, liner, loop"
        "fade, 1, 10, default"
        "workspaces, 1, 5, wind"
-    #       "windows, 1, 7, myBezier"
-    #       "windowsOut, 1, 7, default, popin 40%"
-    #       "border, 1, 10, default"
-    #       "borderangle, 1, 8, default"
-    #       "fade, 1, 7, default"
-    #       "workspaces, 1, 2, newBezier"
-         ];
+       ];
        };
 
       dwindle = {
@@ -351,7 +334,6 @@ in
       binds = {
         workspace_back_and_forth = true;
         allow_workspace_cycles = true;
-        # pass_mouse_when_bound = false;
       };
 
       misc = {
@@ -374,10 +356,6 @@ in
       ];
 
       windowrule = [
-        # "float, class:org.kde.plasmashell"
-        # "move onscreen cursor 1% 1%, class:org.kde.plasmashell"
-        # "noanim, class:org.kde.plasmashell"
-
         "float,class:(com.ml4w.sidebar)"
         "move 100%-w-16 66,class:(com.ml4w.sidebar)"
         "pin, class:(com.ml4w.sidebar)"
@@ -436,9 +414,6 @@ in
         "$mainMod ALT, R, exec, pkill -SIGUSR2 waybar"
 
         # Session Control
-        # "$mainMod ALT, P, exec, ${
-        #   inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default
-        # }/bin/ags -t powermenu"
         "$mainMod ALT, P, exec, ~/.config/ml4w/scripts/wlogout.sh"
         "$mainMod, L, exec, loginctl lock-session"
         "$mainMod, I, exec, matcha -t && notify-send 'Toggled Idle Inhibitor'"
@@ -455,8 +430,6 @@ in
         "$mainMod, D, exec, flatpak run dev.vencord.Vesktop"
 
         #F-keys shortcuts
-        # ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        # ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
         ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
         # kill in the bind below doesn't work :/
@@ -523,13 +496,9 @@ in
         "$mainMod, mouse:274, resizewindow" # RMB
       ];
       binde = [
-        # ", XF86AudioLowerVolume, exec, ags -r \"indicator.popup(1)\"; wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%-"
         ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
         ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
-        # ", XF86AudioRaiseVolume, exec, ags -r \"indicator.popup(1)\"; wpctl set-volume -l 1.25 @DEFAULT_AUDIO_SINK@ 5%+"
-        # ", XF86MonBrightnessUp, exec, brightnessctl --min-value=20 s 40+"
         ", XF86MonBrightnessUp, exec, swayosd-client --brightness +10"
-        # ", XF86MonBrightnessDown, exec, brightnessctl --min-value=20 s 40-"
         ", XF86MonBrightnessDown, exec, swayosd-client --brightness -10"
 
       ];
