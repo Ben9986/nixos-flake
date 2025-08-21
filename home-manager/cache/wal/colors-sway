@@ -1,0 +1,21 @@
+set $wallpaper /home/ben/wallpaper/sundown-over-water.jpg
+
+set $background #0c0d15
+set $foreground #ebc4cb
+
+set $color0 #0c0d15
+set $color1 #E06564
+set $color2 #F29271
+set $color3 #55618B
+set $color4 #B97390
+set $color5 #7783A9
+set $color6 #A68BB1
+set $color7 #ebc4cb
+set $color8 #a4898e
+set $color9 #E06564
+set $color10 #F29271
+set $color11 #55618B
+set $color12 #B97390
+set $color13 #7783A9
+set $color14 #A68BB1
+set $color15 #ebc4cb

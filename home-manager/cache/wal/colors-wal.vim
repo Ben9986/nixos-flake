@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/ben/wallpaper/sundown-over-water.jpg"
+let background = "#0c0d15"
+let foreground = "#ebc4cb"
+let cursor     = "#ebc4cb"
+
+" Colors
+let color0  = "#0c0d15"
+let color1  = "#E06564"
+let color2  = "#F29271"
+let color3  = "#55618B"
+let color4  = "#B97390"
+let color5  = "#7783A9"
+let color6  = "#A68BB1"
+let color7  = "#ebc4cb"
+let color8  = "#a4898e"
+let color9  = "#E06564"
+let color10 = "#F29271"
+let color11 = "#55618B"
+let color12 = "#B97390"
+let color13 = "#7783A9"
+let color14 = "#A68BB1"
+let color15 = "#ebc4cb"

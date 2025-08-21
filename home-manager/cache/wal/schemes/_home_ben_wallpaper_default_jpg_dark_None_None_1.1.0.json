@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/ben/wallpaper/default.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#090C10",
+        "foreground": "#becccd",
+        "cursor": "#becccd"
+    },
+    "colors": {
+        "color0": "#090C10",
+        "color1": "#56605E",
+        "color2": "#506A72",
+        "color3": "#84867A",
+        "color4": "#607C83",
+        "color5": "#739094",
+        "color6": "#9BA79F",
+        "color7": "#becccd",
+        "color8": "#858e8f",
+        "color9": "#56605E",
+        "color10": "#506A72",
+        "color11": "#84867A",
+        "color12": "#607C83",
+        "color13": "#739094",
+        "color14": "#9BA79F",
+        "color15": "#becccd"
+    }
+}
