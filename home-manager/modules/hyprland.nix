@@ -241,9 +241,6 @@ in
         "VISUAL,hx"
         "EDITOR,hx"
       ];
-      exec = [
-        "hyprpaper"
-      ];
 
       exec-once = [
         "waybar -c ~/.config/waybar/themes/ml4w-modern/config -s ~/.config/waybar/themes/ml4w-modern/black/style.css"
