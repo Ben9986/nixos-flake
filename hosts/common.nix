@@ -14,6 +14,13 @@ let
       wrapProgram $out/bin/plasma-discover --add-flags "--backends flatpak-backend"
     '';
   };
+  breeze-plymouth-modified = pkgs.kdePackages.breeze-plymouth.override {
+    logoFile = "${pkgs.nixos-icons}/share/icons/hicolor/48x48/apps/nix-snowflake-white.png";
+    logoName = "nixos";
+    osName = " ";
+    osVersion = " ";
+    # osVersion = config.system.nixos.release;
+  };
 in
 {
   fileSystems = {
@@ -26,6 +33,28 @@ in
   };
 
   i18n.defaultLocale = "en_GB.UTF-8";
+
+  boot = {
+    plymouth = {
+        enable = true;
+        themePackages = [ breeze-plymouth-modified ];
+        theme ="breeze";
+        extraConfig = ''
+          [Daemon]
+          DeviceScale=1
+        '';
+      };
+      consoleLogLevel = 0;
+      initrd.verbose = false;
+      binfmt.registrations.appimage = {
+        wrapInterpreterInShell = false;
+        interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+        recognitionType = "magic";
+        offset = 0;
+        mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+        magicOrExtension = ''\x7fELF....AI\x02'';
+      };
+  };
 
   console = {
     font = "iso01-12x22";

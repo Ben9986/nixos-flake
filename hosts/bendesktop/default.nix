@@ -4,6 +4,7 @@
   config,
   ...
 }:
+with lib;
 let
   codium-no-gpu = pkgs.symlinkJoin {
     name = "codium-no-gpu";
@@ -25,50 +26,29 @@ in
     custom.plasma.enable = true;
 
     boot = {
-      loader.efi.canTouchEfiVariables = true;
-      loader.grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
-        timeoutStyle = "hidden";
-        theme = pkgs.stdenv.mkDerivation {
-          name = "vimix-grub-theme";
-          buildInputs = [ pkgs.bash ];
-          src = pkgs.fetchFromGitHub {
-            owner = "vinceliuice";
-            repo = "grub2-themes";
-            rev = "2022-10-30";
-            hash = "sha256-LBYYlRBmsWzmFt8kgfxiKvkb5sdLJ4Y5sy4hd+lWR70=";
+      initrd.verbose = false;
+      loader = {
+        efi.canTouchEfiVariables = true;
+        systemd-boot = {
+          enable = true;
+          configurationLimit = 10;
+          consoleMode = "max";
+          extraEntries = {
+            "windows.conf" =
+              "
+            title Windows_11
+            efi /EFI/Microsoft/Boot/bootmgfw.efi
+            sort-key a-windows
+	        ";
           };
-          installPhase = ''
-            var="#! ${pkgs.bash}/bin/bash"
-            echo $var
-            sed -i "1c\$var" install.sh
-            chmod +x ./install.sh
-            ./install.sh -t vimix -s 2k -g $out
-            mv $out/vimix/* $out
-            rm -r $out/vimix
-          '';
+          extraFiles = {
+            "loader/loader.conf" = pkgs.writeText "loader.conf" "timeout menu-hidden\nauto-entries false";
+          };
+          extraInstallCommands = "echo '\ndefault nixos-generation-*.conf' >> /boot/loader/loader.conf";
         };
-        backgroundColor = "#000000";
       };
       kernelParams = [ "quiet" "splash" "udev.log_level=0" ] ;
       kernelPackages = pkgs.linuxPackages_zen;
-      plymouth = {
-        enable = true;
-        theme ="bgrt";
-      };
-      consoleLogLevel = 0;
-      binfmt.registrations.appimage = {
-        wrapInterpreterInShell = false;
-        interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-        recognitionType = "magic";
-        offset = 0;
-        mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-        magicOrExtension = ''\x7fELF....AI\x02'';
-      };
-
     };
 
     #  services.pipewire.extraConfig.pipewire = {
