@@ -18,9 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    ags.url = "github:Aylur/ags";
-    matcha.url = "git+https://codeberg.org/QuincePie/matcha.git";
-
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";

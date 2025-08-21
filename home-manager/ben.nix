@@ -6,10 +6,6 @@
   ...
 }:
 {
-
-  imports = [
-    inputs.ags.homeManagerModules.default
-  ];
   config = {
     custom.hyprland.enable = true;
     custom.plasma.enable = true;
