@@ -13,13 +13,6 @@ lib.mkIf config.custom.hyprland.enable {
   home.file = {
     ".config/hypr/scripts/kbbrightness.sh".source = ../dotfiles/hypr/scripts/kbbrightness.sh;
 
-    ".config/hypr/hyprpaper.conf".text = ''
-      preload = /home/ben/Pictures/Wallpapers/sundown-over-water.jpg
-      wallpaper = ,/home/ben/Pictures/Wallpapers/sundown-over-water.jpg
-    '';
-
-    # ".config/hypr/hyprpaper.conf".source = ../dotfiles/hypr/hyprpaper-laptop.conf;
-
     ".config/hypr/workspaces-acer.conf".source = ../dotfiles/hypr/workspaces-acer.conf;
     ".config/hypr/workspaces-ultrawide.conf".source = ../dotfiles/hypr/workspaces-ultrawide.conf;
     ".config/hypr/workspaces-blank.conf".text = "";
@@ -35,5 +28,21 @@ lib.mkIf config.custom.hyprland.enable {
       monitor=desc:LG Electronics LG ULTRAWIDE 0x000542FD,2560x1080@60.0,0x0,1.0,bitdepth,10
     '';
     ".config/hypr/scripts/monitor-switch.sh".source = ../dotfiles/hypr/scripts/monitor-switch.sh;
+  };
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      splash_offset = 2.0;
+
+      preload =
+        [ "/home/ben/Pictures/Wallpapers/sundown-over-water.jpg" ];
+
+      wallpaper = [
+        ",/home/ben/Pictures/Wallpapers/sundown-over-water.jpg"
+      ];
+    };
   };
 }
