@@ -26,7 +26,7 @@
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidia_x11_beta;
+    package = config.boot.kernelPackages.nvidia_x11;
     # Only sha256_64bit and settingsSha256 need to be set for most systems.
     # The others need to be present but not valid (I don't know why) hence the fakeSha256's
     # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
