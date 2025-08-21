@@ -36,6 +36,7 @@ in
       ./modules
       ./modules/hyprland-desktop.nix
       inputs.hyprland.homeManagerModules.default
+      inputs.stylix.homeModules.stylix
       { config.custom.vscode.disableGpu = true; }
     ];
   };
