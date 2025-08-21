@@ -316,7 +316,6 @@ in
         pseudotile = true;
         preserve_split = true;
         force_split = 2;
-        # no_gaps_when_only = true;
         special_scale_factor = 0.95;
       };
 
@@ -335,6 +334,12 @@ in
         workspace_back_and_forth = true;
         allow_workspace_cycles = true;
       };
+
+      workspace = [
+        "w[t1], gapsout:0, gapsin:0"
+        "w[tg1], gapsout:0, gapsin:0"
+        "f[1], gapsout:0, gapsin:0"
+      ];
 
       misc = {
         vrr = 1;
@@ -356,6 +361,15 @@ in
       ];
 
       windowrule = [
+        # replacement for no_gaps_when_only
+        "bordersize 0, floating:0, onworkspace:w[t1]"
+        "rounding 0, floating:0, onworkspace:w[t1]"
+        "bordersize 0, floating:0, onworkspace:w[tg1]"
+        "rounding 0, floating:0, onworkspace:w[tg1]"
+        "bordersize 0, floating:0, onworkspace:f[1]"
+        "rounding 0, floating:0, onworkspace:f[1]"
+
+
         "float,class:(com.ml4w.sidebar)"
         "move 100%-w-16 66,class:(com.ml4w.sidebar)"
         "pin, class:(com.ml4w.sidebar)"
