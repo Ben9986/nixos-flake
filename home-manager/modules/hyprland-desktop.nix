@@ -1,7 +1,7 @@
 { lib, config, ... }:
 lib.mkIf config.custom.hyprland.enable {
   wayland.windowManager.hyprland.settings = {
-    monitor = "DP-3,2560x1080@60,auto,1,bitdepth,10";
+    monitor = "DP-3,2560x1440@144,auto,1,bitdepth,10";
     env = [
       "GDK_SCALE,1"
       "WLR_DRM_NO_ATOMIC,1"
