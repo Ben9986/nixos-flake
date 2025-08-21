@@ -21,7 +21,8 @@ in
   ];
 
   config = {
-    custom.hyprland.enable = false;
+    custom.hyprland.enable = true;
+    custom.plasma.enable = true;
 
     boot = {
       loader.efi.canTouchEfiVariables = true;
@@ -52,14 +53,13 @@ in
         };
         backgroundColor = "#000000";
       };
-      kernelParams = [ "quiet" ];
-      kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+      kernelParams = [ "quiet" "splash" "udev.log_level=0" ] ;
+      kernelPackages = pkgs.linuxPackages_zen;
       plymouth = {
         enable = true;
-        theme = "catppuccin-mocha";
-        themePackages = [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
+        theme ="bgrt";
       };
-      consoleLogLevel = 1;
+      consoleLogLevel = 0;
       binfmt.registrations.appimage = {
         wrapInterpreterInShell = false;
         interpreter = "${pkgs.appimage-run}/bin/appimage-run";
@@ -113,9 +113,6 @@ in
       codium-no-gpu
       solaar
     ];
-
-    ## Plasma 6
-    services.desktopManager.plasma6.enable = true;
 
     services.displayManager.sddm = {
       enable = true;
