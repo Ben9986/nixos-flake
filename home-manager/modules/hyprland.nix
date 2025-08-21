@@ -58,6 +58,8 @@ in
       libnotify
       libsForQt5.qt5.qtwayland
       kdePackages.qtwayland
+      kdePackages.knewstuff # theming from kde settings
+      kdePackages.kdeclarative
       uwsm
       fastfetch
       xdg-desktop-portal-gtk
