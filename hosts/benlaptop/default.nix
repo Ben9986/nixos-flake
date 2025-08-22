@@ -41,7 +41,8 @@ in
       };
       plymouth.extraConfig = ''
           [Daemon]
-          DeviceScale=2
+          DeviceScale=3
+          ShowDelay=2
         '';
       loader = {
         efi.canTouchEfiVariables = true;
