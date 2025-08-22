@@ -27,6 +27,10 @@ in
 
     boot = {
       initrd.verbose = false;
+      plymouth.extraConfig = ''
+          [Daemon]
+          DeviceScale=1
+        '';
       loader = {
         efi.canTouchEfiVariables = true;
         systemd-boot = {

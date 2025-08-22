@@ -39,10 +39,6 @@ in
         enable = true;
         themePackages = [ breeze-plymouth-modified ];
         theme ="breeze";
-        extraConfig = ''
-          [Daemon]
-          DeviceScale=1
-        '';
       };
       consoleLogLevel = 0;
       initrd.verbose = false;

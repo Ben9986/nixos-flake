@@ -39,6 +39,10 @@ in
         prepend = [ (toString ssdt-csc2551-acpi-table-patch) ];
         verbose = false;
       };
+      plymouth.extraConfig = ''
+          [Daemon]
+          DeviceScale=2
+        '';
       loader = {
         efi.canTouchEfiVariables = true;
         systemd-boot = {
