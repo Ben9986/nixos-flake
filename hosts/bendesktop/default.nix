@@ -51,7 +51,7 @@ in
           extraInstallCommands = "echo '\ndefault nixos-generation-*.conf' >> /boot/loader/loader.conf";
         };
       };
-      kernelParams = [ "quiet" "splash" "udev.log_level=0" ] ;
+      kernelParams = [ "quiet" "splash" "udev.log_level=0" "vt.global_cursor_default=0" ] ;
       kernelPackages = pkgs.linuxPackages_zen;
     };
 

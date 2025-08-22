@@ -73,6 +73,8 @@ in
       kernelParams = [
         "quiet"
         "splash"
+        "loglevel=0"
+        "vt.global_cursor_default=0"
         "udev.log_level=0"
         "resume_offset=47355654"
       ];
