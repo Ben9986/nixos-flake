@@ -37,8 +37,6 @@ in
       hyprpaper
       patchedhyprshot
       nwg-displays
-      gnome-control-center
-      file-roller
       copyq
       udiskie
       blueberry
@@ -49,7 +47,6 @@ in
       ####
       #ml4w
       wget
-      nwg-dock-hyprland
       waybar
       nerd-fonts.fira-mono
       noto-fonts
@@ -60,7 +57,6 @@ in
       kdePackages.qtwayland
       kdePackages.knewstuff # theming from kde settings
       kdePackages.kdeclarative
-      uwsm
       fastfetch
       xdg-desktop-portal-gtk
       kdePackages.xdg-desktop-portal-kde
@@ -100,16 +96,13 @@ in
       pinta
       fira-sans
       fira
-      nwg-displays
       pywal
       wlogout
       wleave
       dunst
       hypridle
-      hyprpaper
       gum
       figlet
-      waypaper
     ];
     file = {
       ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/flake-config/home-manager/dotfiles/waybar"; 
