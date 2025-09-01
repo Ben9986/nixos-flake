@@ -63,6 +63,7 @@ in
       uwsm
       fastfetch
       xdg-desktop-portal-gtk
+      kdePackages.xdg-desktop-portal-kde
       eza
       python313Packages.pip
       python313Packages.pygobject3
@@ -205,6 +206,20 @@ in
             verboseEcho "ML4W config files already present, skipping linking"
         fi
       '';
+    };
+  };
+
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-gtk ];
+    };
+    configFile."xdg-desktop-portal/portals.conf" = {
+      text = ''
+          [preferred]
+          default = hyprland;kde;gtk
+          org.freedesktop.impl.portal.FileChooser = kde
+        '';
     };
   };
 

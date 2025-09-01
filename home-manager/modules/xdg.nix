@@ -13,10 +13,14 @@
       download = "${config.home.homeDirectory}/Downloads";
       pictures = "${config.home.homeDirectory}/Pictures";
     };
-    mimeApps.defaultApplications = {
-      "text/plain" = "helix.desktop";
-      "text/html" = "vivaldi-stable.desktop";
-      "application/pdf" = "vivaldi-stable.desktop";
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+      "inode/directory" = [ "org.kde.dolphin.desktop" "yazi.desktop"];
+      "text/plain" = [ "helix.desktop" "neovim.desktop" ];
+      "text/html" = [ "vivaldi-stable.desktop" ];
+      "application/pdf" = [ "vivaldi-stable.desktop" ];
+    };
     };
   };
   xdg.systemDirs.data = [
