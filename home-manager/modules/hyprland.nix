@@ -410,8 +410,15 @@ in
         "size 40% 60%, class:^(com.github.hluk.copyq)"
         "center, class:^(com.github.hluk.copyq)"
         "tile, class:^(ONLYOFFICE Desktop Editors)"
+
         "float, class:^(xdg-desktop-portal-gtk)"
         "size 50% 60%, class:^(xdg-desktop-portal-gtk)"
+        "stayfocused, class:^(xdg-desktop-portal-gtk)"
+        "size 50% 60%, class:^(org.freedesktop.impl.portal.desktop.kde)"
+        "float, class:^(org.freedesktop.impl.portal.desktop.kde)"
+        "stayfocused, class:^(org.freedesktop.impl.portal.desktop.kde)"
+
+        "stayfocused, class:^(org.gnupg.pinentry-qt)" # vscode commit sign pass popup
 
         "size 600 600, title:(.*)(Bitwarden)$"
       ];
