@@ -34,75 +34,84 @@ in
 
   home = lib.mkIf hyprenable {
     packages = with pkgs; [
-      hyprpaper
-      patchedhyprshot
-      nwg-displays
-      copyq
-      udiskie
-      blueberry
+      # Core utilities & tools
       bc # floating point math in kbbrightnessn.sh
-      ### current waybar ##
+      cargo
+      copyq
+      eza
+      fastfetch
       fd
-      matugen
-      ####
-      #ml4w
+      figlet
+      fzf
+      gum
+      jq
+      rustc
       wget
-      waybar
+      xclip
+      zsh
+
+      # Fonts & theming
+      fira
+      fira-sans
       nerd-fonts.fira-mono
       noto-fonts
       noto-fonts-emoji
       noto-fonts-extra
-      libnotify
-      libsForQt5.qt5.qtwayland
-      kdePackages.qtwayland
-      kdePackages.knewstuff # theming from kde settings
+      papirus-icon-theme
+      rose-pine-cursor
+      rose-pine-hyprcursor
+      # Look & feel
+      nwg-displays
+      nwg-look
+      pywal
+
+      # GTK / Qt / KDE packages
+      gtk4
+      kdePackages.breeze
       kdePackages.kdeclarative
-      fastfetch
-      xdg-desktop-portal-gtk
+      kdePackages.knewstuff # theming from kde settings
+      kdePackages.qtwayland
       kdePackages.xdg-desktop-portal-kde
-      eza
+      libadwaita
+      libsForQt5.qt5.qtwayland
+      qt6ct
+      xdg-desktop-portal-gtk
+
+      # Hyprland ecosystem
+      hypridle
+      patchedhyprshot
+      rofi-wayland
+      waybar
+      wleave
+
+      # Notifications & clipboard
+      cliphist
+      dunst
+      libnotify
+      swaynotificationcenter
+      wl-clipboard
+
+      # Networking & devices
+      blueman
+      blueberry
+      gvfs
+      networkmanager
+      networkmanagerapplet
+      udiskie
+
+      # Python packages
       python313Packages.pip
       python313Packages.pygobject3
-      xfce.tumbler
-      brightnessctl
-      networkmanagerapplet
-      networkmanager
-      gtk4
-      libadwaita
-      fuse2
-      imagemagick # needed for kitty image previews
-      jq
-      xclip
-      rustc
-      cargo
-      pinta
-      blueman
+
+      # Graphics, images & thumbnails
       grim
+      imagemagick # needed for kitty image previews
       slurp
-      cliphist
-      wl-clipboard
-      nwg-look
-      qt6ct
-      rofi-wayland
-      zsh
-      fzf
+      xfce.tumbler # dbus thumbnail interface
+
+      # Misc
       pavucontrol
-      papirus-icon-theme
-      kdePackages.breeze
-      rose-pine-hyprcursor
-      rose-pine-cursor
-      swaynotificationcenter
-      gvfs
-      pinta
-      fira-sans
-      fira
-      pywal
-      wlogout
-      wleave
-      dunst
-      hypridle
-      gum
-      figlet
+
     ];
     file = {
       ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/flake-config/home-manager/dotfiles/waybar"; 
@@ -439,7 +448,7 @@ in
         "$mainMod, K, togglegroup"
         "$mainMod, M, changegroupactive"
 
-        "$mainMod ALT, M, exec, ~/.config/hypr/scripts/monitor-switch.sh"
+        "$mainMod ALT, M, exec, wleave -b 3 -T 415 -B 340 -R 540 -L 540 -p layer-shell"
         "$mainMod ALT, R, exec, pkill -SIGUSR2 waybar"
 
         # Session Control
