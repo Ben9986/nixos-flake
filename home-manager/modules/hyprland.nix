@@ -117,6 +117,7 @@ in
       ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/flake-config/home-manager/dotfiles/waybar"; 
       ".config/swaync".source = ../dotfiles/swaync-ml4w;
       ".cache/wal".source = ../cache/wal;
+      ".config/rofi/rofi-clipboard.rasi".source = ../dotfiles/rofi/rofi-clipboard.rasi;
       ".config/wleave/style.css".text = with config.lib.stylix.colors.withHashtag; ''
         @define-color base00 ${base00}; @define-color base01 ${base01}; @define-color base02 ${base02}; @define-color base03 ${base03};
         @define-color base04 ${base04}; @define-color base05 ${base05}; @define-color base06 ${base06}; @define-color base07 ${base07};
@@ -277,11 +278,13 @@ in
       general = {
         gaps_in = 4;
         gaps_out = 3;
+        gaps_workspaces = 2;
         border_size = 2;
         "col.active_border" = "rgba(ffffffff)";
         "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
         resize_on_border = true;
+        extend_border_grab_area = 20;
         hover_icon_on_border = true;
       };
 
@@ -375,6 +378,7 @@ in
 
       layerrule = [
         "ignorealpha 1, swaync-control-center"
+        "dimaround, rofi"
       ];
 
       windowrule = [
@@ -427,7 +431,9 @@ in
         "float, class:^(org.freedesktop.impl.portal.desktop.kde)"
         "stayfocused, class:^(org.freedesktop.impl.portal.desktop.kde)"
 
-        "stayfocused, class:^(org.gnupg.pinentry-qt)" # vscode commit sign pass popup
+        # vscode commit sign pass popup
+        "stayfocused, class:^(org.gnupg.pinentry-qt)"
+        "dimaround, class:^(org.gnupg.pinentry-qt)" 
 
         "size 600 600, title:(.*)(Bitwarden)$"
       ];
