@@ -293,7 +293,7 @@ in
         inactive_opacity = 0.99;
         active_opacity = 1.0;
         fullscreen_opacity = 1.0;
-        dim_around = 0.2;
+        dim_around = 0.4;
         blur = {
           enabled = true;
           size = 6;
