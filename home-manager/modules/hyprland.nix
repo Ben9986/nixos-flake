@@ -472,7 +472,7 @@ in
         "$mainMod, Q, exec, kitty"
         "$mainMod, F, exec, vivaldi --ozone-platform=wayland --password-store=kwallet6"
         "$mainMod, E, exec, dolphin"
-        "$mainMod, V, exec, ~/.config/ml4w/scripts/cliphist.sh"
+        "$mainMod, V, exec, pkill fuzzel || ~/.config/ml4w/scripts/cliphist.sh"
         "$mainMod, N, exec, swaync-client -t -sw"
         "$mainMod, O, exec, obsidian -- obsidian://open?vault=Uni%20Vault"
         "$mainMod SHIFT, O, exec, obsidian -- obsidian://open?vault=Life%20Tings"
