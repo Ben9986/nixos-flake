@@ -9,16 +9,16 @@
 
 case $1 in
     d)
-        cliphist list | rofi -dmenu -replace -config ~/.config/rofi/rofi-clipboard.rasi | cliphist delete
+        cliphist list | fuzzel --dmenu --config ~/.config/fuzzel/cliphist.ini | cliphist delete
         ;;
 
     w)
-        if [ $(echo -e "Clear\nCancel" | rofi -dmenu -config ~/.config/rofi/rofi-clipboard.rasi) == "Clear" ]; then
+        if [ $(echo -e "Clear\nCancel" | fuzzel --dmenu --config ~/.config/fuzzel/cliphist.ini) == "Clear" ]; then
             cliphist wipe
         fi
         ;;
 
     *)
-        cliphist list | rofi -dmenu -replace -config ~/.config/rofi/rofi-clipboard.rasi | cliphist decode | wl-copy
+        cliphist list | fuzzel --dmenu --config ~/.config/fuzzel/cliphist.ini | cliphist decode | wl-copy
         ;;
 esac

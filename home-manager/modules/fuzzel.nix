@@ -4,18 +4,49 @@
     enable = true;
     settings = {
       main = {
-        icon-theme = "Adwaita";
+        namespace = "fuzzel";
+        icon-theme = "Breeze";
         fields = "name,keywords";
-        width = 35;
+        width = 45;
         vertical-pad = 15;
         line-height = 20;
       };
-      # colors = {
-      #   background = "4a4c4fff";
-      #   text = "ddddddff";
-      # };
+      colors = {
+        border = lib.mkForce "ffffffff";
+        # background = "4a4c4fff";
+        # text = "ddddddff";
+      };
+      border = {
+        width = 2;
+      };
 
     };
 
   };
+
+  home.file.".config/fuzzel/cliphist.ini".text = ''
+    [main]
+    anchor=top-right
+    font=DejaVu Sans:size=10
+    line-height=20
+    namespace=fuzzel-clipboard
+    vertical-pad=15
+    width=45
+    x-margin=10
+    prompt="  "
+    placeholder="Seach Clipboard"
+
+    [colors]
+    background=181818FF
+    border=ffffffff
+    counter=ffffffff
+    input=ffffffff
+    match=ff9470ff
+    placeholder=888888ff
+    prompt=ffffffff
+    selection=888888ff
+    selection-match=ff9470ff
+    selection-text=ffffffff
+    text=ffffffff
+  '';
 }
