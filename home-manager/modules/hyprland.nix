@@ -256,6 +256,7 @@ in
         "nm-applet --indicator"
         "blueberry-tray"
         "hyprctl dispatch exec [ workspace special:fm silent ] kitty yazi"
+        "hyprctl dispatch exec [ workspace special:term silent ] kitty"
         "udiskie &"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
@@ -319,6 +320,7 @@ in
         "winIn, 0.1, 1.1, 0.1, 1.1"
         "winOut, 0.3, -0.3, 0, 1"
         "liner, 1, 1, 1, 1"
+        "easeOutExpo, 0.16, 1, 0.3, 1"
       ];
       animation = [
         "windows, 1, 6, wind, slide"
@@ -329,6 +331,7 @@ in
        "borderangle, 1, 30, liner, loop"
        "fade, 1, 10, default"
        "workspaces, 1, 5, wind"
+       "specialWorkspaceIn, 1, 3, easeOutExpo, slidevert -10%"
        ];
        };
 
@@ -340,15 +343,18 @@ in
       };
 
       gestures = {
-        "workspace_swipe" = true;
         "workspace_swipe_invert" = false;
         "workspace_swipe_distance" = 350;
         "workspace_swipe_min_speed_to_force" = 20;
         "workspace_swipe_cancel_ratio" = 0.2;
         "workspace_swipe_forever" = true;
         "workspace_swipe_create_new" = true;
-        "workspace_swipe_fingers" = 3;
       };
+
+      gesture = [
+        "3, horizontal, workspace"
+        "3, vertical, special, term"
+      ];
 
       binds = {
         workspace_back_and_forth = true;
