@@ -22,27 +22,7 @@ lib.mkIf config.custom.hyprland.enable {
     lxqt.pcmanfm-qt
     hyprpolkitagent
     swayosd
-    # fakwin
-    # polkit_gnome
-    # networkmanagerapplet
-    # blueberry
     brightnessctl
-    # font-awesome
-    # udiskie
-    # copyq
-    # nwg-look
-    # swww
-    # glib # gsettings for nwg-look
-    # swaynotificationcenter
-    # gnome.gnome-software
-    # nemo-with-extensions
-    # gtk3
-    # adwaita-icon-theme
-    # # qt5&6 wayland needed for xdph
-    # qt6.qtwayland
-    # libsForQt5.qt5.qtwayland
-    # libsForQt5.qt5ct
-    # qt6Packages.qt6ct
   ];
 
   # Fix Default Apps opening in Flatpaks
@@ -54,8 +34,6 @@ lib.mkIf config.custom.hyprland.enable {
     description = "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc.";
     documentation = [ "https://github.com/ErikReider/SwayOSD" ];
     wantedBy = [ "graphical.target" ];
-    # partOf = [ "graphical.target" ];
-    # after = [ "graphical.target" ];
 
     serviceConfig = {
       Type = "dbus";

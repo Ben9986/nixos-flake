@@ -2,10 +2,6 @@
 lib.mkIf config.custom.hyprland.enable {
   wayland.windowManager.hyprland.settings = {
     monitor = "eDP-1,highres,0x0,1.5";
-    # source = [
-    #   "~/.config/hypr/monitors-live.conf"
-    #   "~/.config/hypr/workspaces-live.conf"
-    # ];
     env = [
       "QT_AUTO_SCREEN_SCALE_FACTOR,1.5"
     ];

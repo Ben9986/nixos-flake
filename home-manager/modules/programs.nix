@@ -81,7 +81,6 @@
         enableZshIntegration = true;
         mode = "no-sudo";
       };
-      # themeFile = "cherry-midnight";
       settings = {
         enable_audio_bell = false;
         editor = "hx";

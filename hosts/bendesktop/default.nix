@@ -81,9 +81,9 @@ in
 
     hardware.logitech.wireless.enable = true;
 
-    # Disable suspend as it crashes hyprland on nvidia
-    systemd.services.systemd-suspend.enable = !config.custom.hyprland.enable;
-    systemd.targets.suspend.enable = !config.custom.hyprland.enable;
+    # Disable suspend as monitor KVM can't wake PC.
+    systemd.services.systemd-suspend.enable = false;
+    systemd.targets.suspend.enable = false;
 
     networking.hostName = "bendesktop";
 
