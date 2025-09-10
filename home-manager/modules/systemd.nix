@@ -1,29 +1,29 @@
 { pkgs, config, ... }:
 {
-  systemd.user.timers."pull-flake" = {
-    Install = {
-      WantedBy = [ "timers.target" ];
-    };
-    Timer = {
-      OnStartupSec = "20";
-      Unit = "pull-flake.service";
-    };
-  };
-
   systemd.user.services = {
     "pull-flake" = {
       Unit = {
         Description = "Pull changes for flake configuration from github";
+        After = [ "graphical-session.target" "network-online.target" ];
+        Wants = [ "network-online.target" ];
       };
       Install = {
-        WantedBy = [ "timers.target" ];
+        WantedBy = [ "default.target" ];
       };
       Service = {
         ExecStart = "${pkgs.writeShellScript "pull-flake" ''
           set -eu
-          ${pkgs.coreutils}/bin/echo "Starting Git Pull..."
           cd ${config.custom.flakeDir}
-          ${pkgs.libnotify}/bin/notify-send "Checking for Config Changes..." "$(${pkgs.git}/bin/git pull)" -t 4000 -e
+          result=$(${pkgs.git}/bin/git pull)
+
+          if echo "$result" | grep -q -E "Updating|Fast-forward"; then
+           ${pkgs.libnotify}/bin/notify-send "✅ Changes Pulled\!" "Must be manually installed" -e -t 4000
+          elif echo "$result" | grep -q "Already up to date."; then
+           ${pkgs.libnotify}/bin/notify-send "📂 No Changes to Pull" -e -t 4000
+          else
+            ${pkgs.libnotify}/bin/notify-send "⚠️ Config Pull Error"
+            echo "$result"
+          fi
         ''}";
         Type = "oneshot";
       };
