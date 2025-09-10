@@ -13,8 +13,6 @@
       };
       colors = {
         border = lib.mkForce "ffffffff";
-        # background = "4a4c4fff";
-        # text = "ddddddff";
       };
       border = {
         width = 2;
