@@ -402,7 +402,7 @@ in
         "$mainMod ALT, R, exec, pkill -SIGUSR2 waybar"
 
         # Session Control
-        "$mainMod ALT, P, exec, ~/.config/ml4w/scripts/wlogout.sh"
+        "$mainMod ALT, P, exec, wleave -b 3 -T 415 -B 340 -R 540 -L 540 -p layer-shell"
         "$mainMod, L, exec, loginctl lock-session"
         "$mainMod, I, exec, matcha -t && notify-send 'Toggled Idle Inhibitor'"
 
