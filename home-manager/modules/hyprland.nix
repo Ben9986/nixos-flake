@@ -214,7 +214,7 @@ in
 
   xdg = {
     portal = {
-      enable = true;
+      # enable = true; # conflicts with setting hyprland portalPackage below
       extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-gtk ];
     };
     configFile."xdg-desktop-portal/portals.conf" = {
@@ -232,7 +232,9 @@ in
       enable = true;
       variables = [ "--all" ];
     };
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # ensures pkg used in nixos module & hm is the same
+    package = null;
+    portalPackage = null;
     settings = {
       env = [
         "XCURSOR_SIZE,24"
