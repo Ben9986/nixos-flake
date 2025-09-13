@@ -80,7 +80,7 @@ in
       # Hyprland ecosystem
       hypridle
       patchedhyprshot
-      rofi-wayland
+      rofi
       waybar
       wleave
 
