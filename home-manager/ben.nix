@@ -34,8 +34,10 @@
           pavucontrol
           onedrivegui
           obsidian
+          poppler-utils
           spotify
           konsave
+          tesseract
           vivaldi
           vivaldi-ffmpeg-codecs
           libreoffice-qt6-fresh
