@@ -8,6 +8,7 @@
     ./swaylock.nix
     ./systemd.nix
     ./theming.nix
+    ./wleave.nix
     ./xdg.nix
     ./zsh.nix
   ];
