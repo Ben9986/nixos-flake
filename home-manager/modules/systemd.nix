@@ -18,11 +18,14 @@
 
           if echo "$result" | grep -q -E "Updating|Fast-forward"; then
            ${pkgs.libnotify}/bin/notify-send "✅ Changes Pulled\!" "Must be manually installed" -e -t 4000
+           exit 0
           elif echo "$result" | grep -q "Already up to date."; then
            ${pkgs.libnotify}/bin/notify-send "📂 No Changes to Pull" -e -t 4000
+           exit 0
           else
             ${pkgs.libnotify}/bin/notify-send "⚠️ Config Pull Error"
             echo "$result"
+            exit 1
           fi
         ''}";
         Type = "oneshot";
