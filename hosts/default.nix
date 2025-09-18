@@ -25,6 +25,7 @@ in
     };
     modules = [
       ./benlaptop
+      ./modules/zenbook_audio_patch.nix
       ./common.nix
       ./modules
       ./modules/virtualisation.nix
