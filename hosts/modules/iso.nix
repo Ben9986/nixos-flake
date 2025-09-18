@@ -1,4 +1,8 @@
-{pkgs, lib, ... }:
+{pkgs, lib, config, ... }:
+let custom-installer = pkgs.writeShellScriptBin "custom-installer" ''
+  echo "Hello, world!"
+  '';
+in
 {
   config = {
     isoImage = {
@@ -11,6 +15,7 @@
     networking.networkmanager.enable = true;
      environment.systemPackages = with pkgs; [
       git
+      custom-installer
      ];
   };
 }
