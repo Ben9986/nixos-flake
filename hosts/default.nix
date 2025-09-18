@@ -64,4 +64,18 @@ in
       ../custom-options.nix
     ];
   };
+  iso = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs;
+        host = {
+          hostName = "NixosIso";
+      };
+    };
+    modules = [
+      "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+      "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
+      ./modules/iso.nix
+    ];
+  };
 }
