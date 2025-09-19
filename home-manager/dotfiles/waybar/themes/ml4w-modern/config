@@ -29,7 +29,7 @@
 // "custom/appmenu",
         "group/group-power",
         "hyprland/workspaces",
-        "group/links",
+        // "group/links",
 //"wlr/taskbar",
         "group/quicklinks",
         "custom/empty"
