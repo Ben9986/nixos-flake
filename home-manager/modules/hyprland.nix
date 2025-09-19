@@ -294,6 +294,22 @@ in
         "3, vertical, special, term"
       ];
 
+      group = {
+        "col.border_active" = "rgb(8,169,255) rgb(8,169,255)";
+        "col.border_inactive" = "rgb(2,86,143) rgb(2,86,143)";
+        groupbar = {
+          "col.active" = "rgb(255,255,255) rgb(255,255,255)";
+          "col.inactive" = "rgb(147,147,147) rgb(147,147,147)";
+          keep_upper_gap = false;
+          font_size = 12;
+          font_weight_active = "medium";
+          font_weight_inactive = "medium";
+          height = 12;
+        };
+      };
+
+      
+
       binds = {
         workspace_back_and_forth = false;
         allow_workspace_cycles = true;
@@ -301,7 +317,7 @@ in
 
       workspace = [
         "w[t1], gapsout:0, gapsin:0"
-        "w[tg1], gapsout:0, gapsin:0"
+        "w[t1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"
       ];
 
@@ -329,8 +345,8 @@ in
         # replacement for no_gaps_when_only
         "bordersize 0, floating:0, onworkspace:w[t1]"
         "rounding 0, floating:0, onworkspace:w[t1]"
-        "bordersize 0, floating:0, onworkspace:w[tg1]"
-        "rounding 0, floating:0, onworkspace:w[tg1]"
+        "bordersize 0, floating:0, onworkspace:w[t1]"
+        "rounding 0, floating:0, onworkspace:w[t1]"
         "bordersize 0, floating:0, onworkspace:f[1]"
         "rounding 0, floating:0, onworkspace:f[1]"
 
@@ -395,9 +411,6 @@ in
         "$mainMod CTRL, F, fullscreenstate, 2 0" # window thinks it's fullscreen
         "$mainMod ALT, F, fullscreen, 0" # actual fullscreen
 
-        "$mainMod, K, togglegroup"
-        "$mainMod, M, changegroupactive"
-
         "$mainMod ALT, M, exec, wleave -b 3 -T 415 -B 340 -R 540 -L 540 -p layer-shell"
         "$mainMod ALT, R, exec, pkill -SIGUSR2 waybar"
 
@@ -423,6 +436,10 @@ in
         # kill in the bind below doesn't work :/
         "$mainMod SHIFT, S, exec, kill -9 $(pidof hyprshot) || XCURSOR_SIZE=32 HYPRSHOT_DIR=$HOME/Pictures/Screenshots ${patchedhyprshot}/bin/hyprshot -m region --move-cursor 0,0"
 
+        # Group Controls
+        "$mainMod, K, togglegroup"
+        "$mainMod, M, changegroupactive"
+        
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
