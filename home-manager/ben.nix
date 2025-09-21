@@ -85,5 +85,16 @@
     nixpkgs.config.allowUnfree = true;
 
     programs.home-manager.enable = true;
+
+    programs.git = {
+      enable = true;
+      userName = "ben9986";
+      userEmail = "38633150+Ben9986@users.noreply.github.com";
+      signing = {
+        format = "openpgp";
+        key = "ABBCDD7769BCD3B0";
+        signByDefault = true;
+      };
+    };
   };
 }
