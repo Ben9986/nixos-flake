@@ -11,7 +11,7 @@
     hyprlock.useWallpaper = false;
     hyprlock.enable = false;
     swaylock.enable = false;
-    kde.enable = false;
+    kde.enable = config.custom.hyprland.enable;
   };
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-gray.yaml";
 
