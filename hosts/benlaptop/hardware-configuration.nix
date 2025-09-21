@@ -26,43 +26,44 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6a68dc0e-442c-4165-9516-aac2766b5ff1";
+    device = "/dev/disk/by-uuid/a181d09e-f92e-4c4f-9385-0ed7eaa84c5c";
     fsType = "btrfs";
     options = [
-      "subvol=root"
+      "subvol=/"
       "compress=zstd"
     ];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/6a68dc0e-442c-4165-9516-aac2766b5ff1";
+    device = "/dev/disk/by-uuid/a181d09e-f92e-4c4f-9385-0ed7eaa84c5c";
     fsType = "btrfs";
     options = [
-      "subvol=nix"
+      "subvol=/nix"
       "compress=zstd"
       "noatime"
     ];
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/6a68dc0e-442c-4165-9516-aac2766b5ff1";
+    device = "/dev/disk/by-uuid/a181d09e-f92e-4c4f-9385-0ed7eaa84c5c";
     fsType = "btrfs";
     options = [
-      "subvol=home"
+      "subvol=/home"
       "compress=zstd"
     ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/89A9-5B80";
+    device = "/dev/disk/by-uuid/E264-16E3";
     fsType = "vfat";
+    options = [ "fmask=0077" "dmask=0077" ];
   };
 
   fileSystems."/swap" = {
-    device = "/dev/disk/by-uuid/6a68dc0e-442c-4165-9516-aac2766b5ff1";
+    device = "/dev/disk/by-uuid/a181d09e-f92e-4c4f-9385-0ed7eaa84c5c";
     fsType = "btrfs";
     options = [
-      "subvol=swap"
+      "subvol=/swap"
     ];
   };
 
