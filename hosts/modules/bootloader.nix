@@ -1,0 +1,54 @@
+{config, pkgs, lib, ... }:
+with lib;
+let cfg = config.bootloader; 
+in {
+  options.bootloader = {
+    enable =  mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Default Bootloader Configuration";
+      };
+    default-windows = mkEnableOption "Windows as default boot entry";
+  };
+
+  config = mkIf cfg.enable (mkMerge [
+    { boot = {
+      initrd = {
+        verbose = false;
+      };
+      plymouth.extraConfig = ''
+          [Daemon]
+          DeviceScale=3
+          ShowDelay=2
+        '';
+      loader = {
+        efi.canTouchEfiVariables = true;
+        systemd-boot = with lib; {
+          enable = true;
+          configurationLimit = 10;
+          consoleMode = "max";
+          extraEntries = {
+            "windows.conf" =
+              "
+            title Windows_11
+            efi /EFI/Microsoft/Boot/bootmgfw.efi
+            sort-key a-windows
+	        ";
+          };
+          extraFiles = {
+            "loader/loader.conf" = pkgs.writeText "loader.conf" "timeout menu-hidden\nauto-entries false";
+          };
+    };
+      };};
+    }
+    (mkIf cfg.default-windows {
+      boot.loader.systemd-boot.extraInstallCommands = "echo \"\ndefault windows.conf\" >> /boot/loader/loader.conf";
+    })
+
+    (mkIf (!cfg.default-windows) {
+      boot.loader.systemd-boot.extraInstallCommands = "echo \"\ndefault nixos-generation-*.conf\" >> /boot/loader/loader.conf";
+    })
+
+  ]);
+    
+}

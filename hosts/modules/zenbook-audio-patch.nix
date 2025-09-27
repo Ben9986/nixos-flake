@@ -1,4 +1,4 @@
-{ pkgs, lib, ...}:
+{ config, pkgs, lib, ...}:
 with lib;
 let 
   inherit (pkgs) runCommand acpica-tools cpio;
@@ -14,6 +14,11 @@ let
 
     cp patched-acpi-tables.cpio $out
   '';
+  cfg = config.zenbook-audio-patch;
   in {
-    config.boot.initrd.prepend = [ (toString ssdt-csc2551-acpi-table-patch) ];
+    options.zenbook-audio-patch.enable = lib.mkEnableOption "Zenbook Audio Patch";
+
+    config = lib.mkIf cfg.enable { 
+      boot.initrd.prepend = [ (toString ssdt-csc2551-acpi-table-patch) ];
+    };
   }

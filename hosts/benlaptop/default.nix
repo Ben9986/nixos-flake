@@ -4,55 +4,27 @@
   config,
   ...
 }:
-with lib;
 {
 
   imports = [
     ./hardware-configuration.nix
   ];
-
-  config = {
-    custom.hyprland.enable = true;
-    custom.plasma.enable = true;
+    bootloader = {
+      enable = true;
+      default-windows = true;
+    };
+    hyprland.enable = true;
+    plasma.enable = true;
+    core-services.enable = true;
+    virtualisation.enable = true; 
+    zenbook-audio-patch.enable = true;
+    
 
     boot = {
       extraModprobeConfig = ''
         # Toggle fnlock_default at boot (Y/N)
         options asus_wmi fnlock_default=N
       '';
-      initrd = {
-        verbose = false;
-      };
-      plymouth.extraConfig = ''
-          [Daemon]
-          DeviceScale=3
-          ShowDelay=2
-        '';
-      loader = {
-        efi.canTouchEfiVariables = true;
-        systemd-boot = {
-          enable = true;
-          configurationLimit = 10;
-          consoleMode = "max";
-          extraEntries = {
-            "windows.conf" =
-              "
-            title Windows_11
-            efi /EFI/Microsoft/Boot/bootmgfw.efi
-            sort-key a-windows
-	        ";
-          };
-          extraFiles = {
-            "loader/loader.conf" = pkgs.writeText "loader.conf" "timeout menu-hidden\nauto-entries false";
-          };
-          extraInstallCommands = mkMerge [
-            (mkIf config.custom.laptop.default-windows "echo \"\ndefault windows.conf\" >> /boot/loader/loader.conf")
-            (mkIf (
-              !config.custom.laptop.default-windows
-            ) "echo \"\ndefault nixos-generation-*.conf\" >> /boot/loader/loader.conf")
-          ];
-        };
-      };
       resumeDevice = "/dev/disk/by-uuid/a181d09e-f92e-4c4f-9385-0ed7eaa84c5c";
       kernelParams = [
         "quiet"
@@ -85,6 +57,13 @@ with lib;
         wayland.enable = true;
         theme = "breeze";
       };
+      pipewire.wireplumber.extraConfig = {
+        "10-disable-camera" = {
+          "wireplumber.profiles" = {
+            main."monitor.libcamera" = "disabled";
+          };
+        };
+      };
       udev.extraRules = ''SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"'';
     };
 
@@ -107,5 +86,4 @@ with lib;
         HibernateMode=shutdown
       '';
     };
-  };
 }

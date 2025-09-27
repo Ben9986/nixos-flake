@@ -25,12 +25,9 @@ in
     };
     modules = [
       ./benlaptop
-      ./modules/zenbook_audio_patch.nix
       ./common.nix
       ./modules
-      ./modules/virtualisation.nix
       ../custom-options.nix
-      # inputs.nixos-cosmic.nixosModules.default
     ];
   };
   bendesktop = lib.nixosSystem {
@@ -48,7 +45,6 @@ in
       #./modules/nvidia-nouveau.nix
       ./modules
       ../custom-options.nix
-      inputs.nixos-cosmic.nixosModules.default
     ];
   };
   trinity = lib.nixosSystem {

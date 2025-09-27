@@ -2,10 +2,21 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
-{
-  services.desktopManager.cosmic.enable = config.custom.cosmic.enable;
-  services.displayManager.cosmic-greeter.enable = config.custom.cosmic.greeter.enable;
-  environment.systemPackages = with pkgs; [ kdePackages.kwallet-pam ];
+let cfg = config.cosmic;
+in
+{  
+  imports = [ inputs.nixos-cosmic.nixosModules.default ];
+  options.cosmic = {
+    enable = lib.mkEnableOption "Cosmic Session";
+    greeter.enable = lib.mkEnableOption "Cosmic Greeter";
+  };
+
+  config = lib.mkIf cfg.enable {
+    services.desktopManager.cosmic.enable = true;
+    services.displayManager.cosmic-greeter.enable = cfg.greeter.enable;
+    environment.systemPackages = with pkgs; [ kdePackages.kwallet-pam ];
+    };
 }

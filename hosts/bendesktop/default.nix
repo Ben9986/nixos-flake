@@ -20,37 +20,15 @@ in
   imports = [
     ./hardware-configuration.nix
   ];
-
-  config = {
-    custom.hyprland.enable = true;
-    custom.plasma.enable = true;
+  
+    bootloader.enable = true;
+    hyprland.enable = true;
+    plasma.enable = true;
+    core-services.enable = true;
+    nvidia.enable = true;
+    virtualisation.enable = true;
 
     boot = {
-      initrd.verbose = false;
-      plymouth.extraConfig = ''
-          [Daemon]
-          DeviceScale=1
-        '';
-      loader = {
-        efi.canTouchEfiVariables = true;
-        systemd-boot = {
-          enable = true;
-          configurationLimit = 10;
-          consoleMode = "max";
-          extraEntries = {
-            "windows.conf" =
-              "
-            title Windows_11
-            efi /EFI/Microsoft/Boot/bootmgfw.efi
-            sort-key a-windows
-	        ";
-          };
-          extraFiles = {
-            "loader/loader.conf" = pkgs.writeText "loader.conf" "timeout menu-hidden\nauto-entries false";
-          };
-          extraInstallCommands = "echo '\ndefault nixos-generation-*.conf' >> /boot/loader/loader.conf";
-        };
-      };
       kernelParams = [ "quiet" "splash" "udev.log_level=0" "vt.global_cursor_default=0" ] ;
       kernelPackages = pkgs.linuxPackages_zen;
     };
@@ -108,5 +86,4 @@ in
       # needed for smoother fonts on hidpi display
       QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
     };
-  };
 }

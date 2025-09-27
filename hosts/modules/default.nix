@@ -1,9 +1,12 @@
-{
+{...}: {
   imports = [
-    ./services.nix
-    ./hyprland.nix
+    ./bootloader.nix
+    ./core-services.nix
     ./cosmic.nix
+    ./hyprland.nix
     ./plasma.nix
-    # ./mesa.nix
+    ./nvidia.nix
+    ./virtualisation.nix
+    ./zenbook-audio-patch.nix
   ];
 }
