@@ -6,6 +6,7 @@
 }:
 {
   xdg = {
+    enable = true;
     desktopEntries = {
       vivaldi-stable = {
         name = "Vivaldi";
@@ -26,7 +27,7 @@
         };
       };
     };
-
+    mime.enable = true;
     mimeApps = {
       enable = true;
       defaultApplications = {
