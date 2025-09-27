@@ -11,7 +11,7 @@ in {
 
       dbus.enable = true;
 
-      services.displayManager.sddm = {
+      displayManager.sddm = {
         enable = true;
         wayland.enable = true;
         theme = "breeze";
