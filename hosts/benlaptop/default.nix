@@ -52,11 +52,6 @@
     networking.hostName = "benlaptop";
 
     services = {
-      displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-        theme = "breeze";
-      };
       pipewire.wireplumber.extraConfig = {
         "10-disable-camera" = {
           "wireplumber.profiles" = {

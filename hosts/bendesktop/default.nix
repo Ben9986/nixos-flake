@@ -76,12 +76,6 @@ in
       solaar
     ];
 
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "breeze";
-    };
-
     environment.variables = {
       # needed for smoother fonts on hidpi display
       QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
