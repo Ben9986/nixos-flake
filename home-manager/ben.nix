@@ -7,8 +7,10 @@
 }:
 {
   config = {
-    custom.hyprland.enable = true;
-    custom.plasma.enable = true;
+    home-manager = {
+      hyprland.enable = true;
+      plasma.enable = true;
+    };
 
     home = {
       username = "ben";
@@ -50,7 +52,7 @@
           ubuntu
           symbols-only
         ])
-        (lib.mkIf config.custom.plasma.enable [
+        (lib.mkIf config.home-manager.plasma.enable [
           pkgs.kdePackages.krohnkite
           pkgs.kdePackages.yakuake
           (pkgs.callPackage ../pkgs/klassy.nix { })

@@ -11,7 +11,7 @@
     hyprlock.useWallpaper = false;
     hyprlock.enable = false;
     swaylock.enable = false;
-    kde.enable = config.custom.hyprland.enable;
+    kde.enable = config.home-manager.hyprland.enable;
   };
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-gray.yaml";
 
@@ -32,7 +32,7 @@
   fonts.fontconfig.enable = true;
 
   # gtk = {
-  #   enable = config.custom.hyprland.enable;
+  #   enable = config.home-manager.hyprland.enable;
   #   # theme = {
   #   #   name = "Adwaita-dark";
   #   #   package = pkgs.gnome-themes-extra;
@@ -53,7 +53,7 @@
   # };
 
   # qt = {
-  #   enable = config.custom.hyprland.enable;
+  #   enable = config.home-manager.hyprland.enable;
   #   style.name = "Breeze";
   #   style.package = pkgs.kdePackages.breeze;
   #   platformTheme.name = "Breeze";

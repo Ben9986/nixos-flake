@@ -6,7 +6,7 @@
   ...
 }:
 {
-  programs.hyprlock = lib.mkIf config.custom.hyprland.enable {
+  programs.hyprlock = lib.mkIf config.home-manager.hyprland.enable {
     enable = true;
     package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
     settings = {

@@ -4,7 +4,7 @@
   lib,
   ...
 }:
-lib.mkIf config.custom.hyprland.enable {
+lib.mkIf config.home-manager.hyprland.enable {
   home.file = {
     ".config/wleave/layout.json".text = ''
       {

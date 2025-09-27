@@ -6,7 +6,7 @@
   ...
 }:
 {
-  services.hypridle = lib.mkIf config.custom.hyprland.enable {
+  services.hypridle = lib.mkIf config.home-manager.hyprland.enable {
     enable = true;
     package = pkgs.hypridle;
     settings = {

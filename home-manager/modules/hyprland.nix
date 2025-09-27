@@ -5,8 +5,9 @@
   lib,
   ...
 }:
+with lib;
 let
-  hyprenable = config.custom.hyprland.enable;
+  cfg = config.home-manager.hyprland;
   patchedhyprshot =
     (pkgs.hyprshot.overrideAttrs (old: rec {
       version = "git";
@@ -31,8 +32,12 @@ let
       { hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland; };
 in
 {
+  options.home-manager.hyprland = {
+    enable = mkEnableOption "Hyprland home manager config";
+  };
 
-  home = lib.mkIf hyprenable {
+  config = mkIf cfg.enable {
+  home = {
     packages = with pkgs; [
       # Core utilities & tools
       bc # floating point math in kbbrightnessn.sh
@@ -162,7 +167,7 @@ in
     };
   };
 
-  wayland.windowManager.hyprland = lib.mkIf hyprenable {
+  wayland.windowManager.hyprland = {
     enable = true;
     systemd = {
       enable = true;
@@ -512,5 +517,6 @@ in
         ", XF86KbdBrightcycle, exec, ~/.config/hypr/scripts/kbbrightness.sh"
       ];
     };
+  };
   };
 }

@@ -5,7 +5,7 @@
   ...
 }:
 {
-  programs.swaylock = pkgs.lib.mkIf config.custom.hyprland.enable {
+  programs.swaylock = pkgs.lib.mkIf config.home-manager.hyprland.enable {
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {

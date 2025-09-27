@@ -20,7 +20,7 @@ in
     };
 
     shellAliases = {
-      hconf = lib.mkIf config.custom.hyprland.enable "nvim ${flakeDir}/home-manager/modules/hyprland.nix";
+      hconf = lib.mkIf config.home-manager.hyprland.enable "nvim ${flakeDir}/home-manager/modules/hyprland.nix";
       hmconf = "nvim ${flakeDir}/home-manager/$USER.nix";
       hmsw = "nh home switch";
       nxsw = "nh os switch";

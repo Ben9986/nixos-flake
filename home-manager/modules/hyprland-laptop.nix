@@ -1,5 +1,5 @@
 { lib, config, ... }:
-lib.mkIf config.custom.hyprland.enable {
+lib.mkIf config.home-manager.hyprland.enable {
   wayland.windowManager.hyprland.settings = {
     monitor = "eDP-1,highres,0x0,1.5";
     env = [

@@ -75,7 +75,7 @@
         };
       };
     };
-    kitty = pkgs.lib.mkIf config.custom.hyprland.enable {
+    kitty = pkgs.lib.mkIf config.home-manager.hyprland.enable {
       enable = true;
       shellIntegration = {
         enableZshIntegration = true;
@@ -97,7 +97,7 @@
         pkgs.vimPlugins.yuck-vim
       ];
     };
-    yazi = pkgs.lib.mkIf config.custom.hyprland.enable {
+    yazi = pkgs.lib.mkIf config.home-manager.hyprland.enable {
       enable = true;
       enableZshIntegration = true;
       settings = {
