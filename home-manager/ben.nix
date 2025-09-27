@@ -6,6 +6,7 @@
   ...
 }:
 {
+  options.home-manager.plasma.enable = lib.mkEnableOption "Plasma Desktop Sessions Packages";
   config = {
     home-manager = {
       hyprland.enable = true;
