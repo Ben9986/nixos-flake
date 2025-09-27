@@ -2,9 +2,12 @@
 let custom-installer = pkgs.writeShellScriptBin "custom-installer" ''
   echo "Hello, world!"
   '';
+  cfg = config.iso;
 in
 {
-  config = {
+  options.iso.enable = lib.mkEnableOption "Custom ISO Configuration";
+
+  config = lib.mkIf cfg.iso {
     isoImage = {
       makeEfiBootable = true;
       makeUsbBootable = true;
