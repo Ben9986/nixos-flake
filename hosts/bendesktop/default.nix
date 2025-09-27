@@ -21,7 +21,10 @@ in
     ./hardware-configuration.nix
   ];
   
-    bootloader.enable = true;
+    bootloader = {
+      enable = true;
+      quiet-boot = true;
+    };
     hyprland.enable = true;
     plasma.enable = true;
     core-services.enable = true;
@@ -29,7 +32,6 @@ in
     virtualisation.enable = true;
 
     boot = {
-      kernelParams = [ "quiet" "splash" "udev.log_level=0" "vt.global_cursor_default=0" ] ;
       kernelPackages = pkgs.linuxPackages_zen;
     };
 

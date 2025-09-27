@@ -9,9 +9,11 @@
   imports = [
     ./hardware-configuration.nix
   ];
+  
     bootloader = {
       enable = true;
       default-windows = true;
+      quiet-boot = true;
     };
     hyprland.enable = true;
     plasma.enable = true;
@@ -26,14 +28,7 @@
         options asus_wmi fnlock_default=N
       '';
       resumeDevice = "/dev/disk/by-uuid/a181d09e-f92e-4c4f-9385-0ed7eaa84c5c";
-      kernelParams = [
-        "quiet"
-        "splash"
-        "loglevel=0"
-        "vt.global_cursor_default=0"
-        "udev.log_level=0"
-        "resume_offset=9053367"
-      ];
+      kernelParams = [ "resume_offset=9053367" ];
       kernelPackages = pkgs.linuxPackages_zen;
     };
 

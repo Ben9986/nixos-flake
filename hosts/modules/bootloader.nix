@@ -9,10 +9,18 @@ in {
       description = "Default Bootloader Configuration";
       };
     default-windows = mkEnableOption "Windows as default boot entry";
+    quiet-boot = mkEnableOption "Kernel params to give quiet boot";
   };
 
   config = mkIf cfg.enable (mkMerge [
     { boot = {
+      kernelParams = [
+        "quiet"
+        "splash"
+        "loglevel=0"
+        "vt.global_cursor_default=0"
+        "udev.log_level=0"
+      ];
       initrd = {
         verbose = false;
       };
