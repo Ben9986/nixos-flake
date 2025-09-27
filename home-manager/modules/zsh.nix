@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  flakeDir = config.custom.flakeDir;
+  flakeDir = config.flakeDir;
 in
 {
   programs.zsh = {

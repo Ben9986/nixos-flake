@@ -13,6 +13,11 @@ let
   };
 
   lib = nixpkgs.lib;
+  flakeDir = { 
+    options.flakeDir = lib.mkOption {
+      type = lib.types.str;
+      default = "/home/ben/flake-config";
+    };};
 in
 {
   benlaptop = lib.nixosSystem {
@@ -28,6 +33,7 @@ in
       ./common.nix
       ./modules
       ../custom-options.nix
+      flakeDir
     ];
   };
   bendesktop = lib.nixosSystem {
@@ -42,9 +48,9 @@ in
       ./bendesktop
       ./common.nix
       ./modules/nvidia.nix
-      #./modules/nvidia-nouveau.nix
       ./modules
       ../custom-options.nix
+      flakeDir
     ];
   };
   trinity = lib.nixosSystem {
@@ -58,6 +64,7 @@ in
     modules = [
       ./trinity
       ../custom-options.nix
+      flakeDir
     ];
   };
   iso = lib.nixosSystem {

@@ -13,7 +13,7 @@
       Service = {
         ExecStart = "${pkgs.writeShellScript "pull-flake" ''
           set -eu
-          cd ${config.custom.flakeDir}
+          cd ${config.flakeDir}
           result=$(${pkgs.git}/bin/git pull)
 
           if echo "$result" | grep -q -E "Updating|Fast-forward"; then

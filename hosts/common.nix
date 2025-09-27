@@ -191,7 +191,7 @@ in
       enable = true;
       clean.enable = false;
       clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = config.custom.flakeDir;
+      flake = config.flakeDir;
     };
     ydotool.enable = true;
   };
