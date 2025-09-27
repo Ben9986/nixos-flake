@@ -8,6 +8,7 @@
 with lib;
 let
   cfg = config.home-manager.hyprland;
+  hyprlandPackages = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
   patchedhyprshot =
     (pkgs.hyprshot.overrideAttrs (old: rec {
       version = "git";
@@ -87,7 +88,6 @@ in
       patchedhyprshot
       rofi
       waybar
-      wleave
 
       # Notifications & clipboard
       cliphist
@@ -154,18 +154,48 @@ in
   };
 
   xdg = {
-    portal = {
-      # enable = true; # conflicts with setting hyprland portalPackage below
-      extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-gtk ];
-    };
-    configFile."xdg-desktop-portal/portals.conf" = {
-      text = ''
-          [preferred]
-          default = hyprland;kde;gtk
-          org.freedesktop.impl.portal.FileChooser = kde
-        '';
+    enable = true;
+
+    portal.extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      kdePackages.xdg-desktop-portal-kde
+      hyprlandPackages.xdg-desktop-portal-hyprland
+    ];
+
+    portal.config.hyprland = {
+      default = [ "hyprland" "gtk" ];
+        "org.freedesktop.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.portal.OpenURI" = [ "kde" ];
     };
   };
+
+  # xdg = {
+  #   portal = {
+  #     enable = lib.mkForce true; # conflicts with setting hyprland portalPackage below
+  #     configPackages = with pkgs; [ kdePackages.xdg-desktop-portal-kde inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland xdg-desktop-portal-gtk ];
+  #     config = {
+  #       common = {
+  #         default = [
+  #           "hyprland"
+  #           "kde"
+  #           "gtk"
+  #         ];
+  #       };
+  #       Hyprland = {
+  #         "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+  #       };
+  #     };
+  #     # enable = true; 
+  #     extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland ];
+  #   };
+    # configFile."xdg-desktop-portal/portals.conf" = {
+    #   text = ''
+    #       [preferred]
+    #       default = hyprland;kde;gtk
+    #       org.freedesktop.impl.portal.FileChooser = kde
+    #     '';
+    # };
+  # };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -174,8 +204,8 @@ in
       variables = [ "--all" ];
     };
     # ensures pkg used in nixos module & hm is the same
-    package = null;
-    portalPackage = null;
+    package = hyprlandPackages.hyprland;
+    portalPackage = hyprlandPackages.xdg-desktop-portal-hyprland;
     settings = {
       env = [
         "XCURSOR_SIZE,24"
@@ -187,6 +217,7 @@ in
         "XCURSOR_THEME,rose-pine-hyprcursor"
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         "XDG_SESSION_TYPE,wayland"
+        "XDG_MENU_PREFIX,plasma-" # required for dolphin to read installed apps to "open with.."
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
         "VISUAL,hx"
         "EDITOR,hx"

@@ -2,6 +2,8 @@
   imports = [
     ./fuzzel.nix
     ./hypridle.nix
+    ./hyprland-desktop.nix
+    ./hyprland-laptop.nix
     ./hyprland.nix
     ./hyprlock.nix
     ./programs.nix

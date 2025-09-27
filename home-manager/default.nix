@@ -5,7 +5,7 @@
   home-manager,
   ...
 }:
-
+with lib;
 let
   system = "x86_64-linux";
   pkgs = nixpkgs.legacyPackages.${system};
@@ -17,12 +17,18 @@ in
       inherit inputs;
     };
     modules = [
+      inputs.hyprland.homeManagerModules.default
+      inputs.stylix.homeModules.stylix
       ./ben.nix
       ../custom-options.nix
       ./modules
-      ./modules/hyprland-laptop.nix
-      inputs.hyprland.homeManagerModules.default
-      inputs.stylix.homeModules.stylix
+      { 
+        options.host = mkOption {
+          type = types.enum [ "desktop" "laptop" ];
+          default = "laptop";
+          description = "Hostname";
+        };
+      }
     ];
   };
   "ben@bendesktop" = home-manager.lib.homeManagerConfiguration {
@@ -31,13 +37,19 @@ in
       inherit inputs;
     };
     modules = [
+      inputs.hyprland.homeManagerModules.default
+      inputs.stylix.homeModules.stylix
       ./ben.nix
       ../custom-options.nix
       ./modules
-      ./modules/hyprland-desktop.nix
-      inputs.hyprland.homeManagerModules.default
-      inputs.stylix.homeModules.stylix
-      { config.custom.vscode.disableGpu = true; }
+      { 
+        config.custom.vscode.disableGpu = true;
+        options.host = mkOption {
+          type = types.enum [ "desktop" "laptop" ];
+          default = "desktop";
+          description = "Hostname";
+        };
+      }
     ];
   };
 }

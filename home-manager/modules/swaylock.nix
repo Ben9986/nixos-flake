@@ -2,10 +2,11 @@
   inputs,
   pkgs,
   config,
+  lib,
   ...
 }:
 {
-  programs.swaylock = pkgs.lib.mkIf config.home-manager.hyprland.enable {
+  programs.swaylock = lib.mkIf config.home-manager.hyprland.enable {
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {

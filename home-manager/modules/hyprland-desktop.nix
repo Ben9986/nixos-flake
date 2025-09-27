@@ -1,5 +1,5 @@
 { lib, config, ... }:
-lib.mkIf config.home-manager.hyprland.enable {
+lib.mkIf ((config.host == "desktop") && config.home-manager.hyprland.enable) {
   wayland.windowManager.hyprland.settings = {
     monitor = "DP-3,2560x1440@144,auto,1,bitdepth,10";
     env = [

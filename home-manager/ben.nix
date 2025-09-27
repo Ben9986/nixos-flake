@@ -9,8 +9,13 @@
   options.home-manager.plasma.enable = lib.mkEnableOption "Plasma Desktop Sessions Packages";
   config = {
     home-manager = {
-      hyprland.enable = true;
+      hyprland = { 
+        enable = true;
+        hyprlock.enable = true;
+        hypridle.enable = true;
+      };
       plasma.enable = true;
+      wleave.enable = true;
     };
 
     home = {

@@ -4,9 +4,15 @@
   lib,
   config,
   ...
-}:
-{
-  programs.hyprlock = lib.mkIf config.home-manager.hyprland.enable {
+}: with lib;
+let cfg = config.home-manager.hyprland.hyprlock;
+in {
+  options.home-manager.hyprland.hyprlock = {
+    enable = mkEnableOption "Hyprlock configuration";
+  };
+
+config = mkIf cfg.enable {
+  programs.hyprlock = {
     enable = true;
     package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
     settings = {
@@ -66,4 +72,5 @@
       ];
     };
   };
+};
 }

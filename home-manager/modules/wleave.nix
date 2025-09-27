@@ -3,8 +3,14 @@
   config,
   lib,
   ...
-}:
-lib.mkIf config.home-manager.hyprland.enable {
+}: with lib;
+let cfg = config.home-manager.wleave; 
+in {
+  options.home-manager.wleave = {
+    enable = mkEnableOption "Wleave and associated Config";
+  };
+config = mkIf cfg.enable {
+  home.packages = [ pkgs.wleave ];
   home.file = {
     ".config/wleave/layout.json".text = ''
       {
@@ -57,4 +63,5 @@ lib.mkIf config.home-manager.hyprland.enable {
         
       '';
     };
+  };
   }
