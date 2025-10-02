@@ -81,6 +81,7 @@
         enableZshIntegration = true;
         mode = "no-sudo";
       };
+      themeFile = "Alabaster_Dark";
       settings = {
         enable_audio_bell = false;
         editor = "hx";
