@@ -39,6 +39,10 @@ in {
 
       upower.enable = true;
 
+      udisks2 = {
+        enable = true;
+      };
+
       xserver = {
         enable = true;
         xkb.layout = "gb";

@@ -82,6 +82,7 @@ in
       libsForQt5.qt5.qtwayland
       qt6ct
       xdg-desktop-portal-gtk
+      kdePackages.plasma-integration # needed for dolphin theming without kde installed
 
       # Hyprland ecosystem
       hypridle
@@ -123,6 +124,7 @@ in
       ".config/swaync".source = ../dotfiles/swaync-ml4w;
       ".cache/wal".source = ../cache/wal;
       ".config/rofi/rofi-clipboard.rasi".source = ../dotfiles/rofi/rofi-clipboard.rasi;
+      ".config/kdeglobals".source = ../dotfiles/kdeglobals;
     };
     activation = {
       # Reload hyprland after home-manager files have been written
@@ -214,6 +216,7 @@ in
         "COLOR_SCHEME,prefer-dark"
         # "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "QT_QPA_PLATFORMTHEME,kde"
+        "XDG_MENU_PREFIX,plasma-" # fixes missing "open with" in dolphin?
         "XCURSOR_THEME,rose-pine-hyprcursor"
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         "XDG_SESSION_TYPE,wayland"

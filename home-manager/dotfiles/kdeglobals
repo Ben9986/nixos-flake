@@ -1,0 +1,148 @@
+[ColorEffects:Disabled]
+ChangeSelectionColor=
+Color=
+ColorAmount=0
+ColorEffect=0
+ContrastAmount=0.500000
+ContrastEffect=1
+Enable=
+IntensityAmount=0
+IntensityEffect=0
+
+[ColorEffects:Inactive]
+ChangeSelectionColor=
+Color=
+ColorAmount=0
+ColorEffect=0
+ContrastAmount=0.500000
+ContrastEffect=1
+Enable=
+IntensityAmount=0
+IntensityEffect=0
+
+[Colors:Button]
+BackgroundAlternate=32,32,32
+BackgroundNormal=25,25,25
+DecorationFocus=99,158,228
+DecorationHover=99,158,228
+ForegroundActive=167,167,167
+ForegroundInactive=167,167,167
+ForegroundLink=167,167,167
+ForegroundNegative=220,101,125
+ForegroundNeutral=99,158,228
+ForegroundNormal=167,167,167
+ForegroundPositive=132,185,124
+ForegroundVisited=167,167,167
+
+[Colors:Complementary]
+BackgroundAlternate=32,32,32
+BackgroundNormal=25,25,25
+DecorationFocus=99,158,228
+DecorationHover=99,158,228
+ForegroundActive=167,167,167
+ForegroundInactive=167,167,167
+ForegroundLink=167,167,167
+ForegroundNegative=220,101,125
+ForegroundNeutral=99,158,228
+ForegroundNormal=167,167,167
+ForegroundPositive=132,185,124
+ForegroundVisited=167,167,167
+
+[Colors:Selection]
+BackgroundAlternate=99,158,228
+BackgroundNormal=99,158,228
+DecorationFocus=99,158,228
+DecorationHover=99,158,228
+ForegroundActive=25,25,25
+ForegroundInactive=25,25,25
+ForegroundLink=25,25,25
+ForegroundNegative=220,101,125
+ForegroundNeutral=99,158,228
+ForegroundNormal=25,25,25
+ForegroundPositive=132,185,124
+ForegroundVisited=25,25,25
+
+[Colors:Tooltip]
+BackgroundAlternate=32,32,32
+BackgroundNormal=25,25,25
+DecorationFocus=99,158,228
+DecorationHover=99,158,228
+ForegroundActive=167,167,167
+ForegroundInactive=167,167,167
+ForegroundLink=167,167,167
+ForegroundNegative=220,101,125
+ForegroundNeutral=99,158,228
+ForegroundNormal=167,167,167
+ForegroundPositive=132,185,124
+ForegroundVisited=167,167,167
+
+[Colors:View]
+BackgroundAlternate=32,32,32
+BackgroundNormal=25,25,25
+DecorationFocus=99,158,228
+DecorationHover=99,158,228
+ForegroundActive=167,167,167
+ForegroundInactive=167,167,167
+ForegroundLink=167,167,167
+ForegroundNegative=220,101,125
+ForegroundNeutral=99,158,228
+ForegroundNormal=167,167,167
+ForegroundPositive=132,185,124
+ForegroundVisited=167,167,167
+
+[Colors:Window]
+BackgroundAlternate=32,32,32
+BackgroundNormal=25,25,25
+DecorationFocus=99,158,228
+DecorationHover=99,158,228
+ForegroundActive=167,167,167
+ForegroundInactive=167,167,167
+ForegroundLink=167,167,167
+ForegroundNegative=220,101,125
+ForegroundNeutral=99,158,228
+ForegroundNormal=167,167,167
+ForegroundPositive=132,185,124
+ForegroundVisited=167,167,167
+
+[DirSelect Dialog]
+DirSelectDialog Size=960,720
+History Items[$e]=file:$HOME/Documents/Obsidian Vaults,file:$HOME/flake-config
+Splitter State=\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x9a\x00\x00\x02\xa8\x00\xff\xff\xff\xff\x01\x00\x00\x00\x01\x00
+
+[General]
+ColorSchemeHash=5be16a366f9af92d243b2672505bde0bb3e38000
+
+[KDE]
+LookAndFeelPackage=stylix
+ShowDeleteCommand=false
+
+[KFileDialog Settings]
+Allow Expansion=false
+Automatically select filename extension=true
+Breadcrumb Navigation=true
+Decoration position=2
+LocationCombo Completionmode=5
+PathCombo Completionmode=5
+Show Full Path=false
+Show Inline Previews=true
+Show Preview=false
+Show Speedbar=true
+Show hidden files=false
+Sort by=Name
+Sort directories first=true
+Sort hidden files last=false
+Sort reversed=false
+Speedbar Width=154
+View Style=DetailTree
+
+[PreviewSettings]
+EnableRemoteFolderThumbnail=false
+MaximumRemoteSize=0
+
+[WM]
+activeBackground=25,25,25
+activeBlend=195,186,99
+activeForeground=167,167,167
+inactiveBackground=25,25,25
+inactiveBlend=95,90,96
+inactiveForeground=167,167,167

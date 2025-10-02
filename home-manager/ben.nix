@@ -104,5 +104,11 @@
         signByDefault = true;
       };
     };
+
+    services = {
+      udiskie = {
+        enable = true;
+      };
+    };
   };
 }
