@@ -11,9 +11,10 @@
     hyprlock.useWallpaper = false;
     hyprlock.enable = false;
     swaylock.enable = false;
-    kde.enable = config.home-manager.hyprland.enable;
+    kde.enable = true;
+    kitty.enable = false;
   };
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-gray.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/circus.yaml";
 
   gtk.iconTheme.name = "Papirus";
 
