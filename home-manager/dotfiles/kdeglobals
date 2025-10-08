@@ -111,6 +111,7 @@ Splitter State=\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x9a\
 
 [General]
 ColorSchemeHash=5be16a366f9af92d243b2672505bde0bb3e38000
+TerminalApplication=kitty
 
 [KDE]
 LookAndFeelPackage=stylix

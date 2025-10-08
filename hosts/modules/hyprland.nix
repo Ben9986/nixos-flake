@@ -23,6 +23,7 @@ in
     environment.systemPackages = lib.mkMerge [
       ( with pkgs.kdePackages; [
         dolphin
+        kservice # for kbuildsyscoca6 to update open-with menus
         kwallet
         kwallet-pam
         kirigami
@@ -71,5 +72,8 @@ in
     };
     
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ];
+
+    # Fix unpopulated MIME menus in dolphin
+    environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
   };
 }

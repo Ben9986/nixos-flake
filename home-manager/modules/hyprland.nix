@@ -124,7 +124,7 @@ in
       ".config/swaync".source = ../dotfiles/swaync-ml4w;
       ".cache/wal".source = ../cache/wal;
       ".config/rofi/rofi-clipboard.rasi".source = ../dotfiles/rofi/rofi-clipboard.rasi;
-      ".config/kdeglobals".source = ../dotfiles/kdeglobals;
+      ".config/kdeglobals".source = ../dotfiles/kdeglobals; # allows opening files in terminal apps without konsole, among other things
     };
     activation = {
       # Reload hyprland after home-manager files have been written
@@ -216,7 +216,6 @@ in
         "COLOR_SCHEME,prefer-dark"
         # "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "QT_QPA_PLATFORMTHEME,kde"
-        "XDG_MENU_PREFIX,plasma-" # fixes missing "open with" in dolphin?
         "XCURSOR_THEME,rose-pine-hyprcursor"
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         "XDG_SESSION_TYPE,wayland"
