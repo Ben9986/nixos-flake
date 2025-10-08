@@ -15,8 +15,12 @@
       default-windows = true;
       quiet-boot = true;
     };
+    cosmic = {
+      enable = false;
+      greeter.enable = true;
+    };
     hyprland.enable = true;
-    plasma.enable = true;
+    plasma.enable = false;
     core-services.enable = true;
     virtualisation.enable = true; 
     zenbook-audio-patch.enable = true;
