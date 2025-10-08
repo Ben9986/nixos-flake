@@ -45,7 +45,7 @@ in
         package = pkgs.kdePackages.kwallet-pam;
         forceRun = true;
       };
-      greetd.kwallet = lib.mkIf (!config.plasma.enable) {
+      greetd.kwallet = lib.mkIf (!config.plasma.sddm.enable) {
           enable = true;
           package = pkgs.kdePackages.kwallet-pam;
         };
@@ -75,5 +75,9 @@ in
     };
     
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ];
+
+    services.displayManager.cosmic-greeter = lib.mkIf (!config.plasma.sddm.enable) {
+      enable = true;
+    };
 };
 }
