@@ -14,7 +14,7 @@
         hyprlock.enable = true;
         hypridle.enable = true;
       };
-      plasma.enable = true;
+      plasma.enable = false;
       wleave.enable = true;
     };
 
