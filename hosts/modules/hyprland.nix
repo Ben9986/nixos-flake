@@ -32,7 +32,18 @@ in
       swayosd
       brightnessctl
     ];
-
+     
+    security.pam.services = lib.mkIf (!config.plasma.enable) {
+      login.kwallet = {
+        enable = true;
+        package = pkgs.kdePackages.kwallet-pam;
+        forceRun = true;
+      };
+      greetd.kwallet = lib.mkIf (!config.plasma.enable) {
+          enable = true;
+          package = pkgs.kdePackages.kwallet-pam;
+        };
+    };
     # Fix Default Apps opening in Flatpaks
     systemd.user.extraConfig = ''
       DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
