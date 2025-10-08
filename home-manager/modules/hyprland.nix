@@ -274,15 +274,15 @@ in
         dim_around = 0.3;
         blur = {
           enabled = true;
-          size = 6;
-          passes = 1;
+          size = 3;
+          passes = 2;
         };
         shadow = {
-        enabled = true;
-        range = 30;
-        render_power = 3;
-        color = "0x66000000";
-      };
+          enabled = true;
+          range = 30;
+          render_power = 3;
+          color = "0x66000000";
+        };
       };
 
       
