@@ -365,7 +365,7 @@ in
         "key_press_enables_dpms" = true;
         "enable_swallow" = true;
         "swallow_regex" = "^(kitty)|()$";
-        "swallow_exception_regex" = "^(firefox)|(nemo)$";
+        "swallow_exception_regex" = "^(firefox)|(nemo)|(dolphin)$";
         "focus_on_activate" = true;
         "disable_hyprland_logo" = true;
         "force_default_wallpaper" = false;
