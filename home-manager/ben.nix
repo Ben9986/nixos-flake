@@ -43,6 +43,7 @@
           onedrivegui
           obsidian
           poppler-utils
+          qimgv
           spotify
           konsave
           tesseract
