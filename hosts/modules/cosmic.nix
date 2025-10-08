@@ -8,7 +8,6 @@
 let cfg = config.cosmic;
 in
 {  
-  imports = [ inputs.nixos-cosmic.nixosModules.default ];
   options.cosmic = {
     enable = lib.mkEnableOption "Cosmic Session";
     greeter.enable = lib.mkEnableOption "Cosmic Greeter";
