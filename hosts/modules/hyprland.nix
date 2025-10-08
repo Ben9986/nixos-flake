@@ -45,10 +45,6 @@ in
         package = pkgs.kdePackages.kwallet-pam;
         forceRun = true;
       };
-      greetd.kwallet = lib.mkIf (!config.plasma.sddm.enable) {
-          enable = true;
-          package = pkgs.kdePackages.kwallet-pam;
-        };
     };
     # Fix Default Apps opening in Flatpaks
     systemd.user.extraConfig = ''
@@ -75,9 +71,5 @@ in
     };
     
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ];
-
-    services.displayManager.cosmic-greeter = lib.mkIf (!config.plasma.sddm.enable) {
-      enable = true;
-    };
-};
+  };
 }
