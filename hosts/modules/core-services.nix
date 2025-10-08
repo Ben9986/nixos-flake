@@ -11,12 +11,6 @@ in {
 
       dbus.enable = true;
 
-      displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-        theme = "breeze";
-      };
-
       flatpak.enable = true;
 
       # Enable touchpad support (enabled default in most desktopManager).
