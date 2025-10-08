@@ -20,17 +20,23 @@ in
         portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
       };
     };
-    environment.systemPackages = with pkgs; [
-      kdePackages.kwallet
-      kdePackages.kwallet-pam
-      kdePackages.kirigami
-      kdePackages.qtstyleplugin-kvantum
-      kdePackages.qt6ct
-      kvmarwaita
-      lxqt.pcmanfm-qt
-      hyprpolkitagent
-      swayosd
-      brightnessctl
+    environment.systemPackages = lib.mkMerge [
+      ( with pkgs.kdePackages; [
+        dolphin
+        kwallet
+        kwallet-pam
+        kirigami
+        qtstyleplugin-kvantum
+        qt6ct
+        breeze
+      ])
+      (with pkgs; [
+        kvmarwaita
+        lxqt.pcmanfm-qt
+        hyprpolkitagent
+        swayosd
+        brightnessctl
+      ])
     ];
      
     security.pam.services = lib.mkIf (!config.plasma.enable) {
