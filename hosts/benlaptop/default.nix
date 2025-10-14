@@ -9,75 +9,74 @@
   imports = [
     ./hardware-configuration.nix
   ];
-  
-    bootloader = {
-      enable = true;
-      default-windows = true;
-      quiet-boot = true;
-    };
-    cosmic = {
-      enable = false;
-      greeter.enable = true;
-    };
-    hyprland.enable = true;
-    plasma.enable = false;
-    core-services.enable = true;
-    virtualisation.enable = true; 
-    zenbook-audio-patch.enable = true;
-    
 
-    boot = {
-      extraModprobeConfig = ''
-        # Toggle fnlock_default at boot (Y/N)
-        options asus_wmi fnlock_default=N
-      '';
-      resumeDevice = "/dev/disk/by-uuid/a181d09e-f92e-4c4f-9385-0ed7eaa84c5c";
-      kernelParams = [ "resume_offset=9053367" ];
-      kernelPackages = pkgs.linuxPackages_zen;
-    };
+  bootloader = {
+    enable = true;
+    default-windows = true;
+    quiet-boot = true;
+  };
+  cosmic = {
+    enable = false;
+    greeter.enable = true;
+  };
+  hyprland.enable = true;
+  plasma.enable = false;
+  core-services.enable = true;
+  virtualisation.enable = true;
+  zenbook-audio-patch.enable = true;
 
-    swapDevices = [
-      {
-        device = "/swap/swapfile";
-        options = [ "sw" ];
-      }
-    ];
+  boot = {
+    extraModprobeConfig = ''
+      # Toggle fnlock_default at boot (Y/N)
+      options asus_wmi fnlock_default=N
+    '';
+    resumeDevice = "/dev/disk/by-uuid/a181d09e-f92e-4c4f-9385-0ed7eaa84c5c";
+    kernelParams = [ "resume_offset=9053367" ];
+    kernelPackages = pkgs.linuxPackages_zen;
+  };
 
-    environment.systemPackages = with pkgs; [
-      r2modman
-      vscodium-fhs
-    ];
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      options = [ "sw" ];
+    }
+  ];
 
-    networking.hostName = "benlaptop";
+  environment.systemPackages = with pkgs; [
+    r2modman
+    vscodium-fhs
+  ];
 
-    services = {
-      pipewire.wireplumber.extraConfig = {
-        "10-disable-camera" = {
-          "wireplumber.profiles" = {
-            main."monitor.libcamera" = "disabled";
-          };
+  networking.hostName = "benlaptop";
+
+  services = {
+    pipewire.wireplumber.extraConfig = {
+      "10-disable-camera" = {
+        "wireplumber.profiles" = {
+          main."monitor.libcamera" = "disabled";
         };
       };
-      udev.extraRules = ''SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"'';
     };
+    udev.extraRules = ''SUBSYSTEM=="backlight",RUN+="${pkgs.coreutils}/bin/chmod 777 /sys/class/leds/asus::kbd_backlight/brightness"'';
+  };
 
-    systemd = {
-      services."mic-mute-led-invert" = {
-        after = [ "multi-user.target" ];
-        wantedBy = [ "graphical.target" ];
-        unitConfig = {
-          Description = "Reverse microphone mute led";
-        };
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = "${pkgs.bash}/bin/bash -c 'echo follow-route > /sys/devices/virtual/sound/ctl-led/mic/mode'";
-        };
+  systemd = {
+    services."mic-mute-led-invert" = {
+      after = [ "multi-user.target" ];
+      wantedBy = [ "graphical.target" ];
+      unitConfig = {
+        Description = "Reverse microphone mute led";
       };
-      sleep.extraConfig = ''
-        AllowHibernation=yes
-        AllowHybridSleep=no
-        AllowSuspendThenHibernate=no
-        HibernateMode=shutdown
-      '';
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.bash}/bin/bash -c 'echo follow-route > /sys/devices/virtual/sound/ctl-led/mic/mode'";
+      };
     };
+    sleep.extraConfig = ''
+      AllowHibernation=yes
+      AllowHybridSleep=no
+      AllowSuspendThenHibernate=no
+      HibernateMode=shutdown
+    '';
+  };
 }

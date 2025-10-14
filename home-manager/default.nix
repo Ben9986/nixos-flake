@@ -9,11 +9,12 @@ with lib;
 let
   system = "x86_64-linux";
   pkgs = nixpkgs.legacyPackages.${system};
-  flakeDir = { 
+  flakeDir = {
     options.flakeDir = lib.mkOption {
       type = lib.types.str;
       default = "/home/ben/flake-config";
-    };};
+    };
+  };
 in
 {
   "ben@benlaptop" = home-manager.lib.homeManagerConfiguration {
@@ -28,9 +29,12 @@ in
       ../custom-options.nix
       ./modules
       flakeDir
-      { 
+      {
         options.host = mkOption {
-          type = types.enum [ "desktop" "laptop" ];
+          type = types.enum [
+            "desktop"
+            "laptop"
+          ];
           default = "laptop";
           description = "Hostname";
         };
@@ -49,10 +53,13 @@ in
       ../custom-options.nix
       ./modules
       flakeDir
-      { 
+      {
         config.custom.vscode.disableGpu = true;
         options.host = mkOption {
-          type = types.enum [ "desktop" "laptop" ];
+          type = types.enum [
+            "desktop"
+            "laptop"
+          ];
           default = "desktop";
           description = "Hostname";
         };

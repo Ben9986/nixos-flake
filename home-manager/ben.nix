@@ -9,7 +9,7 @@
   options.home-manager.plasma.enable = lib.mkEnableOption "Plasma Desktop Sessions Packages";
   config = {
     home-manager = {
-      hyprland = { 
+      hyprland = {
         enable = true;
         hyprlock.enable = true;
         hypridle.enable = true;
@@ -32,7 +32,7 @@
         NIXOS_OZONE_WL = "1";
       };
       packages = lib.mkMerge [
-        (with pkgs; [    
+        (with pkgs; [
           phinger-cursors
           neovim
           libnotify
@@ -64,7 +64,7 @@
           pkgs.kdePackages.yakuake
           (pkgs.callPackage ../pkgs/klassy.nix { })
 
-      ])
+        ])
       ];
 
       file = {

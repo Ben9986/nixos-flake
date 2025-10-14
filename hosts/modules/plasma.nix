@@ -1,6 +1,13 @@
-{pkgs, lib, config, ...}:
-let cfg = config.plasma;
-in {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  cfg = config.plasma;
+in
+{
   options.plasma = {
     enable = lib.mkEnableOption "Plasma Desktop Sessoion";
     sddm.enable = lib.mkEnableOption "SDDM Display Manager";
@@ -16,5 +23,5 @@ in {
       };
       desktopManager.plasma6.enable = true;
     };
-};
+  };
 }

@@ -3,29 +3,32 @@
   config,
   lib,
   ...
-}: with lib;
-let cfg = config.home-manager.wleave; 
-in {
+}:
+with lib;
+let
+  cfg = config.home-manager.wleave;
+in
+{
   options.home-manager.wleave = {
     enable = mkEnableOption "Wleave and associated Config";
   };
-config = mkIf cfg.enable {
-  home.packages = [ pkgs.wleave ];
-  home.file = {
-    ".config/wleave/layout.json".text = ''
-      {
-        "buttons": [
-          {"action":"hyprlock","keybind":"l","label":"lock","text":"Lock", "icon": "${pkgs.wleave}/share/wleave/icons/lock.svg"},                              
-          {"action":"hyprctl dispatch exit","keybind":"e","label":"logout","text":"Logout", "icon": "${pkgs.wleave}/share/wleave/icons/logout.svg"},
-          {"action":"systemctl suspend","keybind":"s","label":"suspend","text":"Sleep", "icon": "${pkgs.wleave}/share/wleave/icons/suspend.svg"},  
-          {"action":"systemctl hibernate","keybind":"s","label":"hibernate","text":"Hibernate", "icon": "${pkgs.wleave}/share/wleave/icons/hibernate.svg"},  
-          {"action":"systemctl poweroff","keybind":"s","label":"shutdown","text":"Shutdown", "icon": "${pkgs.wleave}/share/wleave/icons/shutdown.svg"},            
-          {"action":"systemctl reboot","keybind":"r","label":"reboot","text":"Reboot", "icon": "${pkgs.wleave}/share/wleave/icons/reboot.svg"} 
-    ]
-      }
-    '';
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.wleave ];
+    home.file = {
+      ".config/wleave/layout.json".text = ''
+          {
+            "buttons": [
+              {"action":"hyprlock","keybind":"l","label":"lock","text":"Lock", "icon": "${pkgs.wleave}/share/wleave/icons/lock.svg"},                              
+              {"action":"hyprctl dispatch exit","keybind":"e","label":"logout","text":"Logout", "icon": "${pkgs.wleave}/share/wleave/icons/logout.svg"},
+              {"action":"systemctl suspend","keybind":"s","label":"suspend","text":"Sleep", "icon": "${pkgs.wleave}/share/wleave/icons/suspend.svg"},  
+              {"action":"systemctl hibernate","keybind":"s","label":"hibernate","text":"Hibernate", "icon": "${pkgs.wleave}/share/wleave/icons/hibernate.svg"},  
+              {"action":"systemctl poweroff","keybind":"s","label":"shutdown","text":"Shutdown", "icon": "${pkgs.wleave}/share/wleave/icons/shutdown.svg"},            
+              {"action":"systemctl reboot","keybind":"r","label":"reboot","text":"Reboot", "icon": "${pkgs.wleave}/share/wleave/icons/reboot.svg"} 
+        ]
+          }
+      '';
 
-    ".config/wleave/style.css".text = with config.lib.stylix.colors.withHashtag; ''
+      ".config/wleave/style.css".text = with config.lib.stylix.colors.withHashtag; ''
         @define-color base00 ${base00}; @define-color base01 ${base01}; @define-color base02 ${base02}; @define-color base03 ${base03};
         @define-color base04 ${base04}; @define-color base05 ${base05}; @define-color base06 ${base06}; @define-color base07 ${base07};
 
@@ -60,8 +63,8 @@ config = mkIf cfg.enable {
           background-color: @base02;
           outline-style: none;
         }
-        
+
       '';
     };
   };
-  }
+}

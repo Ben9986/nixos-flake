@@ -18,7 +18,6 @@
 
   gtk.iconTheme.name = "Papirus";
 
-
   # dconf = {
   #   enable = true;
   #   # settings = {

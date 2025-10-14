@@ -4,9 +4,12 @@
   lib,
   config,
   ...
-}: with lib;
-let cfg = config.home-manager.hyprland.hypridle;
-in {
+}:
+with lib;
+let
+  cfg = config.home-manager.hyprland.hypridle;
+in
+{
   options.home-manager.hyprland.hypridle = {
     enable = mkEnableOption "Hypridle configuration";
   };

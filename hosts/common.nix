@@ -35,20 +35,20 @@ in
 
   boot = {
     plymouth = {
-        enable = true;
-        themePackages = [ breeze-plymouth-modified ];
-        theme ="breeze";
-      };
-      consoleLogLevel = 0;
-      initrd.verbose = false;
-      binfmt.registrations.appimage = {
-        wrapInterpreterInShell = false;
-        interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-        recognitionType = "magic";
-        offset = 0;
-        mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-        magicOrExtension = ''\x7fELF....AI\x02'';
-      };
+      enable = true;
+      themePackages = [ breeze-plymouth-modified ];
+      theme = "breeze";
+    };
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    binfmt.registrations.appimage = {
+      wrapInterpreterInShell = false;
+      interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+      recognitionType = "magic";
+      offset = 0;
+      mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+      magicOrExtension = ''\x7fELF....AI\x02'';
+    };
   };
 
   console = {
@@ -119,7 +119,6 @@ in
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-
   security = {
     polkit.enable = true;
     pam.services.swaylock = { };
@@ -129,14 +128,16 @@ in
     sudo.enable = false;
     doas = {
       enable = true;
-      extraRules = [{
-        users = ["ben"];
-        groups = ["wheel"];
-        # Optional, retains environment variables while running commands 
-        # e.g. retains your NIX_PATH when applying your config
-        keepEnv = true; 
-        persist = true;  # Optional, only require password verification a single time
-      }];
+      extraRules = [
+        {
+          users = [ "ben" ];
+          groups = [ "wheel" ];
+          # Optional, retains environment variables while running commands
+          # e.g. retains your NIX_PATH when applying your config
+          keepEnv = true;
+          persist = true; # Optional, only require password verification a single time
+        }
+      ];
     };
   };
 

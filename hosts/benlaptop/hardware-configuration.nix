@@ -56,7 +56,10 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/E264-16E3";
     fsType = "vfat";
-    options = [ "fmask=0077" "dmask=0077" ];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   fileSystems."/swap" = {

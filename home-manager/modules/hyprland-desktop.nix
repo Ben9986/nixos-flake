@@ -23,7 +23,6 @@ lib.mkIf ((config.host == "desktop") && config.home-manager.hyprland.enable) {
     };
   };
 
-
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -31,12 +30,9 @@ lib.mkIf ((config.host == "desktop") && config.home-manager.hyprland.enable) {
       splash = false;
       splash_offset = 2.0;
 
-      preload =
-        [ "/home/ben/Pictures/Wallpapers/stag-ultrawide.jpg" ];
+      preload = [ "/home/ben/Pictures/Wallpapers/stag-ultrawide.jpg" ];
 
-      wallpaper = [
-        "DP-3,/home/ben/Pictures/Wallpapers/stag-ultrawide.jpg"
-      ];
+      wallpaper = [ "DP-3,/home/ben/Pictures/Wallpapers/stag-ultrawide.jpg" ];
     };
   };
 

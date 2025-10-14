@@ -4,7 +4,10 @@
     "pull-flake" = {
       Unit = {
         Description = "Pull changes for flake configuration from github";
-        After = [ "graphical-session.target" "network-online.target" ];
+        After = [
+          "graphical-session.target"
+          "network-online.target"
+        ];
         Wants = [ "network-online.target" ];
       };
       Install = {

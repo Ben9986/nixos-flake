@@ -1,5 +1,5 @@
 { lib, config, ... }:
-lib.mkIf ((config.host == "laptop") && config.home-manager.hyprland.enable ){
+lib.mkIf ((config.host == "laptop") && config.home-manager.hyprland.enable) {
   wayland.windowManager.hyprland.settings = {
     monitor = "eDP-1,highres,0x0,1.5";
     env = [
@@ -33,12 +33,9 @@ lib.mkIf ((config.host == "laptop") && config.home-manager.hyprland.enable ){
       splash = false;
       splash_offset = 2.0;
 
-      preload =
-        [ "/home/ben/Pictures/Wallpapers/sundown-over-water.jpg" ];
+      preload = [ "/home/ben/Pictures/Wallpapers/sundown-over-water.jpg" ];
 
-      wallpaper = [
-        ",/home/ben/Pictures/Wallpapers/sundown-over-water.jpg"
-      ];
+      wallpaper = [ ",/home/ben/Pictures/Wallpapers/sundown-over-water.jpg" ];
     };
   };
 }

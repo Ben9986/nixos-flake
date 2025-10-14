@@ -1,6 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.core-services;
-in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.core-services;
+in
+{
   options.core-services = {
     enable = lib.mkEnableOption "Core Desktop Services";
   };
@@ -25,7 +32,7 @@ in {
         pulse.enable = true;
         wireplumber = {
           enable = true;
-          
+
         };
       };
 

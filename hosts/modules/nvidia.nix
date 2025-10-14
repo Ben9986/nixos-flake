@@ -4,13 +4,15 @@
   config,
   ...
 }:
-let cfg = config.nvidia;
-in {
+let
+  cfg = config.nvidia;
+in
+{
   options.nvidia = {
     enable = lib.mkEnableOption "Nvidia Proprietary Drivers";
     nouveau.enable = lib.mkEnableOption "Nouveua";
   };
-  
+
   config = lib.mkMerge [
     (lib.mkIf (cfg.enable && !cfg.nouveau.enable) {
       # Load nvidia driver for Xorg and Wayland
@@ -45,15 +47,15 @@ in {
         #   persistencedSha256 = lib.fakeSha256;
         # };
       };
-      })
-      (lib.mkIf (cfg.enable && cfg.nouveau.enable) {
-          # Enable OpenGL
-          hardware.opengl = {
-            enable = true;
-            driSupport = true;
-            driSupport32Bit = true;
-          };
-          boot.kernelParams = [ "nouveau.config=NvGspRM=1" ];
-      })
+    })
+    (lib.mkIf (cfg.enable && cfg.nouveau.enable) {
+      # Enable OpenGL
+      hardware.opengl = {
+        enable = true;
+        driSupport = true;
+        driSupport32Bit = true;
+      };
+      boot.kernelParams = [ "nouveau.config=NvGspRM=1" ];
+    })
   ];
 }

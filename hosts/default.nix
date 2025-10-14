@@ -13,11 +13,12 @@ let
   };
 
   lib = nixpkgs.lib;
-  flakeDir = { 
+  flakeDir = {
     options.flakeDir = lib.mkOption {
       type = lib.types.str;
       default = "/home/ben/flake-config";
-    };};
+    };
+  };
 in
 {
   benlaptop = lib.nixosSystem {
@@ -71,8 +72,8 @@ in
     inherit system;
     specialArgs = {
       inherit inputs;
-        host = {
-          hostName = "NixosIso";
+      host = {
+        hostName = "NixosIso";
       };
     };
     modules = [

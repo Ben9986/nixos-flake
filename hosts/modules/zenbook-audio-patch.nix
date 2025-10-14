@@ -1,6 +1,11 @@
-{ config, pkgs, lib, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-let 
+let
   inherit (pkgs) runCommand acpica-tools cpio;
 
   ssdt-csc2551-acpi-table-patch = runCommand "ssdt-csc2551" { } ''
@@ -15,10 +20,11 @@ let
     cp patched-acpi-tables.cpio $out
   '';
   cfg = config.zenbook-audio-patch;
-  in {
-    options.zenbook-audio-patch.enable = lib.mkEnableOption "Zenbook Audio Patch";
+in
+{
+  options.zenbook-audio-patch.enable = lib.mkEnableOption "Zenbook Audio Patch";
 
-    config = lib.mkIf cfg.enable { 
-      boot.initrd.prepend = [ (toString ssdt-csc2551-acpi-table-patch) ];
-    };
-  }
+  config = lib.mkIf cfg.enable {
+    boot.initrd.prepend = [ (toString ssdt-csc2551-acpi-table-patch) ];
+  };
+}

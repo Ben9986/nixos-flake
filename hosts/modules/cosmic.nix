@@ -5,9 +5,11 @@
   lib,
   ...
 }:
-let cfg = config.cosmic;
+let
+  cfg = config.cosmic;
 in
-with lib; {  
+with lib;
+{
   options.cosmic = {
     enable = lib.mkEnableOption "Cosmic Session";
     greeter.enable = lib.mkEnableOption "Cosmic Greeter";
@@ -16,12 +18,12 @@ with lib; {
   config = mkMerge [
     (mkIf cfg.enable { services.desktopManager.cosmic.enable = true; })
 
-    ( mkIf cfg.greeter.enable {
+    (mkIf cfg.greeter.enable {
       services.displayManager.cosmic-greeter.enable = cfg.greeter.enable;
       security.pam.services.greetd.kwallet = lib.mkIf cfg.greeter.enable {
-          enable = true;
-          package = pkgs.kdePackages.kwallet-pam;
-        };
+        enable = true;
+        package = pkgs.kdePackages.kwallet-pam;
+      };
     })
   ];
 }
