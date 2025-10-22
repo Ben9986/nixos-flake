@@ -12,6 +12,7 @@
 
   bootloader = {
     enable = true;
+    lanzaboote.enable = true;
     default-windows = true;
     quiet-boot = true;
   };

@@ -3,6 +3,7 @@
   inputs,
   nixpkgs,
   home-manager,
+  lanzaboote
 }:
 let
   system = "x86_64-linux"; # System Architecture
@@ -35,6 +36,7 @@ in
       ./modules
       ../custom-options.nix
       flakeDir
+      lanzaboote.nixosModules.lanzaboote
     ];
   };
   bendesktop = lib.nixosSystem {

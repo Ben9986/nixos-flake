@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,6 +45,7 @@
       nixos-generators,
       systems,
       treefmt-nix,
+      lanzaboote,
       ...
     }@inputs:
     let
@@ -54,7 +60,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager;
+          inherit inputs nixpkgs home-manager lanzaboote;
         }
       );
 
