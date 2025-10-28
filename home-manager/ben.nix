@@ -97,8 +97,12 @@
 
     programs.git = {
       enable = true;
-      userName = "ben9986";
-      userEmail = "38633150+Ben9986@users.noreply.github.com";
+      settings = {
+        user = { 
+          name = "ben9986";
+          email = "38633150+Ben9986@users.noreply.github.com";
+        };
+      };
       signing = {
         format = "openpgp";
         key = "ABBCDD7769BCD3B0";
