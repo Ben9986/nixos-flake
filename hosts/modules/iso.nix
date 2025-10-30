@@ -16,45 +16,58 @@ let
     )
 
     for cmd in "''${commands[@]}"; do
-      echo
-      echo "About to run: $cmd"
-      read -p "Proceed? (y/n) " confirm
+      printf "About to run: $cmd\n"
+      read -p "Proceed? (y/n): " confirm
 
       if [[ "$confirm" =~ ^[Yy]$ ]]; then
         eval "$cmd"
+        printf "\n\n"
       else
-        echo "Skipped."
+        printf "Skipped.\n\n"
       fi
     done
+
   '';
 
   quick-install = pkgs.writeShellScriptBin "custom-reinstall" ''
     #!${lib.getExe pkgs.bash}
 
-    echo "Checking for internet connection"
+    printf "Checking for internet connection\n\n"
     if ping 1.1.1.1 -q -c 1 -W 2; then
-      echo "Connection detected"
+      printf "Connection detected\n\n"
     else
-      echo "No connection detected!\n Use nmtui to connect to a network"
+      printf "No connection detected!\n Use nmtui to connect to a network"
       exit 1
     fi
 
-    echo "Cloning flake config..."
+    printf "Cloning flake config..."
     flakedir=/tmp/flake-config
-    git clone https://github.com/ben9986/nixos-flake $flakedir && echo "Clone successful"
+    rm -rf $flakedir
+    git clone https://github.com/ben9986/nixos-flake $flakedir && printf "\nClone successful\n\n"
 
-    read -p "Confirm hostname to be installed (benlaptop/bendesktop/trinity) " hostname
+    read -p "Confirm hostname to be installed (benlaptop/bendesktop/trinity): " hostname
 
-    cmd="sudo nixos-install --flake /home/nixos/flake-config#$hostname --root /mnt --no-root-password"
+    case "$hostname" in 
+      benlaptop|bendesktop|trinity)
+        printf "You selected $hostname\n\n"
+        ;;
+      *)
+        printf "$hostname is not a valid hostname"
+        exit 1
+        ;;
+    esac
+    
+    cmd="sudo nixos-install --flake $flakedir#$hostname --root /mnt --no-root-password"
 
-    echo "About to run: $cmd"
-    read -p "Proceed? (y/n) " confirm 
+    printf "About to run: $cmd\n\n"
+    read -p "Proceed? (y/n): " confirm 
 
     if [[ "$confirm" =~ ^[Yy]$ ]]; then
       eval "$cmd"
     else
-      echo "Skipped."
+      printf "Installation Cancelled\n"
     fi
+
   '';
   cfg = config.iso;
 in
