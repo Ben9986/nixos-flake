@@ -27,11 +27,13 @@ in
       pkiBundle = "/var/lib/sbctl";
       settings = {
         timeout = "menu-hidden";
+        editor = false;
+        auto-entries = false;
       };
     };
     }
     (mkIf config.bootloader.default-windows {
-      boot.lanzaboote.settings.default = "auto-windows";
+      boot.lanzaboote.settings.default = "a-windows";
     })
   ]);
 }

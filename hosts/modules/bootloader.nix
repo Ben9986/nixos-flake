@@ -44,13 +44,6 @@ in
             enable = lib.mkDefault true;
             configurationLimit = 5;
             consoleMode = "max";
-            # extraEntries = {
-            #   "windows.conf" ="
-            #     title Windows_11
-            #     efi /EFI/Microsoft/Boot/bootmgfw.efi
-            #     sort-key a-windows
-	          #   ";
-            # };
             extraFiles = {
               "loader/loader.conf" = pkgs.writeText "loader.conf" "timeout menu-hidden\nauto-entries false";
             };

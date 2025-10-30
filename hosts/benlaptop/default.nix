@@ -34,6 +34,13 @@
     resumeDevice = "/dev/disk/by-uuid/a181d09e-f92e-4c4f-9385-0ed7eaa84c5c";
     kernelParams = [ "resume_offset=9053367" ];
     kernelPackages = pkgs.linuxPackages_zen;
+    loader.systemd-boot.extraEntries = {
+      "windows_11.conf" ="
+        title Windows 11 Home
+        efi /EFI/Microsoft/Boot/bootmgfw.efi
+        sort-key a-windows
+      ";
+    };
   };
 
   swapDevices = [
