@@ -5,7 +5,23 @@
   lib,
   ...
 }:
-{
+let
+  onedrive-reauth = pkgs.writeShellScriptBin "onedrive-reauth" ''
+    #!${lib.getExe pkgs.bash}
+
+    if [[ "$1" ]]; then
+      onedrive --reauth --confdir $HOME/.config/onedrive-$1
+      printf "Restarting onedrive-$1 service\n"
+      systemctl --user restart onedrive@onedrive-$1.service && printf "Restart sucessful\n"
+    else
+      onedrive --reauth --confdir $HOME/.config/onedrive
+      printf "Restarting Onedrive service\n"
+      systemctl --user restart onedrive@onedrive.service && printf "Restart sucessful\n"
+    fi
+
+    
+    '';
+in {
   options.home-manager.plasma.enable = lib.mkEnableOption "Plasma Desktop Sessions Packages";
   config = {
     home-manager = {
@@ -65,6 +81,7 @@
           (pkgs.callPackage ../pkgs/klassy.nix { })
 
         ])
+        ([ onedrive-reauth ])
       ];
 
       file = {
