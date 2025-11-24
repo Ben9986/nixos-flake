@@ -23,7 +23,10 @@
   hyprland.enable = true;
   plasma.enable = false;
   core-services.enable = true;
-  virtualisation.enable = true;
+  virtualisation = {
+    enable = true;
+    winboat.enable = true;
+  };
   zenbook-audio-patch.enable = true;
 
   boot = {
