@@ -321,11 +321,17 @@
       "transition-left-to-right": true
     },
     "modules": [
-      "custom/power", // First element is the "group leader" and won't ever be hidden
+      "custom/power-leader", // First element is the "group leader" and won't ever be hidden
+      "custom/power",
+      "custom/reboot",
       "custom/quit",
-      "custom/lock",
-      "custom/reboot"
+      "custom/lock"
     ]
+  },
+  "custom/power-leader": {
+    "format": "<span rise='-3000'>󰐦 </span>",
+    "tooltip": false,
+    "on-click": ""
   },
   "custom/quit": {
     "format": "󰗼 ",

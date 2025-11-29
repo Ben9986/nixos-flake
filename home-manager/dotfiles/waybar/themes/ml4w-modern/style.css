@@ -573,8 +573,8 @@ padding-left: 8px;
 }
 
 
-#group-power #custom-power {
-font-size: 21px;
+#group-power #custom-power-leader {
+font-size: 24px;
 padding: 0px 4px 0px 8px;
 margin-top: 2px;
 }
@@ -583,6 +583,9 @@ margin-top: 2px;
     margin-top: 2px;
 }
 
+#custom-power {
+    font-size: 20px;
+}
 #custom-reboot {
     margin-right: 4px;
     font-size: 24px;
