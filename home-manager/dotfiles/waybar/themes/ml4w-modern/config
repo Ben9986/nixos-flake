@@ -44,9 +44,9 @@
     // Modules Right    
     "modules-right": [
         // "custom/updates",
-        // "pulseaudio",
-        // "backlight",
-        "group/volume-backlight",
+        "pulseaudio",
+        "backlight",
+        // "group/volume-backlight",
         "group/power",
         // "network",
         // "battery", 
