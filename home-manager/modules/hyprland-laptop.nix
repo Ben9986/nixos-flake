@@ -1,7 +1,7 @@
 { lib, config, ... }:
 lib.mkIf ((config.host == "laptop") && config.home-manager.hyprland.enable) {
   wayland.windowManager.hyprland.settings = {
-    monitor = "eDP-1,highres,0x0,1.5";
+    monitor = "eDP-1,highres,0x0,1.6";
     env = [
       "QT_AUTO_SCREEN_SCALE_FACTOR,1.5"
     ];
