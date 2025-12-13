@@ -9,7 +9,8 @@ let
   system = "x86_64-linux"; # System Architecture
 
   pkgs = import nixpkgs {
-    inherit system;
+    # inherit system;
+    localSystem = pkgs.stdenv.hostPlatform;
     config.allowUnfree = true; # Allow Proprietary Software
   };
 
