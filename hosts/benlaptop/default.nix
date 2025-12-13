@@ -17,7 +17,7 @@
     quiet-boot = true;
   };
   cosmic = {
-    enable = false;
+    enable = true;
     greeter.enable = true;
   };
   hyprland.enable = true;
