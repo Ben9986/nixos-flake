@@ -351,9 +351,8 @@ in
         };
 
         workspace = [
-          "w[t1], gapsout:0, gapsin:0"
-          "w[t1], gapsout:0, gapsin:0"
-          "f[1], gapsout:0, gapsin:0"
+          "w[tv1]s[false], gapsout:0, gapsin:0"
+          "f[1]s[false], gapsout:0, gapsin:0"
         ];
 
         misc = {
@@ -372,65 +371,32 @@ in
         };
 
         layerrule = [
-          "ignorealpha 1, swaync-control-center"
-          "dimaround, rofi"
+          "match:namespace swaync-control-center, ignore_alpha on"
+          "match:namespace rofi, dim_around on"
         ];
 
         windowrule = [
           # replacement for no_gaps_when_only
-          "bordersize 0, floating:0, onworkspace:w[t1]"
-          "rounding 0, floating:0, onworkspace:w[t1]"
-          "bordersize 0, floating:0, onworkspace:w[t1]"
-          "rounding 0, floating:0, onworkspace:w[t1]"
-          "bordersize 0, floating:0, onworkspace:f[1]"
-          "rounding 0, floating:0, onworkspace:f[1]"
+          "border_size 0, match:float 0, match:workspace w[tv1]s[false]"
+          "rounding 0, match:float 0, match:workspace w[tv1]s[false]"
+          "border_size 0, match:float 0, match:workspace f[1]s[false]"
+          "rounding 0, match:float 0, match:workspace f[1]s[false]"
 
-          "float,class:(com.ml4w.sidebar)"
-          "move 100%-w-16 66,class:(com.ml4w.sidebar)"
-          "pin, class:(com.ml4w.sidebar)"
-          "size 400 740,class:(com.ml4w.sidebar)"
+          "match:class (com.ml4w.sidebar), float on, move 100%-w-16 66, pin on, size 400 740"
+          "match:class ^(blueberry.py)$, size 390 375, move onscreen cursor 5% 5%, no_anim on, stay_focused on, opacity 1.0, dim_around on"
+          "match:class ^(peazip)$, float on"
+          "match:class ^(nemo)$, float on, no_blur on"
+          "match:class ^(com.obsproject.Studio)$, no_blur on, opaque on"
 
-          "float, class:^(blueberry.py)$"
-          "size 390 375, class:^(blueberry.py)$"
-          "move onscreen cursor 5% 5%, class:^(blueberry.py)$"
-          "noanim, class:^(blueberry.py)$"
-          "stayfocused, class:^(blueberry.py)$"
-          "opacity 1.0, class:^(blueberry.py)$"
-          "dimaround 1, class:^(blueberry.py)$"
+          "match:class ^(wofi)$, border_size 0"
+          "match:class ^(wlogout), no_anim on, float on, fullscreen on"
 
-          "float, class:^(peazip)$"
+          "match:workspace s[1], match:class ^(kitty)$, opacity 0.95"
+          "match:workspace s[0], match:class ^(kitty)$, opacity 0.95 0.95 0.95"
 
-          "float, class:^(nemo)$"
-
-          "noblur, class:^(nemo)$"
-          "noblur, class:^(com.obsproject.Studio)$"
-          "opaque, class:^(com.obsproject.Studio)$"
-          "opaque, class:^(io.github.alainm23.planify)$"
-          "noblur, class:^(io.github.alainm23.planify)$"
-
-          "noborder, class:^(wofi)$"
-          "noanim, class:^(wlogout)$"
-          "float, class:^(wlogout)$"
-          "fullscreen, class:^(wlogout)$"
-          "opacity 0.95, class:^(kitty)$, onworkspace:s[1]"
-          "opacity 0.95 0.95 0.95, class:^(kitty)$, onworkspace:s[0]"
-          "float, class:^(com.github.hluk.copyq)"
-          "size 40% 60%, class:^(com.github.hluk.copyq)"
-          "center, class:^(com.github.hluk.copyq)"
-          "tile, class:^(ONLYOFFICE Desktop Editors)"
-
-          "float, class:^(xdg-desktop-portal-gtk)"
-          "size 50% 60%, class:^(xdg-desktop-portal-gtk)"
-          "stayfocused, class:^(xdg-desktop-portal-gtk)"
-          "size 50% 60%, class:^(org.freedesktop.impl.portal.desktop.kde)"
-          "float, class:^(org.freedesktop.impl.portal.desktop.kde)"
-          "stayfocused, class:^(org.freedesktop.impl.portal.desktop.kde)"
-
-          # vscode commit sign pass popup
-          "stayfocused, class:^(org.gnupg.pinentry-qt)"
-          "dimaround, class:^(org.gnupg.pinentry-qt)"
-
-          "size 600 600, title:(.*)(Bitwarden)$"
+          "match:class (xdg-desktop-portal-gtk), float on, size (monitor_w*0.65) (monitor_h*0.7), stay_focused on, center on"        
+          "match:class ^(org.gnupg.pinentry-qt), stay_focused on, dim_around on" # vscode commit sign pass popup
+          "match:title (.*)(Bitwarden)$, size 600 600"
         ];
 
         "$mainMod" = "SUPER";
