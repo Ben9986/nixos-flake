@@ -175,7 +175,7 @@ in
     discover-wrapped
     kdePackages.baloo
     kdePackages.kde-gtk-config
-    pinentry
+    pinentry-qt
     localsend
     nix-output-monitor
     doas-sudo-shim

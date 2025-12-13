@@ -30,7 +30,6 @@ in
         kwallet-pam
         kirigami
         qtstyleplugin-kvantum
-        qt6ct
         breeze
       ])
       (with pkgs; [

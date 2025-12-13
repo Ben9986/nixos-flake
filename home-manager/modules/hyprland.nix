@@ -61,8 +61,7 @@ in
         fira-sans
         nerd-fonts.fira-mono
         noto-fonts
-        noto-fonts-emoji
-        noto-fonts-extra
+        noto-fonts-color-emoji
         papirus-icon-theme
         rose-pine-cursor
         rose-pine-hyprcursor
@@ -80,7 +79,7 @@ in
         kdePackages.xdg-desktop-portal-kde
         libadwaita
         libsForQt5.qt5.qtwayland
-        qt6ct
+        qt6Packages.qt6ct
         xdg-desktop-portal-gtk
         kdePackages.plasma-integration # needed for dolphin theming without kde installed
 
