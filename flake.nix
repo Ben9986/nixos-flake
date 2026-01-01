@@ -71,7 +71,7 @@
         }
       );
       # packages.x86_64-linux = {
-      #   laptop = nixos-generators.nixosGenerate {
+      #   laptopIso = nixos-generators.nixosGenerate {
       #     format = "iso";
       #     inherit system;
       #     specialArgs = {
@@ -81,9 +81,10 @@
       #       };
       #     };
       #     modules = [
-      #       hosts/benlaptop
-      #       hosts/common.nix
-      #       hosts/modules
+      #       ./hosts/benlaptop
+      #       ./hosts/modules/zenbook_audio_patch.nix
+      #       ./hosts/common.nix
+      #       ./hosts/modules
       #       ./custom-options.nix
       #     ];
       #   };
