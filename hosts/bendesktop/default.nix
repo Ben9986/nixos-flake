@@ -26,7 +26,7 @@ in
     quiet-boot = true;
   };
   hyprland.enable = true;
-  plasma.enable = true;
+  plasma.enable = false;
   core-services.enable = true;
   nvidia.enable = true;
   virtualisation.enable = true;
