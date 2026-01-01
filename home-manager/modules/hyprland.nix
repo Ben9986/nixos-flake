@@ -8,7 +8,8 @@
 with lib;
 let
   cfg = config.home-manager.hyprland;
-  hyprlandPackages = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
+  # hyprlandPackages = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
+  hyprlandPackages = pkgs;
   patchedhyprshot =
     (pkgs.hyprshot.overrideAttrs (old: rec {
       version = "git";
@@ -30,7 +31,7 @@ let
       ];
 
     })).override
-      { hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland; };
+      { hyprland = hyprlandPackages.hyprland; };
 in
 {
   options.home-manager.hyprland = {
@@ -130,7 +131,7 @@ in
         # Reload hyprland after home-manager files have been written
         reloadHyprlandConfig = lib.hm.dag.entryAfter [ "linkML4WSettings" ] ''
           verboseEcho "Reloading Hyprland config..."
-          if run ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl reload > /dev/null; then
+          if run ${hyprlandPackages.hyprland}/bin/hyprctl reload > /dev/null; then
             verboseEcho "Hyprland reloaded successfully"
           else
             verboseEcho "Hyprland Reload Failed"
