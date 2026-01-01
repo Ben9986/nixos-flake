@@ -38,6 +38,7 @@ in
       ../custom-options.nix
       flakeDir
       lanzaboote.nixosModules.lanzaboote
+      ./modules/lanzaboote.nix
     ];
   };
   bendesktop = lib.nixosSystem {
