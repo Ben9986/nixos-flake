@@ -23,7 +23,7 @@ in
       inherit inputs;
     };
     modules = [
-      inputs.hyprland.homeManagerModules.default
+      # inputs.hyprland.homeManagerModules.default
       inputs.stylix.homeModules.stylix
       ./ben.nix
       ../custom-options.nix
@@ -47,7 +47,7 @@ in
       inherit inputs;
     };
     modules = [
-      inputs.hyprland.homeManagerModules.default
+      # inputs.hyprland.homeManagerModules.default
       inputs.stylix.homeModules.stylix
       ./ben.nix
       ../custom-options.nix
