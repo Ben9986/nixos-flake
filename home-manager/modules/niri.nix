@@ -13,6 +13,12 @@ in
     enable = mkEnableOption "Niri Configuration";
   };
   config = mkIf cfg.enable {
+    home.activation = {
+        validateNiriConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+            echo "Validating Niri Config"
+            ${pkgs.niri}/bin/niri validate
+        '';
+    };
     home.file = {
      ".config/niri/config.kdl".text = ''
         // syntax: go
@@ -286,9 +292,18 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
+// spawn-sh-at-startup "waybar -c ~/.config/waybar/themes/ml4w-modern/config -s ~/.config/waybar/themes/ml4w-modern/black/style.css"
+spawn-at-startup "noctalia-shell"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init"
+spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
+spawn-sh-at-startup "nm-applet --indicator"
+spawn-sh-at-startup "blueberry-tray"
+spawn-sh-at-startup "udiskie &"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+spawn-sh-at-startup "matcha -do"
+
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -384,12 +399,18 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Q hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Super+backslash repeat=false hotkey-overlay-title="Run Fuzzel Launcher" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "loginctl lock-session"; }
 
-    // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
-    // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
-    // For example, this is a standard bind to toggle the screen reader (orca).
-    // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    // Session Control
+    Mod+Alt+P hotkey-overlay-title="Session Management" { spawn-sh "wleave -b 3 -T 415 -B 340 -R 540 -L 540 -p layer-shell"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "loginctl lock-session"; }
+
+    // App Shortcuts
+    Mod+F hotkey-overlay-title="Vivaldi" {spawn-sh "vivaldi --ozone-platform=wayland --password-store=kwallet6"; }
+    Mod+E hotkey-overlay-title="Dolphin File manager" {spawn "dolphin"; }
+    Mod+O hotkey-overlay-title="Obsidian Uni Vault" { spawn-sh "obsidian -- obsidian://open?vault=Uni%20Vault"; }
+    Mod+Shift+O hotkey-overlay-title="Obsidian Life Vault" { spawn-sh "obsidian -- obsidian://open?vault=Life%20Tings"; }
+    Mod+V hotkey-overlay-title="Clipboard History" { spawn-sh "pkill fuzzel || ~/.config/ml4w/scripts/cliphist.sh"; }
+
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -403,7 +424,7 @@ binds {
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioStop        al00ow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
@@ -416,7 +437,7 @@ binds {
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+O repeat=false { toggle-overview; }
+    Mod+BracketLeft repeat=false { toggle-overview; }
 
     Mod+C repeat=false { close-window; }
 
@@ -562,8 +583,8 @@ binds {
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
+    // Mod+BracketLeft  { consume-or-expel-window-left; }
+    // Mod+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
@@ -575,7 +596,7 @@ binds {
     // Mod+R { switch-preset-column-width-back; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-    Mod+F { maximize-column; }
+    // Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
@@ -603,8 +624,8 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+P       { toggle-window-floating; }
+    Mod+Shift+P { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
@@ -639,7 +660,7 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    // Mod+Shift+P { power-off-monitors; }
 }
      '';
     };
