@@ -30,6 +30,7 @@ in {
         hyprlock.enable = true;
         hypridle.enable = true;
       };
+      niri.enable = true;
       plasma.enable = false;
       wleave.enable = true;
     };

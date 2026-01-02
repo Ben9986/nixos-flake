@@ -102,11 +102,6 @@ in
     hardwareClockInLocalTime = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-  };
-
   services.snapper.configs = {
     home = {
       SUBVOLUME = "/home";

@@ -6,6 +6,7 @@
     ./hyprland-laptop.nix
     ./hyprland.nix
     ./hyprlock.nix
+    ./niri.nix
     ./programs.nix
     ./swaylock.nix
     ./systemd.nix

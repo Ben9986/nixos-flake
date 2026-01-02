@@ -156,24 +156,7 @@ in
       };
     };
 
-    xdg = {
-      enable = true;
-
-      portal.extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        kdePackages.xdg-desktop-portal-kde
-        hyprlandPackages.xdg-desktop-portal-hyprland
-      ];
-
-      portal.config.hyprland = {
-        default = [
-          "hyprland"
-          "gtk"
-        ];
-        "org.freedesktop.portal.FileChooser" = [ "kde" ];
-        "org.freedesktop.portal.OpenURI" = [ "kde" ];
-      };
-    };
+    
 
     # xdg = {
     #   portal = {

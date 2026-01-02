@@ -16,6 +16,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
+    wm-common.enable = true;
     programs = {
       hyprland = {
         enable = true;
@@ -42,13 +44,7 @@ in
       ])
     ];
 
-    security.pam.services = lib.mkIf (!config.plasma.enable) {
-      login.kwallet = {
-        enable = true;
-        package = pkgs.kdePackages.kwallet-pam;
-        forceRun = true;
-      };
-    };
+    
     # Fix Default Apps opening in Flatpaks
     systemd.user.extraConfig = ''
       DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
