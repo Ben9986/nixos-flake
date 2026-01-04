@@ -21,6 +21,7 @@
     greeter.enable = true;
   };
   hyprland.enable = true;
+  niri.enable = true;
   plasma.enable = false;
   core-services.enable = true;
   virtualisation = {

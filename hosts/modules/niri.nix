@@ -22,5 +22,6 @@ in
       xwayland-satellite
     ];
     services.gnome.gnome-keyring.enable = false; # Enabled by niri module but I prefer kwallet
+    nixpkgs.overlays = [ (import ../../overlays.nix)];
   };
 }
