@@ -113,7 +113,7 @@ in
         grim
         imagemagick # needed for kitty image previews
         slurp
-        xfce.tumbler # dbus thumbnail interface
+        tumbler # dbus thumbnail interface
 
         # Misc
         pavucontrol
