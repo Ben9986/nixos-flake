@@ -28,7 +28,6 @@ in
         // syntax: go
 input {
     focus-follows-mouse max-scroll-amount="70%"
-    warp-mouse-to-focus
     keyboard {
         // Enable numlock on startup, omitting this setting disables it.
         numlock
