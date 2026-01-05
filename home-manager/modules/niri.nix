@@ -44,64 +44,36 @@ input {
 }
 
 output "eDP-1" {
-    mode "1920x1080@90.001"
+    mode "2880x1800@90.001"
     scale 1.75
     transform "normal"
-
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    // position x=1280 y=0
 }
 
-// Settings that influence how windows are positioned and sized.
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Layout
 layout {
-    // Set gaps around windows in logical pixels.
     gaps 8
-
-    // When to center a column when changing focus, options are:
-    // - "never", default behavior, focusing an off-screen column will keep at the left
-    //   or right edge of the screen.
-    // - "always", the focused column will always be centered.
-    // - "on-overflow", focusing a column will center it if it doesn't fit
-    //   together with the previously focused column.
     center-focused-column "never"
 
-    // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
-    preset-column-widths {
-        // Proportion sets the width as a fraction of the output width, taking gaps into account.
-        // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
-        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
+    preset-column-widths { // Mod+R to switch between
+        // Proportion as a fraction of the output width, taking gaps into account.
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
         proportion 1.0
     }
 
-    // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
-    preset-window-heights { 
+    preset-window-heights { // Mod+Shift+R. Same as above
         proportion 0.5
         proportion 1.0
     }
 
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.6; }
 
-    // You can change how the focus ring looks.
     focus-ring {
         width 2
         active-color "#ffffff"
 
         // Color of the ring on inactive monitors.
-        //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
         inactive-color "#505050"
@@ -109,23 +81,11 @@ layout {
 
     // You can also add a border. It's similar to the focus ring, but always visible.
    // border {
-   //     // The settings are the same as for the focus ring.
-   //     // If you enable the border, you probably want to disable the focus ring.
-   //     off
-   //
    //     width 4
    //     active-color "#ffc87f"
    //     inactive-color "#505050"
-   //
    //     // Color of the border around windows that request your attention.
    //     urgent-color "#9b0000"
-   //
-   //     // Gradients can use a few different interpolation color spaces.
-   //     // For example, this is a pastel rainbow gradient via in="oklch longer hue".
-   //     //
-   //     // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-   //
-   //     // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
    // }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -133,12 +93,12 @@ layout {
     // Left and right struts will cause the next window to the side to always be visible.
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
-    struts {
+    // struts {
         // left 64
         // right 64
         // top 64
         // bottom 64
-    }
+    // }
 }
 
 // spawn-sh-at-startup "waybar -c ~/.config/waybar/themes/ml4w-modern/config -s ~/.config/waybar/themes/ml4w-modern/black/style.css"
@@ -170,17 +130,13 @@ prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-// You can also set this to null to disable saving screenshots to disk.
-// screenshot-path null
-
 animations {
     horizontal-view-movement {
         spring damping-ratio=1.0 stiffness=650 epsilon=0.0001
     }
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
-window-rule {
+/-window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
@@ -189,13 +145,11 @@ window-rule {
 }
 
 // Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
     block-out-from "screen-capture"
-
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
 }
@@ -207,20 +161,21 @@ window-rule {
 
 binds {
     // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
-    // when running as a winit window.
+    // when running as a window.
 
     Mod+Shift+Slash hotkey-overlay-title=null { show-hotkey-overlay; }
-
 
     // Session Control
     Mod+Alt+P hotkey-overlay-title="Session Management" { spawn-sh "wleave -b 3 -T 415 -B 340 -R 540 -L 540 -p layer-shell"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "loginctl lock-session"; }
+    Mod+BracketLeft repeat=false { toggle-overview; }
 
     // App Shortcuts
     Mod+Q hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
     Mod release=true hotkey-overlay-title="Open Fuzzel Launcher" { spawn-sh "pkill fuzzel || fuzzel"; }
     Mod+F hotkey-overlay-title="Vivaldi" {spawn-sh "vivaldi --ozone-platform=wayland --password-store=kwallet6"; }
     Mod+E hotkey-overlay-title="Dolphin File manager" {spawn "dolphin"; }
+    Mod+D hotkey-overlay-title="VSCodium" { spawn "codium"; }
     Mod+O hotkey-overlay-title="Obsidian Uni Vault" { spawn-sh "obsidian -- obsidian://open?vault=Uni%20Vault"; }
     Mod+Shift+O hotkey-overlay-title="Obsidian Life Vault" { spawn-sh "obsidian -- obsidian://open?vault=Life%20Tings"; }
     Mod+V hotkey-overlay-title="Clipboard History" { spawn-sh "pkill fuzzel || ~/.config/ml4w/scripts/cliphist.sh"; }
@@ -235,10 +190,6 @@ binds {
     XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client --brightness +10"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client --brightness -10"; }
 
-    // Open/close the Overview: a zoomed-out view of workspaces and windows.
-    // You can also move the mouse into the top-left hot corner,
-    // or do a four-finger swipe up on a touchpad.
-    Mod+BracketLeft repeat=false { toggle-overview; }
 
     Mod+C repeat=false { close-window; }
 
