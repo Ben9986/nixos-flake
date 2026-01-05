@@ -167,16 +167,18 @@ binds {
     Mod+Shift+O hotkey-overlay-title="Obsidian Life Vault" { spawn-sh "obsidian -- obsidian://open?vault=Life%20Tings"; }
     Mod+V hotkey-overlay-title="Clipboard History" { spawn-sh "pkill fuzzel || ~/.config/ml4w/scripts/cliphist.sh"; }
 
-    // Audio Controls
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume raise"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume lower"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "swayosd-client --output-volume mute-toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "swayosd-client --input-volume mute-toggle"; }
+    // Audio Controls Nocatalia Shell
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume increase"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume decrease"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume muteOutput"; }
+    XF86AudioMicMute allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume muteInput"; }
+    
+    // Brightness Controls Noctalia Shell
+    XF86MonBrightnessUp allow-when-locked=true { spawn " noctalia-shell ipc call brightness increase"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell ipc call brightness decrease"; }
 
-    // Brightness Controls
-    XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client --brightness +10"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client --brightness -10"; }
-
+    // Misc Noctalia Shell Binds
+    Mod+N { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
 
     Mod+C repeat=false { close-window; }
 
