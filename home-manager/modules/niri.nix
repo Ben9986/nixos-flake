@@ -173,8 +173,8 @@ binds {
     XF86AudioMicMute allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume muteInput"; }
     
     // Brightness Controls Noctalia Shell
-    XF86MonBrightnessUp allow-when-locked=true { spawn " noctalia-shell ipc call brightness increase"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell ipc call brightness decrease"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness increase"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness decrease"; }
 
     // Misc Noctalia Shell Binds
     Mod+N { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
