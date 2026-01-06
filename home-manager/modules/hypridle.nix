@@ -16,7 +16,7 @@ in
     enable = mkEnableOption "Hypridle configuration";
   };
   config = mkIf cfg.enable {
-    services.hypridle = lib.mkIf config.home-manager.hyprland.enable {
+    services.hypridle = {
       enable = true;
       package = pkgs.hypridle;
       settings = {

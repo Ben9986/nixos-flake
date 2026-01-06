@@ -24,16 +24,6 @@ let
 in {
   options.home-manager.plasma.enable = lib.mkEnableOption "Plasma Desktop Sessions Packages";
   config = {
-    home-manager = {
-      hyprland = {
-        enable = true;
-        hyprlock.enable = true;
-        hypridle.enable = true;
-      };
-      niri.enable = true;
-      plasma.enable = false;
-      wleave.enable = true;
-    };
 
     home = {
       username = "ben";

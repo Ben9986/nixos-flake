@@ -39,6 +39,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    home-manager.hyprland = {
+      hypridle.enable = true;
+      hyprlock.enable = true;
+    };
     home = {
       packages = with pkgs; [
         # Core utilities & tools

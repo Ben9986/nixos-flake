@@ -4,58 +4,33 @@
   lib,
   ...
 }:
+with lib;
+let
+  cfg = config.home-manager.theming;
+in
 {
-  stylix.enable = true;
-  stylix.targets = {
-    hyprland.enable = false;
-    hyprlock.useWallpaper = false;
-    hyprlock.enable = false;
-    swaylock.enable = false;
-    kde.enable = true;
-    kitty.enable = false;
+  options.home-manager.theming = {
+    enable = mkEnableOption "Theming Configuration";
   };
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/circus.yaml";
+  
+  config = mkIf cfg.enable {
+    stylix = {
+      enable = true;
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/circus.yaml";
+      targets = {
+        hyprland.enable = false;
+        hyprlock = {
+          enable = false;
+          useWallpaper = false;
+        };
+        kde.enable = true;
+        kitty.enable = false;
+        swaylock.enable = false;
+      };
+    };
 
-  gtk.iconTheme.name = "Papirus";
+    gtk.iconTheme.name = "Papirus";
 
-  # dconf = {
-  #   enable = true;
-  #   # settings = {
-  #   #   "org/gnome/desktop/interface" = {
-  #   #     color-scheme = "prefer-dark";
-  #   #     icon-theme = "adwaita-icon-theme";
-  #   #     cursor-theme = "phinger-cursors";
-  #   #   };
-  #   # };
-  # };
-
-  fonts.fontconfig.enable = true;
-
-  # gtk = {
-  #   enable = config.home-manager.hyprland.enable;
-  #   # theme = {
-  #   #   name = "Adwaita-dark";
-  #   #   package = pkgs.gnome-themes-extra;
-  #   # };
-  #   cursorTheme = {
-  #     name = "phinger-cursors";
-  #     size = 24;
-  #     package = pkgs.phinger-cursors;
-  #   };
-  #   iconTheme = {
-  #     name = "adwaita-icon-theme";
-  #     package = pkgs.adwaita-icon-theme;
-  #   };
-  #   gtk4.extraConfig = {
-  #     gtk-application-prefer-dark-theme = true;
-  #   };
-  #   # gtk2.configLocation = "${config.home.homeDirectory}/.config/gtk-2.0/gtkrc-2.0";
-  # };
-
-  # qt = {
-  #   enable = config.home-manager.hyprland.enable;
-  #   style.name = "Breeze";
-  #   style.package = pkgs.kdePackages.breeze;
-  #   platformTheme.name = "Breeze";
-  # };
+    fonts.fontconfig.enable = true;
+  };
 }

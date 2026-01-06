@@ -1,6 +1,20 @@
-{ lib, config, ... }:
-lib.mkIf ((config.host == "laptop") && config.home-manager.hyprland.enable) {
-  wayland.windowManager.hyprland.settings = {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib;
+let
+  cfg = config.home-manager.hyprland.laptopConfig;
+in
+{
+  options.home-manager.hyprland.laptopConfig = {
+    enable = mkEnableOption "Laptop Specific Hyprland Configuration";
+  };
+  
+  config = mkIf cfg.enable {
+    wayland.windowManager.hyprland.settings = {
     monitor = "eDP-1,highres,0x0,1.6";
     env = [
       "QT_AUTO_SCREEN_SCALE_FACTOR,1.5"
@@ -37,5 +51,6 @@ lib.mkIf ((config.host == "laptop") && config.home-manager.hyprland.enable) {
 
       wallpaper = [ ",/home/ben/Pictures/Wallpapers/sundown-over-water.jpg" ];
     };
+  };
   };
 }
