@@ -107,7 +107,6 @@ layout {
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init"
-spawn-sh-at-startup "swww-daemon && swww img /home/ben/Pictures/Wallpapers/sundown-over-water.jpg"
 spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
 // spawn-sh-at-startup "nm-applet --indicator"
 // spawn-sh-at-startup "blueberry-tray"
