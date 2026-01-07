@@ -156,7 +156,7 @@ binds {
     // Session Control
     Mod+Alt+P hotkey-overlay-title="Session Management" { spawn-sh "wleave -b 3 -T 415 -B 340 -R 540 -L 540 -p layer-shell"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "loginctl lock-session"; }
-    Mod+BracketLeft repeat=false { toggle-overview; }
+    Mod+A repeat=false { toggle-overview; }
 
     // App Shortcuts
     Mod+Q hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
@@ -339,7 +339,7 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+Shift+F { fullscreen-window; }
-    Mod+Ctrl+F { maximize-window-to-edges; }
+    Mod+Ctrl+F { maximize-column; }
     Mod+Alt+F { expand-column-to-available-width; } // Expand the focused column to space not taken up by other fully visible columns.
 
 
