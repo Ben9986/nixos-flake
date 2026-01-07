@@ -24,9 +24,7 @@ in
           lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
           unlock_cmd = "";
           before_sleep_cmd = "loginctl lock-session";
-          after_sleep_cmd = "${
-            hyprlandPackages.hyprland
-          }/bin/hyprctl dispatch dpms on; ${pkgs.brightnessctl}/bin/brightnessctl -r; echo 2 | ${pkgs.coreutils}/bin/tee  /sys/class/leds/asus::kbd_backlight/brightness";
+          after_sleep_cmd = lib.mkDefault "${pkgs.brightnessctl}/bin/brightnessctl -r; echo 2 | ${pkgs.coreutils}/bin/tee  /sys/class/leds/asus::kbd_backlight/brightness";
         };
         listener = [
           {
@@ -44,3 +42,6 @@ in
     };
   };
 }
+
+# unused aftersleepcmd 
+# "${hyprlandPackages.hyprland}/bin/hyprctl dispatch dpms on;"

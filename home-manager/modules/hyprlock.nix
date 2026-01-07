@@ -17,7 +17,6 @@ in
   config = mkIf cfg.enable {
     programs.hyprlock = {
       enable = true;
-      package = inputs.hyprlock.packages.${pkgs.stdenv.hostPlatform.system}.hyprlock;
       settings = {
         background = [
           {

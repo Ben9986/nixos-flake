@@ -14,6 +14,10 @@ in
   };
   config = mkIf cfg.enable {
     home-manager = {
+        hyprland = {
+            hyprlock.enable = true;
+            hypridle.enable = true;
+        };
         wm-common.enable = true;
     };
     nixpkgs.overlays = [ (import ../../overlays.nix)];
@@ -155,7 +159,7 @@ binds {
 
     // Session Control
     Mod+Alt+P hotkey-overlay-title="Session Management" { spawn-sh "wleave -b 3 -T 415 -B 340 -R 540 -L 540 -p layer-shell"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "loginctl lock-session"; }
+    Super+L hotkey-overlay-title="Lock the Screen" { spawn-sh "loginctl lock-session"; }
     Mod+A repeat=false { toggle-overview; }
 
     // App Shortcuts
