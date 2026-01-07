@@ -34,9 +34,9 @@ with lib;
       };
       Service = {
         ExecStart = "${pkgs.writeShellScript "set-wallpaper" ''
-          swww-daemon
-          swww img $HOME/Pictures/Wallpapers/lo-fi-cafe.png
           set -eu
+          swww-daemon || true
+          swww img $HOME/Pictures/Wallpapers/lo-fi-cafe.png
         ''}";
         Type = "oneshot";
       };
