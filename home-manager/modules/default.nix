@@ -13,6 +13,7 @@
     ./theming.nix
     ./wleave.nix
     ./xdg.nix
+    ./wm-common.nix
     ./zsh.nix
   ];
 }

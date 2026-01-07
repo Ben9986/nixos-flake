@@ -39,9 +39,12 @@ in
   };
 
   config = mkIf cfg.enable {
-    home-manager.hyprland = {
-      hypridle.enable = true;
-      hyprlock.enable = true;
+    home-manager = {
+      hyprland = {
+        hypridle.enable = true;
+        hyprlock.enable = true;
+      };
+      wm-common.enable = true;
     };
     home = {
       packages = with pkgs; [
@@ -128,8 +131,6 @@ in
           config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/flake-config/home-manager/dotfiles/waybar";
         ".config/swaync".source = ../dotfiles/swaync-ml4w;
         ".cache/wal".source = ../cache/wal;
-        ".config/rofi/rofi-clipboard.rasi".source = ../dotfiles/rofi/rofi-clipboard.rasi;
-        ".config/kdeglobals".source = ../dotfiles/kdeglobals; # allows opening files in terminal apps without konsole, among other things
       };
       activation = {
         # Reload hyprland after home-manager files have been written

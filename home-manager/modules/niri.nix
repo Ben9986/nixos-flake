@@ -13,6 +13,9 @@ in
     enable = mkEnableOption "Niri Configuration";
   };
   config = mkIf cfg.enable {
+    home-manager = {
+        wm-common.enable = true;
+    };
     nixpkgs.overlays = [ (import ../../overlays.nix)];
     services.swww = {
       enable = true;  
@@ -114,7 +117,7 @@ spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "matcha -do"
 
 environment {
-    QT_QPA_PLATFORMTHEME "kde"
+    QT_QPA_PLATFORMTHEME "qt6ct"
     XDG_MENU_PREFIX "plasma-" // required for dolphin to read installed apps to "open with.."
     COLOR_SCHEME "prefer-dark"
     VISUAL "hx"

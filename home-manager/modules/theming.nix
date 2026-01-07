@@ -23,7 +23,7 @@ in
           enable = false;
           useWallpaper = false;
         };
-        kde.enable = true;
+        kde.enable = false;
         kitty.enable = false;
         swaylock.enable = false;
       };
