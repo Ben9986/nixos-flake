@@ -22,6 +22,9 @@ in
     home.file = {
       ".config/rofi/rofi-clipboard.rasi".source = ../dotfiles/rofi/rofi-clipboard.rasi;
       ".config/kdeglobals".source = ../dotfiles/kdeglobals; # allows opening files in terminal apps without konsole, among other things
+      # MkOutOfStoreSymlink allows config to be edited from noctalia menu.
+      # This can then be commited like any other config change
+      ".config/noctalia/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/flake-config/home-manager/dotfiles/noctalia/settings.json";
     };
   };
 }
