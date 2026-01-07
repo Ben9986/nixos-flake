@@ -17,7 +17,7 @@ in
   config = mkIf cfg.enable {
     programs.hyprlock = {
       enable = true;
-      settings = {
+      settings = lib.mkDefault {
         background = [
           {
             path = "screenshot";
