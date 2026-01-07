@@ -55,6 +55,12 @@ output "eDP-1" {
     transform "normal"
 }
 
+output "DP-3" {
+    mode "2560x1440@144.001"
+    scale 1
+    transform "normal"
+}
+
 layout {
     gaps 8
     center-focused-column "never"
