@@ -65,5 +65,10 @@ in
         };
       };
     };
+    systemd.user.services = {
+        onedrive-launcher = {
+          wantedBy = lib.mkForce [ "network-online.target" ];
+        };
+    };
   };
 }
