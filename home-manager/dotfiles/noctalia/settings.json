@@ -101,6 +101,9 @@
             ],
             "right": [
                 {
+                    "id": "plugin:onedrive-status-monitor"
+                },
+                {
                     "displayMode": "onhover",
                     "id": "WiFi"
                 },
