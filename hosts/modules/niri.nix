@@ -21,7 +21,10 @@ in
       noctalia-shell
       xwayland-satellite
     ];
-    services.gnome.gnome-keyring.enable = false; # Enabled by niri module but I prefer kwallet
+    services = {
+      blueman.enable = false;
+      gnome.gnome-keyring.enable = false; # Enabled by niri module but I prefer kwallet
+    };
     nixpkgs.overlays = [ (import ../../overlays.nix)];
   };
 }

@@ -64,7 +64,7 @@ in
     };
 
     services = {
-      blueman.enable = true;
+      blueman.enable = lib.mkDefault true;
       displayManager.defaultSession = "hyprland";
       udev.packages = [ pkgs.swayosd ];
     };
