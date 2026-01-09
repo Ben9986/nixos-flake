@@ -46,6 +46,7 @@ in {
           cantarell-fonts
           roboto
           git-crypt
+          mission-center
           pavucontrol
           onedrivegui
           obsidian
