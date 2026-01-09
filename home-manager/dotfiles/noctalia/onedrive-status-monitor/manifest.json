@@ -1,0 +1,10 @@
+{
+  "id": "onedrive-status-monitor",
+  "name": "Onedrive Service Monitor",
+  "version": "1.0.0",
+  "author": "Me",
+  "description": "Monitors onedrive systemd services",
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  }
+}

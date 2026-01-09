@@ -25,6 +25,7 @@ in
       # MkOutOfStoreSymlink allows config to be edited from noctalia menu.
       # This can then be commited like any other config change
       ".config/noctalia/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/flake-config/home-manager/dotfiles/noctalia/settings.json";
+      ".config/noctalia/plugins/onedrive-status-monitor".source = ../dotfiles/noctalia/onedrive-status-monitor;
     };
   };
 }
