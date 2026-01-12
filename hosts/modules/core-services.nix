@@ -67,7 +67,7 @@ in
     };
     systemd.user.services = {
         onedrive-launcher = {
-          wantedBy = lib.mkForce [ "network-online.target" ];
+          serviceConfig.ExecStartPre="${pkgs.networkmanager}/bin/nm-online --timeout=30";
         };
     };
   };
