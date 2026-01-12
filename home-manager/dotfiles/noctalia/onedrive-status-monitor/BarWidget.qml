@@ -128,19 +128,29 @@ Rectangle {
     NPopupContextMenu {
     id: contextMenu1
     model: [
-      {
-        "label": root.s1Active ? `Stop ${root.serviceName1Pretty}` : `Start ${root.serviceName1Pretty}`,
-        "action": root.s1Active ? "stop" : "start",
-        "icon": root.s1Active ? "player-stop" : "player-play"
-      },
-      { "label": `Restart ${root.serviceName1Pretty}`, "action": "restart", "icon": "refresh" },
+        { 
+            "label": 'Service Status',
+            "action": "status",
+            "icon": "info-square-rounded"
+        },
+        {
+            "label": root.s1Active ? `Stop ${root.serviceName1Pretty}` : `Start ${root.serviceName1Pretty}`,
+            "action": root.s1Active ? "stop" : "start",
+            "icon": root.s1Active ? "player-stop" : "player-play"
+        },
+        { 
+            "label": `Restart ${root.serviceName1Pretty}`,
+            "action": "restart",
+            "icon": "refresh"
+        },
     ]
 
     onTriggered: action => {
       var popupMenuWindow = PanelService.getPopupMenuWindow(screen);
       if (popupMenuWindow) popupMenuWindow.close();
 
-      if (action === "start") commandProc.command = ["systemctl", "--user", "start", root.serviceName1];
+      if (action == "status") commandProc.command = [ "kitty", "-e", "--user", "status", root.serviceName1]
+      else if (action === "start") commandProc.command = ["systemctl", "--user", "start", root.serviceName1];
       else if (action === "stop") commandProc.command = ["systemctl", "--user", "stop", root.serviceName1];
       else if (action === "restart") commandProc.command = ["systemctl", "--user", "restart", root.serviceName1];
 
@@ -151,19 +161,29 @@ Rectangle {
   NPopupContextMenu {
     id: contextMenu2
     model: [
-      {
-        "label": root.s2Active ? `Stop ${root.serviceName2Pretty}` : `Start ${root.serviceName2Pretty}`,
-        "action": root.s2Active ? "stop" : "start",
-        "icon": root.s2Active ? "player-stop" : "player-play"
-      },
-      { "label": `Restart ${root.serviceName2Pretty}`, "action": "restart", "icon": "refresh" },
+        { 
+            "label": 'Service Status',
+            "action": "status",
+            "icon": "info-square-rounded"
+        },
+        {
+            "label": root.s2Active ? `Stop ${root.serviceName2Pretty}` : `Start ${root.serviceName2Pretty}`,
+            "action": root.s2Active ? "stop" : "start",
+            "icon": root.s2Active ? "player-stop" : "player-play"
+        },
+        { 
+            "label": `Restart ${root.serviceName2Pretty}`,
+            "action": "restart",
+            "icon": "refresh"
+        },
     ]
 
     onTriggered: action => {
       var popupMenuWindow = PanelService.getPopupMenuWindow(screen);
       if (popupMenuWindow) popupMenuWindow.close();
 
-      if (action === "start") commandProc.command = ["systemctl", "--user", "start", root.serviceName2];
+      if (action == "status") commandProc.command = [ "kitty", "-e", "--user", "status", root.serviceName2]  
+      else if (action === "start") commandProc.command = ["systemctl", "--user", "start", root.serviceName2];
       else if (action === "stop") commandProc.command = ["systemctl", "--user", "stop", root.serviceName2];
       else if (action === "restart") commandProc.command = ["systemctl", "--user", "restart", root.serviceName2];
 
