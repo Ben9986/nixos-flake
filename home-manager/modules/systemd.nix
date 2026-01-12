@@ -11,7 +11,7 @@
         Wants = [ "network-online.target" ];
       };
       Install = {
-        WantedBy = [ "default.target" ];
+        WantedBy = [ "default.target" "network-online.target" ];
       };
       Service = {
         ExecStart = "${pkgs.writeShellScript "pull-flake" ''
