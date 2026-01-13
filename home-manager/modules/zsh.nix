@@ -47,6 +47,9 @@ in
         ll = "eza --icons --group-directories-first --width=80 --no-filesize -alo";
       };
 
+      siteFunctions = {
+        ns = "nix shell nixpkgs#\"$@\"";
+      };
       initContent = lib.mkMerge [
         (lib.mkOrder 550 "zstyle :compinstall filename '$HOME/.zshrc' ")
         (''
