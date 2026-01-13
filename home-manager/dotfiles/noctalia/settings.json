@@ -49,7 +49,7 @@
                     "groupedBorderOpacity": 1,
                     "hideUnoccupied": false,
                     "id": "Workspace",
-                    "labelMode": "name",
+                    "labelMode": "index",
                     "showApplications": false,
                     "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
