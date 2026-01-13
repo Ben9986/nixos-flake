@@ -381,14 +381,14 @@
         "videoSource": "portal"
     },
     "sessionMenu": {
-        "countdownDuration": 10000,
+        "countdownDuration": 5000,
         "enableCountdown": true,
         "largeButtonsStyle": false,
         "position": "top_left",
         "powerOptions": [
             {
                 "action": "lock",
-                "command": "",
+                "command": "hyprlock",
                 "countdownEnabled": true,
                 "enabled": true
             },
@@ -412,8 +412,8 @@
             },
             {
                 "action": "logout",
-                "command": "",
-                "countdownEnabled": true,
+                "command": "niri msg action quit",
+                "countdownEnabled": false,
                 "enabled": true
             },
             {
@@ -424,7 +424,7 @@
             }
         ],
         "showHeader": true,
-        "showNumberLabels": true
+        "showNumberLabels": false
     },
     "settingsVersion": 35,
     "systemMonitor": {

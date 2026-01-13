@@ -15,11 +15,12 @@ in
   config = mkIf cfg.enable {
     home.packages = [ pkgs.wleave ];
     home.file = {
+      # for hyprland: {"action":"hyprctl dispatch exit","keybind":"e","label":"logout","text":"Logout", "icon": "${pkgs.wleave}/share/wleave/icons/logout.svg"},
       ".config/wleave/layout.json".text = ''
           {
             "buttons": [
               {"action":"hyprlock","keybind":"l","label":"lock","text":"Lock", "icon": "${pkgs.wleave}/share/wleave/icons/lock.svg"},                              
-              {"action":"hyprctl dispatch exit","keybind":"e","label":"logout","text":"Logout", "icon": "${pkgs.wleave}/share/wleave/icons/logout.svg"},
+              {"action":"niri msg actions quit","keybind":"e","label":"logout","text":"Logout", "icon": "${pkgs.wleave}/share/wleave/icons/logout.svg"},
               {"action":"systemctl suspend","keybind":"s","label":"suspend","text":"Sleep", "icon": "${pkgs.wleave}/share/wleave/icons/suspend.svg"},  
               {"action":"systemctl hibernate","keybind":"s","label":"hibernate","text":"Hibernate", "icon": "${pkgs.wleave}/share/wleave/icons/hibernate.svg"},  
               {"action":"systemctl poweroff","keybind":"s","label":"shutdown","text":"Shutdown", "icon": "${pkgs.wleave}/share/wleave/icons/shutdown.svg"},            
