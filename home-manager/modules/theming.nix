@@ -24,13 +24,19 @@ in
           useWallpaper = false;
         };
         kde.enable = false;
+        qt.enable = true;
         kitty.enable = false;
         swaylock.enable = false;
       };
     };
 
-    gtk.iconTheme.name = "Papirus";
-
+    gtk = {
+      enable = true;
+      iconTheme = {
+        name = "papirus";
+        package = pkgs.papirus-icon-theme;
+      };
+    };
     fonts.fontconfig.enable = true;
   };
 }

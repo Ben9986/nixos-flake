@@ -126,7 +126,7 @@ spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "matcha -do"
 
 environment {
-    QT_QPA_PLATFORMTHEME "qt6ct"
+    QT_QPA_PLATFORMTHEME "stylix"
     XDG_MENU_PREFIX "plasma-" // required for dolphin to read installed apps to "open with.."
     COLOR_SCHEME "prefer-dark"
     VISUAL "hx"
