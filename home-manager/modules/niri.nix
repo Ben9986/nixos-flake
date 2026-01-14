@@ -274,7 +274,7 @@ binds {
 
     // Usually scrolling up and down with Shift in applications results in
     // horizontal scrolling; these binds replicate that.
-    Mod+Ctrl+WheelScCrollDown      { focus-column-right; }
+    Mod+Ctrl+WheelScrollDown      { focus-column-right; }
     Mod+Ctrl+WheelScrollUp        { focus-column-left; }
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
